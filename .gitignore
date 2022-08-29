@@ -46,5 +46,5 @@ testem.log
 Thumbs.db
 
 #Exclude files
-front-app/node_modules/
+front-end/node_modules/
 backend-api/node_modules/
