@@ -252,8 +252,13 @@ html {
   }
   @font-face {
     font-family: 'Glyphicons Halflings';
-    src: url('../fonts/glyphicons-halflings-regular.eot');
-    src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+    src: url('./fonts//glyphicons-halflings-regular.eot');
+    src: url('./fonts/glyphicons-halflings-regular.eot?#iefix') 
+    format('embedded-opentype'), 
+    url('./fonts/glyphicons-halflings-regular.woff2') 
+    format('woff2'), url('./fonts/glyphicons-halflings-regular.woff') 
+    format('woff'), url('./fonts/glyphicons-halflings-regular.ttf') 
+    format('truetype'), url('./fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
   }
   .glyphicon {
     position: relative;
@@ -8005,7 +8010,7 @@ html {
     font-size: 13px;
     font-variant: small-caps;
     color: #999999;
-    background: transparent url(../img/loading.gif) top left no-repeat;
+    background: transparent url(./img/loading.gif) top left no-repeat;
   }
   .file-object {
     margin: 0 0 -5px 0;
@@ -8229,7 +8234,7 @@ html {
     width: 100%;
   }
   .file-thumb-loading {
-    background: transparent url(../img/loading.gif) no-repeat scroll center center content-box !important;
+    background: transparent url(./img/loading.gif) no-repeat scroll center center content-box !important;
   }
   .file-drop-zone {
     border: 1px dashed #aaaaaa;
@@ -8260,7 +8265,7 @@ html {
     background-color: #eeeeee;
   }
   .file-uploading {
-    background: url(../img/loading-sm.gif) no-repeat center bottom 10px;
+    background: url(./img/loading-sm.gif) no-repeat center bottom 10px;
     opacity: 0.65;
   }
   @media (min-width: 576px) {
@@ -8351,7 +8356,7 @@ html {
     }
   }
   .file-loading[dir=rtl]:before {
-    background: transparent url(../img/loading.gif) top right no-repeat;
+    background: transparent url(./img/loading.gif) top right no-repeat;
     padding-left: 0;
     padding-right: 20px;
   }
@@ -8602,7 +8607,7 @@ html {
     font-size: 1px;
     text-decoration: none;
     border: 0;
-    background: url('../img/vendor/select2/select2.png') right top no-repeat;
+    background: url('./img/vendor/select2/select2.png') right top no-repeat;
     cursor: pointer;
     outline: 0;
   }
@@ -8691,7 +8696,7 @@ html {
     display: block;
     width: 100%;
     height: 100%;
-    background: url('../img/vendor/select2/select2.png') no-repeat 0 1px;
+    background: url('./img/vendor/select2/select2.png') no-repeat 0 1px;
   }
   html[dir="rtl"] .select2-container .select2-choice .select2-arrow b {
     background-position: 2px 1px;
@@ -8719,26 +8724,26 @@ html {
     border-radius: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
-    background: white url('../img/vendor/select2/select2.png') no-repeat 100% -22px;
-    background: url('../img/vendor/select2/select2.png') no-repeat 100% -22px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #eeeeee));
-    background: url('../img/vendor/select2/select2.png') no-repeat 100% -22px, -webkit-linear-gradient(center bottom, white 85%, #eeeeee 99%);
-    background: url('../img/vendor/select2/select2.png') no-repeat 100% -22px, -moz-linear-gradient(center bottom, white 85%, #eeeeee 99%);
-    background: url('../img/vendor/select2/select2.png') no-repeat 100% -22px, linear-gradient(to bottom, white 85%, #eeeeee 99%) 0 0;
+    background: white url('./img/vendor/select2/select2.png') no-repeat 100% -22px;
+    background: url('./img/vendor/select2/select2.png') no-repeat 100% -22px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #eeeeee));
+    background: url('./img/vendor/select2/select2.png') no-repeat 100% -22px, -webkit-linear-gradient(center bottom, white 85%, #eeeeee 99%);
+    background: url('./img/vendor/select2/select2.png') no-repeat 100% -22px, -moz-linear-gradient(center bottom, white 85%, #eeeeee 99%);
+    background: url('./img/vendor/select2/select2.png') no-repeat 100% -22px, linear-gradient(to bottom, white 85%, #eeeeee 99%) 0 0;
   }
   html[dir="rtl"] .select2-search input {
     padding: 4px 5px 4px 20px;
-    background: white url('../img/vendor/select2/select2.png') no-repeat -37px -22px;
-    background: url('../img/vendor/select2/select2.png') no-repeat -37px -22px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #eeeeee));
-    background: url('../img/vendor/select2/select2.png') no-repeat -37px -22px, -webkit-linear-gradient(center bottom, white 85%, #eeeeee 99%);
-    background: url('../img/vendor/select2/select2.png') no-repeat -37px -22px, -moz-linear-gradient(center bottom, white 85%, #eeeeee 99%);
-    background: url('../img/vendor/select2/select2.png') no-repeat -37px -22px, linear-gradient(to bottom, white 85%, #eeeeee 99%) 0 0;
+    background: white url('./img/vendor/select2/select2.png') no-repeat -37px -22px;
+    background: url('./img/vendor/select2/select2.png') no-repeat -37px -22px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #eeeeee));
+    background: url('./img/vendor/select2/select2.png') no-repeat -37px -22px, -webkit-linear-gradient(center bottom, white 85%, #eeeeee 99%);
+    background: url('./img/vendor/select2/select2.png') no-repeat -37px -22px, -moz-linear-gradient(center bottom, white 85%, #eeeeee 99%);
+    background: url('./img/vendor/select2/select2.png') no-repeat -37px -22px, linear-gradient(to bottom, white 85%, #eeeeee 99%) 0 0;
   }
   .select2-search input.select2-active {
-    background: white url('../img/vendor/select2/select2-spinner.gif') no-repeat 100%;
-    background: url('../img/vendor/select2/select2-spinner.gif') no-repeat 100%, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #eeeeee));
-    background: url('../img/vendor/select2/select2-spinner.gif') no-repeat 100%, -webkit-linear-gradient(center bottom, white 85%, #eeeeee 99%);
-    background: url('../img/vendor/select2/select2-spinner.gif') no-repeat 100%, -moz-linear-gradient(center bottom, white 85%, #eeeeee 99%);
-    background: url('../img/vendor/select2/select2-spinner.gif') no-repeat 100%, linear-gradient(to bottom, white 85%, #eeeeee 99%) 0 0;
+    background: white url('./img/vendor/select2/select2-spinner.gif') no-repeat 100%;
+    background: url('./img/vendor/select2/select2-spinner.gif') no-repeat 100%, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #eeeeee));
+    background: url('./img/vendor/select2/select2-spinner.gif') no-repeat 100%, -webkit-linear-gradient(center bottom, white 85%, #eeeeee 99%);
+    background: url('./img/vendor/select2/select2-spinner.gif') no-repeat 100%, -moz-linear-gradient(center bottom, white 85%, #eeeeee 99%);
+    background: url('./img/vendor/select2/select2-spinner.gif') no-repeat 100%, linear-gradient(to bottom, white 85%, #eeeeee 99%) 0 0;
   }
   .select2-container-active .select2-choice,
   .select2-container-active .select2-choices {
@@ -8895,7 +8900,7 @@ html {
     display: none;
   }
   .select2-more-results.select2-active {
-    background: #f4f4f4 url('../img/vendor/select2/select2-spinner.gif') no-repeat 100%;
+    background: #f4f4f4 url('./img/vendor/select2/select2-spinner.gif') no-repeat 100%;
   }
   .select2-results .select2-ajax-error {
     background: rgba(255, 50, 50, 0.2);
@@ -8977,7 +8982,7 @@ html {
     background: transparent !important;
   }
   .select2-container-multi .select2-choices .select2-search-field input.select2-active {
-    background: white url('../img/vendor/select2/select2-spinner.gif') no-repeat 100% !important;
+    background: white url('./img/vendor/select2/select2-spinner.gif') no-repeat 100% !important;
   }
   .select2-default {
     color: #999999 !important;
@@ -9025,7 +9030,7 @@ html {
     top: 4px;
     font-size: 1px;
     outline: none;
-    background: url('../img/vendor/select2/select2.png') right top no-repeat;
+    background: url('./img/vendor/select2/select2.png') right top no-repeat;
   }
   html[dir="rtl"] .select2-search-choice-close {
     right: auto;
@@ -9100,7 +9105,7 @@ html {
     .select2-search-choice-close,
     .select2-container .select2-choice abbr,
     .select2-container .select2-choice .select2-arrow b {
-      background-image: url('../img/vendor/select2/select2x2.png') !important;
+      background-image: url('./img/vendor/select2/select2x2.png') !important;
       background-repeat: no-repeat !important;
       background-size: 60px 40px !important;
     }
@@ -10272,7 +10277,7 @@ html {
     position: absolute;
     margin-left: -15px;
     margin-right: -15px;
-    background: url(../img/loading.gif) no-repeat;
+    background: url(./img/loading.gif) no-repeat;
   }
   @-webkit-keyframes rotate {
     100% {
@@ -10735,7 +10740,7 @@ html {
     cursor: wait !important;
   }
   .loading-panel {
-    background-image: url('../img/loading.gif');
+    background-image: url('./img/loading.gif');
     background-position: center 22px;
     background-repeat: no-repeat;
     height: 100px;
@@ -11043,7 +11048,7 @@ html {
     margin-bottom: 5px;
   }
   .btn-loading {
-    background-image: url('../img/btn-loading.png') !important;
+    background-image: url('./img/btn-loading.png') !important;
     background-position: center 0;
     background-repeat: repeat-x;
     -webkit-animation: btn-loading 2.5s linear infinite;
@@ -11197,8 +11202,8 @@ html {
   }
   @font-face {
     font-family: 'phpgenerator';
-    src: url('../fonts/phpgenerator.eot?izi13q');
-    src: url('../fonts/phpgenerator.eot?izi13q#iefix') format('embedded-opentype'), url('../fonts/phpgenerator.ttf?izi13q') format('truetype'), url('../fonts/phpgenerator.woff?izi13q') format('woff'), url('../fonts/phpgenerator.svg?izi13q#phpgenerator') format('svg');
+    src: url('./fonts/phpgenerator.eot?izi13q');
+    src: url('./fonts/phpgenerator.eot?izi13q#iefix') format('embedded-opentype'), url('./fonts/phpgenerator.ttf?izi13q') format('truetype'), url('./fonts/phpgenerator.woff?izi13q') format('woff'), url('./fonts/phpgenerator.svg?izi13q#phpgenerator') format('svg');
     font-weight: normal;
     font-style: normal;
   }
@@ -12554,88 +12559,89 @@ html {
     content: "\00a0";
   }
   .flag-icon-ar {
-    background-image: url(../../../nba_images/flags/ar.svg);
+    
+    background-image: url(./nba_images/flags/ar.svg);
   }
   .flag-icon-au {
-    background-image: url(../../../nba_images/flags/au.svg);
+    background-image: url(./nba_images/flags/au.svg);
   }
   .flag-icon-br {
-    background-image: url(../../../nba_images/flags/br.svg);
+    background-image: url(./nba_images/flags/br.svg);
   }
   .flag-icon-ca {
-    background-image: url(../../../nba_images/flags/ca.svg);
+    background-image: url(./nba_images/flags/ca.svg);
   }
   .flag-icon-cg {
-    background-image: url(../../../nba_images/flags/cg.svg);
+    background-image: url(./nba_images/flags/cg.svg);
   }
   .flag-icon-cn {
-    background-image: url(../../../nba_images/flags/cn.svg);
+    background-image: url(./nba_images/flags/cn.svg);
   }
   .flag-icon-de {
-    background-image: url(../../../nba_images/flags/de.svg);
+    background-image: url(./nba_images/flags/de.svg);
   }
   .flag-icon-do {
-    background-image: url(../../../nba_images/flags/do.svg);
+    background-image: url(./nba_images/flags/do.svg);
   }
   .flag-icon-es {
-    background-image: url(../../../nba_images/flags/es.svg);
+    background-image: url(./nba_images/flags/es.svg);
   }
   .flag-icon-fr {
-    background-image: url(../../../nba_images/flags/fr.svg);
+    background-image: url(./nba_images/flags/fr.svg);
   }
   .flag-icon-gb {
-    background-image: url(../../../nba_images/flags/gb.svg);
+    background-image: url(./nba_images/flags/gb.svg);
   }
   .flag-icon-ge {
-    background-image: url(../../../nba_images/flags/ge.svg);
+    background-image: url(./nba_images/flags/ge.svg);
   }
   .flag-icon-gr {
-    background-image: url(../../../nba_images/flags/gr.svg);
+    background-image: url(./nba_images/flags/gr.svg);
   }
   .flag-icon-hr {
-    background-image: url(../../../nba_images/flags/hr.svg);
+    background-image: url(./nba_images/flags/hr.svg);
   }
   .flag-icon-ir {
-    background-image: url(../../../nba_images/flags/ir.svg);
+    background-image: url(./nba_images/flags/ir.svg);
   }
   .flag-icon-it {
-    background-image: url(../../../nba_images/flags/it.svg);
+    background-image: url(./nba_images/flags/it.svg);
   }
   .flag-icon-lt {
-    background-image: url(../../../nba_images/flags/lt.svg);
+    background-image: url(./nba_images/flags/lt.svg);
   }
   .flag-icon-lv {
-    background-image: url(../../../nba_images/flags/lv.svg);
+    background-image: url(./nba_images/flags/lv.svg);
   }
   .flag-icon-me {
-    background-image: url(../../../nba_images/flags/me.svg);
+    background-image: url(./nba_images/flags/me.svg);
   }
   .flag-icon-nz {
-    background-image: url(../../../nba_images/flags/nz.svg);
+    background-image: url(./nba_images/flags/nz.svg);
   }
   .flag-icon-pl {
-    background-image: url(../../../nba_images/flags/pl.svg);
+    background-image: url(./nba_images/flags/pl.svg);
   }
   .flag-icon-pr {
-    background-image: url(../../../nba_images/flags/pr.svg);
+    background-image: url(./nba_images/flags/pr.svg);
   }
   .flag-icon-ru {
-    background-image: url(../../../nba_images/flags/ru.svg);
+    background-image: url(./nba_images/flags/ru.svg);
   }
   .flag-icon-si {
-    background-image: url(../../../nba_images/flags/si.svg);
+    background-image: url(./nba_images/flags/si.svg);
   }
   .flag-icon-sn {
-    background-image: url(../../../nba_images/flags/sn.svg);
+    background-image: url(./nba_images/flags/sn.svg);
   }
   .flag-icon-tr {
-    background-image: url(../../../nba_images/flags/tr.svg);
+    background-image: url(./nba_images/flags/tr.svg);
   }
   .flag-icon-us {
-    background-image: url(../../../nba_images/flags/us.svg);
+    background-image: url(./nba_images/flags/us.svg);
   }
   .flag-icon-ua {
-    background-image: url(../../../nba_images/flags/ua.svg);
+    background-image: url(./nba_images/flags/ua.svg);
   }
   .custom_select2_img {
     margin-right: 0.3em;
@@ -13447,7 +13453,7 @@ html {
     width: 100%;
   }
   .player-card-photo {
-    background: url('../../../nba_images/wood_right.png') no-repeat left top;
+    background: url('./nba_images/wood_right.png') no-repeat left top;
     background-size: auto 100%;
     vertical-align: bottom;
     line-height: 1em;
@@ -13667,7 +13673,7 @@ html {
     margin-right: -60px;
   }
   .playoff-round-final .playoff-round-game-team-logo-winner {
-    background: url(../../../nba_images/larry.svg) no-repeat center;
+    background: url(./nba_images/larry.svg) no-repeat center;
     background-size: contain;
   }
   .playoff-round-game {
