@@ -1,0 +1,99 @@
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.php"><img alt="NBA Database" src="../../assets/css/img/nba_logo.png"> <strong class="hidden-xs hidden-sm">NBA Database</strong></a> <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navnav" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+        </div>
+ 
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container-padding">
+                <h1 class="text-center">Welcome to the PHP Generator NBA demo!</h1>
+                <p class="lead text-center">Create similar websites even without web development experience.</p>
+                <div class="well pgui-login">
+                    <p class="text-center"><img alt="User avatar" class="pgui-login-avatar" src="../../assets/css/img/login_avatar.png"></p>
+                    <form method="post">
+                        <div class="form-group">
+                            <input class="form-control" id="username" name="username" placeholder="Username" type="text">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="password" name="password" placeholder="Password" type="password">
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label><input id="saveidentity" name="saveidentity" type="checkbox"> Remember me</label>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <div class="btn-group">
+                                <button class="btn btn-primary" type="submit">Login</button> <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                <ul class="dropdown-menu" id="login-as">
+                                    <li>
+                                        <a data-password="admin" data-username="admin" href="#">Login as admin</a>
+                                    </li>
+                                    <li>
+                                        <a data-password="lakers" data-username="lakers" href="#">Login as lakers</a>
+                                    </li>
+                                    <li>
+                                        <a data-password="boston" data-username="boston" href="#">Login as boston</a>
+                                    </li>
+                                    <li>
+                                        <a data-password="game" data-username="game_manager" href="#">Login as game_mananger</a>
+                                    </li>
+                                </ul>
+                            </div>&nbsp;<a class="btn btn-default" href="regular_season_games.php">Login as guest</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <h2>Available demo users</h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Password</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>admin@admin.com</td>
+                                    <td>admin</td>
+                                    <td>User demo to login to the application</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal fade" id="demo-about" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+                                <h4 class="modal-title">About this demo</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>This demo application uses NBA data during 2013-2014 season to show features provided by PHP Generator. Hope it will help you to create even more powerful websites for your users.</p>
+                                <p>You can <a href="#" target="_blank">download the demo project</a> from our website and run the demo on your webserver as described in readme.txt.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a class="btn btn-primary" href="#" target="_blank">Download PHP Generator Free Trial</a> <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <footer>
+                    <p>&copy; <span class="copyright">2002-
+                    <script type="text/javascript">
+                    document.write(new Date().getFullYear().toString())
+                    </script></span> <a href="#" target="_blank">SQL Maestro Group</a>. Follow us: <a class="link-icon" href="#" target="_blank"><i class="icon-facebook-square"></i></a> <a class="link-icon" href="#" target="_blank"><i class="icon-twitter"></i></a> <a class="link-icon" href="#" target="_blank"><i class="icon-youtube"></i></a></p>
+                    <p>Created with <a href="#" target="_blank">PHP Generator for MySQL</a>. Want to learn more? <a href="#" target="_blank">Download the demo project!</a></p>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
