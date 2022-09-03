@@ -250,6 +250,31 @@ html {
       border: 1px solid #dddddd !important;
     }
   }
+
+  @font-face {
+    font-family: 'github';
+    src: url('../css/fonts/font-github/glyphter-font/fonts/github.eot');
+    src: url('../css/fonts/font-github/glyphter-font/fonts/github.eot?#iefix') format('embedded-opentype'),
+         url('../css/fonts/font-github/glyphter-font/fonts/github.woff') format('woff'),
+         url('../css/fonts/font-github/glyphter-font/fonts/github.ttf') format('truetype'),
+         url('../css/fonts/font-github/glyphter-font/fonts/github.svg#github') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+[class*='icongithub-']:before{
+	display: inline-block;
+   font-family: 'github';
+   font-style: normal;
+   font-weight: normal;
+   line-height: 1;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale
+}
+.icongithub-iconmonstr-github:before{
+  content:'\0041';
+}
+
+
   @font-face {
     font-family: 'Glyphicons Halflings';
     src: url('./fonts//glyphicons-halflings-regular.eot');
