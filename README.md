@@ -1,4 +1,4 @@
-# Application to manage Ngrx, redux and rxjs and feature modules pattern
+
 
 # Ngrx App using observable RXJS and NRGX using best practices
 
