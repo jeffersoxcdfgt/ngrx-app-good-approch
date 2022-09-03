@@ -25,7 +25,7 @@ const MATERIAL_MODULES = [
   imports:[
     CommonModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(AppInMemoryApi),
+    //HttpClientInMemoryWebApiModule.forRoot(AppInMemoryApi),
     FormsModule,
     ReactiveFormsModule,
     RouterModule,

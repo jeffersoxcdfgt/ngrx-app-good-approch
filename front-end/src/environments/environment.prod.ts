@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  loginUrl:'https://jefferson-back.informati-k.com/api/login'
 };
