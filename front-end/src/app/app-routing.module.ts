@@ -10,6 +10,10 @@ const routes:Routes = [
     path:'login',
     loadChildren: () => import('./login/login.module').then(h => h.LoginModule)
   },
+  {
+    path:'menu',
+    loadChildren: () => import('./menu/menu.module').then(h => h.MenuModule)
+  },
   {path: '**', component: PageNotFoundComponent}
 ];
 

@@ -1,9 +1,10 @@
 <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <div class="navbar-brand" href="#">
                 <img alt="NBA Database" src="../../assets/css/img/nba_logo.png"> 
-                <strong class="hidden-xs hidden-sm">NBA Database</strong></a> 
+                <strong class="hidden-xs hidden-sm">NBA Database</strong>
+            </div> 
         </div>
     </div>
 </nav>
@@ -15,14 +16,17 @@
                 <p class="lead text-center">It is application that uses redux, ngrx and rxjs, try to make best practices .</p>
                 <div class="well pgui-login">
                     <p class="text-center"><img alt="User avatar" class="pgui-login-avatar" src="../../assets/css/img/login_avatar.png"></p>
-                    <form method="post">
+                    <form [formGroup]="formLogin">
                         <div class="form-group">
-                            <input class="form-control" id="username" name="username" placeholder="Username" type="text">
+                            <app-input-custom [data]="''" formControlName="username" [placeholder]="'username'"></app-input-custom>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" id="password" name="password" placeholder="Password" type="password">
+                            <app-input-custom [data]="''" formControlName="password" [placeholder]="'password'"></app-input-custom>
+                            <!--<input class="form-control" id="password" name="password" placeholder="Password" type="password">-->
                         </div>
-                 
+                        <div class="alert alert-danger" *ngIf="(errorShow$ | async)">
+                            The username/password combination you entered was invalid.
+                        </div>             
                         <div class="form-group text-center">
                             <div class="btn-group">
                                 <button class="btn btn-primary" (click)="login()" type="submit">Login</button>
@@ -60,7 +64,7 @@
                         <i class="icongithub-iconmonstr-github"></i>
                     </a>
                    </p>
-                    <p>Created with <a href="#" target="_blank">Jefferson Jose Medina cedeno</a>. Want to learn more? <a href="#" target="_blank">Download the demo project!</a></p>
+                    <p>Created with <a href="https://www.linkedin.com/in/jefferson-medina-abab2759" target="_blank">Jefferson Jose Medina cedeno</a>. Want to learn more? <a href="https://www.linkedin.com/in/jefferson-medina-abab2759" target="_blank">Download the demo project!</a></p>
                 </footer>
             </div>
         </div>

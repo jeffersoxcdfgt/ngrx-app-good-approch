@@ -18,7 +18,7 @@ export class LoginEffects {
      mergeMap((userdata:Login) => this.loginService.logIn(userdata)
         .pipe(
             map((dataresponse:ResponseLogin) => ({type: LoginActionTypes.GET_LOGIN_SUCCESS, response: dataresponse})),
-             catchError((error) => of({ type: LoginActionTypes.GET_LOGI_ERROR, err:error}))
+             catchError((error) => of({ type: LoginActionTypes.GET_LOGIN_ERROR, err:error}))
           )
       )
     )
@@ -27,8 +27,7 @@ export class LoginEffects {
   public loginSuccess$ = createEffect(() =>  this.actions$.pipe(
     ofType(LoginActionTypes.GET_LOGIN_SUCCESS),
      tap((_) => {
-        console.log('I got token')
-       // this.router.navigate(['/user/menu'])
+        this.router.navigate(['/menu/home'])
     })),
     { dispatch: false }
   );

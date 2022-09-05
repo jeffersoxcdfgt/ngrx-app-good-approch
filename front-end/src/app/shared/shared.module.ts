@@ -15,6 +15,7 @@ import { AppInMemoryApi } from '../app.in-memory.api';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import {MatExpansionModule} from '@angular/material/expansion';
+import { InputCustomComponent } from './input-custom/input-custom.component';
 
 const MATERIAL_MODULES = [
   MatExpansionModule,
@@ -35,6 +36,7 @@ const MATERIAL_MODULES = [
   ],
   declarations:[
     PageNotFoundComponent,
+    InputCustomComponent,
   ],
   providers:[],
   exports:[
@@ -46,6 +48,7 @@ const MATERIAL_MODULES = [
     StoreModule,
     EffectsModule,
     PageNotFoundComponent,
+    InputCustomComponent,
     MATERIAL_MODULES
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]

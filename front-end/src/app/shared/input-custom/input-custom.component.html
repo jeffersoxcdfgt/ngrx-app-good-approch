@@ -1,0 +1,10 @@
+<input 
+#inputElement
+class="form-control" 
+[placeholder]="placeholder"
+[formControl]="dataInputCtrl"
+(input)="onChange($event.target)"
+(change)="onChange($event.target)"
+(blur)="onBlur()"
+(click)="getClick()"
+type="text">
