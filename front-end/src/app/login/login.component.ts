@@ -23,9 +23,7 @@ export class LoginComponent implements OnInit {
       username:[''],
       password:['']
     })
-
-
-    }
+  }
 
   ngOnInit(): void {
     this.errorShow$ = this.store.select(errorTokenResponse).pipe(GET_SHOW_ERROR);
