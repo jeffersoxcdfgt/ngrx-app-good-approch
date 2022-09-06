@@ -48,3 +48,4 @@ Thumbs.db
 #Exclude files
 front-end/node_modules/
 backend-api/node_modules/
+front-end/.angular/*
