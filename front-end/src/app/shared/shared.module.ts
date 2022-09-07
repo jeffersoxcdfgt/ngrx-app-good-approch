@@ -16,6 +16,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import {MatExpansionModule} from '@angular/material/expansion';
 import { InputCustomComponent } from './components/input-custom/input-custom.component';
+import { NullObjectToConvertPipe } from './pipes/null-object-value.pipe';
 
 const MATERIAL_MODULES = [
   MatExpansionModule,
@@ -37,6 +38,7 @@ const MATERIAL_MODULES = [
   declarations:[
     PageNotFoundComponent,
     InputCustomComponent,
+    NullObjectToConvertPipe
   ],
   providers:[],
   exports:[
@@ -49,6 +51,7 @@ const MATERIAL_MODULES = [
     EffectsModule,
     PageNotFoundComponent,
     InputCustomComponent,
+    NullObjectToConvertPipe,
     MATERIAL_MODULES
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]

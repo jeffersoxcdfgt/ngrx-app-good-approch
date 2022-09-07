@@ -10,7 +10,7 @@
             <ul class="nav navbar-nav navbar-right" id="nav-menu">
                 <li>
                     <a>                                 
-                        {{userData$ | async }}
+                        {{userData$ | async | nullObjectToConvert:'email' }}
                     </a>
                 </li>
             </ul>
