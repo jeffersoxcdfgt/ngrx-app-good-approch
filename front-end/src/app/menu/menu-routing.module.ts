@@ -5,13 +5,15 @@ import { Routes , RouterModule } from '@angular/router';
 import { MenuComponent } from './menu.component';
 import { HomeComponent } from './home/home.component';
 import { ArenasComponent } from './arenas/arenas.component';
+import { AuthGuardService } from '../shared/guards/auth-guard.service';
 
 const menuRoutes: Routes  =  [{
   path: '',
   component : MenuComponent,
+  canActivate: [AuthGuardService],
   children: [
-    { path: 'home' , component:  HomeComponent },
-    { path: 'arenas' , component:  ArenasComponent },
+    { path: 'home' , component:  HomeComponent, canActivate: [AuthGuardService]},
+    { path: 'arenas' , component:  ArenasComponent, canActivate: [AuthGuardService] },
   ]
 }] as Routes;
 

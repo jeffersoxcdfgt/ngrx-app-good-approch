@@ -5,13 +5,14 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
-import { ActionReducer, ActionReducerMap, MetaReducer, StoreModule } from '@ngrx/store';
+import { ActionReducer, ActionReducerMap, MetaReducer, META_REDUCERS, StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { reducer } from './shared/routing/id-reducer.reducer';
 import { RouterEffectsService } from './shared/routing/router-effects.service';
 import { HttpClientModule } from '@angular/common/http';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import * as getTokenReducers from'../app/login/store/reducers/login.reducers';
+import { usersHook } from './login/store/webhooks/webhooks';
 
 export const reducers: ActionReducerMap<any> = {
   tokendata: getTokenReducers.reducer,
@@ -42,7 +43,14 @@ export const metaReducers: MetaReducer<any>[] = [localStorageSyncReducer];
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: META_REDUCERS,
+      deps: [],
+      useFactory: usersHook,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

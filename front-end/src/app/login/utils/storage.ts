@@ -1,7 +1,7 @@
 import { ResponseLogin } from "../model/login";
 
 export const getThisState = (stateName:any, key?:string) => {
-    try{        
+    try{     
         const serializedState = localStorage.getItem(stateName);
         if (serializedState === null){ return undefined; }
 

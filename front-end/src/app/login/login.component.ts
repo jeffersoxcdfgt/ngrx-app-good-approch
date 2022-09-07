@@ -4,7 +4,8 @@ import {errorTokenResponse, State } from './store/reducers/login.reducers';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { getTokenData } from './store/actions/login.actions';
 import { GET_SHOW_ERROR } from './mapping/login.maping';
-import { Observable, of } from 'rxjs';
+import { Observable} from 'rxjs';
+import * as storage from '../login/utils/storage';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    storage.clearStorage();
     this.errorShow$ = this.store.select(errorTokenResponse).pipe(GET_SHOW_ERROR);
   }
 

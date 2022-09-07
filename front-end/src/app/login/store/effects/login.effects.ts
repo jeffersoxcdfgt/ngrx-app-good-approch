@@ -8,6 +8,7 @@ import { LoginActionTypes } from '../actions/login.actions';
 import { Login, ResponseLogin } from '../../model/login';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
+import * as storage from '../../utils/storage';
 
 @Injectable()
 export class LoginEffects {
@@ -30,6 +31,17 @@ export class LoginEffects {
         this.router.navigate(['/menu/home'])
     })),
     { dispatch: false }
+  );
+
+  public logOut$ = createEffect(() =>   this.actions$.pipe(
+    ofType(LoginActionTypes.LOGOUT),
+       map((_) => {
+          storage.clearStorage();
+          this.router.navigate(['/login']);
+          return  ({ type: LoginActionTypes.LOGOUT,response:null});
+       })
+  ),
+  { dispatch: false }
   );
 
   constructor(

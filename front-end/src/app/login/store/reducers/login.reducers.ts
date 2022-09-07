@@ -10,17 +10,23 @@ export interface State {
   error?: Error | null;
 }
 
+const getTokenUser = () =>{
+  return  storage.getItem('tokendata','responsedata') ?? null
+}
+
 const initialState: State  = {
   requestdata: null,
-  responsedata: storage.getItem('tokendata','responsedata') !== null ? storage.getItem('tokendata','responsedata') : null,
+  responsedata:getTokenUser(),
   error: null
 };
+
 
 const tokenReducer = createReducer(
   initialState,
   on(TokenActions.getTokenData, (state, { request }) => ({...state,requestdata:request })),
   on(TokenActions.getTokenDataSuccess, (state, { response }) => ({...state,responsedata: response})),
   on(TokenActions.getTokenDataError, (state, { err }) => ({ ...state,error: err })),
+  on(TokenActions.logOutuser, (state) => ({ ...state})),
 );
 
 

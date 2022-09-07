@@ -17,9 +17,13 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { InputCustomComponent } from './components/input-custom/input-custom.component';
 import { NullObjectToConvertPipe } from './pipes/null-object-value.pipe';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
-const MATERIAL_MODULES = [
+export const MATERIAL_MODULES = [
   MatExpansionModule,
+  MatMenuModule,
+  MatIconModule,
 ]
 
 

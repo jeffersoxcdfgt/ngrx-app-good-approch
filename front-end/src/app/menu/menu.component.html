@@ -9,9 +9,17 @@
         <div class="navbar-collapse collapse" id="navnav">
             <ul class="nav navbar-nav navbar-right" id="nav-menu">
                 <li>
-                    <a>                                 
+                    <a  mat-icon-button [matMenuTriggerFor]="menu" aria-label="Options button">                                 
                         {{userData$ | async | nullObjectToConvert:'email' }}
+                        <mat-icon style="position: relative;top: 5px;">expand_more</mat-icon>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="logout()">
+                              <mat-icon >power_settings_new</mat-icon>
+                              <span>Logout</span>
+                            </button>
+                        </mat-menu>
                     </a>
+                 
                 </li>
             </ul>
         </div>

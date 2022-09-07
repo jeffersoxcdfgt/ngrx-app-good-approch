@@ -10,6 +10,7 @@ import * as getTokenReducers from'../login/store/reducers/login.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { LoginEffects } from '../login/store/effects/login.effects';
 import { LoginService } from '../login/store/services/login-profile.service';
+import { AuthGuardService } from '../shared/guards/auth-guard.service';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { LoginService } from '../login/store/services/login-profile.service';
   ],
   providers: [
     TraceService,
-    LoginService
+    LoginService,
+    AuthGuardService
   ]
 })
 export class MenuModule {}
