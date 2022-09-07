@@ -6,8 +6,6 @@ import {getTokenResponse, State } from '../login/store/reducers/login.reducers';
 import { UnsubscribeComponent } from '../shared/unsubscribe/unsubscribe.component';
 import { GET_USER } from './mapping/menu.mapping';
 
-
-
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',

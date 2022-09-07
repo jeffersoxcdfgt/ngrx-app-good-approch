@@ -5,11 +5,25 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
+import { ActionReducer, ActionReducerMap, MetaReducer, StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { reducer } from './shared/routing/id-reducer.reducer';
 import { RouterEffectsService } from './shared/routing/router-effects.service';
 import { HttpClientModule } from '@angular/common/http';
+import { localStorageSync } from 'ngrx-store-localstorage';
+import * as getTokenReducers from'../app/login/store/reducers/login.reducers';
+
+export const reducers: ActionReducerMap<any> = {
+  tokendata: getTokenReducers.reducer,
+  router: routerReducer,
+  featureName: reducer,
+};
+
+const reducerKeys = ['tokendata'];
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync({keys: reducerKeys})(reducer);
+}
+export const metaReducers: MetaReducer<any>[] = [localStorageSyncReducer];
 
 @NgModule({
   declarations: [
@@ -19,10 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     SharedModule,
     AppRoutingModule,
-    StoreModule.forRoot({
-      router: routerReducer,
-      featureName: reducer,
-    }),
+    StoreModule.forRoot(reducers,{metaReducers}),
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router',
       routerState: 1,

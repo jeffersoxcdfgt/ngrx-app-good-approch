@@ -1,6 +1,7 @@
 import { createFeatureSelector , createSelector, on , createReducer , Action  } from '@ngrx/store';
 import { Login,ResponseLogin } from '../../model/login';
 import * as TokenActions from '../actions/login.actions';
+import * as storage from '../../utils/storage';
 
 
 export interface State {
@@ -11,7 +12,7 @@ export interface State {
 
 const initialState: State  = {
   requestdata: null,
-  responsedata: null,
+  responsedata: storage.getItem('tokendata','responsedata') !== null ? storage.getItem('tokendata','responsedata') : null,
   error: null
 };
 

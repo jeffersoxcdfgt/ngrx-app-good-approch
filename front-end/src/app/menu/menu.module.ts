@@ -11,7 +11,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { LoginEffects } from '../login/store/effects/login.effects';
 import { LoginService } from '../login/store/services/login-profile.service';
 
-
 @NgModule({
   imports: [
     SharedModule,
