@@ -17,7 +17,7 @@ export class LoginEffects {
     map((dataparse:any) => dataparse.request),
      mergeMap((userdata:Login) => this.loginService.logIn(userdata)
         .pipe(
-            map((dataresponse:ResponseLogin) => ({type: LoginActionTypes.GET_LOGIN_SUCCESS, response: dataresponse})),
+            map((dataresponse:ResponseLogin) => ({type: LoginActionTypes.GET_LOGIN_SUCCESS, response: {...dataresponse, ...userdata }})),
              catchError((error) => of({ type: LoginActionTypes.GET_LOGIN_ERROR, err:error}))
           )
       )

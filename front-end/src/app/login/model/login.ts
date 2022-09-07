@@ -6,4 +6,6 @@ export interface Login{
 export interface ResponseLogin {
    status: string;
    token: string;
+   email:string;
+   password?:string
 }

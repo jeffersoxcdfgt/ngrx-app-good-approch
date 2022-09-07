@@ -12,7 +12,7 @@ export class InputCustomComponent implements OnInit, ControlValueAccessor, OnCha
   dataInputCtrl: FormControl =  new FormControl();
   
   @Input() data: string = '';
-  @Input() type: string = 'input';
+  @Input() type: string = 'text';
   @Input() width: string = '100%';
   @Input() height: string = '40px';
   @Input() labelAlign: string = 'left';
