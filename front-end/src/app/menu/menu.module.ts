@@ -17,13 +17,10 @@ import { AuthGuardService } from '../shared/guards/auth-guard.service';
     SharedModule,
     MenuRoutingModule,
     FormsModule,
-    FormsModule,
     CommonModule,
-    FormsModule,
     HttpClientModule,
     StoreModule.forFeature('tokendata',getTokenReducers.reducer),
     EffectsModule.forFeature([LoginEffects]),
-    SharedModule
   ],
   declarations: [
     menuRoutedComponents,

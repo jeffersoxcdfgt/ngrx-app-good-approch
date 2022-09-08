@@ -13,7 +13,6 @@ import { TraceService } from '../shared/utils/traceService';
 
 @NgModule({
   imports:[
-    SharedModule,
     LoginRoutingModule,
     FormsModule,
     CommonModule,

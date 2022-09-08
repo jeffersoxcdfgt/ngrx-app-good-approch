@@ -5,6 +5,7 @@ import { Routes , RouterModule } from '@angular/router';
 import { MenuComponent } from './menu.component';
 import { HomeComponent } from './home/home.component';
 import { ArenasComponent } from './arenas/arenas.component';
+import { TeamsComponent } from './teams/teams.component';
 import { AuthGuardService } from '../shared/guards/auth-guard.service';
 
 const menuRoutes: Routes  =  [{
@@ -13,7 +14,8 @@ const menuRoutes: Routes  =  [{
   canActivate: [AuthGuardService],
   children: [
     { path: 'home' , component:  HomeComponent, canActivate: [AuthGuardService]},
-    { path: 'arenas' , component:  ArenasComponent, canActivate: [AuthGuardService] },
+    { path: 'arenas/:id' , component:  ArenasComponent, canActivate: [AuthGuardService] },
+    { path: 'teams/:id' , component:  TeamsComponent, canActivate: [AuthGuardService] },
   ]
 }] as Routes;
 
@@ -29,5 +31,7 @@ export class MenuRoutingModule {
 
 export const menuRoutedComponents = [
     MenuComponent,
-    HomeComponent
+    HomeComponent,
+    ArenasComponent,
+    TeamsComponent
 ];

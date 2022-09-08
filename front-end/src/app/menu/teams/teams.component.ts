@@ -4,11 +4,11 @@ import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { selectId } from 'src/app/shared/routing/id.selectors';
 
 @Component({
-  selector: 'app-arenas',
-  templateUrl: './arenas.component.html',
-  styleUrls: ['./arenas.component.scss']
+  selector: 'app-teams',
+  templateUrl: './teams.component.html',
+  styleUrls: ['./teams.component.scss']
 })
-export class ArenasComponent implements OnInit {
+export class TeamsComponent implements OnInit {
 
   selectedId$ = this.store.pipe(select(selectId));
 
