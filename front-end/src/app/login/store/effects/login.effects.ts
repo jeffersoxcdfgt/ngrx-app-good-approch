@@ -44,6 +44,17 @@ export class LoginEffects {
   { dispatch: false }
   );
 
+
+  public removeTokenError$ = createEffect(() =>   this.actions$.pipe(
+    ofType(LoginActionTypes.GET_LOGIN_ERROR),
+       map((_) => {
+          storage.clearStorage();
+          return  ({ type: LoginActionTypes.GET_LOGIN_ERROR});
+       })
+  ),
+  { dispatch: false }
+  );
+
   constructor(
     private actions$: Actions,
     private loginService: LoginService,

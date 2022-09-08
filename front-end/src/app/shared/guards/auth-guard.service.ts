@@ -7,13 +7,6 @@ export class AuthGuardService implements CanActivate {
     public router: Router
   ) { }
   canActivate(): boolean {
-    const value = localStorage.getItem('tokendata') ?? ''
-    const resp = JSON.parse(value)  
-
-    if(resp?.responsedata?.todos?.length === 0){
-      return false
-    }
-    return true;
-
+    return !!localStorage.getItem('tokendata')? true: false
   }
 }

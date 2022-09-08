@@ -1,4 +1,4 @@
-import { createFeatureSelector , createSelector, on , createReducer , Action  } from '@ngrx/store';
+import { createFeature ,createFeatureSelector , createSelector, on , createReducer , Action  } from '@ngrx/store';
 import { Login,ResponseLogin } from '../../model/login';
 import * as TokenActions from '../actions/login.actions';
 import * as storage from '../../utils/storage';
@@ -11,13 +11,19 @@ export interface State {
 }
 
 const getTokenUser = () =>{
-  return  storage.getItem('tokendata','responsedata') ?? null
+  if(!!localStorage.getItem('tokendata')){
+    const value = JSON.parse(localStorage.getItem('tokendata') ?? '')
+    if(value){
+      return value.requestdata
+    }
+  }
+  return  storage.getItem('tokendata') ?? null
 }
 
 const initialState: State  = {
   requestdata: null,
   responsedata:getTokenUser(),
-  error: null
+  error: null,
 };
 
 
