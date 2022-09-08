@@ -11,6 +11,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { LoginEffects } from '../login/store/effects/login.effects';
 import { LoginService } from '../login/store/services/login-profile.service';
 import { AuthGuardService } from '../shared/guards/auth-guard.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { AppInMemoryApi } from '../app.in-memory.api';
+import { arenasFeature} from './arenas/store/reducers/arenas.reducer'
+import { ArenasEffects} from './arenas/store/effects/arenas.effect'
+import { ArenasService } from './arenas/store/services/arenas.service';
 
 @NgModule({
   imports: [
@@ -19,8 +24,10 @@ import { AuthGuardService } from '../shared/guards/auth-guard.service';
     FormsModule,
     CommonModule,
     HttpClientModule,
+    HttpClientInMemoryWebApiModule.forFeature(AppInMemoryApi),
     StoreModule.forFeature('tokendata',getTokenReducers.reducer),
-    EffectsModule.forFeature([LoginEffects]),
+    StoreModule.forFeature(arenasFeature),
+    EffectsModule.forFeature([LoginEffects,ArenasEffects]),
   ],
   declarations: [
     menuRoutedComponents,
@@ -28,7 +35,8 @@ import { AuthGuardService } from '../shared/guards/auth-guard.service';
   providers: [
     TraceService,
     LoginService,
-    AuthGuardService
+    AuthGuardService,
+    ArenasService
   ]
 })
 export class MenuModule {}

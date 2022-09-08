@@ -16,8 +16,6 @@ import { TraceService } from '../shared/utils/traceService';
     LoginRoutingModule,
     FormsModule,
     CommonModule,
-    LoginRoutingModule,
-    FormsModule,
     HttpClientModule,
     StoreModule.forFeature('tokendata',getTokenReducers.reducer),
     EffectsModule.forFeature([LoginEffects]),

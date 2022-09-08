@@ -37,7 +37,10 @@ export class LoginEffects {
     ofType(LoginActionTypes.LOGOUT),
        map((_) => {
           storage.clearStorage();
-          this.router.navigate(['/login']);
+          this.router.navigate(['/login'])
+          .then(() => {
+            window.location.reload();
+          });
           return  ({ type: LoginActionTypes.LOGOUT,response:null});
        })
   ),

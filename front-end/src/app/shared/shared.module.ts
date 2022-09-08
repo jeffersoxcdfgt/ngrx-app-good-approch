@@ -19,6 +19,7 @@ import { InputCustomComponent } from './components/input-custom/input-custom.com
 import { NullObjectToConvertPipe } from './pipes/null-object-value.pipe';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { FooterComponent } from './components/footer/footer.component';
 
 export const MATERIAL_MODULES = [
   MatExpansionModule,
@@ -42,7 +43,8 @@ export const MATERIAL_MODULES = [
   declarations:[
     PageNotFoundComponent,
     InputCustomComponent,
-    NullObjectToConvertPipe
+    NullObjectToConvertPipe,
+    FooterComponent
   ],
   providers:[],
   exports:[
@@ -56,7 +58,8 @@ export const MATERIAL_MODULES = [
     PageNotFoundComponent,
     InputCustomComponent,
     NullObjectToConvertPipe,
-    MATERIAL_MODULES
+    MATERIAL_MODULES,
+    FooterComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

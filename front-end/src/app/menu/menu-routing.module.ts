@@ -14,8 +14,8 @@ const menuRoutes: Routes  =  [{
   canActivate: [AuthGuardService],
   children: [
     { path: 'home' , component:  HomeComponent, canActivate: [AuthGuardService]},
-    { path: 'arenas/:id' , component:  ArenasComponent, canActivate: [AuthGuardService] },
-    { path: 'teams/:id' , component:  TeamsComponent, canActivate: [AuthGuardService] },
+    { path: 'arenas' , component:  ArenasComponent, canActivate: [AuthGuardService] },
+    { path: 'teams' , component:  TeamsComponent, canActivate: [AuthGuardService] },
   ]
 }] as Routes;
 
