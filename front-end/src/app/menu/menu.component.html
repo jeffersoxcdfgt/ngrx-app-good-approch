@@ -1,25 +1,64 @@
 <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" routerLink="/menu/home">
-                <img alt="NBA Database" src="../../assets/css/img/nba_logo.png"> 
-                <strong class="hidden-xs hidden-sm">NBA Database</strong>
-            </a> 
+            <a class="navbar-brand" routerLink="/menu/home"><img alt="NBA Database" src="../../assets/css/img/nba_logo.png"> 
+                <strong class="hidden-xs hidden-sm">NBA Database</strong></a>
+                 <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navnav" data-toggle="collapse" type="button">
+                    <span class="sr-only">Toggle navigation</span> 
+                    <span class="icon-bar"></span> 
+                    <span class="icon-bar"></span> 
+                    <span class="icon-bar"></span>
+                </button>
         </div>
         <div class="navbar-collapse collapse" id="navnav">
             <ul class="nav navbar-nav navbar-right" id="nav-menu">
-                <li>
-                    <a  mat-icon-button [matMenuTriggerFor]="menu" aria-label="Options button">                                 
-                        {{userData$ | async | nullObjectToConvert:'email' }}
-                        <mat-icon style="position: relative;top: 5px;">expand_more</mat-icon>
-                        <mat-menu #menu="matMenu">
-                            <button mat-menu-item (click)="logout()">
-                              <mat-icon >power_settings_new</mat-icon>
-                              <span>Logout</span>
-                            </button>
-                        </mat-menu>
+                <li class="dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" [matMenuTriggerFor]="menulogout" role="button">
+                        <i class="icon-user"></i> {{userData$ | async | nullObjectToConvert:'email' }} 
+                        <span class="caret"></span>
                     </a>
-                 
+                    <ul class="dropdown-menu">
+                        <mat-menu #menulogout="matMenu" >
+                            <li mat-menu-item>
+                                <a (click)="logout()">Logout</a>
+                            </li>
+                        </mat-menu>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a aria-expanded="false" [matMenuTriggerFor]="menuGames" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button">Games 
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <mat-menu #menuGames="matMenu">
+                            <li mat-menu-item>
+                                <a title="Regular season games">Regular season games</a>
+                            </li>
+                            <li mat-menu-item>
+                                <a title="Playoff">Playoff bracket</a>
+                            </li>
+                        </mat-menu>                        
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a aria-expanded="false" [matMenuTriggerFor]="menuParticipants" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button">Participants 
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <mat-menu #menuParticipants="matMenu">
+                            <li mat-menu-item>
+                                <a title="Players">Players</a>
+                            </li>
+                            <li mat-menu-item>
+                                <a title="Teams">Teams</a>
+                            </li>
+                            <li mat-menu-item>
+                                <a routerLink="/menu/arenas" title="Arenas">Arenas</a>
+                            </li>
+                        </mat-menu>
+                    </ul>
                 </li>
             </ul>
         </div>
