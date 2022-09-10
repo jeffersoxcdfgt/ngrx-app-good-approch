@@ -3,7 +3,7 @@ import * as fromRouter from '@ngrx/router-store';
 
 export const selectRouter = createFeatureSelector<any, fromRouter.RouterReducerState<any>>('router');
 
-export const {
+export const  {
   selectCurrentRoute,   // select the current route
   selectQueryParams,    // select the current route query params
   selectQueryParam,     // factory function to select a query param
@@ -12,3 +12,5 @@ export const {
   selectRouteData,      // select the current route data
   selectUrl,            // select the current url
 } = fromRouter.getSelectors(selectRouter);
+
+export const getInfoRouting = selectRouteParam

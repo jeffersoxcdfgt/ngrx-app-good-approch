@@ -20,11 +20,17 @@ import { NullObjectToConvertPipe } from './pipes/null-object-value.pipe';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './components/footer/footer.component';
+import { NoSanitizePipe } from './pipes/nosanitizer.pipe';
 
 export const MATERIAL_MODULES = [
   MatExpansionModule,
   MatMenuModule,
   MatIconModule,
+]
+
+export const PIPES_LIST = [
+  NullObjectToConvertPipe,
+  NoSanitizePipe,
 ]
 
 
@@ -43,7 +49,7 @@ export const MATERIAL_MODULES = [
   declarations:[
     PageNotFoundComponent,
     InputCustomComponent,
-    NullObjectToConvertPipe,
+    PIPES_LIST,
     FooterComponent
   ],
   providers:[],
@@ -57,7 +63,7 @@ export const MATERIAL_MODULES = [
     EffectsModule,
     PageNotFoundComponent,
     InputCustomComponent,
-    NullObjectToConvertPipe,
+    PIPES_LIST,
     MATERIAL_MODULES,
     FooterComponent
   ],

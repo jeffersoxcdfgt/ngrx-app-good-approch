@@ -218,34 +218,28 @@
 								</tr>
 							</thead>
 							<tbody class="pg-row-list">
-								<tr class="pg-row" style="">
-									<td style="">
-										<div class="row-selection">
-											<input data-value="[&quot;11&quot;]" id="record__11" name="rec0" type="checkbox">
-										</div>
-									</td>
-									<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
-									<td data-column-name="caption" data-edit-url="">
-										<a target="">Air Canada Centre</a>
-									</td>
-									<td data-column-name="capacity" data-edit-url="">19,800</td>
-									<td class="hidden-xs hidden-sm hidden-md" data-column-name="about" data-edit-url="">
-										<div style="text-align: left;">
-											<strong>Air Canada Centre (ACC)</strong>&nbsp;is a multi-purpose indoor sporting arena located on Bay Street in the South Core district of Downtown Toronto, Ontario, Canada. It is the home of the Toronto Maple Leafs of the National Hockey League (NHL), the Toronto Raptors of the National Basketball ... <a class="js-more-hint">more</a>
-											<div class="js-more-box hide">
-												<strong>Air Canada Centre (ACC)</strong>&nbsp;is a multi-purpose indoor sporting arena located on Bay Street in the South Core district of Downtown Toronto, Ontario, Canada. It is the home of the Toronto Maple Leafs of the National Hockey League (NHL), the Toronto Raptors of the National Basketball Association (NBA) and the Toronto Rock of the National Lacrosse League (NLL). In addition, the Toronto Marlies of the American Hockey League play occasional games at the arena, and the Raptors 905 of the NBA Development League plan to play occasional games at the venue as well. The area was previously home to the Toronto Phantoms of the Arena Football League (AFL) during their brief existence. The arena is popularly known as the ACC or the Hangar (the latter nickname came from its sponsorship by Air Canada).
-												<p></p>
-												<p>The arena is owned and operated by Maple Leaf Sports &amp; Entertainment Ltd. (MLSE), the same group that owns both the Leafs and Raptors, as well as their respective development teams, and is 665,000 square feet (61,800 square metres) in size. In 2008, the ACC was the fifth busiest arena in the world and the busiest in Canada. Air Canada Centre is connected to Union Station and the underground pedestrian PATH system, providing access to public transportation (TTC&#39;s Union subway station and GO Transit). There are also 13,000 parking spaces. The Air Canada Centre has, from its initial design to completion, revolutionized many concepts included in new arenas and stadiums built since then. These features include luxury suites accessible on the ground floor, splitting the main scoreboard into several sections, rotating all sponsor signage in the bowl at once (to allow dominant messaging), and multiple restaurants in and out of the main arena bowl view.</p>
+								<ng-template ngFor let-arena [ngForOf]="arenasList$ | async" let-i="index">
+									<tr class="pg-row">
+										<td>
+											<div class="row-selection">
+												<input data-value="[&quot;11&quot;]" id="record__11" name="rec0" type="checkbox">
 											</div>
-										</div>
-									</td>
-									<td class="hidden-xs" data-column-name="logo" data-edit-url="">
-										<a class="image gallery-item" data-name="logo"  href="../../../assets/css/nba_images/arenas/air_canada_centre_logo.png"  title="Air Canada Centre"><img alt="Air Canada Centre" data-image-column="true" src="../../../assets/css/nba_images/arenas/air_canada_centre_logo.png" style="width: 100px"></a>
-									</td>
-									<td class="hidden-xs hidden-sm" data-column-name="photo" data-edit-url="">
-										<a class="image gallery-item" data-name="photo" href="../../../assets/css/nba_images/arenas/acc_photo.jpg" title="Air Canada Centre"><img alt="Air Canada Centre" data-image-column="true" src="../../../assets/css/nba_images/arenas/acc_photo.jpg" style="width: 100px"></a>
-									</td>
-								</tr>
+										</td>
+										<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
+										<td data-column-name="caption" data-edit-url="">
+											<a target="">{{ arena?.arenaTitle }}</a>
+										</td>
+										<td data-column-name="capacity" data-edit-url="">{{ arena?.Capacity }}</td>
+										<td class="hidden-xs hidden-sm hidden-md" [innerHTML]="arena?.About | noSanitize" data-column-name="about" data-edit-url="">
+										</td>
+										<td class="hidden-xs" data-column-name="logo" data-edit-url="">
+											<a class="image gallery-item" data-name="logo"  href="{{ arena?.Logo }}"  title="{{ arena?.arenaTitle }}"><img alt="{{ arena?.arenaTitle }}" data-image-column="true" src="{{ arena?.Logo }}" style="width: 100px"></a>
+										</td>
+										<td class="hidden-xs hidden-sm" data-column-name="photo" data-edit-url="">
+											<a class="image gallery-item" data-name="photo" href="{{ arena?.Photo}}" title="{{ arena?.arenaTitle }}"><img alt="{{ arena?.arenaTitle }}" data-image-column="true" src="{{ arena?.Photo}}" style="width: 100px"></a>
+										</td>
+									</tr>
+								</ng-template>								
 							</tbody>
 							<tfoot></tfoot>
 						</table>
