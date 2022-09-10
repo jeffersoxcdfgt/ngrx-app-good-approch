@@ -24,7 +24,7 @@ export class ArenasViewComponent implements OnInit {
 
   ngOnInit(): void { 
      this.store.dispatch(arenaGetById());
-    this.arena$ = this.store.select(selectGetArenaById).pipe(CLEAN_NULL)
+     this.arena$ = this.store.select(selectGetArenaById).pipe(CLEAN_NULL)
   }
 
 }
