@@ -32,7 +32,7 @@
 								<div class="col-md-12 js-message-container"></div>
 								<div class="clearfix"></div>
 								<div class="form-horizontal col-lg-8">
-									<div class="row">
+									<div class="row" *ngIf="( typeView$  | async   ) !== 'add' ; else addEdit">
 										<fieldset class="col-md-12 form-static form-horizontal" >
 											<div class="row">
 												<div class="form-group form-group-label col-sm-3">
@@ -86,6 +86,10 @@
 											</div>
 										</fieldset>
 									</div>
+									<ng-template #addEdit>
+										<button>Add</button>
+										<button>Edit</button>
+									  </ng-template>
 								</div>
 							</div>
 							<div class="form-actions row">

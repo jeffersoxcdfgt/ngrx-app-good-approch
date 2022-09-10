@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { concatMap, map, switchMap } from 'rxjs/operators';
+import {  map, mergeMap, switchMap } from 'rxjs/operators';
 import { ArenasByIdService } from '../services/arenas-id.service';
 import { ArenaByIdActionTypes } from '../actions/arenas-id.action';
 import { Arena } from '../../../../models/arena';
 import { Store  } from '@ngrx/store';
 import * as getRouteInfo from 'src/app/shared/routing/getRouteInfo';
-import { Observable, of , empty } from 'rxjs';
+import {  of } from 'rxjs';
 
-
+const MAPVALUE =map((data:Arena) => ({type: ArenaByIdActionTypes.GET_ARENA_BY_ID_SUCCESS, arenabyid: data }))
 
 @Injectable()
 export class ArenasByIdEffects {
 
   getIdValue = () => this.store.select(getRouteInfo.getInfoRouting('id') as any).pipe(map((idvalue:any) =>idvalue ))
-  castToObject = () =>new Observable<Arena>()
+
 
   /*public getArenaById$ = createEffect(() => this.actions$.pipe(
         ofType(ArenaByIdActionTypes.GET_ARENA_BY_ID),
@@ -30,7 +30,7 @@ export class ArenasByIdEffects {
    );*/
 
 
-  public getArenaById$ = createEffect(() => this.actions$.pipe(
+ /* public getArenaById$ = createEffect(() => this.actions$.pipe(
     ofType(ArenaByIdActionTypes.GET_ARENA_BY_ID),
     map((dataid: any) => dataid.id),
     concatMap(() => this.store.select(getRouteInfo.getInfoRouting('id') as any).pipe(
@@ -43,11 +43,19 @@ export class ArenasByIdEffects {
               arenabyid: data 
           })),
       )))
-);
+);*/
 
 
+  public getArenaById$ = createEffect(() => this.actions$.pipe(
+        ofType(ArenaByIdActionTypes.GET_ARENA_BY_ID),
+        map((dataid: any) => dataid.id),
+        mergeMap(() => this.store.select(getRouteInfo.getInfoRouting('id') as any).pipe(map((idvalue:any) =>idvalue ))),
+             switchMap((idval:any) =>  ((idval !=='add' && idval !== undefined) ? 
+                this.arenasByIdService.findById(idval).pipe( MAPVALUE):
+                of(idval).pipe(MAPVALUE))))
+  );
 
-
+  
 
   constructor(
     private actions$: Actions,

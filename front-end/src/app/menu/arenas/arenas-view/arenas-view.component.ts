@@ -7,8 +7,8 @@ import { Arena } from '../../models/arena';
 import { arenaGetById } from './store/actions/arenas-id.action';
 import { selectGetArenaById } from './store/reducers/arenas-id.reducer';
 
-
 export const CLEAN_NULL = filter((valnull:any) => !!valnull)
+export const TYPE_VIEW = map((type:any) => type as string)
 
 @Component({
   selector: 'app-arenas-view',
@@ -19,12 +19,14 @@ export class ArenasViewComponent implements OnInit {
 
   selectedId$ = this.store.pipe(select(selectId));
   arena$ : Observable<Arena> = new Observable<Arena>();
+  typeView$ : Observable<string> = new Observable<string>();
 
   constructor(private store :Store<State>) { }
 
   ngOnInit(): void { 
      this.store.dispatch(arenaGetById());
      this.arena$ = this.store.select(selectGetArenaById).pipe(CLEAN_NULL)
+     this.typeView$ = this.arena$.pipe(TYPE_VIEW);
   }
 
 }
