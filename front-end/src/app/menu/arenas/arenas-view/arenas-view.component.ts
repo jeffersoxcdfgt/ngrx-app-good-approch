@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store'
-import { filter, map, Observable} from 'rxjs';;
+import { filter, first, map, Observable} from 'rxjs';;
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { selectId } from 'src/app/shared/routing/id.selectors';
 import { Arena } from '../../models/arena';
@@ -18,15 +18,13 @@ export const CLEAN_NULL = filter((valnull:any) => !!valnull)
 export class ArenasViewComponent implements OnInit {
 
   selectedId$ = this.store.pipe(select(selectId));
-  arenasList$ : Observable<Arena> = new Observable<Arena>();
+  arena$ : Observable<Arena> = new Observable<Arena>();
 
   constructor(private store :Store<State>) { }
 
   ngOnInit(): void { 
      this.store.dispatch(arenaGetById());
-      this.store.select(selectGetArenaById).pipe(CLEAN_NULL).subscribe((data)=>{
-        console.log(data)
-      });
+    this.arena$ = this.store.select(selectGetArenaById).pipe(CLEAN_NULL)
   }
 
 }

@@ -225,7 +225,12 @@
 												<input data-value="[&quot;11&quot;]" id="record__11" name="rec0" type="checkbox">
 											</div>
 										</td>
-										<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
+										<td class="operation-column">
+											<span class="operation-item" data-column-name="view">
+												<a class="link-icon" routerLink="/menu/arenas/{{arena.id}}" title="View">
+												<i class="icon-view"></i></a>
+											</span>
+										</td>
 										<td data-column-name="caption" data-edit-url="">
 											<a target="">{{ arena?.arenaTitle }}</a>
 										</td>
