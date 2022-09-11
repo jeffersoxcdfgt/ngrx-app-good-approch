@@ -1,5 +1,5 @@
 export interface Arena {
-  id: number;
+  id?: number;
   arenaTitle: string;
   Capacity: string;
   About: string;

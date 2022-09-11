@@ -13,12 +13,15 @@ import { LoginService } from '../login/store/services/login-profile.service';
 import { AuthGuardService } from '../shared/guards/auth-guard.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppInMemoryApi } from '../app.in-memory.api';
-import { arenasFeature} from './arenas/store/reducers/arenas.reducer'
-import { ArenasEffects} from './arenas/store/effects/arenas.effect'
+import { arenasFeature} from './arenas/store/reducers/arenas.reducer';
+import { ArenasEffects} from './arenas/store/effects/arenas.effect';
 import { ArenasService } from './arenas/store/services/arenas.service';
-import { arenabyidFeature } from './arenas/arenas-view/store/reducers/arenas-id.reducer'
+import { arenabyidFeature } from './arenas/arenas-view/store/reducers/arenas-id.reducer';
 import { ArenasByIdEffects } from './arenas/arenas-view/store/effects/arenas-id.effect';
 import { ArenasByIdService } from './arenas/arenas-view/store/services/arenas-id.service';
+import { arenaAddEditFeature } from './arenas/arenas-view/store/reducers/arenas-add-edit.reducer';
+import { ArenasAddEditEffects } from './arenas/arenas-view/store/effects/arenas-add-edit.effect';
+import { ArenasAddEditService } from './arenas/arenas-view/store/services/arenas-add-edit.service';
 
 @NgModule({
   imports: [
@@ -31,11 +34,13 @@ import { ArenasByIdService } from './arenas/arenas-view/store/services/arenas-id
     StoreModule.forFeature('tokendata',getTokenReducers.reducer),
     StoreModule.forFeature(arenasFeature),
     StoreModule.forFeature(arenabyidFeature),
+    StoreModule.forFeature(arenaAddEditFeature),
     EffectsModule.forFeature(
       [
         LoginEffects,
         ArenasEffects,
         ArenasByIdEffects,
+        ArenasAddEditEffects
       ]),
   ],
   declarations: [
@@ -46,7 +51,8 @@ import { ArenasByIdService } from './arenas/arenas-view/store/services/arenas-id
     LoginService,
     AuthGuardService,
     ArenasService,
-    ArenasByIdService
+    ArenasByIdService,
+    ArenasAddEditService
   ]
 })
 export class MenuModule {}
