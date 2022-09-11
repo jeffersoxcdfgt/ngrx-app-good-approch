@@ -1,3 +1,4 @@
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store'
 import { filter, first, map, Observable} from 'rxjs';;
@@ -19,14 +20,15 @@ export class ArenasViewComponent implements OnInit {
 
   selectedId$ = this.store.pipe(select(selectId));
   arena$ : Observable<Arena> = new Observable<Arena>();
-  typeView$ : Observable<string> = new Observable<string>();
+  typeView :string = ''
 
-  constructor(private store :Store<State>) { }
+  constructor(private store :Store<State>,location: Location) {
+    this.typeView = location.path()
+   }
 
   ngOnInit(): void { 
      this.store.dispatch(arenaGetById());
-     this.arena$ = this.store.select(selectGetArenaById).pipe(CLEAN_NULL)
-     this.typeView$ = this.arena$.pipe(TYPE_VIEW);
+     this.arena$ = this.store.select(selectGetArenaById).pipe(CLEAN_NULL);
   }
 
 }

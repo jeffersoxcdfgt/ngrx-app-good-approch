@@ -8,43 +8,17 @@ import { Store  } from '@ngrx/store';
 import * as getRouteInfo from 'src/app/shared/routing/getRouteInfo';
 import {  of } from 'rxjs';
 
-const MAPVALUE =map((data:Arena) => ({type: ArenaByIdActionTypes.GET_ARENA_BY_ID_SUCCESS, arenabyid: data }))
+const rowEmptyArena = { id: '', arenaTitle: '', Capacity: '',  About:'',  Logo: '',  Photo:''}
+
+const MAPVALUE = map((data:Arena|string) => ({
+  type: ArenaByIdActionTypes.GET_ARENA_BY_ID_SUCCESS, 
+  arenabyid: data === 'add'?rowEmptyArena:data
+}))
 
 @Injectable()
 export class ArenasByIdEffects {
 
   getIdValue = () => this.store.select(getRouteInfo.getInfoRouting('id') as any).pipe(map((idvalue:any) =>idvalue ))
-
-
-  /*public getArenaById$ = createEffect(() => this.actions$.pipe(
-        ofType(ArenaByIdActionTypes.GET_ARENA_BY_ID),
-        map((dataid: any) => dataid.id),
-        switchMap(() => this.store.select(getRouteInfo.getInfoRouting('id') as any).pipe(map((idvalue:any) =>idvalue ))),
-           concatMap((idval:number) => this.arenasByIdService.findById(idval)
-            .pipe(
-              map((data:Arena) => ({ 
-                  type: ArenaByIdActionTypes.GET_ARENA_BY_ID_SUCCESS,
-                  arenabyid: data 
-              })),
-          )))
-   );*/
-
-
- /* public getArenaById$ = createEffect(() => this.actions$.pipe(
-    ofType(ArenaByIdActionTypes.GET_ARENA_BY_ID),
-    map((dataid: any) => dataid.id),
-    concatMap(() => this.store.select(getRouteInfo.getInfoRouting('id') as any).pipe(
-      switchMap(val => ((val !=='add' && val !== undefined) ? this.getIdValue() : this.castToObject())),
-      )),
-       concatMap((idval:number) => this.arenasByIdService.findById(idval)
-        .pipe(
-          map((data:Arena) => ({ 
-              type: ArenaByIdActionTypes.GET_ARENA_BY_ID_SUCCESS,
-              arenabyid: data 
-          })),
-      )))
-);*/
-
 
   public getArenaById$ = createEffect(() => this.actions$.pipe(
         ofType(ArenaByIdActionTypes.GET_ARENA_BY_ID),
@@ -56,7 +30,6 @@ export class ArenasByIdEffects {
   );
 
   
-
   constructor(
     private actions$: Actions,
     private store: Store,
