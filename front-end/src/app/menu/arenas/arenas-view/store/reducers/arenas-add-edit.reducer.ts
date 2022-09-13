@@ -30,6 +30,17 @@ export const arenaAddEditFeature = createFeature({
         loading: false,    
       }
     )),
+    on(ArenaAddEditApiActions.arenaUpdateRow, (state, { arenarow  }) => ({
+      ...state,
+       arenarow,
+       loading: true,
+    })),
+     on(ArenaAddEditApiActions.arenaUpdateRowSuccess, (state, { resultarena }) => ({
+    ...state,
+    resultarena,
+    loading: false,    
+    }
+   )),
     on(ArenaAddEditApiActions.arenaAddRowError, (state , { err }) => ({ 
         ...state,
         err,
@@ -47,7 +58,7 @@ export const {
 
 
 // select the result arena
-export const addResultArena = selectResultarena;
+export const addEditResultArena = selectResultarena;
 
 export const errorAddEditArena = createSelector( selectResultarenaState , ( state: State ) => {
   return !!state && !!state.err ? state.err : null;

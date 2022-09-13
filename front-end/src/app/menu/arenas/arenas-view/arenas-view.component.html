@@ -31,7 +31,7 @@
 								<div class="col-md-12 js-message-container"></div>
 								<div class="clearfix"></div>
 								<div class="form-horizontal col-lg-8">
-									<div class="row" *ngIf="typeView !== '/menu/arenas/add' ; else addEdit">
+									<div class="row" *ngIf="typeView !== '/menu/arenas/add' &&  !this.typeView.includes('menu/arenas/edit/') ; else addEdit">
 										<fieldset class="col-md-12 form-static form-horizontal" >
 											<div class="row">
 												<div class="form-group form-group-label col-sm-3">
@@ -87,7 +87,7 @@
 									</div>
 									<ng-template #addEdit>
 										<button (click)="addRowArena()">Add</button>
-										<button>Edit</button>
+										<button (click)="updateRowArena()">Edit</button>
 									  </ng-template>
 								</div>
 							</div>

@@ -233,8 +233,16 @@
 										</td>
 										<td class="operation-column">
 											<span class="operation-item" data-column-name="view">
-												<a class="link-icon" routerLink="/menu/arenas/{{arena.id}}" title="View">
+												<a class="link-icon" routerLink="/menu/arenas/{{arena.id}}" title="View" class="link-icon">
 												<i class="icon-view"></i></a>
+											</span>
+											<span data-column-name="edit" class="operation-item">            
+												<a routerLink="/menu/arenas/edit/{{arena.id}}" title="Edit" class="link-icon">
+												<i class="icon-edit"></i></a>
+											</span>
+											<span data-column-name="delete" class="operation-item">            
+												<a title="Delete" class="link-icon">
+												<i class="icon-remove"></i>	</a>
 											</span>
 										</td>
 										<td data-column-name="caption" data-edit-url="">

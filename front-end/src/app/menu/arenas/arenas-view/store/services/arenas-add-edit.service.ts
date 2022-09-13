@@ -25,8 +25,21 @@ export class ArenasAddEditService {
     return this.http.post<number>(`${this.URL}/api/arenas`,data,{headers: headers })
     .pipe(
        map((newArena:any) => newArena.id ),
-          catchError((err: Error) => throwError(err) ),
+          catchError((err: Error) => throwError(err)),
     )
   }
+   /**
+    * Update specific object into DB
+    * @param arena the object to be updated
+    * @returns gets the response
+    */
+    public update(arena: Arena): Observable<any> {
+      let headers = new HttpHeaders();
+      headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+      return this.http.put<any>(`${this.URL}/api/arenas/${arena.id}`, arena, {headers: headers}).pipe(
+          tap(_ => this.traceService.log(`updated arena id=${arena.id}`)),
+           catchError((err: Error) => throwError(err)),
+      )
+    }
 
 }
