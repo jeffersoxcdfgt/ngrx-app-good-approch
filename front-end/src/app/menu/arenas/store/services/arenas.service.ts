@@ -20,7 +20,6 @@ export class ArenasService {
    */
   public findAll(): Observable<Arena[]>{
     return this.http.get<Arena[]>(`${this.URL}/api/arenas`).pipe(
-        tap(_ => console.log('fetched arenas')),
         catchError(this.traceService.handleError<Arena[]>('findAll'))
     );
   }

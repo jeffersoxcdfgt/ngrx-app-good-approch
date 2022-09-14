@@ -21,11 +21,15 @@ import { MatMenuModule} from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './components/footer/footer.component';
 import { NoSanitizePipe } from './pipes/nosanitizer.pipe';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+
 
 export const MATERIAL_MODULES = [
   MatExpansionModule,
   MatMenuModule,
   MatIconModule,
+  MatDialogModule
 ]
 
 export const PIPES_LIST = [
@@ -50,7 +54,8 @@ export const PIPES_LIST = [
     PageNotFoundComponent,
     InputCustomComponent,
     PIPES_LIST,
-    FooterComponent
+    FooterComponent,
+    ConfirmationDialogComponent
   ],
   providers:[],
   exports:[
