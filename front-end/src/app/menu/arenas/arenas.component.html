@@ -252,10 +252,14 @@
 										<td class="hidden-xs hidden-sm hidden-md" [innerHTML]="arena?.About | noSanitize" data-column-name="about" data-edit-url="">
 										</td>
 										<td class="hidden-xs" data-column-name="logo" data-edit-url="">
-											<a class="image gallery-item" data-name="logo"  href="{{ arena?.Logo }}"  title="{{ arena?.arenaTitle }}"><img alt="{{ arena?.arenaTitle }}" data-image-column="true" src="{{ arena?.Logo }}" style="width: 100px"></a>
+											<a class="image gallery-item" data-name="logo"  href="{{ arena?.Logo }}"  title="{{ arena?.arenaTitle }}">
+												<img alt="{{ arena?.arenaTitle }}" data-image-column="true" src="{{ arena?.Logo }}" style="width: 100px">
+											</a>
 										</td>
 										<td class="hidden-xs hidden-sm" data-column-name="photo" data-edit-url="">
-											<a class="image gallery-item" data-name="photo" href="{{ arena?.Photo}}" title="{{ arena?.arenaTitle }}"><img alt="{{ arena?.arenaTitle }}" data-image-column="true" src="{{ arena?.Photo}}" style="width: 100px"></a>
+											<a class="image gallery-item" data-name="photo" href="{{ arena?.Photo}}" title="{{ arena?.arenaTitle }}">
+												<img alt="{{ arena?.arenaTitle }}" data-image-column="true" src="{{ arena?.Photo}}" style="width: 100px">
+											</a>
 										</td>
 									</tr>
 								</ng-template>								
