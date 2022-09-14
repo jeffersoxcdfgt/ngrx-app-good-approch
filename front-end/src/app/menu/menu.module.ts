@@ -22,6 +22,9 @@ import { ArenasByIdService } from './arenas/arenas-view/store/services/arenas-id
 import { arenaAddEditFeature } from './arenas/arenas-view/store/reducers/arenas-add-edit.reducer';
 import { ArenasAddEditEffects } from './arenas/arenas-view/store/effects/arenas-add-edit.effect';
 import { ArenasAddEditService } from './arenas/arenas-view/store/services/arenas-add-edit.service';
+import { arenadeleteFeature } from './arenas/arenas-view/store/reducers/arenas-delete.reducer';
+import { ArenasDeleteEffects } from './arenas/arenas-view/store/effects/arenas-delete.effect';
+import { ArenasDeleteService } from './arenas/arenas-view/store/services/arenas-delete.service';
 
 @NgModule({
   imports: [
@@ -35,12 +38,14 @@ import { ArenasAddEditService } from './arenas/arenas-view/store/services/arenas
     StoreModule.forFeature(arenasFeature),
     StoreModule.forFeature(arenabyidFeature),
     StoreModule.forFeature(arenaAddEditFeature),
+    StoreModule.forFeature(arenadeleteFeature),
     EffectsModule.forFeature(
       [
         LoginEffects,
         ArenasEffects,
         ArenasByIdEffects,
-        ArenasAddEditEffects
+        ArenasAddEditEffects,
+        ArenasDeleteEffects
       ]),
   ],
   declarations: [
@@ -52,7 +57,8 @@ import { ArenasAddEditService } from './arenas/arenas-view/store/services/arenas
     AuthGuardService,
     ArenasService,
     ArenasByIdService,
-    ArenasAddEditService
+    ArenasAddEditService,
+    ArenasDeleteService
   ]
 })
 export class MenuModule {}

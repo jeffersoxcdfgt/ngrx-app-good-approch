@@ -20,7 +20,7 @@ export const TYPE_VIEW = map((type:any) => type as string)
   templateUrl: './arenas-view.component.html',
   styleUrls: ['./arenas-view.component.scss']
 })
-export class ArenasViewComponent extends UnsubscribeComponent  implements OnInit {
+export class ArenasViewComponent extends UnsubscribeComponent implements OnInit {
 
   selectedId$ = this.store.pipe(select(selectId));
   arena$ : Observable<Arena> = new Observable<Arena>();
