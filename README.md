@@ -1,10 +1,9 @@
 
 ## Demo app Link
 
-This [Url application demo](https://jefferson.informati-k.com)
-
-
 # Ngrx App using observable RXJS and NRGX using best practices
+
+This [Url application demo](https://jefferson.informati-k.com)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
 
