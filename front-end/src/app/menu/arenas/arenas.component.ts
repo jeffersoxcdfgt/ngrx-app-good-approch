@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store'
-import { filter, map, Observable} from 'rxjs';import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
-;
+import { filter, Observable} from 'rxjs';
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';;
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { selectId } from 'src/app/shared/routing/id.selectors';
-import { UnsubscribeComponent } from 'src/app/shared/unsubscribe/unsubscribe.component';
 import { Arena } from '../models/arena';
-import { CLEAN_NULL } from './arenas-view/arenas-view.component';
 import { arenaDeleteRow } from './arenas-view/store/actions/arenas-delete.action';
-import { selectGetArenaDelete } from './arenas-view/store/reducers/arenas-delete.reducer';
 import { arenasGetAll } from './store/actions/arenas.action';
 import { selectAllArenas } from './store/reducers/arenas.reducer';
 

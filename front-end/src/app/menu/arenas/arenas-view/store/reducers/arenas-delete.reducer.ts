@@ -38,16 +38,3 @@ export const {
   selectLoading, // selector for `loading` property
 } = arenadeleteFeature;
 
-
-// select response delete operation
-
-export const selectGetArenaDelete = createSelector(
-  selectAllArenas,
-  selectArenadelete,
-  (arenas:Arena[],id:number|any) =>{
-    if(!!id && arenas.length>0){
-      const res = arenas.filter((arena:Arena) => arena.id !== +id )
-      return res
-    }
-    return  null
-  });
