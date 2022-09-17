@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
+import { Observable , filter} from 'rxjs';
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
-import { selectId } from 'src/app/shared/routing/id.selectors';
+import { arenasGetAll } from '../arenas/store/actions/arenas.action';
+import { Arena } from '../models/arena';
+import { Team } from '../models/team';
+import { teamsGetAll } from './store/actions/teams.action';
+import { selectedTecnologisWithJobs } from './store/reducers/teams.reducer';
+
+export const CLEANTEAMSARENAS =  filter((val:Team[]) => val.length >0 )
 
 @Component({
   selector: 'app-teams',
@@ -10,10 +17,15 @@ import { selectId } from 'src/app/shared/routing/id.selectors';
 })
 export class TeamsComponent implements OnInit {
 
-  selectedId$ = this.store.pipe(select(selectId));
-
+  teamsList$ : Observable<Team[]> = new Observable<Team[]>();
   constructor(private store :Store<State>) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+
+    this.store.dispatch(arenasGetAll());
+    this.store.dispatch(teamsGetAll());
+    this.teamsList$ = this.store.select(selectedTecnologisWithJobs).pipe(CLEANTEAMSARENAS);
+
+   }
 
 }

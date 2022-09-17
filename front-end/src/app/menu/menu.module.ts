@@ -25,6 +25,11 @@ import { ArenasAddEditService } from './arenas/arenas-view/store/services/arenas
 import { arenadeleteFeature } from './arenas/arenas-view/store/reducers/arenas-delete.reducer';
 import { ArenasDeleteEffects } from './arenas/arenas-view/store/effects/arenas-delete.effect';
 import { ArenasDeleteService } from './arenas/arenas-view/store/services/arenas-delete.service';
+//Teams
+import { teamsFeature} from './teams/store/reducers/teams.reducer';
+import { TeamsEffects} from './teams/store/effects/teams.effect';
+import { TeamsService } from './teams/store/services/teams.service';
+
 
 @NgModule({
   imports: [
@@ -39,13 +44,15 @@ import { ArenasDeleteService } from './arenas/arenas-view/store/services/arenas-
     StoreModule.forFeature(arenabyidFeature),
     StoreModule.forFeature(arenaAddEditFeature),
     StoreModule.forFeature(arenadeleteFeature),
+    StoreModule.forFeature(teamsFeature),
     EffectsModule.forFeature(
       [
         LoginEffects,
         ArenasEffects,
         ArenasByIdEffects,
         ArenasAddEditEffects,
-        ArenasDeleteEffects
+        ArenasDeleteEffects,
+        TeamsEffects
       ]),
   ],
   declarations: [
@@ -58,7 +65,8 @@ import { ArenasDeleteService } from './arenas/arenas-view/store/services/arenas-
     ArenasService,
     ArenasByIdService,
     ArenasAddEditService,
-    ArenasDeleteService
+    ArenasDeleteService,
+    TeamsService
   ]
 })
 export class MenuModule {}
