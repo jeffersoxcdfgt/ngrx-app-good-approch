@@ -24,6 +24,7 @@
     "@ngrx/router-store": "^14.3.0",
     "@ngrx/store": "^14.3.0",
     "@ngrx/store-devtools": "^14.3.0",
+    "@tinymce/tinymce-angular": "^7.0.0",
     "angular-in-memory-web-api": "^0.14.0",
     "lodash-es": "^4.17.21",
     "rxjs": "~7.5.0",

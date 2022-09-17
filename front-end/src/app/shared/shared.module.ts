@@ -23,6 +23,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NoSanitizePipe } from './pipes/nosanitizer.pipe';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { TestAreaTinymceComponent } from './components/test-area-tinymce/test-area-tinymce.component';
 
 
 export const MATERIAL_MODULES = [
@@ -48,14 +50,16 @@ export const PIPES_LIST = [
     RouterModule,
     StoreModule,
     EffectsModule,
-    MATERIAL_MODULES
+    MATERIAL_MODULES,
+    EditorModule
   ],
   declarations:[
     PageNotFoundComponent,
     InputCustomComponent,
     PIPES_LIST,
     FooterComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    TestAreaTinymceComponent
   ],
   providers:[],
   exports:[
@@ -70,7 +74,9 @@ export const PIPES_LIST = [
     InputCustomComponent,
     PIPES_LIST,
     MATERIAL_MODULES,
-    FooterComponent
+    FooterComponent,
+    EditorModule,
+    TestAreaTinymceComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
