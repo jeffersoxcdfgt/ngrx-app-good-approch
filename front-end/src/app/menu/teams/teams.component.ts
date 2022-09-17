@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { Observable , filter} from 'rxjs';
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { arenasGetAll } from '../arenas/store/actions/arenas.action';
-import { Arena } from '../models/arena';
 import { Team } from '../models/team';
 import { teamsGetAll } from './store/actions/teams.action';
 import { selectedTecnologisWithJobs } from './store/reducers/teams.reducer';

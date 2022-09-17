@@ -1,2 +1,394 @@
-<p>teams works!</p>
 
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="container-padding">
+					<div class="page-header">
+						<ol class="breadcrumb pgui-breadcrumb">
+							<li>
+								<a><i class="icon-home"></i></a>
+							</li>
+							<li class="dropdown">
+								<a>Participants</a>
+							</li>
+							<li class="dropdown">Teams
+                                 <button class="btn btn-xs btn-default dropdown-toggle pgui-breadcrumb-siblings" data-toggle="dropdown">
+                                <span class="caret"></span></button>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li>
+										<a>Players</a>
+									</li>
+									<li>
+										<a>Arenas</a>
+									</li>
+								</ul>
+							</li>
+						</ol>
+						<h1>Teams</h1>
+					</div>
+					<div class="modal modal-top fade js-page-settings-dialog" data-record-count-per-page="0" data-total-record-count="0" id="page-settings" tabindex="-1">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+									<h3 class="modal-title">Page settings</h3>
+								</div>
+								<div class="modal-body">
+									<h4>Appearance</h4>
+									<table class="table table-bordered table-condensed form-inline">
+										<tr>
+											<td class="page-settings-label-container"><label for="page-settings-viewmode-control">View mode</label></td>
+											<td class="page-settings-control-container" colspan="2"><select class="form-control js-page-settings-viewmode-control" id="page-settings-viewmode-control">
+												<option data-name="TableViewMode" selected="selected" value="0">
+													Grid
+												</option>
+												<option data-name="CardViewMode" value="1">
+													Cards
+												</option>
+											</select></td>
+										</tr>
+										<tr>
+											<td class="page-settings-label-container" rowspan="5">
+												<label>Number of cards in a row</label>
+												<p>Here you can select the number of cards to be placed in a row for each of supported screen resolutions. Your current resolution is highlighted <strong class="text-success">in this way</strong>.</p>
+											</td>
+										</tr>
+										<tr class="page-settings-hightlight-lg">
+											<td style="width: 25%;"><label for="page-settings-card-column-count-lg">Large desktop</label></td>
+											<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="lg" id="page-settings-card-column-count-lg">
+												<option value="1">
+													1
+												</option>
+												<option value="2">
+													2
+												</option>
+												<option selected="selected" value="3">
+													3
+												</option>
+												<option value="4">
+													4
+												</option>
+												<option value="6">
+													6
+												</option>
+											</select></td>
+										</tr>
+										<tr class="page-settings-hightlight-md">
+											<td style="width: 25%;"><label for="page-settings-card-column-count-md">Desktop</label></td>
+											<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="md" id="page-settings-card-column-count-md">
+												<option value="1">
+													1
+												</option>
+												<option selected="selected" value="2">
+													2
+												</option>
+												<option value="3">
+													3
+												</option>
+												<option value="4">
+													4
+												</option>
+												<option value="6">
+													6
+												</option>
+											</select></td>
+										</tr>
+										<tr class="page-settings-hightlight-sm">
+											<td style="width: 25%;"><label for="page-settings-card-column-count-sm">Tablet</label></td>
+											<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="sm" id="page-settings-card-column-count-sm">
+												<option selected="selected" value="1">
+													1
+												</option>
+												<option value="2">
+													2
+												</option>
+												<option value="3">
+													3
+												</option>
+												<option value="4">
+													4
+												</option>
+												<option value="6">
+													6
+												</option>
+											</select></td>
+										</tr>
+										<tr class="page-settings-hightlight-xs">
+											<td style="width: 25%;"><label for="page-settings-card-column-count-xs">Phone</label></td>
+											<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="xs" id="page-settings-card-column-count-xs">
+												<option selected="selected" value="1">
+													1
+												</option>
+												<option value="2">
+													2
+												</option>
+												<option value="3">
+													3
+												</option>
+												<option value="4">
+													4
+												</option>
+												<option value="6">
+													6
+												</option>
+											</select></td>
+										</tr>
+									</table>
+								</div>
+								<div class="modal-footer">
+									<a class="js-page-settings-cancel btn btn-default" data-dismiss="modal">Cancel</a> <a class="js-page-settings-save btn btn-primary">Save changes</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="well description">
+						<a class="close"><span aria-hidden="true">&times;</span></a>
+						<p>This page lists the teams participated in the 2013-2014 NBA season. Click &quot;Home games&quot;, &quot;Away games&quot;, or &quot;Roster&quot; links at the bottom of a card to navigate to the corresponding detail page. Click the &quot;Arena&quot; link to locate the team's home arena on the map.</p>
+						<p></p>
+						<nav>
+							<ul class="pager">
+								<li class="previous">
+									<a><span aria-hidden="true">&larr;</span> Players</a>
+								</li>
+								<li class="next">
+									<a>Arenas <span aria-hidden="true">&rarr;</span></a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<div class="grid grid-table js-grid" data-column-count="9" data-grid-hidden-values="[]" data-is-master="" data-selection-id="teamGrid_" data-sortable-columns="{&quot;logo&quot;:{&quot;name&quot;:&quot;logo&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Logo&quot;},&quot;caption&quot;:{&quot;name&quot;:&quot;caption&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Name&quot;},&quot;year_founded&quot;:{&quot;name&quot;:&quot;year_founded&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Founded&quot;},&quot;about&quot;:{&quot;name&quot;:&quot;about&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;About&quot;},&quot;current_division_id&quot;:{&quot;name&quot;:&quot;current_division_id_caption&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Division&quot;},&quot;arena_id&quot;:{&quot;name&quot;:&quot;arena_id_caption&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Arena&quot;}}" id="teamGrid_632634654318e">
+						<div class="addition-block js-actions">
+							<div class="btn-toolbar addition-block-left pull-left">
+								<div class="btn-group">
+									<a class="btn btn-default" title="Refresh"><i class="icon-page-refresh"></i> <span class="visible-lg-inline">Refresh</span></a>
+								</div>
+								<div class="btn-group export-button">
+									<div class="btn-group">
+										<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Export"><i class="icon-export"></i> 
+                                            <span class="visible-lg-inline">Export</span> <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li>
+												<a target="_blank"><i class="icon-export-pdf"></i> Export to Pdf</a>
+											</li>
+											<li>
+												<a><i class="icon-export-excel"></i> Export to Excel</a>
+											</li>
+											<li>
+												<a><i class="icon-export-word"></i> Export to Word</a>
+											</li>
+											<li>
+												<a><i class="icon-export-xml"></i> Export to Xml</a>
+											</li>
+											<li>
+												<a><i class="icon-export-csv"></i> Export to Csv</a>
+											</li>
+										</ul>
+									</div>
+									<div class="btn-group">
+										<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Print"><i class="icon-print-page"></i>
+                                             <span class="visible-lg-inline">Print</span> <span class="caret"></span>
+                                        </a>
+										<ul class="dropdown-menu">
+											<li>
+												<a target="_blank"><i class="icon-print-page"></i> Print current page</a>
+											</li>
+											<li>
+												<a target="_blank"><i class="icon-print-page"></i> Print all pages</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="btn-group js-selection-actions-container fade" style="display: none">
+									<div class="btn-group">
+										<button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="hidden-xs">
+                                            <span class="js-count">0</span> item(s) selected</span>
+                                             <span class="js-count visible-xs-inline">0</span> 
+                                             <span class="caret"></span>
+                                        </button>
+										<ul class="dropdown-menu">
+											<li>
+												<a class="js-action" data-type="clear">Clear</a>
+											</li>
+											<li class="divider"></li>
+											<li class="dropdown dropdown-sub-menu">
+												<a>Selection filter</a>
+												<ul class="dropdown-menu sub-menu">
+													<li>
+														<a class="js-action" data-condition="selected" data-type="select">Show selected only</a>
+													</li>
+													<li class="divider"></li>
+													<li>
+														<a class="js-action" data-condition="unselected" data-type="select">Show unselected only</a>
+													</li>
+													<li class="divider"></li>
+													<li>
+														<a class="js-action" data-condition="all" data-type="select">Show all</a>
+													</li>
+												</ul>
+											</li>
+											<li class="divider"></li>
+											<li class="dropdown dropdown-sub-menu">
+												<a>Export</a>
+												<ul class="dropdown-menu sub-menu">
+													<li>
+														<a class="js-action" data-export-type="pdf" data-type="export" target="_blank">Export to Pdf</a>
+													</li>
+													<li>
+														<a class="js-action" data-export-type="excel" data-type="export">Export to Excel</a>
+													</li>
+													<li>
+														<a class="js-action" data-export-type="word" data-type="export">Export to Word</a>
+													</li>
+													<li>
+														<a class="js-action" data-export-type="xml" data-type="export">Export to Xml</a>
+													</li>
+													<li>
+														<a class="js-action" data-export-type="csv" data-type="export">Export to Csv</a>
+													</li>
+												</ul>
+											</li>
+											<li class="divider"></li>
+											<li>
+												<a class="js-action" data-type="print" target="_blank">Print</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="addition-block-right pull-right">
+								<div class="btn-group">
+									<button class="btn btn-default js-filter-builder-open" title="Edit filter" type="button"><i class="icon-filter-alt"></i></button>
+								</div>
+								<div class="btn-group">
+									<button class="btn btn-default" data-target="#multiple-sorting-teamGrid_632634654318e" data-toggle="modal" id="multi-sort-teamGrid_632634654318e" title="Sort"><i class="icon-sort"></i></button>
+								</div>
+								<div class="btn-group">
+									<button class="btn btn-default" data-target="#page-settings" data-toggle="modal" title="Page settings"><i class="icon-settings"></i></button>
+								</div>
+							</div>
+							<div class="addition-block-right pull-right js-quick-filter">
+								<div class="quick-filter-toolbar btn-group">
+									<div class="input-group js-filter-control">
+										<input class="js-input form-control" name="quick_filter" placeholder="Quick search" size="16" type="text" value="">
+										<div class="input-group-btn dropdown dropdown-lg">
+											<button aria-expanded="false" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="toggle-dropdown" type="button"><span class="caret"></span></button>
+											<div class="dropdown-menu dropdown-menu-right" role="menu">
+												<form class="form-horizontal quick-filter">
+													<div class="form-group form-group-sm">
+														<label class="control-label" for="quick-filter-fields">Columns</label>
+														<div class="col-input input-group-sm" data-column="quick_filter_fields" style="width:100%;max-width:100%">
+															<select class="form-control" data-editor="multivalue_select" data-max-selection-size="0" data-placeholder="All" id="quick-filter-fields" multiple name="quick_filter_fields[]">
+																<option value="caption">
+																	Name
+																</option>
+																<option value="logo">
+																	Logo
+																</option>
+																<option value="year_founded">
+																	Founded
+																</option>
+																<option value="short_caption">
+																	Short Caption
+																</option>
+																<option value="about">
+																	About
+																</option>
+																<option value="current_division_id">
+																	Division
+																</option>
+															</select>
+														</div>
+													</div>
+													<div class="form-group form-group-sm">
+														<label class="control-label" for="quick-filter-operator">Search condition</label>
+														<div class="col-input input-group-sm" data-column="quick_filter_operator" style="width:100%;max-width:100%">
+															<select class="form-control" id="quick-filter-operator" name="quick_filter_operator">
+																<option selected value="Contains">
+																	Contains
+																</option>
+																<option value="BeginsWith">
+																	Begins with
+																</option>
+																<option value="EndsWith">
+																	Ends with
+																</option>
+																<option value="Equals">
+																	Equals
+																</option>
+																<option value="DoesNotContain">
+																	Does not contain
+																</option>
+																<option value="DoesNotEqual">
+																	Does not equal
+																</option>
+															</select>
+														</div>
+													</div>
+													<hr class="quick-filter-separator">
+													<span class="pull-right"><button class="js-cancel btn btn-sm btn-default" type="button"><span class="pull-right">Cancel</span> <button class="js-submit btn btn-sm btn-primary" type="button">Apply</button></button></span>
+												</form>
+											</div><button class="btn btn-default js-submit" title="Search" type="button"><i class="icon-search"></i></button> <button class="btn btn-default js-reset" title="Clear" type="button"><i class="icon-filter-reset"></i></button>
+										</div>
+									</div>
+								</div><span class="hidden-xs">&thinsp;</span>
+							</div>
+						</div>
+						<div class="filter-status js-filter-status"></div>
+						<div class="js-grid-message-container"></div>
+						<table class="table text-center table-striped fixed-header">
+							<thead class="js-column-filter-container">
+								<tr>
+									<th class=" sortable" colspan="1" data-column-name="logo" data-field-caption="Logo" data-field-name="logo" data-name="logo" data-sort-index="" rowspan="1" style="width: 100px;"><span>Logo</span></th>
+									<th class=" sortable" colspan="1" data-column-name="caption" data-field-caption="Name" data-field-name="caption" data-name="caption" data-sort-index="" rowspan="1"><span>Name</span></th>
+									<th class="hidden-xs sortable" colspan="1" data-column-name="year_founded" data-field-caption="Founded" data-field-name="year_founded" data-name="year_founded" data-sort-index="" rowspan="1"><span>Founded</span></th>
+									<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="about" data-field-caption="About" data-field-name="about" data-name="about" data-sort-index="" rowspan="1" style="width: 300px;"><span>About</span></th>
+									<th class=" sortable filterable" colspan="1" data-column-name="current_division_id_caption" data-field-caption="Division" data-field-name="current_division_id_caption" data-name="current_division_id" data-sort-index="" rowspan="1">
+										<i class="icon-keys-fk"></i> <span>Division</span><a class="column-filter-trigger js-filter-trigger" title="">
+                                            <i class="icon-filter"></i>
+                                        </a>
+									</th>
+									<th class=" sortable filterable" colspan="1" data-column-name="arena_id_caption" data-field-caption="Arena" data-field-name="arena_id_caption" data-name="arena_id" data-sort-index="" rowspan="1">
+										<i class="icon-keys-fk"></i> <span>Arena</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+									</th>
+									<th rowspan="1" style="width:1%;">Actions</th>
+								</tr>
+							</thead>
+							<tbody class="pg-row-list">
+								<tr class="pg-row">							
+								
+									<td data-column-name="logo" data-edit-url="">
+										<a class="image gallery-item" data-name="logo" href="../../../assets/css/nba_images//teams/BOS.svg" title="Boston Celtics">
+                                        <img alt="Boston Celtics" data-image-column="true" src="../../../assets/css/nba_images//teams/BOS.svg" style="width: 100px"></a>
+									</td>
+									<td data-column-name="caption" data-edit-url="">
+										<a target="_blank">Boston Celtics</a>
+									</td>
+									<td class="hidden-xs" data-column-name="year_founded" data-edit-url="">1947</td>
+									<td class="hidden-xs hidden-sm" data-column-name="about" data-edit-url="">
+										The <strong>Boston Celtics</strong>&nbsp;was founded in 1946 and is currently owned by Boston Basketball Partners LLC. Their 17 NBA Championships are the most for any NBA franchise. The Celtics&#39; greatest domination came from 1957 to 1969, with 11... <a class="js-more-hint">more</a>
+										<div class="js-more-box hide">
+											The <strong>Boston Celtics</strong>&nbsp;was founded in 1946 and is currently owned by Boston Basketball Partners LLC. Their 17 NBA Championships are the most for any NBA franchise. The Celtics&#39; greatest domination came from 1957 to 1969, with 11 championships in 13 years, and eight in a row, the longest consecutive championship winning streak of any North American professional sports team. They currently play their home games at <a>TD Garden</a>.
+										</div>
+									</td>
+									<td data-column-name="current_division_id" data-edit-url="">Atlantic</td>
+									<td data-column-name="arena_id" data-edit-url="">
+										<a target="_blank">TD Garden</a>
+									</td>
+									<td class="operation-column">
+                                        <span class="operation-item" data-column-name="view">
+                                            <a class="link-icon" data-modal-operation="view" title="View">
+                                                <i class="icon-view"></i>
+                                            </a>
+                                        </span>
+                                    </td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<hr>
+                    <app-footer></app-footer>
+				</div>
+			</div>
+		</div>
+	</div>
+	
