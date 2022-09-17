@@ -354,34 +354,31 @@
 								</tr>
 							</thead>
 							<tbody class="pg-row-list">
-								<tr class="pg-row">							
-								
-									<td data-column-name="logo" data-edit-url="">
-										<a class="image gallery-item" data-name="logo" href="../../../assets/css/nba_images//teams/BOS.svg" title="Boston Celtics">
-                                        <img alt="Boston Celtics" data-image-column="true" src="../../../assets/css/nba_images//teams/BOS.svg" style="width: 100px"></a>
-									</td>
-									<td data-column-name="caption" data-edit-url="">
-										<a target="_blank">Boston Celtics</a>
-									</td>
-									<td class="hidden-xs" data-column-name="year_founded" data-edit-url="">1947</td>
-									<td class="hidden-xs hidden-sm" data-column-name="about" data-edit-url="">
-										The <strong>Boston Celtics</strong>&nbsp;was founded in 1946 and is currently owned by Boston Basketball Partners LLC. Their 17 NBA Championships are the most for any NBA franchise. The Celtics&#39; greatest domination came from 1957 to 1969, with 11... <a class="js-more-hint">more</a>
-										<div class="js-more-box hide">
-											The <strong>Boston Celtics</strong>&nbsp;was founded in 1946 and is currently owned by Boston Basketball Partners LLC. Their 17 NBA Championships are the most for any NBA franchise. The Celtics&#39; greatest domination came from 1957 to 1969, with 11 championships in 13 years, and eight in a row, the longest consecutive championship winning streak of any North American professional sports team. They currently play their home games at <a>TD Garden</a>.
-										</div>
-									</td>
-									<td data-column-name="current_division_id" data-edit-url="">Atlantic</td>
-									<td data-column-name="arena_id" data-edit-url="">
-										<a target="_blank">TD Garden</a>
-									</td>
-									<td class="operation-column">
-                                        <span class="operation-item" data-column-name="view">
-                                            <a class="link-icon" data-modal-operation="view" title="View">
-                                                <i class="icon-view"></i>
-                                            </a>
-                                        </span>
-                                    </td>
-								</tr>
+								<ng-template ngFor let-team [ngForOf]="teamsList$ | async" let-i="index">
+									<tr class="pg-row">
+										<td data-column-name="logo" data-edit-url="">
+											<a class="image gallery-item" data-name="logo" href="{{ team?.logo }}" title="{{ team?.name }}">
+											<img alt="{{ team?.name }}" data-image-column="true" src="{{ team?.logo }}" style="width: 100px">
+										</a>
+										</td>
+										<td data-column-name="caption" data-edit-url="">
+											<a target="_blank">{{ team?.name }}</a>
+										</td>
+										<td class="hidden-xs" data-column-name="year_founded" data-edit-url="">{{ team?.Founded }}</td>
+										<td class="hidden-xs hidden-sm" data-column-name="about"  [innerHTML]="team?.About | noSanitize" ></td>
+										<td data-column-name="current_division_id" data-edit-url="">{{ team?.divison }}</td>
+										<td data-column-name="arena_id" data-edit-url="">
+											<a target="_blank">{{ team?.arena }}</a>
+										</td>
+										<td class="operation-column">
+											<span class="operation-item" data-column-name="view">
+												<a class="link-icon" data-modal-operation="view" title="View">
+													<i class="icon-view"></i>
+												</a>
+											</span>
+										</td>
+									</tr>
+								</ng-template>			
 							</tbody>
 						</table>
 					</div>
