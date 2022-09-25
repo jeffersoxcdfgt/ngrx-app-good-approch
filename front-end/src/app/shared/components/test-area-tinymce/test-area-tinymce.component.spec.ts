@@ -1,9 +1,26 @@
-import { forwardRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, FormControl, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { ControlValueAccessor, FormBuilder, FormControl, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { TestAreaTinymceComponent } from './test-area-tinymce.component';
+@Component({
+  selector: 'tinycontrol',
+  template: '',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: TestAreaTinymceComponent,
+      multi: true,
+    },
+  ],
+})
+class TestAreaTinymceComponent implements ControlValueAccessor {
+  writeValue(obj: any) {}
+  registerOnChange(fn: any) {}
+  registerOnTouched(fn: any) {}
+  setDisabledState(isDisabled: boolean) {}
+}
 
 describe('TestAreaTinymceComponent', () => {
   let component: TestAreaTinymceComponent;
@@ -11,15 +28,16 @@ describe('TestAreaTinymceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TestAreaTinymceComponent
+      declarations: [ 
+        TestAreaTinymceComponent
       
       ],
-      imports:[
+      imports:[ 
         BrowserModule,
         ReactiveFormsModule,
         FormsModule
       ],
-      providers: []
+  
     })
     .compileComponents();
 

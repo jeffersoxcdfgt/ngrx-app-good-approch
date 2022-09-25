@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, Optional, Self, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, Optional, Self, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NgControl } from '@angular/forms';
 import { takeUntil} from 'rxjs/operators';
 import { UnsubscribeComponent } from '../../unsubscribe/unsubscribe.component';
@@ -16,7 +16,7 @@ export const CONFIG_TEXTEDITOR = {
   templateUrl: './test-area-tinymce.component.html',
   styleUrls: ['./test-area-tinymce.component.scss']
 })
-export class TestAreaTinymceComponent extends UnsubscribeComponent implements ControlValueAccessor, OnChanges  {
+export class TestAreaTinymceComponent extends UnsubscribeComponent implements OnInit, ControlValueAccessor, OnChanges  {
 
   readonly CONFIG_TEXTEDITOR = CONFIG_TEXTEDITOR  
   @Input() data: string | undefined = '';
@@ -30,10 +30,13 @@ export class TestAreaTinymceComponent extends UnsubscribeComponent implements Co
     if(this.ngcontrol){
       this.ngcontrol.valueAccessor = this
     }
+
     this.formTiny = this.formBuilder.group({
       tinycontrol:[''],
     })
+  }
 
+  ngOnInit(): void { 
     this.formTiny.get('tinycontrol')?.valueChanges.pipe(takeUntil(this.destroyed$)).subscribe((value)=>{
       this.onChangeFn(value);
     })
