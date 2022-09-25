@@ -132,7 +132,7 @@
 						<ng-template #addEdit>
 							<!--<button (click)="addRowArena()">Add</button>
 							<button (click)="updateRowArena()">Edit</button>-->
-							<div class="container-fluid">
+							<div class="container-fluid "*ngIf="arena$ | async ; let arena;">
 								<div class="row">
 									<div class="col-md-12">
 										<div class="container-padding">
@@ -143,7 +143,7 @@
 															<div class="col-sm-9 col-sm-offset-3">
 																<div class="btn-toolbar">
 																	<div class="btn-group">
-																		<button class="btn btn-primary js-save js-primary-save" data-action="open" type="submit">Save</button> 
+																		<button class="btn btn-primary js-save js-primary-save" (click)="saveArena()" data-action="open" type="submit">Save</button> 
 																		<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 																		<ul class="dropdown-menu">
 																			<li>
@@ -166,7 +166,7 @@
 												</div>
 												<div class="row">
 													<div class="js-form-collection col-lg-8">
-														<form action="" class="form-horizontal" enctype="multipart/form-data" id="" method="post" name="">
+														<form action="" class="form-horizontal" [formGroup]="formArena">
 															<div class="btn-group pull-right form-collection-actions">
 																<button class="btn btn-default icon-copy js-form-copy" title="Copy" type="button"></button> <button class="btn btn-default icon-remove js-form-remove" style="display: none" title="Delete" type="button"></button>
 															</div>
@@ -182,7 +182,7 @@
 																		</div>
 																		<div class="form-group col-sm-9">
 																			<div class="col-input" data-column="caption" style="width:100%;max-width:100%">
-																				<input class="form-control" data-editor="text" data-field-name="caption" data-legacy-field-name="caption" data-pgui-legacy-validate="true" id="" maxlength="50" name="caption_edit" type="text" value="">
+																				<app-input-custom [data]="arena?.arenaTitle" formControlName="arenatitle" [placeholder]="'Arena title'"></app-input-custom>
 																			</div>
 																		</div>
 																	</div>
@@ -195,7 +195,7 @@
 																		</div>
 																		<div class="form-group col-sm-9">
 																			<div class="col-input" data-column="capacity" style="width:100%;max-width:100%">
-																				<input class="form-control" data-editor="text" data-field-name="capacity" data-legacy-field-name="capacity" data-pgui-legacy-validate="true" id="Form63226a13c1919_capacity_edit" name="capacity_edit" type="text" value="">
+																				<app-input-custom [data]="arena?.Capacity" formControlName="capacity" [placeholder]="'Capacity'"></app-input-custom>
 																			</div>
 																		</div>
 																	</div>
@@ -209,7 +209,7 @@
 																		</div>
 																		<div class="form-group col-sm-9">
 																			<div class="col-input" data-column="about" style="width:100%;max-width:100%">
-																				<app-test-area-tinymce></app-test-area-tinymce>
+																				<app-test-area-tinymce [data]="arena?.About" formControlName="about"></app-test-area-tinymce>
 																			</div>
 																		</div>
 																	</div>
@@ -232,6 +232,7 @@
 																					<input data-editor="imageuploader" data-field-name="logo" data-legacy-field-name="logo" data-pgui-legacy-validate="true" id="Form63226a13c1919_logo_edit" name="logo_edit" type="file">
 																				</div>
 																			</div>
+																			<!--<app-logo-custom></app-logo-custom>-->
 																		</div>
 																	</div>
 																	<div class="row">
@@ -279,7 +280,7 @@
 															<div class="col-sm-9 col-sm-offset-3">
 																<div class="btn-toolbar">
 																	<div class="btn-group">
-																		<button class="btn btn-primary js-save js-primary-save" data-action="open" data-url="arenas.php?operation=return" type="submit">Save</button> <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+																		<button class="btn btn-primary js-save js-primary-save" (click)="saveArena()" data-action="open" data-url="arenas.php?operation=return" type="submit">Save</button> <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 																		<ul class="dropdown-menu">
 																			<li>
 																				<a class="js-save" data-action="open" data-url="arenas.php?operation=return">Save and return back to the list</a>

@@ -11,7 +11,7 @@ export class InputCustomComponent implements OnInit, ControlValueAccessor, OnCha
   @ViewChild('inputElement') inputElement: ElementRef|any;
   dataInputCtrl: FormControl =  new FormControl();
   
-  @Input() data: string = '';
+  @Input() data: string | undefined = '';
   @Input() type: string = 'text';
   @Input() width: string = '100%';
   @Input() height: string = '40px';
@@ -22,7 +22,10 @@ export class InputCustomComponent implements OnInit, ControlValueAccessor, OnCha
   @Output() clickOutput = new EventEmitter();
 
   constructor(@Self() @Optional() public ngcontrol: NgControl, private ref: ChangeDetectorRef) {
-    this.ngcontrol && (this.ngcontrol.valueAccessor = this);
+    if(this.ngcontrol){
+      this.ngcontrol.valueAccessor = this
+    }
+   // this.ngcontrol && (this.ngcontrol.valueAccessor = this);
   }
 
   ngOnInit(): void {
@@ -63,6 +66,7 @@ export class InputCustomComponent implements OnInit, ControlValueAccessor, OnCha
     if(!!changes['data']?.currentValue){
       this.data = changes['data'].currentValue
       this.dataInputCtrl.setValue(this.data )
+      this.ngcontrol.valueAccessor?.writeValue(changes['data'].currentValue)
     }
   }
 }

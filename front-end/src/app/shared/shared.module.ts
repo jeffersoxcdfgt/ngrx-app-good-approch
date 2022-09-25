@@ -25,6 +25,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { TestAreaTinymceComponent } from './components/test-area-tinymce/test-area-tinymce.component';
+import { LogoCustomComponent } from './components/logo-custom/logo-custom.component';
 
 
 export const MATERIAL_MODULES = [
@@ -59,7 +60,8 @@ export const PIPES_LIST = [
     PIPES_LIST,
     FooterComponent,
     ConfirmationDialogComponent,
-    TestAreaTinymceComponent
+    TestAreaTinymceComponent,
+    LogoCustomComponent
   ],
   providers:[],
   exports:[
@@ -76,7 +78,8 @@ export const PIPES_LIST = [
     MATERIAL_MODULES,
     FooterComponent,
     EditorModule,
-    TestAreaTinymceComponent
+    TestAreaTinymceComponent,
+    LogoCustomComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,5 +1,6 @@
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store'
 import { filter, first, map, Observable, takeUntil} from 'rxjs';;
@@ -25,10 +26,19 @@ export class ArenasViewComponent extends UnsubscribeComponent implements OnInit 
   selectedId$ = this.store.pipe(select(selectId));
   arena$ : Observable<Arena> = new Observable<Arena>();
   typeView :string = '';
+  formArena: FormGroup;
 
-  constructor(private store :Store<State>,location: Location,private router: Router) {
-    super()
+  constructor(private store :Store<State>,
+    location: Location,private router: Router,
+    private formBuilder: FormBuilder) {
+    super();
     this.typeView = location.path()
+
+    this.formArena = this.formBuilder.group({
+      arenatitle:[''],
+      capacity:[''],
+      about:['']
+    })
    }
 
   ngOnInit(): void { 
@@ -62,6 +72,12 @@ export class ArenasViewComponent extends UnsubscribeComponent implements OnInit 
       Photo:'../../../assets/css/nba_images/arenas/barclays_center_photo.jpg'
     }
     this.store.dispatch(arenaUpdateRow({arenarow:payload}));
+  }
+
+  saveArena(){
+    console.log(this.formArena.get('arenatitle')?.value,"arena title");
+    console.log(this.formArena.get('capacity')?.value,"Capacity");
+    console.log(this.formArena.get('about')?.value,"About");
   }
 
 }
