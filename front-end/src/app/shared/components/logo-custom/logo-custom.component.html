@@ -2,10 +2,14 @@
     <img src="{{data}}" style="max-width: 100%;">
     <div style="margin: 1em 0;">
         <div class="btn-group" data-toggle="buttons-radio" data-toggle-name="logo_edit_action">
-            <button class="btn btn-default" data-toggle="button" type="button" value="Remove">Remove</button> <button class="btn btn-default js-replace" data-toggle="button" disabled="disabled" type="button" value="Replace">Replace</button>
+            <button type="button" value="Keep" class="btn btn-default active" data-toggle="button" aria-pressed="true">Keep</button>
+            <button class="btn btn-default" data-toggle="button" type="button" value="Remove">Remove</button> 
+            <button class="btn btn-default js-replace" data-toggle="button" disabled="disabled" type="button" value="Replace">Replace</button>
         </div>
-    </div><input name="logo_edit_action" type="hidden" value="Keep">
+    </div>
+    <input name="logo_edit_action" type="hidden" value="Keep">
     <div class="file-upload-control">
-        <input data-editor="imageuploader" data-field-name="logo" data-legacy-field-name="logo" data-pgui-legacy-validate="true" id="Form63226a13c1919_logo_edit" name="logo_edit" type="file">
+        <input data-editor="imageuploader" (change)="imagePreview($event)" name="logo_edit" type="file">
     </div>
 </div>
+<strong>You can drag and drop the image if you want</strong>

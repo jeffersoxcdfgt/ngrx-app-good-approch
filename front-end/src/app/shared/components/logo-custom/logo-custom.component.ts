@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, Optional, Self, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, Input, OnChanges, OnInit, Optional, Self, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 
 @Component({
@@ -44,6 +44,42 @@ export class LogoCustomComponent implements OnInit,  ControlValueAccessor, OnCha
     this.ref.detectChanges()
     this.onChangeFn($event?.value.trim());
   }
+
+  imagePreview(e:any): void{
+     const res = (e.target as HTMLInputElement).files;
+     if(res){
+      const image = res[0]
+      this.getFileContent(image);
+     }
+  }
+
+  // Dragover listener
+  @HostListener('dragover', ['$event']) onDragOver(evt:any): void{
+    evt.preventDefault();
+    evt.stopPropagation();
+  }
+
+  // Dragleave listener
+  @HostListener('dragover', ['$event']) onDragLeave(evt:any): void{
+      evt.preventDefault();
+      evt.stopPropagation();
+  }
+
+  // Drop listener
+   @HostListener('drop', ['$event']) ondrop(evt:any): void{
+    evt.preventDefault();
+    evt.stopPropagation();
+    this.getFileContent(evt.dataTransfer.files[0]);
+  }
+
+  getFileContent = (datafile:any) => {
+    const file = datafile;
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.data = reader.result as string;
+    };
+    reader.readAsDataURL(file);
+   }
 
 
   ngOnChanges(changes: SimpleChanges) {
