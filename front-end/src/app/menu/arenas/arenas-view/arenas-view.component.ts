@@ -37,7 +37,9 @@ export class ArenasViewComponent extends UnsubscribeComponent implements OnInit 
     this.formArena = this.formBuilder.group({
       arenatitle:[''],
       capacity:[''],
-      about:['']
+      about:[''],
+      logo:[''],
+      photo:['']
     })
    }
 
