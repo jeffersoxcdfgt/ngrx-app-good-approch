@@ -2,9 +2,7 @@
     <img src="{{data}}" style="max-width: 100%;">
     <div style="margin: 1em 0;">
         <div class="btn-group" data-toggle="buttons-radio" data-toggle-name="logo_edit_action">
-            <button type="button" value="Keep" class="btn btn-default active" data-toggle="button" aria-pressed="true">Keep</button>
-            <button class="btn btn-default" data-toggle="button" type="button" value="Remove">Remove</button> 
-            <button class="btn btn-default js-replace" data-toggle="button" disabled="disabled" type="button" value="Replace">Replace</button>
+            <button *ngIf="data!==''" type="button" value="Keep" (click)="keep()"  class="btn btn-default active" data-toggle="button" aria-pressed="true">Keep</button>
         </div>
     </div>
     <input name="logo_edit_action" type="hidden" value="Keep">

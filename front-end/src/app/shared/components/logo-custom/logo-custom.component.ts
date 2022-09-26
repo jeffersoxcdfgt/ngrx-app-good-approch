@@ -10,6 +10,7 @@ export class LogoCustomComponent implements OnInit,  ControlValueAccessor, OnCha
 
   dataInputCtrl: FormControl =  new FormControl();  
   @Input() data: string | undefined = '';
+  dataaux: string | undefined = '';
 
 
   constructor(@Self() @Optional() public ngcontrol: NgControl, private ref: ChangeDetectorRef) {
@@ -77,14 +78,23 @@ export class LogoCustomComponent implements OnInit,  ControlValueAccessor, OnCha
     const reader = new FileReader();
     reader.onload = () => {
       this.data = reader.result as string;
+      this.onChangeFn(this.data);
     };
     reader.readAsDataURL(file);
+   }
+
+   keep():void{
+    if(this.dataaux!==''){
+      this.data = this.dataaux
+    }
+
    }
 
 
   ngOnChanges(changes: SimpleChanges) {
     if(!!changes['data']?.currentValue){
-      this.data = changes['data'].currentValue
+      this.data = changes['data'].currentValue;
+      this.dataaux = changes['data'].currentValue;
       this.dataInputCtrl.setValue(this.data )
       this.ngcontrol.valueAccessor?.writeValue(changes['data'].currentValue)
     }

@@ -143,7 +143,7 @@
 															<div class="col-sm-9 col-sm-offset-3">
 																<div class="btn-toolbar">
 																	<div class="btn-group">
-																		<button class="btn btn-primary js-save js-primary-save" (click)="saveArena()" data-action="open" type="submit">Save</button> 
+																		<button class="btn btn-primary js-save js-primary-save" (click)="saveArena(typeView)" data-action="open" type="submit">Save</button> 
 																		<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 																		<ul class="dropdown-menu">
 																			<li>
@@ -175,53 +175,48 @@
 																<fieldset class="col-md-12 form-horizontal">
 																	<div class="row">
 																		<div class="form-group form-group-label col-sm-3">
-																			<label class="control-label" data-column="caption" for="caption_edit_arenas">Arena title <span class="required-mark" style="display: none">*</span></label>
-																			<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-																				<label class="control-label" data-column="caption" for="caption_edit_arenas"></label>
-																			</div>
+																			<label class="control-label" data-column="caption" for="caption_edit_arenas">Arena title 
+																			<span class="required-mark">*</span></label>
 																		</div>
 																		<div class="form-group col-sm-9">
 																			<div class="col-input" data-column="caption" style="width:100%;max-width:100%">
 																				<app-input-custom [data]="arena?.arenaTitle" formControlName="arenatitle" [placeholder]="'Arena title'"></app-input-custom>
+																				<app-validation formControlName="arenatitle" [requiredfield]="true" [messagerequired]="'The Arena title is required'"></app-validation>
 																			</div>
 																		</div>
 																	</div>
 																	<div class="row">
 																		<div class="form-group form-group-label col-sm-3">
-																			<label class="control-label" data-column="capacity" for="Form63226a13c1919_capacity_edit">Capacity <span class="required-mark" style="display: none">*</span></label>
-																			<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-																				<label class="control-label" data-column="capacity" for="Form63226a13c1919_capacity_edit"></label>
-																			</div>
+																			<label class="control-label" data-column="capacity" for="Form63226a13c1919_capacity_edit">Capacity
+																			<span class="required-mark">*</span></label>
 																		</div>
 																		<div class="form-group col-sm-9">
 																			<div class="col-input" data-column="capacity" style="width:100%;max-width:100%">
 																				<app-input-custom [data]="arena?.Capacity" formControlName="capacity" [placeholder]="'Capacity'"></app-input-custom>
+																				<app-validation formControlName="capacity" [requiredfield]="true" [messagerequired]="'The Capacity is required'"></app-validation>
 																			</div>
 																		</div>
 																	</div>
 																	<div class="row">
 																		<div class="form-group form-group-label col-sm-3">
-																			<label class="control-label" data-column="about" for="Form63226a13c1919_about_edit">About <span class="required-mark" style="display: none">*</span></label>
-																			<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-																				<label class="control-label" data-column="about" for="Form63226a13c1919_about_edit"></label>
-															
-																			</div>
+																			<label class="control-label" data-column="about" for="Form63226a13c1919_about_edit">About 
+																				<span class="required-mark">*</span></label>
 																		</div>
 																		<div class="form-group col-sm-9">
 																			<div class="col-input" data-column="about" style="width:100%;max-width:100%">
 																				<app-test-area-tinymce [data]="arena?.About" formControlName="about"></app-test-area-tinymce>
+																				<app-validation formControlName="about" [requiredfield]="true" [messagerequired]="'The About is required'"></app-validation>
 																			</div>
 																		</div>
 																	</div>
 																	<div class="row">
 																		<div class="form-group form-group-label col-sm-3">
-																			<label class="control-label" data-column="logo" for="Form63226a13c1919_logo_edit">Logo <span class="required-mark" style="display: none">*</span></label>
-																			<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-																				<label class="control-label" data-column="logo" for="Form63226a13c1919_logo_edit"></label>
-																			</div>
+																			<label class="control-label" data-column="logo" for="Form63226a13c1919_logo_edit">Logo 
+																				<span class="required-mark">*</span></label>
 																		</div>
 																		<div class="form-group col-sm-9">
 																			<app-logo-custom [data]="arena?.Logo" formControlName="logo" ></app-logo-custom>
+																			<app-validation formControlName="logo" [requiredfield]="true" [messagerequired]="'The Logo is required'"></app-validation>
 																		</div>
 																	</div>
 																	<div class="row">
@@ -233,6 +228,7 @@
 																		</div>
 																		<div class="form-group col-sm-9">
 																			<app-logo-custom [data]="arena?.Photo" formControlName="photo" ></app-logo-custom>
+																			<app-validation formControlName="photo" [requiredfield]="true" [messagerequired]="'The Photo is required'"></app-validation>
 																		</div>
 																	</div>
 																</fieldset>
@@ -259,7 +255,7 @@
 															<div class="col-sm-9 col-sm-offset-3">
 																<div class="btn-toolbar">
 																	<div class="btn-group">
-																		<button class="btn btn-primary js-save js-primary-save" (click)="saveArena()" data-action="open" data-url="arenas.php?operation=return" type="submit">Save</button> <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+																		<button class="btn btn-primary js-save js-primary-save" (click)="saveArena(typeView)" data-action="open" data-url="arenas.php?operation=return" type="submit">Save</button> <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 																		<ul class="dropdown-menu">
 																			<li>
 																				<a class="js-save" data-action="open" data-url="arenas.php?operation=return">Save and return back to the list</a>

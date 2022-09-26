@@ -53,33 +53,34 @@ export class ArenasViewComponent extends UnsubscribeComponent implements OnInit 
      });
   }
 
-  addRowArena():void{
-    const payload:Arena  = {
-      arenaTitle: 'new Arena',
-      Capacity: '1800',
-      About: 'jeffers',
-      Logo:'../../../assets/css/nba_images/arenas/barclays_center_logo.png',
-      Photo:'../../../assets/css/nba_images/arenas/barclays_center_photo.jpg'
+
+  saveArena(typeView: string){
+    if(this.formArena.valid){
+      const payload = this.populatedPayload()
+      switch (typeView) {
+        case '/menu/arenas/add': 
+        this.store.dispatch(arenaAddRow({arenarow:payload}));   
+          break;    
+        default:
+        this.store.dispatch(arenaUpdateRow({arenarow:payload}));
+          break;
+      }
     }
-    this.store.dispatch(arenaAddRow({arenarow:payload}));
+    else{
+      this.formArena.markAllAsTouched()
+    }
+
   }
 
-
-  updateRowArena():void{
+  populatedPayload(): Arena{
     const payload:Arena  = {
-      arenaTitle: 'new Arena',
-      Capacity: '1800',
-      About: 'jeffers',
-      Logo:'../../../assets/css/nba_images/arenas/barclays_center_logo.png',
-      Photo:'../../../assets/css/nba_images/arenas/barclays_center_photo.jpg'
+      arenaTitle: this.formArena.get('arenatitle')?.value,
+      Capacity: this.formArena.get('capacity')?.value,
+      About: this.formArena.get('about')?.value,
+      Logo:this.formArena.get('logo')?.value,
+      Photo:this.formArena.get('photo')?.value
     }
-    this.store.dispatch(arenaUpdateRow({arenarow:payload}));
-  }
-
-  saveArena(){
-    console.log(this.formArena.get('arenatitle')?.value,"arena title");
-    console.log(this.formArena.get('capacity')?.value,"Capacity");
-    console.log(this.formArena.get('about')?.value,"About");
+    return payload
   }
 
 }
