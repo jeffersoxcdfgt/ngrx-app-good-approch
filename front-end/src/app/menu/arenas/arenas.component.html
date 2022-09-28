@@ -36,7 +36,7 @@
 							</ul>
 						</nav>
 					</div>
-					<div class="grid grid-table js-grid" data-column-count="7" data-grid-hidden-values="[]" data-is-master="" data-selection-id="arenaGrid_" data-sortable-columns="{&quot;caption&quot;:{&quot;name&quot;:&quot;caption&quot;,&quot;index&quot;:0,&quot;caption&quot;:&quot;Arena title&quot;},&quot;capacity&quot;:{&quot;name&quot;:&quot;capacity&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Capacity&quot;},&quot;about&quot;:{&quot;name&quot;:&quot;about&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;About&quot;},&quot;logo&quot;:{&quot;name&quot;:&quot;logo&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Logo&quot;},&quot;photo&quot;:{&quot;name&quot;:&quot;photo&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Photo&quot;}}" id="arenaGrid_631a68cdf2628">
+					<div class="grid grid-table grid-card js-grid" data-column-count="7" data-grid-hidden-values="[]" data-is-master="" data-selection-id="arenaGrid_" data-sortable-columns="{&quot;caption&quot;:{&quot;name&quot;:&quot;caption&quot;,&quot;index&quot;:0,&quot;caption&quot;:&quot;Arena title&quot;},&quot;capacity&quot;:{&quot;name&quot;:&quot;capacity&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Capacity&quot;},&quot;about&quot;:{&quot;name&quot;:&quot;about&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;About&quot;},&quot;logo&quot;:{&quot;name&quot;:&quot;logo&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Logo&quot;},&quot;photo&quot;:{&quot;name&quot;:&quot;photo&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Photo&quot;}}" id="arenaGrid_631a68cdf2628">
 						<div class="addition-block js-actions">
 							<div class="btn-toolbar addition-block-left pull-left">						
 								<div class="btn-group">
@@ -212,6 +212,7 @@
 						</div>
 						<div class="filter-status js-filter-status"></div>
 						<div class="js-grid-message-container"></div>
+						<ng-container *ngIf="showTableCard; else viewCard">
 						<table class="table text-center table-striped">
 							<thead class="js-column-filter-container">
 								<tr>
@@ -266,12 +267,83 @@
 								</ng-template>								
 							</tbody>
 							<tfoot></tfoot>
-						</table>
+						</table>							
+						</ng-container>
+						<ng-template #viewCard>
+							<div class="row">
+								<div class="table-striped col-md-12">
+									<div class="alert alert-warning empty-grid hidden">
+										There are no records to display
+									</div>
+									<div class="pg-row-list row">
+										<ng-template ngFor let-arena [ngForOf]="arenasList$ | async" let-i="index">
+										<div class="grid-card-item col-lg-4 col-md-4 col-sm-6 col-xs-12 pg-row">
+											<div class="well" style="">
+												<div class="grid-card-item-control pull-right">
+													<div class="operation-column pull-left">
+														<span class="operation-item" data-column-name="view">
+															<a class="link-icon" routerLink="/menu/arenas/{{arena.id}}" title="View">
+																<i class="icon-view"></i>
+															</a>
+														</span> 
+														<span class="operation-item" data-column-name="edit">
+															<a class="link-icon" routerLink="/menu/arenas/edit/{{arena.id}}"  title="Edit">
+																<i class="icon-edit"></i>
+															</a>
+														</span> 
+														<span class="operation-item" data-column-name="delete">
+															<a class="link-icon" (click)="delete(arena.id)" title="Delete">
+																<i class="icon-remove"></i>
+															</a>
+														</span>
+													</div>
+												</div>
+												<div class="grid-card-item-data">
+													<table class="table">
+														<tr>
+															<th>Arena title</th>
+															<td data-column-name="caption" data-edit-url="">
+																<a target="">{{ arena?.arenaTitle }}</a>
+															</td>
+														</tr>
+														<tr>
+															<th>Capacity</th>
+															<td data-column-name="capacity" data-edit-url="">{{ arena?.Capacity }}</td>
+														</tr>
+														<tr>
+															<th>About</th>
+															<td data-column-name="about" [innerHTML]="arena?.About | noSanitize" data-edit-url=""></td>
+														</tr>
+														<tr>
+															<th>Logo</th>
+															<td data-column-name="logo" data-edit-url="">
+																<a class="image gallery-item" data-name="logo"  href="{{ arena?.Logo }}"  title="{{ arena?.arenaTitle }}">
+																	<img alt="{{ arena?.arenaTitle }}" data-image-column="true" src="{{ arena?.Logo }}" style="width: 100px">
+																</a>
+															</td>
+														</tr>
+														<tr>
+															<th>Photo</th>
+															<td data-column-name="photo" data-edit-url="">
+																<a class="image gallery-item" data-name="photo"  href="{{ arena?.Photo}}" title="{{ arena?.arenaTitle }}">
+																	<img alt="{{ arena?.arenaTitle }}" data-image-column="true" src="{{ arena?.Photo}}" style="width: 100px">
+																</a>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+										</div>
+										</ng-template>
+									</div>				
+								</div>
+							</div>
+						</ng-template>
 					</div>	
 					<hr>
-                    <app-footer></app-footer>
+     			<app-footer></app-footer>
 				</div>
 			</div>
 		</div>
-	</div>
+</div>
 	

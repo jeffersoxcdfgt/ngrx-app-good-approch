@@ -29,6 +29,7 @@ export class ArenasComponent implements OnInit {
   selectedId$ = this.store.pipe(select(selectId));
   arenasList$ : Observable<Arena[]> = new Observable<Arena[]>();
   searchTerm: string = '';
+  showTableCard: boolean = true;
 
   constructor(private store :Store<State>,private dialog: MatDialog,) { }
 
