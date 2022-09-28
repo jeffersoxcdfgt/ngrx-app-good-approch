@@ -148,7 +148,7 @@
 							<div class="addition-block-right pull-right js-quick-filter">
 								<div class="quick-filter-toolbar btn-group">
 									<div class="input-group js-filter-control">
-										<input class="js-input form-control" name="quick_filter" placeholder="Quick search" size="16" type="text" value="">
+										<input class="js-input form-control" name="quick_filter" [(ngModel)]="searchTerm" (input)="searchArena($event.target)" placeholder="Quick search" size="16" type="text" value="">
 										<div class="input-group-btn dropdown dropdown-lg">
 											<button aria-expanded="false" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="toggle-dropdown" type="button"><span class="caret"></span></button>
 											<div class="dropdown-menu dropdown-menu-right" role="menu">
@@ -203,7 +203,8 @@
 													<hr class="quick-filter-separator">
 													<span class="pull-right"><button class="js-cancel btn btn-sm btn-default" type="button"><span class="pull-right">Cancel</span> <button class="js-submit btn btn-sm btn-primary" type="button">Apply</button></button></span>
 												</form>
-											</div><button class="btn btn-default js-submit" title="Search" type="button"><i class="icon-search"></i></button> <button class="btn btn-default js-reset" title="Clear" type="button"><i class="icon-filter-reset"></i></button>
+											</div>
+											<button class="btn btn-default js-reset" (click)="resetSearch()" title="Clear" type="button"><i class="icon-filter-reset"></i></button>
 										</div>
 									</div>
 								</div><span class="hidden-xs">&thinsp;</span>
