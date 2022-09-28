@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store'
 import { filter, map, Observable} from 'rxjs';
-import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';;
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';import { DialogTableCardComponent } from 'src/app/shared/components/dialog-table-card/dialog-table-card.component';
+;
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { selectId } from 'src/app/shared/routing/id.selectors';
 import { Arena } from '../models/arena';
@@ -45,6 +46,26 @@ export class ArenasComponent implements OnInit {
   resetSearch():void{
     this.searchTerm = '';
     this.arenasList$ = this.store.select(selectAllArenas).pipe(CLEANARRAY);
+  }
+
+  switchTableCard():void{
+    const dialogRef = this.dialog.open(DialogTableCardComponent,{
+      data:{
+        message: 'Delete record?',
+        buttonText: {
+          ok: 'Ok',
+          cancel: 'Cancel'
+        },
+        opt: !this.showTableCard ? 'Cards' : 'Grid'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed: any) => {
+      if (confirmed.opt) {
+           this.showTableCard = confirmed.value === 'Cards' ? false : true
+      }
+    });
+
   }
 
   delete(id:number|string|undefined):void{

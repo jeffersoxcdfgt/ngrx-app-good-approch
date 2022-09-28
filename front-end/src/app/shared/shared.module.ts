@@ -27,6 +27,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { TestAreaTinymceComponent } from './components/test-area-tinymce/test-area-tinymce.component';
 import { LogoCustomComponent } from './components/logo-custom/logo-custom.component';
 import { ValidationComponent } from './components/validation/validation.component';
+import { DialogTableCardComponent } from './components/dialog-table-card/dialog-table-card.component';
 
 
 export const MATERIAL_MODULES = [
@@ -63,7 +64,8 @@ export const PIPES_LIST = [
     ConfirmationDialogComponent,
     TestAreaTinymceComponent,
     LogoCustomComponent,
-    ValidationComponent
+    ValidationComponent,
+    DialogTableCardComponent
   ],
   providers:[],
   exports:[
@@ -82,7 +84,8 @@ export const PIPES_LIST = [
     EditorModule,
     TestAreaTinymceComponent,
     LogoCustomComponent,
-    ValidationComponent
+    ValidationComponent,
+    DialogTableCardComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

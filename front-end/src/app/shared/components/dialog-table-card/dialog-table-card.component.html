@@ -1,0 +1,169 @@
+<div class="modal fade in" role="dialog" style="display: block;" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button mat-raised-button mat-dialog-close  aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h3 class="modal-title">Page settings</h3>
+            </div>
+            <div class="modal-body">
+                <h4>Switch View</h4>
+                <mat-dialog-content>
+                    <table class="table table-bordered table-condensed form-inline">
+						<tbody>
+							<tr>
+								<td class="page-settings-label-container"><label for="page-settings-viewmode-control">View mode</label></td>
+								<td class="page-settings-control-container" colspan="2">
+                                    <select class="form-control js-page-settings-viewmode-control" [(ngModel)]="selection" id="page-settings-viewmode-control">
+									<option data-name="TableViewMode" value="Grid">
+										Grid
+									</option>
+									<option data-name="CardViewMode" selected="selected" value="Cards">
+										Cards
+									</option>
+								</select></td>
+							</tr>
+						</tbody>
+					</table>
+                </mat-dialog-content>
+            </div>
+            <div class="modal-footer">
+                <mat-dialog-actions align="center">
+                    <button mat-raised-button mat-dialog-close tabindex="-1" class="btn btn-default" data-bb-handler="cancel" type="button">{{cancelButtonText}}</button>
+                    <button mat-raised-button color="primary" (click)="onConfirmClick()" tabindex="1" class="btn btn-primary" data-bb-handler="confirm" type="button">{{confirmButtonText}}</button>
+                </mat-dialog-actions>					
+            </div>
+    </div>
+</div>
+</div>
+
+<!--
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="modal modal-top fade js-page-settings-dialog in" data-record-count-per-page="0" data-total-record-count="0" id="page-settings" style="z-index: 1040; display: block;" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+					<h3 class="modal-title">Page settings</h3>
+				</div>
+				<div class="modal-body">
+					<h4>Appearance</h4>
+					<table class="table table-bordered table-condensed form-inline">
+						<tbody>
+							<tr>
+								<td class="page-settings-label-container"><label for="page-settings-viewmode-control">View mode</label></td>
+								<td class="page-settings-control-container" colspan="2"><select class="form-control js-page-settings-viewmode-control" id="page-settings-viewmode-control">
+									<option data-name="TableViewMode" value="0">
+										Grid
+									</option>
+									<option data-name="CardViewMode" selected="selected" value="1">
+										Cards
+									</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td class="page-settings-label-container" rowspan="5">
+									<label>Number of cards in a row</label>
+									<p>Here you can select the number of cards to be placed in a row for each of supported screen resolutions. Your current resolution is highlighted <strong class="text-success">in this way</strong>.</p>
+								</td>
+							</tr>
+							<tr class="page-settings-hightlight-lg">
+								<td style="width: 25%;"><label for="page-settings-card-column-count-lg">Large desktop</label></td>
+								<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="lg" id="page-settings-card-column-count-lg">
+									<option value="1">
+										1
+									</option>
+									<option value="2">
+										2
+									</option>
+									<option selected="selected" value="3">
+										3
+									</option>
+									<option value="4">
+										4
+									</option>
+									<option value="6">
+										6
+									</option>
+								</select></td>
+							</tr>
+							<tr class="page-settings-hightlight-md">
+								<td style="width: 25%;"><label for="page-settings-card-column-count-md">Desktop</label></td>
+								<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="md" id="page-settings-card-column-count-md">
+									<option value="1">
+										1
+									</option>
+									<option value="2">
+										2
+									</option>
+									<option selected="selected" value="3">
+										3
+									</option>
+									<option value="4">
+										4
+									</option>
+									<option value="6">
+										6
+									</option>
+								</select></td>
+							</tr>
+							<tr class="page-settings-hightlight-sm">
+								<td style="width: 25%;"><label for="page-settings-card-column-count-sm">Tablet</label></td>
+								<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="sm" id="page-settings-card-column-count-sm">
+									<option value="1">
+										1
+									</option>
+									<option selected="selected" value="2">
+										2
+									</option>
+									<option value="3">
+										3
+									</option>
+									<option value="4">
+										4
+									</option>
+									<option value="6">
+										6
+									</option>
+								</select></td>
+							</tr>
+							<tr class="page-settings-hightlight-xs">
+								<td style="width: 25%;"><label for="page-settings-card-column-count-xs">Phone</label></td>
+								<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="xs" id="page-settings-card-column-count-xs">
+									<option selected="selected" value="1">
+										1
+									</option>
+									<option value="2">
+										2
+									</option>
+									<option value="3">
+										3
+									</option>
+									<option value="4">
+										4
+									</option>
+									<option value="6">
+										6
+									</option>
+								</select></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<a class="js-page-settings-cancel btn btn-default" data-dismiss="modal" href="#">Cancel</a> <a class="js-page-settings-save btn btn-primary" href="#">Save changes</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+-->
