@@ -1,8 +1,8 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Optional, Output, Self, SimpleChanges, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit, Optional, Self, SimpleChanges } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { of } from 'rxjs';
 import { startWith, tap } from 'rxjs/operators';
-import { cleanBlank, ifEmpty, onlyNumber } from './utils/validation';
+import { cleanBlank, ifEmpty, onlyNumber, validateEmail } from './utils/validation';
 
 @Component({
   selector: 'app-validation',
@@ -17,8 +17,12 @@ export class ValidationComponent implements OnInit {
   @Input() isnumeric = false;
   @Input() messageOnlyNumeric: string = 'Field is just numeric.';
 
+  @Input() isemail = false;
+  @Input() messageJustEmail: string = 'Field is just numeric.';
+
   required$:any = of(true);
   justnumeric$:any = of(true);
+  justemail$:any = of(true);
 
   validFunction = tap((val) => val=== false? this.ngcontrol.control?.setErrors({}):this.ngcontrol.control?.clearValidators());
   data: string = ''
@@ -67,6 +71,11 @@ export class ValidationComponent implements OnInit {
           case 'isnumeric':{
             this.setErrorField();
             this.justnumeric$  =this.ngcontrol.control?.valueChanges.pipe(startWith(this.data),onlyNumber,this.validFunction);
+          }
+          break
+          case 'isemail':{
+            this.setErrorField();
+            this.justemail$ =this.ngcontrol.control?.valueChanges.pipe(startWith(this.data),validateEmail,this.validFunction);
           }
           break
         }
