@@ -1,1 +1,3 @@
-<span  *ngIf="(required$ | async) === false" class="help-block">{{messagerequired}}</span>
+<span  *ngIf="(required$ | async) === false"  class="help-block">{{messagerequired}}</span>
+<span  *ngIf="(justnumeric$ | async) === false" [ngStyle]="{'display':(required$ | async ) === false ? 'none':'block' }" class="help-block">{{messageOnlyNumeric}}</span>
+

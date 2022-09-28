@@ -193,7 +193,13 @@
 																		<div class="form-group col-sm-9">
 																			<div class="col-input" data-column="capacity" style="width:100%;max-width:100%">
 																				<app-input-custom [data]="arena?.Capacity" formControlName="capacity" [placeholder]="'Capacity'"></app-input-custom>
-																				<app-validation formControlName="capacity" [requiredfield]="true" [messagerequired]="'The Capacity is required'"></app-validation>
+																				<app-validation 
+																				formControlName="capacity" 
+																				[requiredfield]="true" 
+																				[messagerequired]="'The Capacity is required'"
+																				[isnumeric]="true"
+																				[messageOnlyNumeric]="'The Capacity is just numeric'">
+																			</app-validation>
 																			</div>
 																		</div>
 																	</div>

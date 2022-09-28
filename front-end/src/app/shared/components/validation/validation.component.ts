@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Optional, Output, Self, SimpleChanges, ViewChild } from '@angular/core';
-import { FormControl, NgControl } from '@angular/forms';
-import { Observable, of } from 'rxjs';
+import { NgControl } from '@angular/forms';
+import { of } from 'rxjs';
 import { startWith, tap } from 'rxjs/operators';
-import { cleanBlank, ifEmpty } from './utils/validation';
+import { cleanBlank, ifEmpty, onlyNumber } from './utils/validation';
 
 @Component({
   selector: 'app-validation',
@@ -12,9 +12,15 @@ import { cleanBlank, ifEmpty } from './utils/validation';
 export class ValidationComponent implements OnInit {
 
   @Input() requiredfield = false;
-  required$:any = of(true);
-  validFunction = tap((val) => val=== false? this.ngcontrol.control?.setErrors({}):this.ngcontrol.control?.clearValidators());
   @Input() messagerequired: string = 'Field is required.';
+
+  @Input() isnumeric = false;
+  @Input() messageOnlyNumeric: string = 'Field is just numeric.';
+
+  required$:any = of(true);
+  justnumeric$:any = of(true);
+
+  validFunction = tap((val) => val=== false? this.ngcontrol.control?.setErrors({}):this.ngcontrol.control?.clearValidators());
   data: string = ''
 
   constructor(@Self() @Optional() public ngcontrol: NgControl, private ref: ChangeDetectorRef) {
@@ -57,6 +63,12 @@ export class ValidationComponent implements OnInit {
             this.setErrorField();
             this.required$ = this.ngcontrol.control?.valueChanges.pipe(startWith(this.data),cleanBlank,ifEmpty,this.validFunction);
           }
+          break
+          case 'isnumeric':{
+            this.setErrorField();
+            this.justnumeric$  =this.ngcontrol.control?.valueChanges.pipe(startWith(this.data),onlyNumber,this.validFunction);
+          }
+          break
         }
       }
     }
