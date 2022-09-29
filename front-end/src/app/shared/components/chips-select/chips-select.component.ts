@@ -2,7 +2,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {ChangeDetectorRef, Component, ElementRef, HostListener, Input, OnChanges, Optional, Self, SimpleChanges, ViewChild } from '@angular/core';
 import {ControlValueAccessor, FormControl, NgControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 const NOEXISTELEMENT = 0;
@@ -19,11 +19,16 @@ interface DataLoad {
 export class ChipsSelectComponent implements OnChanges, ControlValueAccessor {
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  dataCtrl = new FormControl('');
+  dataCtrl = new FormControl<any | string | DataLoad | null>({});
   filteredData: Observable<any|DataLoad[]> = new  Observable<DataLoad[]>() ;
   @Input() dataset: DataLoad[] =  [];
   @Input() allData:  DataLoad[] = [];
   @Input() placeholder = '';
+  @Input() type = 'multi';
+  tempoData:  DataLoad[] = [];
+  defaultValue:any|DataLoad[]=[{ id:'1',name:'Apple'}]
+
+
   @ViewChild('dataInput') dataInput: any | ElementRef<HTMLInputElement>;
   infosave:any;
 
@@ -31,7 +36,6 @@ export class ChipsSelectComponent implements OnChanges, ControlValueAccessor {
     if(this.ngcontrol){
       this.ngcontrol.valueAccessor = this
     }
-    this.loadData()
   }
 
     /**
@@ -48,10 +52,7 @@ export class ChipsSelectComponent implements OnChanges, ControlValueAccessor {
   public registerOnTouched(fn: any): void {
      this.onTouchedFn = fn;
   }
-  public writeValue(obj: any): void {
-    //debugger
-   // this.onChangeFn(this.infosave);
-  }
+  public writeValue(obj: any): void { }
    
   public onChange($event:any): void {
     this.ref.detectChanges()
@@ -86,13 +87,14 @@ export class ChipsSelectComponent implements OnChanges, ControlValueAccessor {
 
   private _filter(value: DataLoad | string |any ): DataLoad[] {
     let filterValue='';  
-    if(typeof value === 'string'){
-      filterValue = value
+    if(typeof value === 'string'){  
+      filterValue = value;   
     }
     else{
       filterValue = value.name.toLowerCase()
     }
-    return this.allData.filter(dataval => dataval.name.toLowerCase().includes(filterValue));
+    const res = this.allData.filter(dataval => dataval.name.toLowerCase().includes(filterValue));
+    return res
   }
 
   ngOnChanges(changes: SimpleChanges): void{
@@ -101,7 +103,21 @@ export class ChipsSelectComponent implements OnChanges, ControlValueAccessor {
     }
     if (!!changes['dataset']?.currentValue){
       this.onChangeFn(changes['dataset']?.currentValue);
+      this.tempoData = changes['dataset']?.currentValue
     }
+    if (!!changes['type']?.currentValue && changes['type']?.currentValue === 'single'){
+      const mapVaues:any | string | DataLoad | null= this.tempoData.find((val:DataLoad|undefined) => val);
+      this.dataCtrl = new FormControl<string | DataLoad>(mapVaues);
+    }
+  }
+
+  displayFn(data: DataLoad): string {
+    return data && data.name ? data.name : '';
+  }
+
+  optionSelected(event: MatAutocompleteSelectedEvent):void{
+    this.dataset= [event.option.value];
+    this.onChangeFn(this.dataset);
   }
 
   @HostListener('click') onClick():void{

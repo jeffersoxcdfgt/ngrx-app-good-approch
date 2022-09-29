@@ -32,6 +32,8 @@ import { ChipsSelectComponent } from './components/chips-select/chips-select.com
 import {MatChipsModule} from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 
 export const MATERIAL_MODULES = [
@@ -41,7 +43,9 @@ export const MATERIAL_MODULES = [
   MatDialogModule,
   MatChipsModule,
   MatAutocompleteModule,
-  MatSelectModule
+  MatSelectModule,
+  MatFormFieldModule,
+  MatInputModule
 ]
 
 export const PIPES_LIST = [

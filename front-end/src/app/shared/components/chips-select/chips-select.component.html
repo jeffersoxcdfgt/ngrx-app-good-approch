@@ -1,4 +1,4 @@
-<mat-form-field class="show-chip-list" appearance="outline">
+<mat-form-field class="show-chip-list" appearance="outline" *ngIf="type === 'multi'; else Nomulti">
     <mat-chip-list #chipList aria-label="Data selection">
       <mat-chip
         *ngFor="let inf of dataset"
@@ -22,4 +22,24 @@
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
+  <ng-template #Nomulti>
+    <div class="select-one-form" *ngIf="type === 'single'; else NoSet">
+      <mat-form-field class="select-one-full-width" appearance="outline">
+        <input type="text"
+               [placeholder]="placeholder"
+               aria-label="Data select"
+               matInput
+               [formControl]="dataCtrl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="optionSelected($event)" [displayWith]="displayFn">
+          <mat-option *ngFor="let option of filteredData | async" [value]="option">
+            {{option.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <ng-template #NoSet>
+        <strong>No setting up control</strong>
+    </ng-template>
+  </ng-template>
   
