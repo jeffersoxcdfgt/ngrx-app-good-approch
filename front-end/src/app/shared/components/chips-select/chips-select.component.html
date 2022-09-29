@@ -1,0 +1,25 @@
+<mat-form-field class="show-chip-list" appearance="outline">
+    <mat-chip-list #chipList aria-label="Data selection">
+      <mat-chip
+        *ngFor="let inf of dataset"
+        (removed)="remove(inf)">
+        {{inf.name}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        [placeholder]="placeholder"
+        #dataInput
+        [formControl]="dataCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let info of filteredData | async" [value]="info">
+        {{info.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  

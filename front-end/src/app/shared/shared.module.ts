@@ -28,20 +28,26 @@ import { TestAreaTinymceComponent } from './components/test-area-tinymce/test-ar
 import { LogoCustomComponent } from './components/logo-custom/logo-custom.component';
 import { ValidationComponent } from './components/validation/validation.component';
 import { DialogTableCardComponent } from './components/dialog-table-card/dialog-table-card.component';
+import { ChipsSelectComponent } from './components/chips-select/chips-select.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
 
 
 export const MATERIAL_MODULES = [
   MatExpansionModule,
   MatMenuModule,
   MatIconModule,
-  MatDialogModule
+  MatDialogModule,
+  MatChipsModule,
+  MatAutocompleteModule,
+  MatSelectModule
 ]
 
 export const PIPES_LIST = [
   NullObjectToConvertPipe,
   NoSanitizePipe,
 ]
-
 
 @NgModule({
   imports:[
@@ -65,7 +71,8 @@ export const PIPES_LIST = [
     TestAreaTinymceComponent,
     LogoCustomComponent,
     ValidationComponent,
-    DialogTableCardComponent
+    DialogTableCardComponent,
+    ChipsSelectComponent
   ],
   providers:[],
   exports:[
@@ -85,7 +92,8 @@ export const PIPES_LIST = [
     TestAreaTinymceComponent,
     LogoCustomComponent,
     ValidationComponent,
-    DialogTableCardComponent
+    DialogTableCardComponent,
+    ChipsSelectComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
