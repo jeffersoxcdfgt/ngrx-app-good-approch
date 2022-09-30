@@ -1,9 +1,11 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {ChangeDetectorRef, Component, ElementRef, HostListener, Input, OnChanges, Optional, Self, SimpleChanges, ViewChild } from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, HostListener, Input, OnChanges, OnInit, Optional, Self, SimpleChanges, ViewChild } from '@angular/core';
 import {ControlValueAccessor, FormControl, NgControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import {Observable, of} from 'rxjs';
+import { takeUntil} from 'rxjs/operators';
+import {Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { UnsubscribeComponent } from '../../unsubscribe/unsubscribe.component';
 
 const NOEXISTELEMENT = 0;
 interface DataLoad {
@@ -16,26 +18,35 @@ interface DataLoad {
   templateUrl: './chips-select.component.html',
   styleUrls: ['./chips-select.component.scss']
 })
-export class ChipsSelectComponent implements OnChanges, ControlValueAccessor {
+export class ChipsSelectComponent extends UnsubscribeComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  dataCtrl = new FormControl<any | string | DataLoad | null>({});
+  dataCtrl = new FormControl<any | string | DataLoad | null>('');
+  optionControl = new FormControl<string>('');
+
   filteredData: Observable<any|DataLoad[]> = new  Observable<DataLoad[]>() ;
   @Input() dataset: DataLoad[] =  [];
   @Input() allData:  DataLoad[] = [];
   @Input() placeholder = '';
   @Input() type = 'multi';
   tempoData:  DataLoad[] = [];
-  defaultValue:any|DataLoad[]=[{ id:'1',name:'Apple'}]
-
-
+  defaultValue:any|DataLoad[];
+  
   @ViewChild('dataInput') dataInput: any | ElementRef<HTMLInputElement>;
   infosave:any;
 
   constructor(@Self() @Optional() public ngcontrol: NgControl, private ref: ChangeDetectorRef) {
+    super();
     if(this.ngcontrol){
       this.ngcontrol.valueAccessor = this
     }
+  }
+
+  ngOnInit(): void {
+    this.optionControl?.valueChanges.pipe(takeUntil(this.destroyed$)).subscribe((id)=>{
+      const resFilter = this.allData.filter((row:DataLoad)=> row.id === id )
+      this.onChangeFn(resFilter);
+    })
   }
 
     /**
@@ -80,9 +91,9 @@ export class ChipsSelectComponent implements OnChanges, ControlValueAccessor {
     if(res.length === NOEXISTELEMENT){
       this.dataset.push(event.option.value);
       this.dataInput.nativeElement.value = '';
-      this.dataCtrl.setValue(null);  
       this.onChangeFn(this.dataset);
-    }    
+    } 
+    this.dataCtrl.setValue(null);     
   }
 
   private _filter(value: DataLoad | string |any ): DataLoad[] {
@@ -108,6 +119,10 @@ export class ChipsSelectComponent implements OnChanges, ControlValueAccessor {
     if (!!changes['type']?.currentValue && changes['type']?.currentValue === 'single'){
       const mapVaues:any | string | DataLoad | null= this.tempoData.find((val:DataLoad|undefined) => val);
       this.dataCtrl = new FormControl<string | DataLoad>(mapVaues);
+    }
+    if (!!changes['type']?.currentValue && changes['type']?.currentValue === 'normal'){
+      const idVal:any|string= this.tempoData.map((val:DataLoad) => val.id).reduce((before,after)=> before+after);
+      this.optionControl = new FormControl<string>(idVal);
     }
   }
 

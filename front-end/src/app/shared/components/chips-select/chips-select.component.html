@@ -1,5 +1,4 @@
-<mat-form-field class="show-chip-list" appearance="outline" *ngIf="type === 'multi'; else Nomulti">
-    <mat-chip-list #chipList aria-label="Data selection">
+    <mat-chip-list class="form-control"  style="padding: 2px !important;" *ngIf="type === 'multi'; else Nomulti" #chipList aria-label="Data selection" >
       <mat-chip
         *ngFor="let inf of dataset"
         (removed)="remove(inf)">
@@ -8,27 +7,26 @@
           <mat-icon>cancel</mat-icon>
         </button>
       </mat-chip>
-      <input
-        [placeholder]="placeholder"
-        #dataInput
-        [formControl]="dataCtrl"
-        [matAutocomplete]="auto"
-        [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes">
-    </mat-chip-list>
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <input 
+      class="input_custom_mat"
+      [placeholder]="placeholder"
+      #dataInput
+      [formControl]="dataCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes">    
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
       <mat-option *ngFor="let info of filteredData | async" [value]="info">
         {{info.name}}
       </mat-option>
     </mat-autocomplete>
-  </mat-form-field>
+    </mat-chip-list>
   <ng-template #Nomulti>
-    <div class="select-one-form" *ngIf="type === 'single'; else NoSet">
-      <mat-form-field class="select-one-full-width" appearance="outline">
+    <div class="select-one-form" *ngIf="type === 'single'; else OptType">
         <input type="text"
+               class="form-control" 
                [placeholder]="placeholder"
                aria-label="Data select"
-               matInput
                [formControl]="dataCtrl"
                [matAutocomplete]="auto">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="optionSelected($event)" [displayWith]="displayFn">
@@ -36,10 +34,16 @@
             {{option.name}}
           </mat-option>
         </mat-autocomplete>
-      </mat-form-field>
     </div>
-    <ng-template #NoSet>
+    <ng-template #OptType>
+      <div *ngIf="type === 'normal'; else NoSet">
+          <select matNativeControl class="form-control"  [formControl]="optionControl" >
+            <option *ngFor="let data of allData" [value]="data.id">{{data.name}}</option>
+          </select >
+      </div>      
+      <ng-template #NoSet>
         <strong>No setting up control</strong>
+      </ng-template>
     </ng-template>
   </ng-template>
   
