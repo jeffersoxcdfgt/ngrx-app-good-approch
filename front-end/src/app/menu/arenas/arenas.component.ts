@@ -9,9 +9,12 @@ import { selectId } from 'src/app/shared/routing/id.selectors';
 import { Arena } from '../models/arena';
 import { arenaDeleteRow } from './arenas-view/store/actions/arenas-delete.action';
 import { arenasGetAll } from './store/actions/arenas.action';
+import { sendTypeView } from './store/actions/type-view.action';
 import { selectAllArenas } from './store/reducers/arenas.reducer';
+import { setTypeViewResp } from './store/reducers/type-view.reducer';
 
-export const CLEANARRAY =  filter((val:Arena[]) => val.length >0 )
+export const CLEANARRAY =  filter((val:Arena[]) => val.length >0)
+export const IFSPACE =  map((val:string) => val === '' ? 'Grid': val)
 
 export const FILTER_ARENA = (search:string) =>  map((arena:Arena[]) => {
   return arena.filter((are:Arena)=> are.arenaTitle.toLocaleLowerCase().includes(search.toLowerCase()) || 
@@ -31,6 +34,7 @@ export class ArenasComponent implements OnInit {
   arenasList$ : Observable<Arena[]> = new Observable<Arena[]>();
   searchTerm: string = '';
   showTableCard: boolean = true;
+  typeViewshow$:Observable<string>  = this.store.select(setTypeViewResp).pipe(IFSPACE);
 
   constructor(private store :Store<State>,private dialog: MatDialog,) { }
 
@@ -56,13 +60,14 @@ export class ArenasComponent implements OnInit {
           ok: 'Ok',
           cancel: 'Cancel'
         },
-        opt: !this.showTableCard ? 'Cards' : 'Grid'
+        opt:this.typeViewshow$
       }
     });
 
     dialogRef.afterClosed().subscribe((confirmed: any) => {
       if (confirmed.opt) {
-           this.showTableCard = confirmed.value === 'Cards' ? false : true
+          this.store.dispatch(sendTypeView({ sendview: confirmed.value }));  
+           //this.showTableCard = confirmed.value === 'Cards' ? false : true
       }
     });
 

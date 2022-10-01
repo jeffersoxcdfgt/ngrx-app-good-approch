@@ -25,6 +25,12 @@ import { ArenasAddEditService } from './arenas/arenas-view/store/services/arenas
 import { arenadeleteFeature } from './arenas/arenas-view/store/reducers/arenas-delete.reducer';
 import { ArenasDeleteEffects } from './arenas/arenas-view/store/effects/arenas-delete.effect';
 import { ArenasDeleteService } from './arenas/arenas-view/store/services/arenas-delete.service';
+
+//Type view
+import { typeViewFeature} from './arenas/store/reducers/type-view.reducer';
+import { TypeViewEffects} from './arenas/store/effects/type-view.effect';
+import { TypeViewService } from './arenas/store/services/type-view.service';
+
 //Teams
 import { teamsFeature} from './teams/store/reducers/teams.reducer';
 import { TeamsEffects} from './teams/store/effects/teams.effect';
@@ -45,6 +51,7 @@ import { TeamsService } from './teams/store/services/teams.service';
     StoreModule.forFeature(arenaAddEditFeature),
     StoreModule.forFeature(arenadeleteFeature),
     StoreModule.forFeature(teamsFeature),
+    StoreModule.forFeature(typeViewFeature),
     EffectsModule.forFeature(
       [
         LoginEffects,
@@ -52,7 +59,8 @@ import { TeamsService } from './teams/store/services/teams.service';
         ArenasByIdEffects,
         ArenasAddEditEffects,
         ArenasDeleteEffects,
-        TeamsEffects
+        TeamsEffects,
+        TypeViewEffects
       ]),
   ],
   declarations: [
@@ -66,7 +74,8 @@ import { TeamsService } from './teams/store/services/teams.service';
     ArenasByIdService,
     ArenasAddEditService,
     ArenasDeleteService,
-    TeamsService
+    TeamsService,
+    TypeViewService
   ]
 })
 export class MenuModule {}

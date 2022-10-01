@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dialog-table-card',
@@ -8,7 +9,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DialogTableCardComponent implements OnInit {
 
-  selection: string = 'Grid'
+  selection$:Observable<string> = new Observable<string>()
+  setType:string = '';
 
   ngOnInit(): void {
   }
@@ -24,15 +26,19 @@ export class DialogTableCardComponent implements OnInit {
           this.cancelButtonText = data.buttonText.cancel || this.cancelButtonText;
         }
         if(data.opt){
-          this.selection = data.opt;
+          this.selection$ = data.opt;
         }
       }
+  }
+
+  changesOpt($event:string):void{
+    this.setType= $event;
   }
 
   onConfirmClick(): void {
     this.dialogRef.close({
       opt:true,
-      value:this.selection
+      value:this.setType
     });
   }
 }

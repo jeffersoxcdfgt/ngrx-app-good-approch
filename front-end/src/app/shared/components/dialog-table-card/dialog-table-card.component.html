@@ -15,7 +15,7 @@
 							<tr>
 								<td class="page-settings-label-container"><label for="page-settings-viewmode-control">View mode</label></td>
 								<td class="page-settings-control-container" colspan="2">
-                                    <select class="form-control js-page-settings-viewmode-control" [(ngModel)]="selection" id="page-settings-viewmode-control">
+                                    <select class="form-control js-page-settings-viewmode-control" [ngModel]="selection$ | async" (ngModelChange)="changesOpt($event)" id="page-settings-viewmode-control">
 									<option data-name="TableViewMode" value="Grid">
 										Grid
 									</option>

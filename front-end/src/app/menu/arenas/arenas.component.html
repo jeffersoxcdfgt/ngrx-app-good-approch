@@ -212,7 +212,7 @@
 						</div>
 						<div class="filter-status js-filter-status"></div>
 						<div class="js-grid-message-container"></div>
-						<ng-container *ngIf="showTableCard; else viewCard">
+						<ng-container *ngIf="(typeViewshow$ | async) ===''  || (typeViewshow$ | async) ==='Grid' ; else viewCard">
 						<table class="table text-center table-striped">
 							<thead class="js-column-filter-container">
 								<tr>
