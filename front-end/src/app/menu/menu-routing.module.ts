@@ -40,5 +40,6 @@ export const menuRoutedComponents = [
     HomeComponent,
     ArenasComponent,
     ArenasViewComponent,
-    TeamsComponent
+    TeamsComponent,
+    TeamsViewComponent
 ];
