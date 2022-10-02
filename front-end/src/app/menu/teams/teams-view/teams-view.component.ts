@@ -1,3 +1,4 @@
+import {Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store'
 import { Observable} from 'rxjs';;
@@ -16,7 +17,11 @@ import { selectedOneTeamsByListArenas} from './store/reducers/teams-id.reducer';
 export class TeamsViewComponent implements OnInit {
 
   team$ : Observable<Team> = new Observable<Team>();
-  constructor(private store :Store<State>) { }
+  typeView :string = '';
+
+  constructor(private store :Store<State>,location: Location) {
+    this.typeView = location.path();
+  }
 
   ngOnInit(): void {
     this.store.dispatch(teamGetById());

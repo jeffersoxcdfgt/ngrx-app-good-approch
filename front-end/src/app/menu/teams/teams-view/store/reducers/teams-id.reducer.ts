@@ -47,8 +47,8 @@ export const selectedOneTeamsByListArenas = createSelector(
   selectGetTeamById,
   selectAllArenas,
   (team: Team|null,arenas: Arena[]):Team|null =>{
-    if(!!team && !!arenas && arenas.length >0){
+    if(!!team && team.id !=='' && !!arenas && arenas.length >0){
        return getOneTeamByArenas(team, arenas);
     }
-    return null; 
+    return  team; 
   });

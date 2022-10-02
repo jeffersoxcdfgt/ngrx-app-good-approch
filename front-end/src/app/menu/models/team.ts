@@ -1,5 +1,5 @@
 export interface Team {
-    id?: number;
+    id?: number|string;
     logo: string;
     name: string;
     Founded: string;

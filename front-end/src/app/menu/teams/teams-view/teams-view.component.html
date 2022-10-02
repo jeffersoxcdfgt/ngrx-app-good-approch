@@ -29,7 +29,7 @@
                         </ol>
                         <h1>{{ team?.name }}</h1>
                     </div>
-                    <div class="form-horizontal">					
+                    <div class="form-horizontal" *ngIf="typeView !== '/menu/teams/add' &&  !this.typeView.includes('menu/teams/edit/') ; else addEdit">					
                         <div class="row">
                             <div class="col-md-12 js-message-container"></div>
                             <div class="clearfix"></div>
@@ -38,7 +38,7 @@
                                     <fieldset class="col-md-12 form-static form-horizontal" >
                                         <div class="row">
                                             <div class="form-group form-group-label col-sm-3">
-                                                <label class="control-label" data-column="title">Team name</label>
+                                                <label class="control-label" data-column="title">Team Name</label>
                                             </div>
                                             <div class="form-group col-sm-9">
                                                 <div class="form-control-static">
@@ -140,6 +140,9 @@
                             </div>
                         </div>
                     </div>
+                    <ng-template #addEdit>
+                         Team Add and Edit
+                    </ng-template>
                 </div>		
                 <hr>
                 <app-footer></app-footer>

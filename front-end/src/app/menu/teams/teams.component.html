@@ -160,6 +160,11 @@
 						<div class="addition-block js-actions">
 							<div class="btn-toolbar addition-block-left pull-left">
 								<div class="btn-group">
+									<a class="btn btn-default pgui-add" routerLink="/menu/teams/add"  title="Add new Teams">
+										<i class="icon-plus"></i> <span class="visible-lg-inline">Add new</span>
+									</a>
+								</div>								
+								<div class="btn-group">
 									<a class="btn btn-default" title="Refresh"><i class="icon-page-refresh"></i> <span class="visible-lg-inline">Refresh</span></a>
 								</div>
 								<div class="btn-group export-button">
@@ -375,6 +380,14 @@
 												<a class="link-icon" routerLink="/menu/teams/{{team.id}}"  data-modal-operation="view" title="View">
 													<i class="icon-view"></i>
 												</a>
+											</span>
+											<span data-column-name="edit" class="operation-item">            
+												<a routerLink="/menu/teams/edit/{{team.id}}" title="Edit" class="link-icon">
+												<i class="icon-edit"></i></a>
+											</span>
+											<span data-column-name="delete" class="operation-item">            
+												<a title="Delete" class="link-icon new_hover">
+												<i class="icon-remove"></i>	</a>
 											</span>
 										</td>
 									</tr>

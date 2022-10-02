@@ -22,6 +22,8 @@ const menuRoutes: Routes  =  [{
     { path: 'arenas/edit/:id' , component:  ArenasViewComponent, canActivate: [AuthGuardService] },
     { path: 'teams' , component:  TeamsComponent, canActivate: [AuthGuardService] },
     { path: 'teams/:id' , component:  TeamsViewComponent, canActivate: [AuthGuardService] },
+    { path: 'teams/add' , component:  TeamsViewComponent, canActivate: [AuthGuardService] },
+    { path: 'teams/edit/:id' , component:  TeamsViewComponent, canActivate: [AuthGuardService] },
   ]
 }] as Routes;
 
