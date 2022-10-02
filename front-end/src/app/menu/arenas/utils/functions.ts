@@ -19,3 +19,13 @@ export const joinTeamsAndArenas = (teams: Team[], arenas:Arena[]) =>{
         return a.concat(b)
     },[])
 }
+
+export const getOneTeamByArenas = ( team: Team , arenas: Arena[] ):Team =>{
+    return arenas.filter((arena:Arena) => arena.id === team.arena)
+        .map((dataarena:Arena)=>({
+              ...team,
+              arena:dataarena.arenaTitle
+            }
+        ))
+        .reduce((before,after)=>({ ...before, ...after}))
+}

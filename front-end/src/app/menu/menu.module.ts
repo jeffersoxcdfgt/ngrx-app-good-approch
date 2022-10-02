@@ -36,6 +36,11 @@ import { teamsFeature} from './teams/store/reducers/teams.reducer';
 import { TeamsEffects} from './teams/store/effects/teams.effect';
 import { TeamsService } from './teams/store/services/teams.service';
 
+//Teams view
+import { teambyidFeature} from './teams/teams-view/store/reducers/teams-id.reducer';
+import { TeamsByIdEffects} from './teams/teams-view/store/effects/teams-id.effect';
+import { TeamsByIdService } from './teams/teams-view/store/services/teams-id.service';
+
 
 @NgModule({
   imports: [
@@ -52,6 +57,7 @@ import { TeamsService } from './teams/store/services/teams.service';
     StoreModule.forFeature(arenadeleteFeature),
     StoreModule.forFeature(teamsFeature),
     StoreModule.forFeature(typeViewFeature),
+    StoreModule.forFeature(teambyidFeature),
     EffectsModule.forFeature(
       [
         LoginEffects,
@@ -60,7 +66,8 @@ import { TeamsService } from './teams/store/services/teams.service';
         ArenasAddEditEffects,
         ArenasDeleteEffects,
         TeamsEffects,
-        TypeViewEffects
+        TypeViewEffects,
+        TeamsByIdEffects
       ]),
   ],
   declarations: [
@@ -75,7 +82,8 @@ import { TeamsService } from './teams/store/services/teams.service';
     ArenasAddEditService,
     ArenasDeleteService,
     TeamsService,
-    TypeViewService
+    TypeViewService,
+    TeamsByIdService
   ]
 })
 export class MenuModule {}

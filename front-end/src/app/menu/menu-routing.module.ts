@@ -8,6 +8,7 @@ import { ArenasComponent } from './arenas/arenas.component';
 import { TeamsComponent } from './teams/teams.component';
 import { AuthGuardService } from '../shared/guards/auth-guard.service';
 import { ArenasViewComponent } from './arenas/arenas-view/arenas-view.component';
+import { TeamsViewComponent } from './teams/teams-view/teams-view.component';
 
 const menuRoutes: Routes  =  [{
   path: '',
@@ -20,6 +21,7 @@ const menuRoutes: Routes  =  [{
     { path: 'arenas/add' , component:  ArenasViewComponent, canActivate: [AuthGuardService] },
     { path: 'arenas/edit/:id' , component:  ArenasViewComponent, canActivate: [AuthGuardService] },
     { path: 'teams' , component:  TeamsComponent, canActivate: [AuthGuardService] },
+    { path: 'teams/:id' , component:  TeamsViewComponent, canActivate: [AuthGuardService] },
   ]
 }] as Routes;
 

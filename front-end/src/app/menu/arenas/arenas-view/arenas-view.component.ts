@@ -1,9 +1,9 @@
-import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store'
-import { filter, first, map, Observable, takeUntil} from 'rxjs';;
+import { filter, map, Observable, takeUntil} from 'rxjs';;
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { selectId } from 'src/app/shared/routing/id.selectors';
 import { UnsubscribeComponent } from 'src/app/shared/unsubscribe/unsubscribe.component';
