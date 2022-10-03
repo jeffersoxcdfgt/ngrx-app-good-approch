@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 
 import { TeamsViewComponent } from './teams-view.component';
@@ -11,7 +14,11 @@ describe('TeamsViewComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ TeamsViewComponent ],
       imports:[
-        StoreModule.forRoot({})
+        StoreModule.forRoot({}),
+        RouterTestingModule,
+        BrowserModule,
+        ReactiveFormsModule,
+        FormsModule
       ]
     })
     .compileComponents();

@@ -67,7 +67,6 @@ export class ArenasComponent implements OnInit {
     dialogRef.afterClosed().subscribe((confirmed: any) => {
       if (confirmed.opt) {
           this.store.dispatch(sendTypeView({ sendview: confirmed.value }));  
-           //this.showTableCard = confirmed.value === 'Cards' ? false : true
       }
     });
 

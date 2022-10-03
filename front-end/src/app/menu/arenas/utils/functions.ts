@@ -24,7 +24,8 @@ export const getOneTeamByArenas = ( team: Team , arenas: Arena[] ):Team =>{
     return arenas.filter((arena:Arena) => arena.id === team.arena)
         .map((dataarena:Arena)=>({
               ...team,
-              arena:dataarena.arenaTitle
+              arena:dataarena.arenaTitle,
+              arenaid:dataarena.id
             }
         ))
         .reduce((before,after)=>({ ...before, ...after}))
