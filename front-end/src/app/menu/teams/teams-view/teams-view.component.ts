@@ -80,4 +80,32 @@ export class TeamsViewComponent implements OnInit {
     //Division
   }
 
+
+  saveTeam(typeView?: string){
+    if(this.formTeam.valid){
+      const payload = this.populatedPayload();
+    }
+    else{
+      this.formTeam.markAllAsTouched()
+    }
+
+  }
+
+  populatedPayload(): Team{
+    const payload:Team  = {      
+      logo: this.formTeam.get('logo')?.value,
+      name: this.formTeam.get('teamName')?.value,
+      Founded: this.formTeam.get('founded')?.value,
+      About: this.formTeam.get('about')?.value,
+      divison: this.convertArrayToId(this.formTeam.get('division')?.value),
+      arena: this.convertArrayToId(this.formTeam.get('arena')?.value)
+    }
+    return payload
+  }
+
+  convertArrayToId(value:DataLoad[]):string{
+    const res = value.map((data:DataLoad) => data.id).reduce((b,a)=> b+a )
+    return res;
+  }
+
 }

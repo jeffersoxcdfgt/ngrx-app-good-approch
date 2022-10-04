@@ -152,7 +152,7 @@
                                                         <div class="col-sm-9 col-sm-offset-3">
                                                             <div class="btn-toolbar">
                                                                 <div class="btn-group">
-                                                                    <button class="btn btn-primary js-save js-primary-save" data-action="open" type="submit">Save</button> 
+                                                                    <button class="btn btn-primary js-save js-primary-save" (click)="saveTeam()" data-action="open" type="submit">Save</button> 
                                                                     <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                                                         <span class="caret"></span>
                                                                     </button>
@@ -192,6 +192,7 @@
                                                                     <div class="form-group col-sm-9">
                                                                         <div class="col-input" data-column="caption" style="width:100%;max-width:100%">
                                                                             <app-input-custom [data]="team?.name" formControlName="teamName" [placeholder]="'Team Name'"></app-input-custom>
+                                                                            <app-validation formControlName="teamName" [requiredfield]="true" [messagerequired]="'The Team Name is required'"></app-validation>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -203,6 +204,13 @@
                                                                     <div class="form-group col-sm-9">
                                                                         <div class="col-input" data-column="capacity" style="width:100%;max-width:100%">
                                                                             <app-input-custom [data]="team?.Founded" formControlName="founded" [placeholder]="'Founded'"></app-input-custom>
+                                                                            <app-validation 
+																				formControlName="founded" 
+																				[requiredfield]="true" 
+																				[messagerequired]="'The Founded year is required'"
+																				[isnumeric]="true"
+																				[messageOnlyNumeric]="'The Founded year is just numeric'">
+																			</app-validation>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -214,6 +222,7 @@
                                                                     <div class="form-group col-sm-9">
                                                                         <div class="col-input" data-column="about" style="width:100%;max-width:100%">
                                                                             <app-test-area-tinymce [data]="team?.About" formControlName="about"></app-test-area-tinymce>
+                                                                            <app-validation formControlName="about" [requiredfield]="true" [messagerequired]="'The About is required'"></app-validation>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -224,6 +233,7 @@
                                                                     </div>
                                                                     <div class="form-group col-sm-9">
                                                                         <app-logo-custom [data]="team?.logo" formControlName="logo" ></app-logo-custom>
+                                                                        <app-validation formControlName="logo" [requiredfield]="true" [messagerequired]="'The Logo is required'"></app-validation>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -238,6 +248,7 @@
                                                                         [type]="'single'"
                                                                         formControlName="arena">
                                                                         </app-chips-select>
+                                                                        <app-validation formControlName="arena" [requiredfield]="true" [messagerequired]="'The Arena is required'"></app-validation>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -252,6 +263,7 @@
                                                                         [type]="'normal'"
                                                                         formControlName="division">
                                                                         </app-chips-select>
+                                                                        <app-validation formControlName="division" [requiredfield]="true" [messagerequired]="'The Division is required'"></app-validation>
                                                                     </div>
                                                                 </div>
                                                             </fieldset>
@@ -278,7 +290,8 @@
                                                         <div class="col-sm-9 col-sm-offset-3">
                                                             <div class="btn-toolbar">
                                                                 <div class="btn-group">
-                                                                    <button class="btn btn-primary js-save js-primary-save" data-action="open" data-url="" type="submit">Save</button> <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                                                    <button class="btn btn-primary js-save js-primary-save" data-action="open" (click)="saveTeam()" data-url="" type="submit">Save</button> 
+                                                                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                                                                     <ul class="dropdown-menu">
                                                                         <li>
                                                                             <a class="js-save" data-action="open" data-url="">Save and return back to the list</a>

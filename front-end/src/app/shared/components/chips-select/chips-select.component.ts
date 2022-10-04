@@ -120,7 +120,11 @@ export class ChipsSelectComponent extends UnsubscribeComponent implements OnInit
       this.dataCtrl = new FormControl<string | DataLoad>(mapVaues);  
 
       const idVal:any|string= this.tempoData.map((val:DataLoad) => val.id).reduce((before,after)=> before+after);
-      this.optionControl = new FormControl<string>(idVal);      
+      this.optionControl = new FormControl<string>(idVal);  
+      if(idVal===''){
+        this.onChangeFn('')
+      }
+      
     }
 
   }
@@ -132,6 +136,12 @@ export class ChipsSelectComponent extends UnsubscribeComponent implements OnInit
   optionSelected(event: MatAutocompleteSelectedEvent):void{
     this.dataset= [event.option.value];
     this.onChangeFn(this.dataset);
+  }
+
+  inputSelect($event:any):void{    
+    if($event?.value.trim()==''){
+      this.onChangeFn('')
+    }
   }
 
   @HostListener('click') onClick():void{

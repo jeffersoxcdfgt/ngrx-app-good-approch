@@ -25,6 +25,7 @@
     <div class="select-one-form" *ngIf="type === 'single'; else OptType">
         <input type="text"
                class="form-control" 
+               (input)="inputSelect($event.target)"
                [placeholder]="placeholder"
                aria-label="Data select"
                [formControl]="dataCtrl"

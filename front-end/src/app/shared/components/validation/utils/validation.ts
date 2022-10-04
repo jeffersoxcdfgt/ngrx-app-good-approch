@@ -1,10 +1,15 @@
 import {  of , iif  } from 'rxjs';
 import {  map ,  mergeMap , filter } from 'rxjs/operators';
 
-export const cleanBlank = map((str: string ) => {
+export const cleanBlank = map((str: any|string ) => {
     if (!str){
       return '';
     }
+
+    if(Array.isArray(str)){
+      return str;
+    }
+
     if (str){
       return str.replace(/[\s-]/g, '');
     }
