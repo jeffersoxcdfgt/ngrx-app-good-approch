@@ -115,15 +115,14 @@ export class ChipsSelectComponent extends UnsubscribeComponent implements OnInit
     if (!!changes['dataset']?.currentValue){
       this.onChangeFn(changes['dataset']?.currentValue);
       this.tempoData = changes['dataset']?.currentValue
-    }
-    if (!!changes['type']?.currentValue && changes['type']?.currentValue === 'single'){
+      
       const mapVaues:any | string | DataLoad | null= this.tempoData.find((val:DataLoad|undefined) => val);
-      this.dataCtrl = new FormControl<string | DataLoad>(mapVaues);
-    }
-    if (!!changes['type']?.currentValue && changes['type']?.currentValue === 'normal'){
+      this.dataCtrl = new FormControl<string | DataLoad>(mapVaues);  
+
       const idVal:any|string= this.tempoData.map((val:DataLoad) => val.id).reduce((before,after)=> before+after);
-      this.optionControl = new FormControl<string>(idVal);
+      this.optionControl = new FormControl<string>(idVal);      
     }
+
   }
 
   displayFn(data: DataLoad): string {

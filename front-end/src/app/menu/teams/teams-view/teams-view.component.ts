@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store'
 import { Observable, of} from 'rxjs';
-import {  map } from 'rxjs/operators';
+import {  filter, map  } from 'rxjs/operators';
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { CLEAN_NULL } from '../../arenas/arenas-view/arenas-view.component';
 import { CLEANARRAY } from '../../arenas/arenas.component';
@@ -16,6 +16,11 @@ import { selectedOneTeamsByListArenas} from './store/reducers/teams-id.reducer';
 
 const MAP_SET_ARENA = map((arenas:Arena[]) => arenas.map((row:Arena)=>({id:row.id , name:row.arenaTitle})));
 const MAP_ONE_ROW = map((team:any|Team) =>([{ id:team.arenaid, name:team?.arena }]));
+const FILTER_ROW = filter((arenarow:any|Team) => {
+    return arenarow !== undefined && arenarow[0].id !== undefined
+});
+
+
 const MAP_DIVISON = map((team:Team)=>[{id:team.divison, name:team.divison}]);
 
 interface DataLoad {
@@ -66,7 +71,7 @@ export class TeamsViewComponent implements OnInit {
     this.team$ = this.store.select(selectedOneTeamsByListArenas).pipe(CLEAN_NULL);    
 
     //list of arenas
-    this.arenaSet$ = this.store.select(selectedOneTeamsByListArenas).pipe(CLEAN_NULL,MAP_ONE_ROW);
+    this.arenaSet$ = this.store.select(selectedOneTeamsByListArenas).pipe(CLEAN_NULL,MAP_ONE_ROW,FILTER_ROW);
     this.arenasList$ = this.store.select(selectAllArenas).pipe(CLEANARRAY,MAP_SET_ARENA);
     //list of arenas
 
