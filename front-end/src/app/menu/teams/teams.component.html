@@ -274,7 +274,7 @@
 							<div class="addition-block-right pull-right js-quick-filter">
 								<div class="quick-filter-toolbar btn-group">
 									<div class="input-group js-filter-control">
-										<input class="js-input form-control" name="quick_filter"(input)="searchTeam($event.target)" placeholder="Quick search" size="16" type="text" value="">
+										<input class="js-input form-control" [(ngModel)]="searchTerm" name="quick_filter"(input)="searchTeam($event.target)" placeholder="Quick search" size="16" type="text" value="">
 										<div class="input-group-btn dropdown dropdown-lg">
 											<button aria-expanded="false" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="toggle-dropdown" type="button"><span class="caret"></span></button>
 											<div class="dropdown-menu dropdown-menu-right" role="menu">
