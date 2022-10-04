@@ -41,6 +41,12 @@ import { teambyidFeature} from './teams/teams-view/store/reducers/teams-id.reduc
 import { TeamsByIdEffects} from './teams/teams-view/store/effects/teams-id.effect';
 import { TeamsByIdService } from './teams/teams-view/store/services/teams-id.service';
 
+//Teams add and update operations
+
+import { teamAddEditFeature } from './teams/teams-view/store/reducers/teams-add-edit.reducer';
+import { TeamsAddEditEffects } from './teams/teams-view/store/effects/teams-add-edit.effect';
+import { TeamsAddEditService } from './teams/teams-view/store/services/teams-add-edit.service';
+
 
 @NgModule({
   imports: [
@@ -58,6 +64,7 @@ import { TeamsByIdService } from './teams/teams-view/store/services/teams-id.ser
     StoreModule.forFeature(teamsFeature),
     StoreModule.forFeature(typeViewFeature),
     StoreModule.forFeature(teambyidFeature),
+    StoreModule.forFeature(teamAddEditFeature),
     EffectsModule.forFeature(
       [
         LoginEffects,
@@ -67,7 +74,8 @@ import { TeamsByIdService } from './teams/teams-view/store/services/teams-id.ser
         ArenasDeleteEffects,
         TeamsEffects,
         TypeViewEffects,
-        TeamsByIdEffects
+        TeamsByIdEffects,
+        TeamsAddEditEffects        
       ]),
   ],
   declarations: [
@@ -83,7 +91,8 @@ import { TeamsByIdService } from './teams/teams-view/store/services/teams-id.ser
     ArenasDeleteService,
     TeamsService,
     TypeViewService,
-    TeamsByIdService
+    TeamsByIdService,
+    TeamsAddEditService
   ]
 })
 export class MenuModule {}
