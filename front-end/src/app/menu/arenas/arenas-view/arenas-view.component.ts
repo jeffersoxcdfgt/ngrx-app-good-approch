@@ -28,9 +28,8 @@ export class ArenasViewComponent extends UnsubscribeComponent implements OnInit 
   typeView :string = '';
   formArena: FormGroup;
 
-  constructor(private store :Store<State>,
-    location: Location,private router: Router,
-    private formBuilder: FormBuilder) {
+  constructor(private store :Store<State>,location: Location,
+     private formBuilder: FormBuilder) {
     super();
     this.typeView = location.path()
 

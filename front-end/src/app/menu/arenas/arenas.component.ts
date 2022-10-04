@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store'
-import { filter, map, Observable} from 'rxjs';
+import { filter, map, Observable, takeUntil} from 'rxjs';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';import { DialogTableCardComponent } from 'src/app/shared/components/dialog-table-card/dialog-table-card.component';
 ;
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { selectId } from 'src/app/shared/routing/id.selectors';
+import { UnsubscribeComponent } from 'src/app/shared/unsubscribe/unsubscribe.component';
 import { Arena } from '../models/arena';
 import { arenaDeleteRow } from './arenas-view/store/actions/arenas-delete.action';
 import { arenasGetAll } from './store/actions/arenas.action';
@@ -28,7 +29,7 @@ export const FILTER_ARENA = (search:string) =>  map((arena:Arena[]) => {
   templateUrl: './arenas.component.html',
   styleUrls: ['./arenas.component.scss']
 })
-export class ArenasComponent implements OnInit {
+export class ArenasComponent extends UnsubscribeComponent implements OnInit {
 
   selectedId$ = this.store.pipe(select(selectId));
   arenasList$ : Observable<Arena[]> = new Observable<Arena[]>();
@@ -36,7 +37,9 @@ export class ArenasComponent implements OnInit {
   showTableCard: boolean = true;
   typeViewshow$:Observable<string>  = this.store.select(setTypeViewResp).pipe(IFSPACE);
 
-  constructor(private store :Store<State>,private dialog: MatDialog,) { }
+  constructor(private store :Store<State>,private dialog: MatDialog){
+    super();
+   }
 
   ngOnInit(): void { 
     this.store.dispatch(arenasGetAll());
@@ -64,7 +67,7 @@ export class ArenasComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe((confirmed: any) => {
+    dialogRef.afterClosed().pipe(takeUntil(this.destroyed$)).subscribe((confirmed: any) => {
       if (confirmed.opt) {
           this.store.dispatch(sendTypeView({ sendview: confirmed.value }));  
       }

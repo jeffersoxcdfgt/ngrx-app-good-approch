@@ -3,15 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store'
 import { Observable, of} from 'rxjs';
-import {  filter, map  } from 'rxjs/operators';
+import {  filter, map, takeUntil  } from 'rxjs/operators';
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
+import { UnsubscribeComponent } from 'src/app/shared/unsubscribe/unsubscribe.component';
 import { CLEAN_NULL } from '../../arenas/arenas-view/arenas-view.component';
 import { CLEANARRAY } from '../../arenas/arenas.component';
 import { arenasGetAll } from '../../arenas/store/actions/arenas.action';
 import { selectAllArenas } from '../../arenas/store/reducers/arenas.reducer';
 import { Arena } from '../../models/arena';
 import { Team } from '../../models/team';
+import { teamAddRow, teamUpdateRow } from './store/actions/teams-add-edit.action';
 import { teamGetById } from './store/actions/teams-id.action';
+import { addEditResultTeam, errorAddEditTeam } from './store/reducers/teams-add-edit.reducer';
 import { selectedOneTeamsByListArenas} from './store/reducers/teams-id.reducer';
 
 const MAP_SET_ARENA = map((arenas:Arena[]) => arenas.map((row:Arena)=>({id:row.id , name:row.arenaTitle})));
@@ -19,7 +22,6 @@ const MAP_ONE_ROW = map((team:any|Team) =>([{ id:team.arenaid, name:team?.arena 
 const FILTER_ROW = filter((arenarow:any|Team) => {
     return arenarow !== undefined && arenarow[0].id !== undefined
 });
-
 
 const MAP_DIVISON = map((team:Team)=>[{id:team.divison, name:team.divison}]);
 
@@ -33,7 +35,7 @@ interface DataLoad {
   templateUrl: './teams-view.component.html',
   styleUrls: ['./teams-view.component.scss']
 })
-export class TeamsViewComponent implements OnInit {
+export class TeamsViewComponent extends UnsubscribeComponent implements OnInit {
 
   team$ : Observable<Team> = new Observable<Team>();
   typeView :string = '';
@@ -53,6 +55,7 @@ export class TeamsViewComponent implements OnInit {
   constructor(private store :Store<State>,
     location: Location,
     private formBuilder: FormBuilder) {
+    super();
     this.typeView = location.path();
 
     this.formTeam = this.formBuilder.group({
@@ -78,12 +81,28 @@ export class TeamsViewComponent implements OnInit {
     //Division
     this.divisionSet$ = this.store.select(selectedOneTeamsByListArenas).pipe(CLEAN_NULL,MAP_DIVISON);
     //Division
+
+    //Selectors
+    this.store.select(addEditResultTeam).pipe(CLEAN_NULL,takeUntil(this.destroyed$)).subscribe((id)=>{
+    });
+   this.store.select(errorAddEditTeam).pipe(CLEAN_NULL,takeUntil(this.destroyed$)).subscribe((error:Error)=>{
+   });
+   //Selectors
   }
 
 
   saveTeam(typeView?: string){
+    debugger
     if(this.formTeam.valid){
       const payload = this.populatedPayload();
+      switch (typeView) {
+        case '/menu/teams/add': 
+        this.store.dispatch(teamAddRow({teamrow:payload}));   
+          break;    
+        default:
+        this.store.dispatch(teamUpdateRow({teamrow:payload}));
+          break;
+      }
     }
     else{
       this.formTeam.markAllAsTouched()

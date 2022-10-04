@@ -47,6 +47,10 @@ import { teamAddEditFeature } from './teams/teams-view/store/reducers/teams-add-
 import { TeamsAddEditEffects } from './teams/teams-view/store/effects/teams-add-edit.effect';
 import { TeamsAddEditService } from './teams/teams-view/store/services/teams-add-edit.service';
 
+import { teamdeleteFeature } from './teams/teams-view/store/reducers/teams-delete.reducer';
+import { TeamsDeleteEffects } from './teams/teams-view/store/effects/teams-delete.effect';
+import { TeamsDeleteService } from './teams/teams-view/store/services/teams-delete.service';
+
 
 @NgModule({
   imports: [
@@ -65,6 +69,7 @@ import { TeamsAddEditService } from './teams/teams-view/store/services/teams-add
     StoreModule.forFeature(typeViewFeature),
     StoreModule.forFeature(teambyidFeature),
     StoreModule.forFeature(teamAddEditFeature),
+    StoreModule.forFeature(teamdeleteFeature),
     EffectsModule.forFeature(
       [
         LoginEffects,
@@ -75,7 +80,8 @@ import { TeamsAddEditService } from './teams/teams-view/store/services/teams-add
         TeamsEffects,
         TypeViewEffects,
         TeamsByIdEffects,
-        TeamsAddEditEffects        
+        TeamsAddEditEffects,
+        TeamsDeleteEffects       
       ]),
   ],
   declarations: [
@@ -92,7 +98,8 @@ import { TeamsAddEditService } from './teams/teams-view/store/services/teams-add
     TeamsService,
     TypeViewService,
     TeamsByIdService,
-    TeamsAddEditService
+    TeamsAddEditService,
+    TeamsDeleteService
   ]
 })
 export class MenuModule {}
