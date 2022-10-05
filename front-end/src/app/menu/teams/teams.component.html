@@ -156,7 +156,7 @@
 							</ul>
 						</nav>
 					</div>
-					<div class="grid grid-table js-grid" data-column-count="9" data-grid-hidden-values="[]" data-is-master="" data-selection-id="teamGrid_" data-sortable-columns="{&quot;logo&quot;:{&quot;name&quot;:&quot;logo&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Logo&quot;},&quot;caption&quot;:{&quot;name&quot;:&quot;caption&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Name&quot;},&quot;year_founded&quot;:{&quot;name&quot;:&quot;year_founded&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Founded&quot;},&quot;about&quot;:{&quot;name&quot;:&quot;about&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;About&quot;},&quot;current_division_id&quot;:{&quot;name&quot;:&quot;current_division_id_caption&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Division&quot;},&quot;arena_id&quot;:{&quot;name&quot;:&quot;arena_id_caption&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Arena&quot;}}" id="teamGrid_632634654318e">
+					<div class="grid grid-table grid-card js-grid" data-column-count="9" data-grid-hidden-values="[]" data-is-master="" data-selection-id="teamGrid_" data-sortable-columns="{&quot;logo&quot;:{&quot;name&quot;:&quot;logo&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Logo&quot;},&quot;caption&quot;:{&quot;name&quot;:&quot;caption&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Name&quot;},&quot;year_founded&quot;:{&quot;name&quot;:&quot;year_founded&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Founded&quot;},&quot;about&quot;:{&quot;name&quot;:&quot;about&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;About&quot;},&quot;current_division_id&quot;:{&quot;name&quot;:&quot;current_division_id_caption&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Division&quot;},&quot;arena_id&quot;:{&quot;name&quot;:&quot;arena_id_caption&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Arena&quot;}}" id="teamGrid_632634654318e">
 						<div class="addition-block js-actions">
 							<div class="btn-toolbar addition-block-left pull-left">
 								<div class="btn-group">
@@ -268,7 +268,7 @@
 									<button class="btn btn-default" data-target="#multiple-sorting-teamGrid_632634654318e" data-toggle="modal" id="multi-sort-teamGrid_632634654318e" title="Sort"><i class="icon-sort"></i></button>
 								</div>
 								<div class="btn-group">
-									<button class="btn btn-default" data-target="#page-settings" data-toggle="modal" title="Page settings"><i class="icon-settings"></i></button>
+									<button class="btn btn-default" data-target="#page-settings" data-toggle="modal" (click)="switchTableCard()" title="Page settings"><i class="icon-settings"></i></button>
 								</div>
 							</div>
 							<div class="addition-block-right pull-right js-quick-filter">
@@ -347,6 +347,7 @@
 						</div>
 						<div class="filter-status js-filter-status"></div>
 						<div class="js-grid-message-container"></div>
+						<ng-container *ngIf="(typeViewshow$ | async) ===''  || (typeViewshow$ | async) ==='Grid' ; else viewCard">
 						<table class="table text-center table-striped fixed-header">
 							<thead class="js-column-filter-container">
 								<tr>
@@ -401,6 +402,77 @@
 								</ng-template>			
 							</tbody>
 						</table>
+						</ng-container>
+						<ng-template #viewCard>
+							<div class="row">
+								<div class="table-striped col-md-12">
+									<div class="alert alert-warning empty-grid hidden">
+										There are no records to display
+									</div>
+									<div class="pg-row-list row">
+									   <ng-template ngFor let-team [ngForOf]="teamsList$ | async" let-i="index">
+										<div class="grid-card-item col-lg-4 col-md-4 col-sm-6 col-xs-12 pg-row">
+											<div class="well" style="">
+												<div class="grid-card-item-control pull-right">
+													<div class="operation-column pull-left">
+														<span class="operation-item" data-column-name="view">
+															<a class="link-icon" routerLink="/menu/teams/{{team.id}}" title="View">
+																<i class="icon-view"></i>
+															</a>
+														</span> 
+														<span class="operation-item" data-column-name="edit">
+															<a class="link-icon" routerLink="/menu/teams/edit/{{team.id}}"  title="Edit">
+																<i class="icon-edit"></i>
+															</a>
+														</span> 
+														<span class="operation-item" data-column-name="delete">
+															<a class="link-icon" (click)="delete(team.id)" title="Delete">
+																<i class="icon-remove"></i>
+															</a>
+														</span>
+													</div>
+												</div>
+												<div class="grid-card-item-data">
+													<table class="table">
+														<tr>
+															<th>Team Name</th>
+															<td data-column-name="caption" data-edit-url="">
+																<a target="">{{ team?.name }}</a>
+															</td>
+														</tr>
+														<tr>
+															<th>Founded</th>
+															<td data-column-name="capacity" data-edit-url="">{{ team?.Founded }}</td>
+														</tr>
+														<tr>
+															<th>About</th>
+															<td data-column-name="about" [innerHTML]="team?.About | noSanitize" data-edit-url=""></td>
+														</tr>
+														<tr>
+															<th>Logo</th>
+															<td data-column-name="logo" data-edit-url="">
+																<a class="image gallery-item" data-name="logo"  href="{{ team?.logo }}"  title="{{ team?.name }}">
+																	<img alt="{{ team?.name }}" data-image-column="true" src="{{ team?.logo }}" style="width: 100px">
+																</a>
+															</td>
+														</tr>
+														<tr>
+															<th>Division</th>
+															<td data-column-name="division" data-edit-url="">{{ team?.divison }}</td>
+														</tr>
+														<tr>
+															<th>Arena</th>
+															<td data-column-name="arena" data-edit-url="">{{ team?.arena }}</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+										</div>
+										</ng-template>
+									</div>				
+								</div>
+							</div>
+						</ng-template>
 					</div>
 					<hr>
                     <app-footer></app-footer>
