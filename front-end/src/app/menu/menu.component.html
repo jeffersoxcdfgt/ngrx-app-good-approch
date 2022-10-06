@@ -25,6 +25,9 @@
                                 <a aria-expanded="false" routerLink="/menu/teams" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button">
                                     Teams 
                                 </a>  
+                                <a aria-expanded="false" routerLink="/menu/players" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                                    Players 
+                                </a> 
                                 <a aria-expanded="false" routerLink="/menu/playoff" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button">
                                     Playoff bracket 
                                 </a>                    
@@ -78,7 +81,7 @@
                     <ul class="dropdown-menu">
                         <mat-menu #menuParticipants="matMenu">
                             <li mat-menu-item>
-                                <a title="Players">Players</a>
+                                <a title="Players" routerLink="/menu/players">Players</a>
                             </li>
                             <li mat-menu-item>
                                 <a title="Teams" routerLink="/menu/teams" >Teams</a>
