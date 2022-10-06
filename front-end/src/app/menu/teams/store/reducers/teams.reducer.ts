@@ -45,7 +45,7 @@ export const selectAllTeams = selectTeams;
 
 //get Arenas match Teams
 
-export const selectedTecnologisWithJobs = createSelector(
+export const selectedTeamsWithArenas = createSelector(
   selectAllTeams,
   selectAllArenas,
   (teams: Team[],arenas: Arena[]) =>joinTeamsAndArenas(teams,arenas));

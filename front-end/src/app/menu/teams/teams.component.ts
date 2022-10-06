@@ -13,7 +13,7 @@ import { setTypeViewResp } from '../arenas/store/reducers/type-view.reducer';
 import { Team } from '../models/team';
 import { teamsGetAll } from './store/actions/teams.action';
 import { sendTypeTeamView } from './store/actions/type-view-team.action';
-import { selectedTecnologisWithJobs } from './store/reducers/teams.reducer';
+import { selectedTeamsWithArenas } from './store/reducers/teams.reducer';
 import { setTypeViewTeamResp } from './store/reducers/type-view-team.reducer';
 import { teamDeleteRow } from './teams-view/store/actions/teams-delete.action';
 
@@ -46,16 +46,16 @@ export class TeamsComponent extends UnsubscribeComponent  implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(arenasGetAll());
     this.store.dispatch(teamsGetAll());
-    this.teamsList$ = this.store.select(selectedTecnologisWithJobs).pipe(CLEANTEAMSARENAS);
+    this.teamsList$ = this.store.select(selectedTeamsWithArenas).pipe(CLEANTEAMSARENAS);
    }
 
    searchTeam(data:string|any):void{    
-    this.teamsList$= this.store.select(selectedTecnologisWithJobs).pipe(CLEANTEAMS,FILTER_TEAM(data.value));
+    this.teamsList$= this.store.select(selectedTeamsWithArenas).pipe(CLEANTEAMS,FILTER_TEAM(data.value));
   }
 
   resetSearch():void{
     this.searchTerm = '';
-    this.teamsList$ = this.store.select(selectedTecnologisWithJobs).pipe(CLEANTEAMS);
+    this.teamsList$ = this.store.select(selectedTeamsWithArenas).pipe(CLEANTEAMS);
   }
 
 

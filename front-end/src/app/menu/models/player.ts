@@ -10,6 +10,6 @@ export interface Player {
     college: string;
     nbadebut: string;
     position: string;
-    team: string;
+    team: number|string;
     number: string;
 }

@@ -4,8 +4,9 @@ import { Observable } from 'rxjs';
 import { Player } from '../models/player';
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { playersGetAll } from './store/actions/players.action';
-import { selectAllPlayers } from './store/reducers/players.reducer';
+import { selectedPlayersWithTeams } from './store/reducers/players.reducer';
 import { filter } from 'rxjs';
+import { teamsGetAll } from '../teams/store/actions/teams.action';
 
 export const CLEANARRAY =  filter((val:Player[]) => val.length >0)
 
@@ -22,7 +23,8 @@ export class PlayersComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(playersGetAll());
-    this.arenasList$ = this.store.select(selectAllPlayers).pipe(CLEANARRAY);
+    this.store.dispatch(teamsGetAll());
+    this.arenasList$ = this.store.select(selectedPlayersWithTeams).pipe(CLEANARRAY);
   }
 
 }

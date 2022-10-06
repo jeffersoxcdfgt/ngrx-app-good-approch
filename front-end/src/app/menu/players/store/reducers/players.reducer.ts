@@ -1,4 +1,7 @@
-import { createFeature, createReducer , on } from '@ngrx/store';
+import { createFeature, createReducer , createSelector, on } from '@ngrx/store';
+import { joinPlayersAndTeams } from 'src/app/menu/arenas/utils/functions';
+import { Team } from 'src/app/menu/models/team';
+import { selectAllTeams } from 'src/app/menu/teams/store/reducers/teams.reducer';
 import { Player } from '../../../models/player';
 import * as PlayersApiActions from '../actions/players.action';
 
@@ -39,3 +42,16 @@ export const {
 
 // select the array of Players
 export const selectAllPlayers = selectPlayers;
+
+
+//get Players match Teams
+
+export const selectedPlayersWithTeams = createSelector(
+  selectAllPlayers,
+  selectAllTeams,
+  (players: Player[],teams: Team[]) =>{
+    if(players.length > 0 && teams.length > 0){
+      return joinPlayersAndTeams(players,teams)
+    }
+    return []
+  });

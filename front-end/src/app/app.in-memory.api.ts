@@ -162,7 +162,7 @@ export class AppInMemoryApi  implements InMemoryDbService{
               college:'Connecticut',
               nbadebut:'2012',
               position:'Center',
-              team:'1',
+              team:1,
               number:'0'
             },
             {
@@ -177,7 +177,7 @@ export class AppInMemoryApi  implements InMemoryDbService{
               college:'(n/a)',
               nbadebut:'2011',
               position:'Center',
-              team:'2',
+              team:2,
               number:'0'
             },
             {
@@ -192,7 +192,7 @@ export class AppInMemoryApi  implements InMemoryDbService{
               college:'USC',
               nbadebut:'2007',
               position:'Guard,Forward',
-              team:'3',
+              team:3,
               number:'0'
             },
             {
@@ -207,7 +207,7 @@ export class AppInMemoryApi  implements InMemoryDbService{
               college:'UCLA',
               nbadebut:'2008',
               position:'Forward',
-              team:'3',
+              team:4,
               number:'5'
             },
             {
@@ -222,7 +222,7 @@ export class AppInMemoryApi  implements InMemoryDbService{
               college:'Texas',
               nbadebut:'210',
               position:'Guard',
-              team:'3',
+              team:1,
               number:'0'
             },
             {
@@ -237,7 +237,7 @@ export class AppInMemoryApi  implements InMemoryDbService{
               college:'(n/a)',
               nbadebut:'2012',
               position:'Guard',
-              team:'1',
+              team:1,
               number:'0'
             },
             {
@@ -252,7 +252,7 @@ export class AppInMemoryApi  implements InMemoryDbService{
               college:'UCLA',
               nbadebut:'2008',
               position:'Guard',
-              team:'2',
+              team:2,
               number:'0'
             }
           ]
