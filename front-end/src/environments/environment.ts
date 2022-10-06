@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   loginUrl:'http://localhost:1337/api/login',
   arenaUrl:'http://localhost:3000',
-  teamUrl:'http://localhost:3000'
+  teamUrl:'http://localhost:3000',
+  playerUrl:'http://localhost:3000'
 };
 
 /*

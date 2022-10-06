@@ -56,6 +56,12 @@ import { typeViewTeamFeature } from './teams/store/reducers/type-view-team.reduc
 import { TypeTeamViewEffects } from './teams/store/effects/type-view-team.effect';
 import { TypeViewTeamService } from './teams/store/services/type-view-team.service';
 
+// Players
+
+import { playersFeature } from './players/store/reducers/players.reducer';
+import { PlayerEffects } from './players/store/effects/players.effect';
+import { PlayersService } from './players/store/services/players.service';
+
 
 @NgModule({
   imports: [
@@ -76,6 +82,7 @@ import { TypeViewTeamService } from './teams/store/services/type-view-team.servi
     StoreModule.forFeature(teamAddEditFeature),
     StoreModule.forFeature(teamdeleteFeature),
     StoreModule.forFeature(typeViewTeamFeature),
+    StoreModule.forFeature(playersFeature),
     EffectsModule.forFeature(
       [
         LoginEffects,
@@ -87,8 +94,9 @@ import { TypeViewTeamService } from './teams/store/services/type-view-team.servi
         TypeViewEffects,
         TeamsByIdEffects,
         TeamsAddEditEffects,
-        TeamsDeleteEffects ,
-        TypeTeamViewEffects      
+        TeamsDeleteEffects,
+        TypeTeamViewEffects,
+        PlayerEffects     
       ]),
   ],
   declarations: [
@@ -107,7 +115,8 @@ import { TypeViewTeamService } from './teams/store/services/type-view-team.servi
     TeamsByIdService,
     TeamsAddEditService,
     TeamsDeleteService,
-    TypeViewTeamService
+    TypeViewTeamService,
+    PlayersService
   ]
 })
 export class MenuModule {}
