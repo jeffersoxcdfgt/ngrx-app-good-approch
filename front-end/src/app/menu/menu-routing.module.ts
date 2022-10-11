@@ -11,6 +11,7 @@ import { ArenasViewComponent } from './arenas/arenas-view/arenas-view.component'
 import { TeamsViewComponent } from './teams/teams-view/teams-view.component';
 import { PlayoffComponent } from './playoff/playoff.component';
 import { PlayersComponent } from './players/players.component';
+import { PlayersViewComponent } from './players/players-view/players-view.component';
 
 const menuRoutes: Routes  =  [{
   path: '',
@@ -28,6 +29,7 @@ const menuRoutes: Routes  =  [{
     { path: 'teams/edit/:id' , component:  TeamsViewComponent, canActivate: [AuthGuardService] },
     { path: 'playoff' , component:  PlayoffComponent, canActivate: [AuthGuardService]},
     { path: 'players' , component:  PlayersComponent, canActivate: [AuthGuardService]},
+    { path: 'players/:id' , component:  PlayersViewComponent, canActivate: [AuthGuardService] },
   ]
 }] as Routes;
 
@@ -49,5 +51,6 @@ export const menuRoutedComponents = [
     TeamsComponent,
     TeamsViewComponent,
     PlayoffComponent,
-    PlayersComponent
+    PlayersComponent,
+    PlayersViewComponent
 ];

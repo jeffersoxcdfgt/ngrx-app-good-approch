@@ -100,7 +100,7 @@ import { PlayersService } from './players/store/services/players.service';
       ]),
   ],
   declarations: [
-    menuRoutedComponents,
+    menuRoutedComponents
   ],
   providers: [
     TraceService,

@@ -431,7 +431,13 @@
                                             <span class='team-caption'><a target="_blank">{{ player?.team }}</a></span>
                                         </td>
                                         <td class="hidden-xs hidden-sm" data-column-name="current_number" data-edit-url="">{{ player?.number }}</td>
-                                        <td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
+                                        <td class="operation-column">
+											<span class="operation-item" data-column-name="view">
+												<a class="link-icon" routerLink="/menu/players/{{player.id}}" title="View">
+													<i class="icon-view"></i>
+												</a>
+											</span>
+										</td>
                                     </tr>
                                 </ng-template>	
 								<tr class="empty-grid hidden">
