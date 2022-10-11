@@ -58,3 +58,15 @@ export const getOneTeamByArenas = ( team: Team , arenas: Arena[] ):Team =>{
         ))
         .reduce((before,after)=>({ ...before, ...after}))
 }
+
+
+export const getOnePlayerByTeams = ( player: Player , teams: Team[] ):Player =>{
+    return teams.filter((team:Team) => team.id === player.team)
+        .map((datateam:Team)=>({
+              ...player,
+              team:datateam.name,
+              teamid:datateam.id
+            }
+        ))
+        .reduce((before,after)=>({ ...before, ...after}))
+}

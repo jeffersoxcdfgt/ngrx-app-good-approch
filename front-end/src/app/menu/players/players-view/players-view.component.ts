@@ -4,8 +4,9 @@ import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { Player } from '../../models/player';
+import { teamsGetAll } from '../../teams/store/actions/teams.action';
 import { playerGetById } from './store/actions/players-id.action';
-import { selectGetPlayerById } from './store/reducers/players-id.reducer';
+import { selectedOnePlayerByListTeams } from './store/reducers/players-id.reducer';
 
 export const CLEAN_NULL = filter((valnull:any) => !!valnull)
 
@@ -21,8 +22,10 @@ export class PlayersViewComponent implements OnInit {
   constructor(private store :Store<State>) { }
 
   ngOnInit(): void {
+
+    this.store.dispatch(teamsGetAll());
     this.store.dispatch(playerGetById());
-    this.player$ = this.store.select(selectGetPlayerById).pipe(CLEAN_NULL);
+    this.player$ = this.store.select(selectedOnePlayerByListTeams).pipe(CLEAN_NULL);
   }
 
 }
