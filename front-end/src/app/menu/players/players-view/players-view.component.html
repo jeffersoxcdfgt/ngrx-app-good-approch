@@ -1,5 +1,5 @@
 	<div class="container-fluid" *ngIf="player$ | async ; let player;">
-		<div class="row">
+		<div class="row" *ngIf="typeView !== '/menu/players/add' &&  !this.typeView.includes('menu/players/edit/') ; else addEdit">
 			<div class="col-md-12">
 				<div class="container-padding">
 					<div id="pgui-view-grid">
@@ -39,7 +39,10 @@
 													</a>
 												</div>
 												<div class="btn-group">
-													<a class="btn btn-default" title="Edit"><i class="icon-edit"></i> <span class="hidden-sm hidden-xs">Edit</span></a>
+													<a class="btn btn-default" routerLink="/menu/players/edit/{{player.id}}"  title="Edit">
+														<i class="icon-edit"></i> 
+														<span class="hidden-sm hidden-xs">Edit</span>
+													</a>
 												</div>
 												<div class="btn-group">
 													<div class="btn-group">
@@ -71,7 +74,6 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-horizontal" *ngIf="typeView !== '/menu/players/add' &&  !this.typeView.includes('menu/players/edit/') ; else addEdit">	
 								<div class="row">
 									<div class="col-md-12 js-message-container"></div>
 									<div class="clearfix"></div>
@@ -175,11 +177,7 @@
 											</fieldset>
 										</div>
 									</div>
-								</div>
-							</div>
-							<ng-template #addEdit>
-								Add and Edit
-							</ng-template>							
+								</div>					
 							<div class="form-actions row">
 								<div class="col-md-12">
 									<div class="row">
@@ -191,7 +189,7 @@
 													</a>
 												</div>
 												<div class="btn-group">
-													<a class="btn btn-default"  title="Edit"><i class="icon-edit"></i> 
+													<a class="btn btn-default" routerLink="/menu/players/edit/{{player.id}}" title="Edit"><i class="icon-edit"></i> 
 														<span class="hidden-sm hidden-xs">Edit</span>
 													</a>
 												</div>
@@ -235,5 +233,684 @@
 				</div>
 			</div>
 		</div>
+		<ng-template #addEdit>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="container-padding">
+						<div class="page-header form-header">
+							<ol class="breadcrumb pgui-breadcrumb">
+								<li>
+									<a ><i class="icon-home"></i></a>
+								</li>
+								<li class="dropdown">
+									<a>Participants</a>
+								</li>
+								<li class="dropdown">
+									<a>Players</a> <button class="btn btn-xs btn-default dropdown-toggle pgui-breadcrumb-siblings" data-toggle="dropdown"><span class="caret"></span></button>
+									<ul class="dropdown-menu dropdown-menu-right">
+										<li>
+											<a>Teams</a>
+										</li>
+										<li>
+											<a>Arenas</a>
+										</li>
+									</ul>
+								</li>
+								<li class="dropdown">Add a new player</li>
+							</ol>
+							<h1>Add a new player</h1>
+						</div>
+						<div class="col-md-12 js-form-container" data-form-url="">
+							<div class="form-actions form-actions-top row">
+								<div class="col-md-12">
+									<div class="row">
+										<div class="col-md-8 col-md-offset-2">
+											<div class="btn-toolbar">
+												<div class="btn-group">
+													<button class="btn btn-primary js-save js-primary-save" data-action="open" data-url="" title="(Ctrl+Return)" type="submit">Save</button> <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+													<ul class="dropdown-menu">
+														<li>
+															<a class="js-save" data-action="open" data-url="" >Save and return back to the list</a>
+														</li>
+														<li>
+															<a class="js-save js-multiple-insert-hide" data-action="edit">Save and continue editing</a>
+														</li>
+														<li>
+															<a class="js-save js-save-insert" data-action="open" data-url=""  title="(Ctrl+Shift+Return)">Save and add another record</a>
+														</li>
+													</ul>
+												</div>
+												<div class="btn-group">
+													<a class="btn btn-default">Cancel</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="js-form-collection col-md-8 col-md-offset-2">
+									<form action="" class="" enctype="multipart/form-data" id="Form6345d76e00a60" method="post" name="Form6345d76e00a60" novalidate="novalidate">
+										<div class="btn-group pull-right form-collection-actions">
+											<button class="btn btn-default icon-copy js-form-copy" title="Copy" type="button"></button> <button class="btn btn-default icon-remove js-form-remove" style="display: none" title="Delete" type="button"></button>
+										</div>
+										<div class="clearfix"></div>
+										<div class="row">
+											<fieldset class="col-md-8">
+												<legend>Personal info</legend>
+												<div class="row">
+													<div class="form-group col-sm-12">
+														<label class="control-label" data-column="first_name" for="Form6345d76e00a60_first_name_edit">First name <span class="required-mark">*</span></label>
+														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
+															<label class="control-label" data-column="first_name" for="Form6345d76e00a60_first_name_edit"></label>
+														</div>
+														<div class="col-input" data-column="first_name" style="width:100%;max-width:100%">
+															<input class="form-control" data-editor="text" data-field-name="first_name" data-legacy-field-name="first_name" data-pgui-legacy-validate="true" data-required-error-message="First name is required." data-validation="required" id="Form6345d76e00a60_first_name_edit" name="first_name_edit" placeholder="First name" type="text" value="">
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="form-group col-sm-12">
+														<label class="control-label" data-column="last_name" for="Form6345d76e00a60_last_name_edit">Last name <span class="required-mark">*</span></label>
+														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
+															<label class="control-label" data-column="last_name" for="Form6345d76e00a60_last_name_edit"></label>
+														</div>
+														<div class="col-input" data-column="last_name" style="width:100%;max-width:100%">
+															<input class="form-control" data-editor="text" data-field-name="last_name" data-legacy-field-name="last_name" data-pgui-legacy-validate="true" data-required-error-message="Last name is required." data-validation="required" id="Form6345d76e00a60_last_name_edit" name="last_name_edit" placeholder="Last name" type="text" value="">
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="form-group col-sm-12">
+														<label class="control-label" data-column="birthday" for="Form6345d76e00a60_birthday_edit">Birthday <span class="required-mark" style="display: none">*</span></label>
+														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
+															<label class="control-label" data-column="birthday" for="Form6345d76e00a60_birthday_edit"></label>
+														</div>
+														<div class="col-input" data-column="birthday" style="width:100%;max-width:100%">
+															<div class="input-group pgui-date-time-edit js-datetime-editor-wrap">
+																<input class="form-control" data-editor="datetime" data-field-name="birthday" data-legacy-field-name="birthday" data-pgui-legacy-validate="true" data-picker-format="YYYY-MM-DD" data-picker-show-time="false" id="Form6345d76e00a60_birthday_edit" name="birthday_edit" placeholder="Birthday" type="text" value=""> <span class="input-group-addon" style="cursor: pointer"><span class="icon-datetime-picker"></span></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="form-group col-sm-6">
+														<label class="control-label" data-column="height" for="Form6345d76e00a60_height_edit">Height <span class="required-mark" style="display: none">*</span></label>
+														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
+															<label class="control-label" data-column="height" for="Form6345d76e00a60_height_edit"></label>
+														</div>
+														<div class="col-input" data-column="height" style="width:100%;max-width:100%">
+															<div class="input-group">
+																<input class="form-control" data-editor="text" data-field-name="height" data-legacy-field-name="height" data-pgui-legacy-validate="true" id="Form6345d76e00a60_height_edit" name="height_edit" placeholder="Height" type="text" value=""> <span class="input-group-addon">cm</span>
+															</div>
+														</div>
+													</div>
+													<div class="form-group col-sm-6">
+														<label class="control-label" data-column="weight" for="Form6345d76e00a60_weight_edit">Weight <span class="required-mark" style="display: none">*</span></label>
+														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
+															<label class="control-label" data-column="weight" for="Form6345d76e00a60_weight_edit"></label>
+														</div>
+														<div class="col-input" data-column="weight" style="width:100%;max-width:100%">
+															<div class="input-group">
+																<input class="form-control" data-editor="text" data-field-name="weight" data-legacy-field-name="weight" data-pgui-legacy-validate="true" id="Form6345d76e00a60_weight_edit" name="weight_edit" placeholder="Weight" type="text" value=""> <span class="input-group-addon">kg</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</fieldset>
+											<fieldset class="col-md-4">
+												<legend>Photo</legend>
+												<div class="row">
+													<div class="form-group col-sm-12">
+														<label class="control-label" data-column="photo" for="Form6345d76e00a60_photo_edit">Photo <span class="required-mark" style="display: none">*</span></label>
+														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
+															<label class="control-label" data-column="photo" for="Form6345d76e00a60_photo_edit"></label>
+														</div>
+														<div class="col-input" data-column="photo" style="width:100%;max-width:100%">
+															<img src="#" style="display: none;max-width: 100%;">
+															<div style="margin: 1em 0;">
+																<div class="btn-group" data-toggle="buttons-radio" data-toggle-name="photo_edit_action">
+																	<button class="btn btn-default" data-toggle="button" type="button" value="Remove">Remove</button> <button class="btn btn-default js-replace" data-toggle="button" disabled="disabled" type="button" value="Replace">Replace</button>
+																</div>
+															</div><input name="photo_edit_action" type="hidden" value="Keep">
+															<div class="file-upload-control">
+																<input data-editor="imageuploader" data-field-name="photo" data-legacy-field-name="photo" data-pgui-legacy-validate="true" id="Form6345d76e00a60_photo_edit" name="photo_edit" type="file">
+															</div>
+														</div>
+													</div>
+												</div>
+											</fieldset>
+											<fieldset class="col-md-12">
+												<legend>Team info</legend>
+												<div class="row">
+													<div class="form-group col-sm-12">
+														<label class="control-label" data-column="current_team_id" for="Form6345d76e00a60_current_team_id_edit">Team <span class="required-mark" style="display: none">*</span></label>
+														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
+															<label class="control-label" data-column="current_team_id" for="Form6345d76e00a60_current_team_id_edit"></label>
+														</div>
+														<div class="col-input" data-column="current_team_id" style="width:100%;max-width:100%">
+															<div class="input-group" style="width: 100%">
+																<div class="select2-container form-control" id="s2id_Form6345d76e00a60_current_team_id_edit" style="width: 100%;">
+																	<a class="select2-choice select2-default" tabindex="-1"><span class="select2-chosen" id="select2-chosen-1">Please select...</span><abbr class="select2-search-choice-close"></abbr> <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a> <label class="select2-offscreen" for="s2id_autogen1">Team *</label> <input aria-haspopup="true" aria-labelledby="select2-chosen-1" class="select2-focusser select2-offscreen" id="s2id_autogen1" role="button" type="text">
+																	<div class="select2-drop select2-display-none select2-with-searchbox">
+																		<div class="select2-search">
+																			<label class="select2-offscreen" for="s2id_autogen1_search">Team *</label> <input aria-autocomplete="list" aria-expanded="true" aria-owns="select2-results-1" autocomplete="off" class="select2-input" id="s2id_autogen1_search" placeholder="" role="combobox" spellcheck="false" type="text">
+																		</div>
+																		<ul class="select2-results" id="select2-results-1" role="listbox"></ul>
+																	</div>
+																</div><input class="form-control" data-allowclear="true" data-editor="dynamic_combobox" data-field-name="current_team_id" data-format-result="return getTeamFormat(item);" data-format-selection="return getTeamFormat(item);" data-legacy-field-name="current_team_id" data-minimal-input-length="0" data-pgui-legacy-validate="true" data-placeholder="Please select..." data-url="" id="Form6345d76e00a60_current_team_id_edit" name="current_team_id_edit" style="display: none;" tabindex="-1" title=" Team * " type="hidden" value="">
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="form-group col-sm-6 has-warning">
+														<label class="control-label" data-column="current_number" for="Form6345d76e00a60_current_number_edit">Number <span class="required-mark" style="display: none">*</span></label>
+														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
+															<label class="control-label" data-column="current_number" for="Form6345d76e00a60_current_number_edit"></label>
+														</div>
+														<div class="col-input" data-column="current_number" style="width:100%;max-width:100%">
+															<div class="input-group">
+																<span class="input-group-addon">#</span> <input class="form-control" data-editor="text" data-field-name="current_number" data-legacy-field-name="current_number" data-pgui-legacy-validate="true" disabled id="Form6345d76e00a60_current_number_edit" name="current_number_edit" placeholder="Current player's number" type="text" value="">
+															</div>
+														</div>
+														<p class="help-block">A team should be entered before assigning a number to a player.</p>
+													</div>
+													<div class="form-group col-sm-6">
+														<label class="control-label" data-column="position" for="Form6345d76e00a60_position_edit">Position <span class="required-mark" style="display: none">*</span></label>
+														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
+															<label class="control-label" data-column="position" for="Form6345d76e00a60_position_edit"></label>
+														</div>
+														<div class="col-input" data-column="position" style="width:100%;max-width:100%">
+															<div class="select2-container select2-container-multi form-control" id="s2id_Form6345d76e00a60_position_edit" style="width: 100%;">
+																<ul class="select2-choices">
+																	<li class="select2-search-field"><label class="select2-offscreen" for="s2id_autogen2">Position *</label> <input autocomplete="off" class="select2-input" id="s2id_autogen2" placeholder="" spellcheck="false" style="width: 34px;" type="text"></li>
+																</ul>
+																<div class="select2-drop select2-drop-multi select2-display-none">
+																	<ul class="select2-results">
+																		<li class="select2-no-results">No matches found</li>
+																	</ul>
+																</div>
+															</div><select class="form-control" data-editor="multivalue_select" data-field-name="position" data-legacy-field-name="position" data-max-selection-size="2" data-pgui-legacy-validate="true" id="Form6345d76e00a60_position_edit" multiple name="position_edit[]" style="display: none;" tabindex="-1">
+																<option value="Center">
+																	Center
+																</option>
+																<option value="Guard">
+																	Guard
+																</option>
+																<option value="Forward">
+																	Forward
+																</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</fieldset>
+											<fieldset class="col-md-12">
+												<legend>Misc</legend>
+												<div class="row">
+													<div class="form-group col-sm-4">
+														<label class="control-label" data-column="country_id" for="Form6345d76e00a60_country_id_edit">Country <span class="required-mark">*</span></label>
+														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
+															<label class="control-label" data-column="country_id" for="Form6345d76e00a60_country_id_edit"></label>
+														</div>
+														<div class="col-input" data-column="country_id" style="width:100%;max-width:100%">
+															<div class="input-group" style="width: 100%">
+																<div class="select2-container form-control" id="s2id_Form6345d76e00a60_country_id_edit" style="width: 100%;">
+																	<a class="select2-choice select2-default" tabindex="-1"><span class="select2-chosen" id="select2-chosen-3">Please select...</span><abbr class="select2-search-choice-close"></abbr> <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a> <label class="select2-offscreen" for="s2id_autogen3">Country *</label> <input aria-haspopup="true" aria-labelledby="select2-chosen-3" class="select2-focusser select2-offscreen" id="s2id_autogen3" role="button" type="text">
+																	<div class="select2-drop select2-display-none select2-with-searchbox">
+																		<div class="select2-search">
+																			<label class="select2-offscreen" for="s2id_autogen3_search">Country *</label> <input aria-autocomplete="list" aria-expanded="true" aria-owns="select2-results-3" autocomplete="off" class="select2-input" id="s2id_autogen3_search" placeholder="" role="combobox" spellcheck="false" type="text">
+																		</div>
+																		<ul class="select2-results" id="select2-results-3" role="listbox"></ul>
+																	</div>
+																</div><input class="form-control" data-allowclear="true" data-editor="dynamic_combobox" data-field-name="country_id" data-format-result="return getCountryFormat(item);" data-format-selection="return getCountryFormat(item);" data-legacy-field-name="country_id" data-minimal-input-length="2" data-pgui-legacy-validate="true" data-placeholder="Please select..." data-required-error-message="Country is required." data-url="" data-validation="required" id="Form6345d76e00a60_country_id_edit" name="country_id_edit" style="display: none;" tabindex="-1" title=" Country * " type="hidden" value="">
+															</div>
+														</div>
+													</div>
+													<div class="form-group col-sm-4 has-warning">
+														<label class="control-label" data-column="college_id" for="Form6345d76e00a60_college_id_edit">College <span class="required-mark" style="display: none">*</span></label>
+														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
+															<label class="control-label" data-column="college_id" for="Form6345d76e00a60_college_id_edit"></label>
+														</div>
+														<div class="col-input" data-column="college_id" style="width:100%;max-width:100%">
+															<select class="form-control" data-editor="combobox" data-field-name="college_id" data-legacy-field-name="college_id" data-pgui-legacy-validate="true" disabled id="Form6345d76e00a60_college_id_edit" name="college_id_edit">
+																<option value="">
+																	Please select...
+																</option>
+																<option value="60">
+																	Alabama
+																</option>
+																<option value="122">
+																	Alabama-Birmingham
+																</option>
+																<option value="15">
+																	Arizona
+																</option>
+																<option value="62">
+																	Arizona State
+																</option>
+																<option value="38">
+																	Arkansas
+																</option>
+																<option value="69">
+																	Arkansas-Little Rock
+																</option>
+																<option value="59">
+																	Auburn
+																</option>
+																<option value="73">
+																	Augsburg
+																</option>
+																<option value="79">
+																	Austin Peay
+																</option>
+																<option value="124">
+																	Baylor
+																</option>
+																<option value="12">
+																	Blinn Coll. TX (JC)
+																</option>
+																<option value="66">
+																	Boston College
+																</option>
+																<option value="58">
+																	Bowling Green
+																</option>
+																<option value="114">
+																	Bradley
+																</option>
+																<option value="36">
+																	Cal State Fullerton
+																</option>
+																<option value="40">
+																	Cal State-Fullerton
+																</option>
+																<option value="13">
+																	California
+																</option>
+																<option value="95">
+																	Central Michigan
+																</option>
+																<option value="91">
+																	Charleston (SC)
+																</option>
+																<option value="100">
+																	Cincinnati
+																</option>
+																<option value="42">
+																	Clemson
+																</option>
+																<option value="71">
+																	Colgate
+																</option>
+																<option value="29">
+																	Colorado
+																</option>
+																<option value="125">
+																	Colorado State
+																</option>
+																<option value="7">
+																	Connecticut
+																</option>
+																<option value="96">
+																	Creighton
+																</option>
+																<option value="118">
+																	Delta State
+																</option>
+																<option value="50">
+																	DePaul
+																</option>
+																<option value="78">
+																	Detroit Mercy
+																</option>
+																<option value="119">
+																	Drexel
+																</option>
+																<option value="26">
+																	Duke
+																</option>
+																<option value="88">
+																	Duquesne
+																</option>
+																<option value="126">
+																	Eastern Washington
+																</option>
+																<option value="33">
+																	Florida
+																</option>
+																<option value="87">
+																	Florida A&amp;M
+																</option>
+																<option value="28">
+																	Florida International
+																</option>
+																<option value="131">
+																	Florida State
+																</option>
+																<option value="10">
+																	Fresno State
+																</option>
+																<option value="105">
+																	George Washington
+																</option>
+																<option value="77">
+																	Georgetown
+																</option>
+																<option value="81">
+																	Georgia
+																</option>
+																<option value="35">
+																	Georgia Tech
+																</option>
+																<option value="109">
+																	Gonzaga
+																</option>
+																<option value="48">
+																	Hawaii
+																</option>
+																<option value="51">
+																	Hofstra
+																</option>
+																<option value="92">
+																	Houston
+																</option>
+																<option value="55">
+																	Illinois
+																</option>
+																<option value="76">
+																	Indiana
+																</option>
+																<option value="37">
+																	Iowa
+																</option>
+																<option value="128">
+																	Iowa State
+																</option>
+																<option value="83">
+																	IUPUI
+																</option>
+																<option value="86">
+																	Jackson State
+																</option>
+																<option value="17">
+																	Kansas
+																</option>
+																<option value="27">
+																	Kansas State
+																</option>
+																<option value="19">
+																	Kentucky
+																</option>
+																<option value="43">
+																	La Salle
+																</option>
+																<option value="23">
+																	Louisiana State
+																</option>
+																<option value="106">
+																	Louisiana Tech
+																</option>
+																<option value="72">
+																	Louisville
+																</option>
+																<option value="61">
+																	Marquette
+																</option>
+																<option value="30">
+																	Maryland
+																</option>
+																<option value="44">
+																	Massachusetts
+																</option>
+																<option value="46">
+																	Memphis
+																</option>
+																<option value="108">
+																	Meridian CC (MS)
+																</option>
+																<option value="93">
+																	Miami (Fla.)
+																</option>
+																<option value="127">
+																	Miami (Ohio)
+																</option>
+																<option value="24">
+																	Michigan
+																</option>
+																<option value="3">
+																	Michigan State
+																</option>
+																<option value="85">
+																	Minnesota
+																</option>
+																<option value="57">
+																	Mississippi State
+																</option>
+																<option value="63">
+																	Missouri
+																</option>
+																<option value="123">
+																	Murray State
+																</option>
+																<option value="65">
+																	n/a
+																</option>
+																<option value="98">
+																	Nebraska
+																</option>
+																<option value="11">
+																	Nevada-Las Vegas
+																</option>
+																<option value="104">
+																	Nevada-Reno
+																</option>
+																<option value="74">
+																	New Mexico
+																</option>
+																<option value="49">
+																	North Carolina
+																</option>
+																<option value="82">
+																	North Carolina State
+																</option>
+																<option value="21">
+																	Northeastern
+																</option>
+																<option value="47">
+																	Notre Dame
+																</option>
+																<option value="54">
+																	Ohio State
+																</option>
+																<option value="111">
+																	Oklahoma
+																</option>
+																<option value="8">
+																	Oklahoma State
+																</option>
+																<option value="39">
+																	Oregon
+																</option>
+																<option value="22">
+																	Oregon State
+																</option>
+																<option value="34">
+																	Penn State
+																</option>
+																<option value="1">
+																	Pepperdine
+																</option>
+																<option value="31">
+																	Pittsburgh
+																</option>
+																<option value="132">
+																	Portland State
+																</option>
+																<option value="75">
+																	Providence
+																</option>
+																<option value="45">
+																	Purdue
+																</option>
+																<option value="107">
+																	Rhode Island
+																</option>
+																<option value="9">
+																	Rice
+																</option>
+																<option value="130">
+																	Rider
+																</option>
+																<option value="64">
+																	Rutgers
+																</option>
+																<option value="113">
+																	Saint Joseph's
+																</option>
+																<option value="136">
+																	San Diego State
+																</option>
+																<option value="112">
+																	Santa Clara
+																</option>
+																<option value="56">
+																	Seton Hall
+																</option>
+																<option value="110">
+																	Shaw
+																</option>
+																<option value="20">
+																	South Carolina
+																</option>
+																<option value="18">
+																	South Florida
+																</option>
+																<option value="120">
+																	Southern Methodist
+																</option>
+																<option value="16">
+																	St. John's
+																</option>
+																<option value="84">
+																	St. Louis
+																</option>
+																<option value="52">
+																	Stanford
+																</option>
+																<option value="14">
+																	Syracuse
+																</option>
+																<option value="53">
+																	Temple
+																</option>
+																<option value="134">
+																	Tennessee
+																</option>
+																<option value="4">
+																	Texas
+																</option>
+																<option value="94">
+																	Texas A&amp;M
+																</option>
+																<option value="129">
+																	Texas Christian
+																</option>
+																<option value="70">
+																	Texas State
+																</option>
+																<option value="25">
+																	Texas Tech
+																</option>
+																<option value="41">
+																	Texas-San Antonio
+																</option>
+																<option value="89">
+																	Tulane
+																</option>
+																<option value="121">
+																	Tulsa
+																</option>
+																<option value="2">
+																	UCLA
+																</option>
+																<option value="99">
+																	UNLV
+																</option>
+																<option value="103">
+																	USC
+																</option>
+																<option value="32">
+																	Utah
+																</option>
+																<option value="116">
+																	Utah Valley University
+																</option>
+																<option value="6">
+																	Villanova
+																</option>
+																<option value="102">
+																	Virginia
+																</option>
+																<option value="133">
+																	Virginia Union
+																</option>
+																<option value="67">
+																	Wake Forest
+																</option>
+																<option value="80">
+																	Washington
+																</option>
+																<option value="135">
+																	Washington State
+																</option>
+																<option value="5">
+																	West Virginia
+																</option>
+																<option value="90">
+																	Westchester HS (Los Angeles, CA)
+																</option>
+																<option value="101">
+																	Western Carolina
+																</option>
+																<option value="97">
+																	Western Kentucky
+																</option>
+																<option value="68">
+																	Wisconsin
+																</option>
+																<option value="117">
+																	Wyoming
+																</option>
+																<option value="115">
+																	Xavier (Ohio)
+																</option>
+															</select>
+														</div>
+														<p class="help-block">College can be selected only for players from USA.</p>
+													</div>
+													<div class="form-group col-sm-4">
+														<label class="control-label" data-column="career_start_year" for="Form6345d76e00a60_career_start_year_edit">NBA Debut <span class="required-mark">*</span></label>
+														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
+															<label class="control-label" data-column="career_start_year" for="Form6345d76e00a60_career_start_year_edit"></label>
+														</div>
+														<div class="col-input" data-column="career_start_year" style="width:100%;max-width:100%">
+															<input class="form-control" data-editor="text" data-field-name="career_start_year" data-legacy-field-name="career_start_year" data-pgui-legacy-validate="true" data-required-error-message="NBA Debut is required." data-validation="required" id="Form6345d76e00a60_career_start_year_edit" name="career_start_year_edit" placeholder="Career start year" type="text" value="">
+														</div>
+													</div>
+												</div>
+											</fieldset>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<app-footer></app-footer>
+					</div>
+				</div>
+			</div>				
+		</ng-template>
 	</div>
 	
