@@ -1,3 +1,4 @@
+import {Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -18,8 +19,12 @@ export const CLEAN_NULL = filter((valnull:any) => !!valnull)
 export class PlayersViewComponent implements OnInit {
 
   player$ : Observable<Player> = new Observable<Player>();
+  typeView :string = '';
 
-  constructor(private store :Store<State>) { }
+  constructor(private store :Store<State>,
+    location: Location) {
+    this.typeView = location.path();
+   }
 
   ngOnInit(): void {
 

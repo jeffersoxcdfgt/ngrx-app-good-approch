@@ -180,9 +180,14 @@
 						</nav>
 					</div><!-- <Pages> -->
 					<div class="page_navigator"></div><!-- </Pages> -->
-					<div class="grid grid-table js-grid" data-column-count="14" data-grid-hidden-values="[]" data-is-master="" data-selection-id="playerGrid_" data-sortable-columns="{&quot;photo&quot;:{&quot;name&quot;:&quot;photo&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Photo&quot;},&quot;first_name&quot;:{&quot;name&quot;:&quot;first_name&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;First name&quot;},&quot;last_name&quot;:{&quot;name&quot;:&quot;last_name&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Last name&quot;},&quot;birthday&quot;:{&quot;name&quot;:&quot;birthday&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Birthday&quot;},&quot;country_id&quot;:{&quot;name&quot;:&quot;country_id_name&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Country&quot;},&quot;height&quot;:{&quot;name&quot;:&quot;height&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Height&quot;},&quot;weight&quot;:{&quot;name&quot;:&quot;weight&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Weight&quot;},&quot;college_id&quot;:{&quot;name&quot;:&quot;college_id_name&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;College&quot;},&quot;career_start_year&quot;:{&quot;name&quot;:&quot;career_start_year&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;NBA Debut&quot;},&quot;position&quot;:{&quot;name&quot;:&quot;position&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Position&quot;},&quot;current_team_id&quot;:{&quot;name&quot;:&quot;current_team_id_caption&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Team&quot;},&quot;current_number&quot;:{&quot;name&quot;:&quot;current_number&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Number&quot;}}" id="playerGrid_6344b872ee07a">
+					<div class="grid grid-table js-grid" data-column-count="14" data-grid-hidden-values="[]" data-is-master="" data-selection-id="playerGrid_"  id="playerGrid_6344b872ee07a">
 						<div class="addition-block js-actions">
 							<div class="btn-toolbar addition-block-left pull-left">
+								<div class="btn-group">
+									<a class="btn btn-default pgui-add" routerLink="/menu/players/add"  title="Add new Players">
+										<i class="icon-plus"></i> <span class="visible-lg-inline">Add new</span>
+									</a>
+								</div>
 								<div class="btn-group">
 									<a class="btn btn-default" title="Refresh">
                                         <i class="icon-page-refresh"></i> <span class="visible-lg-inline">Refresh</span>
@@ -436,6 +441,14 @@
 												<a class="link-icon" routerLink="/menu/players/{{player.id}}" title="View">
 													<i class="icon-view"></i>
 												</a>
+											</span>
+											<span data-column-name="edit" class="operation-item">            
+												<a routerLink="/menu/players/edit/{{player.id}}" title="Edit" class="link-icon">
+												<i class="icon-edit"></i></a>
+											</span>
+											<span data-column-name="delete" class="operation-item">            
+												<a  title="Delete" class="link-icon new_hover">
+												<i class="icon-remove"></i>	</a>
 											</span>
 										</td>
                                     </tr>

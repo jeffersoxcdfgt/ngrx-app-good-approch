@@ -30,6 +30,8 @@ const menuRoutes: Routes  =  [{
     { path: 'playoff' , component:  PlayoffComponent, canActivate: [AuthGuardService]},
     { path: 'players' , component:  PlayersComponent, canActivate: [AuthGuardService]},
     { path: 'players/:id' , component:  PlayersViewComponent, canActivate: [AuthGuardService] },
+    { path: 'players/add' , component:  PlayersViewComponent, canActivate: [AuthGuardService] },
+    { path: 'players/edit/:id' , component:  PlayersViewComponent, canActivate: [AuthGuardService] },
   ]
 }] as Routes;
 

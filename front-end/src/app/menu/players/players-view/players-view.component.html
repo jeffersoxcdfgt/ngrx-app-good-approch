@@ -71,110 +71,115 @@
 									</div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-md-12 js-message-container"></div>
-								<div class="clearfix"></div>
-								<div class="col-md-8 col-md-offset-2">
-									<div class="row">
-										<fieldset class="col-md-4 form-static">
-											<legend>Photo</legend>
-											<div class="row">
-												<div class="form-group col-sm-12">
-													<label class="control-label" data-column="photo">Photo</label>
-													<div class="form-control-static pgui-cell-edit" data-column-name="photo" data-edit-url="">
-														<a class="image gallery-item" data-name="photo" title="{{ player?.firstname }} {{ player?.lastname }}">
-															<img alt="{{ player?.firstname }} {{ player?.lastname }}" data-image-column="true" src="{{ player?.photo }}" style="width: 100px">
-                                                        </a>
+							<div class="form-horizontal" *ngIf="typeView !== '/menu/players/add' &&  !this.typeView.includes('menu/players/edit/') ; else addEdit">	
+								<div class="row">
+									<div class="col-md-12 js-message-container"></div>
+									<div class="clearfix"></div>
+									<div class="col-md-8 col-md-offset-2">
+										<div class="row">
+											<fieldset class="col-md-4 form-static">
+												<legend>Photo</legend>
+												<div class="row">
+													<div class="form-group col-sm-12">
+														<label class="control-label" data-column="photo">Photo</label>
+														<div class="form-control-static pgui-cell-edit" data-column-name="photo" data-edit-url="">
+															<a class="image gallery-item" data-name="photo" title="{{ player?.firstname }} {{ player?.lastname }}">
+																<img alt="{{ player?.firstname }} {{ player?.lastname }}" data-image-column="true" src="{{ player?.photo }}" style="width: 100px">
+															</a>
+														</div>
 													</div>
 												</div>
-											</div>
-										</fieldset>
-										<fieldset class="col-md-8 form-static">
-											<legend>Personal info</legend>
-											<div class="row">
-												<div class="form-group col-sm-4">
-													<label class="control-label" data-column="first_name">First name</label>
-													<div class="form-control-static pgui-cell-edit" data-column-name="first_name" data-edit-url="">
-														{{ player?.firstname }} 
+											</fieldset>
+											<fieldset class="col-md-8 form-static">
+												<legend>Personal info</legend>
+												<div class="row">
+													<div class="form-group col-sm-4">
+														<label class="control-label" data-column="first_name">First name</label>
+														<div class="form-control-static pgui-cell-edit" data-column-name="first_name" data-edit-url="">
+															{{ player?.firstname }} 
+														</div>
+													</div>
+													<div class="form-group col-sm-4">
+														<label class="control-label" data-column="last_name">Last name</label>
+														<div class="form-control-static pgui-cell-edit" data-column-name="last_name" data-edit-url="">
+															{{ player?.lastname }}
+														</div>
+													</div>
+													<div class="form-group col-sm-4">
+														<label class="control-label" data-column="birthday">Birthday</label>
+														<div class="form-control-static pgui-cell-edit" data-column-name="birthday" data-edit-url="">
+															{{ player?.birthday }}
+														</div>
 													</div>
 												</div>
-												<div class="form-group col-sm-4">
-													<label class="control-label" data-column="last_name">Last name</label>
-													<div class="form-control-static pgui-cell-edit" data-column-name="last_name" data-edit-url="">
-														{{ player?.lastname }}
+												<div class="row">
+													<div class="form-group col-sm-4">
+														<label class="control-label" data-column="height">Height</label>
+														<div class="form-control-static pgui-cell-edit" data-column-name="height" data-edit-url="">
+															{{ player?.height }}
+														</div>
+													</div>
+													<div class="form-group col-sm-4">
+														<label class="control-label" data-column="weight">Weight</label>
+														<div class="form-control-static pgui-cell-edit" data-column-name="weight" data-edit-url="">
+															{{ player?.weight }}
+														</div>
 													</div>
 												</div>
-												<div class="form-group col-sm-4">
-													<label class="control-label" data-column="birthday">Birthday</label>
-													<div class="form-control-static pgui-cell-edit" data-column-name="birthday" data-edit-url="">
-														{{ player?.birthday }}
+											</fieldset>
+											<fieldset class="col-md-12 form-static">
+												<legend>Team info</legend>
+												<div class="row">
+													<div class="form-group col-sm-4">
+														<label class="control-label" data-column="current_team_id">Team</label>
+														<div class="form-control-static pgui-cell-edit" data-column-name="current_team_id" data-edit-url="">
+															<a target="_blank">{{ player?.team }}</a>
+														</div>
+													</div>
+													<div class="form-group col-sm-4">
+														<label class="control-label" data-column="current_number">Number</label>
+														<div class="form-control-static pgui-cell-edit" data-column-name="current_number" data-edit-url="">
+															{{ player?.number }}
+														</div>
+													</div>
+													<div class="form-group col-sm-4">
+														<label class="control-label" data-column="position">Position</label>
+														<div class="form-control-static pgui-cell-edit" data-column-name="position" data-edit-url="">
+															{{ player?.position }}
+														</div>
 													</div>
 												</div>
-											</div>
-											<div class="row">
-												<div class="form-group col-sm-4">
-													<label class="control-label" data-column="height">Height</label>
-													<div class="form-control-static pgui-cell-edit" data-column-name="height" data-edit-url="">
-														{{ player?.height }}
+											</fieldset>
+											<fieldset class="col-md-12 form-static">
+												<legend>Misc</legend>
+												<div class="row">
+													<div class="form-group col-sm-4">
+														<label class="control-label" data-column="country_id">Country</label>
+														<div class="form-control-static pgui-cell-edit" data-column-name="country_id" data-edit-url="">
+															{{ player?.country }}
+														</div>
+													</div>
+													<div class="form-group col-sm-4">
+														<label class="control-label" data-column="college_id">College</label>
+														<div class="form-control-static pgui-cell-edit" data-column-name="college_id" data-edit-url="">
+															{{ player?.college }}
+														</div>
+													</div>
+													<div class="form-group col-sm-4">
+														<label class="control-label" data-column="career_start_year">NBA Debut</label>
+														<div class="form-control-static pgui-cell-edit" data-column-name="career_start_year" data-edit-url="">
+															{{ player?.nbadebut }}
+														</div>
 													</div>
 												</div>
-												<div class="form-group col-sm-4">
-													<label class="control-label" data-column="weight">Weight</label>
-													<div class="form-control-static pgui-cell-edit" data-column-name="weight" data-edit-url="">
-														{{ player?.weight }}
-													</div>
-												</div>
-											</div>
-										</fieldset>
-										<fieldset class="col-md-12 form-static">
-											<legend>Team info</legend>
-											<div class="row">
-												<div class="form-group col-sm-4">
-													<label class="control-label" data-column="current_team_id">Team</label>
-													<div class="form-control-static pgui-cell-edit" data-column-name="current_team_id" data-edit-url="">
-														<a target="_blank">{{ player?.team }}</a>
-													</div>
-												</div>
-												<div class="form-group col-sm-4">
-													<label class="control-label" data-column="current_number">Number</label>
-													<div class="form-control-static pgui-cell-edit" data-column-name="current_number" data-edit-url="">
-														{{ player?.number }}
-													</div>
-												</div>
-												<div class="form-group col-sm-4">
-													<label class="control-label" data-column="position">Position</label>
-													<div class="form-control-static pgui-cell-edit" data-column-name="position" data-edit-url="">
-														{{ player?.position }}
-													</div>
-												</div>
-											</div>
-										</fieldset>
-										<fieldset class="col-md-12 form-static">
-											<legend>Misc</legend>
-											<div class="row">
-												<div class="form-group col-sm-4">
-													<label class="control-label" data-column="country_id">Country</label>
-													<div class="form-control-static pgui-cell-edit" data-column-name="country_id" data-edit-url="">
-														{{ player?.country }}
-													</div>
-												</div>
-												<div class="form-group col-sm-4">
-													<label class="control-label" data-column="college_id">College</label>
-													<div class="form-control-static pgui-cell-edit" data-column-name="college_id" data-edit-url="">
-														{{ player?.college }}
-													</div>
-												</div>
-												<div class="form-group col-sm-4">
-													<label class="control-label" data-column="career_start_year">NBA Debut</label>
-													<div class="form-control-static pgui-cell-edit" data-column-name="career_start_year" data-edit-url="">
-														{{ player?.nbadebut }}
-													</div>
-												</div>
-											</div>
-										</fieldset>
+											</fieldset>
+										</div>
 									</div>
 								</div>
 							</div>
+							<ng-template #addEdit>
+								Add and Edit
+							</ng-template>							
 							<div class="form-actions row">
 								<div class="col-md-12">
 									<div class="row">
