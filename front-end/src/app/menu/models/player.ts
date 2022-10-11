@@ -12,4 +12,5 @@ export interface Player {
     position: string;
     team: number|string;
     number: string;
+    iconflag:string;
 }

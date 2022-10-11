@@ -39,7 +39,8 @@ export const joinPlayersAndTeams = (players: Player[], teams:Team[]) =>{
                 nbadebut: player.nbadebut,
                 position: player.position,
                 team: rowteam.name,
-                number: player.number
+                number: player.number,
+                iconflag:player.iconflag,
             }))
     })
     .reduce((a,b)=>{

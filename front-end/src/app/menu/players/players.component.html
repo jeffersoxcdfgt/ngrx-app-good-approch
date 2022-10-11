@@ -1,1 +1,453 @@
-<p>players works!</p>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="container-padding">
+					<div class="page-header">
+						<ol class="breadcrumb pgui-breadcrumb">
+							<li>
+								<a ><i class="icon-home"></i></a>
+							</li>
+							<li class="dropdown">
+								<a>Participants</a>
+							</li>
+							<li class="dropdown">Players 
+                                <button class="btn btn-xs btn-default dropdown-toggle pgui-breadcrumb-siblings" data-toggle="dropdown"><span class="caret"></span></button>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li>
+										<a>Teams</a>
+									</li>
+									<li>
+										<a>Arenas</a>
+									</li>
+								</ul>
+							</li>
+						</ol>
+						<h1>Players</h1>
+					</div>
+					<div class="modal modal-top fade js-page-settings-dialog" data-record-count-per-page="1" data-total-record-count="181" id="page-settings" tabindex="-1">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+									<h3 class="modal-title">Page settings</h3>
+								</div>
+								<div class="modal-body">
+									<h4>Appearance</h4>
+									<table class="table table-bordered table-condensed form-inline">
+										<tr>
+											<td class="page-settings-label-container"><label for="page-settings-viewmode-control">View mode</label></td>
+											<td class="page-settings-control-container" colspan="2"><select class="form-control js-page-settings-viewmode-control" id="page-settings-viewmode-control">
+												<option data-name="TableViewMode" selected="selected" value="0">
+													Grid
+												</option>
+												<option data-name="CardViewMode" value="1">
+													Cards
+												</option>
+											</select></td>
+										</tr>
+										<tr>
+											<td class="page-settings-label-container" rowspan="5">
+												<label>Number of cards in a row</label>
+												<p>Here you can select the number of cards to be placed in a row for each of supported screen resolutions. Your current resolution is highlighted <strong class="text-success">in this way</strong>.</p>
+											</td>
+										</tr>
+										<tr class="page-settings-hightlight-lg">
+											<td style="width: 25%;"><label for="page-settings-card-column-count-lg">Large desktop</label></td>
+											<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="lg" id="page-settings-card-column-count-lg">
+												<option value="1">
+													1
+												</option>
+												<option value="2">
+													2
+												</option>
+												<option selected="selected" value="3">
+													3
+												</option>
+												<option value="4">
+													4
+												</option>
+												<option value="6">
+													6
+												</option>
+											</select></td>
+										</tr>
+										<tr class="page-settings-hightlight-md">
+											<td style="width: 25%;"><label for="page-settings-card-column-count-md">Desktop</label></td>
+											<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="md" id="page-settings-card-column-count-md">
+												<option value="1">
+													1
+												</option>
+												<option selected="selected" value="2">
+													2
+												</option>
+												<option value="3">
+													3
+												</option>
+												<option value="4">
+													4
+												</option>
+												<option value="6">
+													6
+												</option>
+											</select></td>
+										</tr>
+										<tr class="page-settings-hightlight-sm">
+											<td style="width: 25%;"><label for="page-settings-card-column-count-sm">Tablet</label></td>
+											<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="sm" id="page-settings-card-column-count-sm">
+												<option selected="selected" value="1">
+													1
+												</option>
+												<option value="2">
+													2
+												</option>
+												<option value="3">
+													3
+												</option>
+												<option value="4">
+													4
+												</option>
+												<option value="6">
+													6
+												</option>
+											</select></td>
+										</tr>
+										<tr class="page-settings-hightlight-xs">
+											<td style="width: 25%;"><label for="page-settings-card-column-count-xs">Phone</label></td>
+											<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="xs" id="page-settings-card-column-count-xs">
+												<option selected="selected" value="1">
+													1
+												</option>
+												<option value="2">
+													2
+												</option>
+												<option value="3">
+													3
+												</option>
+												<option value="4">
+													4
+												</option>
+												<option value="6">
+													6
+												</option>
+											</select></td>
+										</tr>
+									</table>
+									<h4>Page size</h4>
+									<p>Total record count: 181.</p>
+									<table class="table table-bordered table-condensed form-inline">
+										<tr>
+											<th style="width:50%;"><label for="page-settings-page-size-control">Records per page</label></th>
+											<td class="page-settings-control-container"><span class="js-page-settings-page-size-container"><select class="form-control js-page-settings-page-size-control" id="page-settings-page-size-control">
+												<option value="10">
+													10 (19 pages)
+												</option>
+												<option value="20">
+													20 (10 pages)
+												</option>
+												<option value="50">
+													50 (4 pages)
+												</option>
+												<option value="100">
+													100 (2 pages)
+												</option>
+												<option value="0">
+													ALL (1 pages)
+												</option>
+												<option value="custom">
+													Custom
+												</option>
+											</select></span> <span class="js-page-settings-custom-page-size-container" style="display: none">
+                                                <input class="js-page-settings-custom-page-size-control form-control" id="page-settings-custom-page-size-control" max="181" min="1" type="number" value="1"> <span style="margin-left: .5em;"><span class="js-page-settings-custom-page-size-pager"></span> page(s).</span></span></td>
+										</tr>
+									</table>
+								</div>
+					
+							</div>
+						</div>
+					</div>
+					<div class="well description">
+						<a class="close" ><span aria-hidden="true">&times;</span></a>
+						<p>This page lists some notable players participated in the 2013-2014 NBA season. A custom template is used to optimize the space occupied by each record. Click <a data-target="#page-settings" data-toggle="modal">here</a> to play with page settings. Scroll to the bottom of the page to find an example of a multi-series bar chart.</p>
+						<nav>
+							<ul class="pager">
+								<li class="previous">
+									<a routerLink="/menu/playoff"><span aria-hidden="true">&larr;</span> Playoff Bracket</a>
+								</li>
+								<li class="next">
+									<a routerLink="/menu/teams">Teams <span aria-hidden="true">&rarr;</span></a>
+								</li>
+							</ul>
+						</nav>
+					</div><!-- <Pages> -->
+					<div class="page_navigator"></div><!-- </Pages> -->
+					<div class="grid grid-table js-grid" data-column-count="14" data-grid-hidden-values="[]" data-is-master="" data-selection-id="playerGrid_" data-sortable-columns="{&quot;photo&quot;:{&quot;name&quot;:&quot;photo&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Photo&quot;},&quot;first_name&quot;:{&quot;name&quot;:&quot;first_name&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;First name&quot;},&quot;last_name&quot;:{&quot;name&quot;:&quot;last_name&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Last name&quot;},&quot;birthday&quot;:{&quot;name&quot;:&quot;birthday&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Birthday&quot;},&quot;country_id&quot;:{&quot;name&quot;:&quot;country_id_name&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Country&quot;},&quot;height&quot;:{&quot;name&quot;:&quot;height&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Height&quot;},&quot;weight&quot;:{&quot;name&quot;:&quot;weight&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Weight&quot;},&quot;college_id&quot;:{&quot;name&quot;:&quot;college_id_name&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;College&quot;},&quot;career_start_year&quot;:{&quot;name&quot;:&quot;career_start_year&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;NBA Debut&quot;},&quot;position&quot;:{&quot;name&quot;:&quot;position&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Position&quot;},&quot;current_team_id&quot;:{&quot;name&quot;:&quot;current_team_id_caption&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Team&quot;},&quot;current_number&quot;:{&quot;name&quot;:&quot;current_number&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Number&quot;}}" id="playerGrid_6344b872ee07a">
+						<div class="addition-block js-actions">
+							<div class="btn-toolbar addition-block-left pull-left">
+								<div class="btn-group">
+									<a class="btn btn-default" title="Refresh">
+                                        <i class="icon-page-refresh"></i> <span class="visible-lg-inline">Refresh</span>
+                                    </a>
+								</div>
+								<div class="btn-group export-button">
+									<div class="btn-group">
+										<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Export"><i class="icon-export"></i> <span class="visible-lg-inline">Export</span> <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li>
+												<a target="_blank"><i class="icon-export-pdf"></i> Export to Pdf</a>
+											</li>
+											<li>
+												<a ><i class="icon-export-excel"></i> Export to Excel</a>
+											</li>
+											<li>
+												<a><i class="icon-export-word"></i> Export to Word</a>
+											</li>
+											<li>
+												<a><i class="icon-export-xml"></i> Export to Xml</a>
+											</li>
+											<li>
+												<a><i class="icon-export-csv"></i> Export to Csv</a>
+											</li>
+										</ul>
+									</div>
+									<div class="btn-group">
+										<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Print"><i class="icon-print-page"></i> <span class="visible-lg-inline">Print</span> <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li>
+												<a target="_blank"><i class="icon-print-page"></i> Print current page</a>
+											</li>
+											<li>
+												<a target="_blank"><i class="icon-print-page"></i> Print all pages</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="btn-group js-selection-actions-container fade" style="display: none">
+									<div class="btn-group">
+										<button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="hidden-xs"><span class="js-count">0</span> item(s) selected</span> <span class="js-count visible-xs-inline">0</span> <span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li>
+												<a class="js-action" data-type="clear" >Clear</a>
+											</li>
+											<li class="divider"></li>
+											<li class="dropdown dropdown-sub-menu">
+												<a>Selection filter</a>
+												<ul class="dropdown-menu sub-menu">
+													<li>
+														<a class="js-action" data-condition="selected" data-type="select" data-url="players.php">Show selected only</a>
+													</li>
+													<li class="divider"></li>
+													<li>
+														<a class="js-action" data-condition="unselected" data-type="select" data-url="players.php">Show unselected only</a>
+													</li>
+													<li class="divider"></li>
+													<li>
+														<a class="js-action" data-condition="all" data-type="select" data-url="players.php">Show all</a>
+													</li>
+												</ul>
+											</li>
+											<li class="divider"></li>
+											<li>
+												<a class="js-action" data-type="compare" data-url="players.php">Compare</a>
+											</li>
+											<li class="divider"></li>
+											<li class="dropdown dropdown-sub-menu">
+												<a>Export</a>
+												<ul class="dropdown-menu sub-menu">
+													<li>
+														<a class="js-action" data-export-type="pdf" data-type="export" data-url="players.php" target="_blank">Export to Pdf</a>
+													</li>
+													<li>
+														<a class="js-action" data-export-type="excel" data-type="export" data-url="players.php" >Export to Excel</a>
+													</li>
+													<li>
+														<a class="js-action" data-export-type="word" data-type="export" data-url="players.php">Export to Word</a>
+													</li>
+													<li>
+														<a class="js-action" data-export-type="xml" data-type="export" data-url="players.php">Export to Xml</a>
+													</li>
+													<li>
+														<a class="js-action" data-export-type="csv" data-type="export" data-url="players.php">Export to Csv</a>
+													</li>
+												</ul>
+											</li>
+											<li class="divider"></li>
+											<li>
+												<a class="js-action" data-type="print" data-url="players.php" target="_blank">Print</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="addition-block-right pull-right">
+								<div class="btn-group">
+									<button class="btn btn-default js-filter-builder-open" title="Edit filter" type="button"><i class="icon-filter-alt"></i></button>
+								</div>
+								<div class="btn-group">
+									<button class="btn btn-default" data-target="#multiple-sorting-playerGrid_6344b872ee07a" data-toggle="modal" id="multi-sort-playerGrid_6344b872ee07a" title="Sort"><i class="icon-sort"></i></button>
+								</div>
+								<div class="btn-group">
+									<button class="btn btn-default" data-target="#page-settings" data-toggle="modal" title="Page settings"><i class="icon-settings"></i></button>
+								</div>
+							</div>
+							<div class="addition-block-right pull-right js-quick-filter">
+								<div class="quick-filter-toolbar btn-group">
+									<div class="input-group js-filter-control">
+										<input class="js-input form-control" name="quick_filter" placeholder="Quick search" size="16" type="text" value="">
+										<div class="input-group-btn dropdown dropdown-lg">
+											<button aria-expanded="false" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="toggle-dropdown" type="button"><span class="caret"></span></button>
+											<div class="dropdown-menu dropdown-menu-right" role="menu">
+												<form class="form-horizontal quick-filter">
+													<div class="form-group form-group-sm">
+														<label class="control-label" for="quick-filter-fields">Columns</label>
+														<div class="col-input input-group-sm" data-column="quick_filter_fields" style="width:100%;max-width:100%">
+															<select class="form-control" data-editor="multivalue_select" data-max-selection-size="0" data-placeholder="All" id="quick-filter-fields" multiple name="quick_filter_fields[]">
+																<option value="first_name">
+																	First name
+																</option>
+																<option value="last_name">
+																	Last name
+																</option>
+																<option value="photo">
+																	Photo
+																</option>
+																<option value="career_start_year">
+																	NBA Debut
+																</option>
+																<option value="country_id">
+																	Country
+																</option>
+																<option value="height">
+																	Height
+																</option>
+																<option value="birthday">
+																	Birthday
+																</option>
+																<option value="weight">
+																	Weight
+																</option>
+																<option value="college_id">
+																	College
+																</option>
+																<option value="current_team_id">
+																	Team
+																</option>
+																<option value="current_number">
+																	Number
+																</option>
+																<option value="position">
+																	Position
+																</option>
+															</select>
+														</div>
+													</div>
+													<div class="form-group form-group-sm">
+														<label class="control-label" for="quick-filter-operator">Search condition</label>
+														<div class="col-input input-group-sm" data-column="quick_filter_operator" style="width:100%;max-width:100%">
+															<select class="form-control" id="quick-filter-operator" name="quick_filter_operator">
+																<option selected value="Contains">
+																	Contains
+																</option>
+																<option value="BeginsWith">
+																	Begins with
+																</option>
+																<option value="EndsWith">
+																	Ends with
+																</option>
+																<option value="Equals">
+																	Equals
+																</option>
+																<option value="DoesNotContain">
+																	Does not contain
+																</option>
+																<option value="DoesNotEqual">
+																	Does not equal
+																</option>
+															</select>
+														</div>
+													</div>
+													<hr class="quick-filter-separator">
+													<span class="pull-right"><button class="js-cancel btn btn-sm btn-default" type="button"><span class="pull-right"><span class="pull-right">Cancel</span> <button class="js-submit btn btn-sm btn-primary" type="button">Apply</button></span></button></span>
+												</form>
+											</div><button class="btn btn-default js-submit" title="Search" type="button"><i class="icon-search"></i></button> <button class="btn btn-default js-reset" title="Clear" type="button"><i class="icon-filter-reset"></i></button>
+										</div>
+									</div>
+								</div><span class="hidden-xs">&thinsp;</span>
+							</div>
+						</div>
+						<div class="filter-status js-filter-status"></div>
+						<div class="js-grid-message-container"></div>
+						<table class="table text-center table-striped fixed-header">
+							<thead class="js-column-filter-container">
+								<tr>
+									<th class="row-selection" rowspan="1" style="width:1%;"><input type="checkbox"></th>
+									<th class=" sortable filterable" colspan="1" data-column-name="photo" data-field-caption="Photo" data-field-name="photo" data-name="photo" data-sort-index="" rowspan="1">
+										<span>Photo</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+									</th>
+									<th class=" sortable" colspan="1" data-column-name="first_name" data-field-caption="First name" data-field-name="first_name" data-name="first_name" data-sort-index="" rowspan="1"><span>First name</span></th>
+									<th class=" sortable" colspan="1" data-column-name="last_name" data-field-caption="Last name" data-field-name="last_name" data-name="last_name" data-sort-index="" rowspan="1"><span>Last name</span></th>
+									<th class="hidden-xs hidden-sm hidden-md sortable filterable" colspan="1" data-column-name="birthday" data-field-caption="Birthday" data-field-name="birthday" data-name="birthday" data-sort-index="" rowspan="1">
+										<span>Birthday</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+									</th>
+									<th class="hidden-xs sortable filterable" colspan="1" data-column-name="country_id_name" data-field-caption="Country" data-field-name="country_id_name" data-name="country_id" data-sort-index="" rowspan="1">
+										<i class="icon-keys-fk"></i> <span>Country</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+									</th>
+									<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="height" data-field-caption="Height" data-field-name="height" data-name="height" data-sort-index="" rowspan="1"><span>Height</span></th>
+									<th class="hidden-xs hidden-sm hidden-md sortable" colspan="1" data-column-name="weight" data-field-caption="Weight" data-field-name="weight" data-name="weight" data-sort-index="" rowspan="1"><span>Weight</span></th>
+									<th class="hidden-xs hidden-sm hidden-md sortable filterable" colspan="1" data-column-name="college_id_name" data-field-caption="College" data-field-name="college_id_name" data-name="college_id" data-sort-index="" rowspan="1">
+										<i class="icon-keys-fk"></i> <span>College</span><a class="column-filter-trigger js-filter-trigger"  title=""><i class="icon-filter"></i></a>
+									</th>
+									<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="career_start_year" data-field-caption="NBA Debut" data-field-name="career_start_year" data-name="career_start_year" data-sort-index="" rowspan="1"><span>NBA Debut</span></th>
+									<th class="hidden-xs hidden-sm hidden-md sortable" colspan="1" data-column-name="position" data-field-caption="Position" data-field-name="position" data-name="position" data-sort-index="" rowspan="1"><span>Position</span></th>
+									<th class=" sortable filterable" colspan="1" data-column-name="current_team_id_caption" data-field-caption="Team" data-field-name="current_team_id_caption" data-name="current_team_id" data-sort-index="" rowspan="1">
+										<i class="icon-keys-fk"></i> <span>Team</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+									</th>
+									<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="current_number" data-field-caption="Number" data-field-name="current_number" data-name="current_number" data-sort-index="" rowspan="1"><span>Number</span></th>
+									<th rowspan="1" style="width:1%;">Actions</th>
+								</tr>
+							</thead>
+							<tbody class="pg-row-list">
+                                <ng-template ngFor let-player [ngForOf]="playersList$ | async" let-i="index">
+                                    <tr class="pg-row" style="">
+                                        <td style="">
+                                            <div class="row-selection">
+                                                <input data-value="[&quot;66&quot;]" id="record__66" name="rec0" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td data-column-name="photo" data-edit-url="">
+                                            <a class="image gallery-item" data-name="photo" title="Kobe Bryant">
+                                                <img alt="{{ player?.firstname }} {{ player?.lastname }}" data-image-column="true" src="{{ player?.photo }}" style="width: 100px">
+                                            </a>
+                                        </td>
+                                        <td data-column-name="first_name" data-edit-url="">{{ player?.firstname }} </td>
+                                        <td data-column-name="last_name" data-edit-url="">{{ player?.lastname }} </td>
+                                        <td class="hidden-xs hidden-sm hidden-md" data-column-name="birthday" data-edit-url="">{{ player?.birthday }} </td>
+                                        <td class="hidden-xs" data-column-name="country_id" data-edit-url=""><span class='{{ player?.iconflag }}'></span> {{ player?.country }}</td>
+                                        <td class="hidden-xs hidden-sm medium-height" data-column-name="height" data-edit-url="">{{ player?.height }}</td>
+                                        <td class="hidden-xs hidden-sm hidden-md" data-column-name="weight" data-edit-url="">{{ player?.weight }}</td>
+                                        <td class="hidden-xs hidden-sm hidden-md" data-column-name="college_id" data-edit-url="">{{ player?.college }}</td>
+                                        <td class="hidden-xs hidden-sm" data-column-name="career_start_year" data-edit-url="">{{ player?.nbadebut }}</td>
+                                        <td class="hidden-xs hidden-sm hidden-md" data-column-name="position" data-edit-url="">{{ player?.position }}</td>
+                                        <td data-column-name="current_team_id" data-edit-url="">
+                                            <span class='team-caption'><a target="_blank">{{ player?.team }}</a></span>
+                                        </td>
+                                        <td class="hidden-xs hidden-sm" data-column-name="current_number" data-edit-url="">{{ player?.number }}</td>
+                                        <td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
+                                    </tr>
+                                </ng-template>	
+								<tr class="empty-grid hidden">
+									<td colspan="14">
+										<div class="alert alert-warning empty-grid">
+											There are no records to display
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot></tfoot>
+						</table>
+					</div><!-- <Pages> -->				
+					<hr>
+                    <app-footer></app-footer>
+				</div>
+			</div>
+		</div>
+	</div>

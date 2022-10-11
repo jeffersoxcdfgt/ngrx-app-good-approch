@@ -163,7 +163,8 @@ export class AppInMemoryApi  implements InMemoryDbService{
               nbadebut:'2012',
               position:'Center',
               team:1,
-              number:'0'
+              number:'0',
+              iconflag:'flag-icon flag-icon-us'
             },
             {
               id:2,
@@ -178,7 +179,8 @@ export class AppInMemoryApi  implements InMemoryDbService{
               nbadebut:'2011',
               position:'Center',
               team:2,
-              number:'0'
+              number:'0',
+              iconflag:'flag-icon flag-icon-tr'
             },
             {
               id:3,
@@ -193,7 +195,8 @@ export class AppInMemoryApi  implements InMemoryDbService{
               nbadebut:'2007',
               position:'Guard,Forward',
               team:3,
-              number:'0'
+              number:'0',
+              iconflag:'flag-icon flag-icon-us'
             },
             {
               id:4,
@@ -208,7 +211,8 @@ export class AppInMemoryApi  implements InMemoryDbService{
               nbadebut:'2008',
               position:'Forward',
               team:4,
-              number:'5'
+              number:'5',
+              iconflag:'flag-icon flag-icon-us'
             },
             {
               id:5,
@@ -223,7 +227,8 @@ export class AppInMemoryApi  implements InMemoryDbService{
               nbadebut:'210',
               position:'Guard',
               team:1,
-              number:'0'
+              number:'0',
+              iconflag:'flag-icon flag-icon-us'
             },
             {
               id:6,
@@ -238,7 +243,8 @@ export class AppInMemoryApi  implements InMemoryDbService{
               nbadebut:'2012',
               position:'Guard',
               team:1,
-              number:'0'
+              number:'0',
+              iconflag:'flag-icon flag-icon-us'
             },
             {
               id:7,
@@ -253,7 +259,8 @@ export class AppInMemoryApi  implements InMemoryDbService{
               nbadebut:'2008',
               position:'Guard',
               team:2,
-              number:'0'
+              number:'0',
+              iconflag:'flag-icon flag-icon-us'
             }
           ]
         }

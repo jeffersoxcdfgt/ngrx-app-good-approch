@@ -17,14 +17,14 @@ export const CLEANARRAY =  filter((val:Player[]) => val.length >0)
 })
 export class PlayersComponent implements OnInit {
 
-  arenasList$ : Observable<Player[]> = new Observable<Player[]>();
+  playersList$ : Observable<Player[]> = new Observable<Player[]>();
 
   constructor(private store :Store<State>) { }
 
   ngOnInit(): void {
     this.store.dispatch(playersGetAll());
     this.store.dispatch(teamsGetAll());
-    this.arenasList$ = this.store.select(selectedPlayersWithTeams).pipe(CLEANARRAY);
+    this.playersList$ = this.store.select(selectedPlayersWithTeams).pipe(CLEANARRAY);
   }
 
 }
