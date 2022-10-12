@@ -1,5 +1,6 @@
 import {Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -20,10 +21,15 @@ export class PlayersViewComponent implements OnInit {
 
   player$ : Observable<Player> = new Observable<Player>();
   typeView :string = '';
+  formPlayer: FormGroup;
 
-  constructor(private store :Store<State>,
+  constructor(private store :Store<State>,private formBuilder: FormBuilder,
     location: Location) {
     this.typeView = location.path();
+    this.formPlayer = this.formBuilder.group({
+      firstname:[''],
+      lastname:['']
+    })
    }
 
   ngOnInit(): void {

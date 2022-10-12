@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 
 import { PlayersViewComponent } from './players-view.component';
@@ -12,6 +13,8 @@ describe('PlayersViewComponent', () => {
       declarations: [ PlayersViewComponent ],
       imports:[
         StoreModule.forRoot({}),
+        ReactiveFormsModule,
+        FormsModule
       ]
     })
     .compileComponents();

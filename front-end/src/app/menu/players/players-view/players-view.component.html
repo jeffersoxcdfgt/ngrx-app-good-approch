@@ -234,7 +234,7 @@
 			</div>
 		</div>
 		<ng-template #addEdit>
-			<div class="row">
+			<div class="row" *ngIf="player$ | async ; let player;">
 				<div class="col-md-12">
 					<div class="container-padding">
 						<div class="page-header form-header">
@@ -281,7 +281,7 @@
 													</ul>
 												</div>
 												<div class="btn-group">
-													<a class="btn btn-default">Cancel</a>
+													<a class="btn btn-default" routerLink="/menu/players">Cancel</a>
 												</div>
 											</div>
 										</div>
@@ -290,7 +290,7 @@
 							</div>
 							<div class="row">
 								<div class="js-form-collection col-md-8 col-md-offset-2">
-									<form action="" class="" enctype="multipart/form-data" id="Form6345d76e00a60" method="post" name="Form6345d76e00a60" novalidate="novalidate">
+									<form [formGroup]="formPlayer">
 										<div class="btn-group pull-right form-collection-actions">
 											<button class="btn btn-default icon-copy js-form-copy" title="Copy" type="button"></button> <button class="btn btn-default icon-remove js-form-remove" style="display: none" title="Delete" type="button"></button>
 										</div>
@@ -300,32 +300,29 @@
 												<legend>Personal info</legend>
 												<div class="row">
 													<div class="form-group col-sm-12">
-														<label class="control-label" data-column="first_name" for="Form6345d76e00a60_first_name_edit">First name <span class="required-mark">*</span></label>
-														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-															<label class="control-label" data-column="first_name" for="Form6345d76e00a60_first_name_edit"></label>
-														</div>
+														<label class="control-label" data-column="first_name" for="Form6345d76e00a60_first_name_edit">First name 
+															<span class="required-mark">*</span>
+														</label>
 														<div class="col-input" data-column="first_name" style="width:100%;max-width:100%">
-															<input class="form-control" data-editor="text" data-field-name="first_name" data-legacy-field-name="first_name" data-pgui-legacy-validate="true" data-required-error-message="First name is required." data-validation="required" id="Form6345d76e00a60_first_name_edit" name="first_name_edit" placeholder="First name" type="text" value="">
+															<app-input-custom [data]="player?.firstname" formControlName="firstname" [placeholder]="'First name'"></app-input-custom>
 														</div>
 													</div>
 												</div>
 												<div class="row">
 													<div class="form-group col-sm-12">
-														<label class="control-label" data-column="last_name" for="Form6345d76e00a60_last_name_edit">Last name <span class="required-mark">*</span></label>
-														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-															<label class="control-label" data-column="last_name" for="Form6345d76e00a60_last_name_edit"></label>
-														</div>
+														<label class="control-label" data-column="last_name" for="Form6345d76e00a60_last_name_edit">Last name 
+															<span class="required-mark">*</span>
+														</label>														
 														<div class="col-input" data-column="last_name" style="width:100%;max-width:100%">
-															<input class="form-control" data-editor="text" data-field-name="last_name" data-legacy-field-name="last_name" data-pgui-legacy-validate="true" data-required-error-message="Last name is required." data-validation="required" id="Form6345d76e00a60_last_name_edit" name="last_name_edit" placeholder="Last name" type="text" value="">
+															<app-input-custom [data]="player?.lastname" formControlName="lastname" [placeholder]="'Last name'"></app-input-custom>															
 														</div>
 													</div>
 												</div>
 												<div class="row">
 													<div class="form-group col-sm-12">
-														<label class="control-label" data-column="birthday" for="Form6345d76e00a60_birthday_edit">Birthday <span class="required-mark" style="display: none">*</span></label>
-														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-															<label class="control-label" data-column="birthday" for="Form6345d76e00a60_birthday_edit"></label>
-														</div>
+														<label class="control-label" data-column="birthday" for="">Birthday 
+															<span class="required-mark" style="display: none">*</span>
+														</label>													
 														<div class="col-input" data-column="birthday" style="width:100%;max-width:100%">
 															<div class="input-group pgui-date-time-edit js-datetime-editor-wrap">
 																<input class="form-control" data-editor="datetime" data-field-name="birthday" data-legacy-field-name="birthday" data-pgui-legacy-validate="true" data-picker-format="YYYY-MM-DD" data-picker-show-time="false" id="Form6345d76e00a60_birthday_edit" name="birthday_edit" placeholder="Birthday" type="text" value=""> <span class="input-group-addon" style="cursor: pointer"><span class="icon-datetime-picker"></span></span>
