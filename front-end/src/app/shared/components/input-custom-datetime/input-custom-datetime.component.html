@@ -1,0 +1,9 @@
+<div class="col-input" data-column="birthday" style="width:100%;max-width:100%">
+    <div class="input-group pgui-date-time-edit js-datetime-editor-wrap">   
+        <input class="form-control" data-editor="datetime" readonly matInput [matDatepicker]="picker">
+        <mat-datepicker #picker ></mat-datepicker>
+        <span class="input-group-addon" style="cursor: pointer" mat-raised-button (click)="picker.open()">
+            <span class="icon-datetime-picker"></span>
+        </span>
+    </div>
+</div>

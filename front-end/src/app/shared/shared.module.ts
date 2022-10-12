@@ -34,6 +34,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { InputCustomDatetimeComponent } from './components/input-custom-datetime/input-custom-datetime.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 export const MATERIAL_MODULES = [
@@ -45,7 +48,9 @@ export const MATERIAL_MODULES = [
   MatAutocompleteModule,
   MatSelectModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule 
 ]
 
 export const PIPES_LIST = [
@@ -76,7 +81,8 @@ export const PIPES_LIST = [
     LogoCustomComponent,
     ValidationComponent,
     DialogTableCardComponent,
-    ChipsSelectComponent
+    ChipsSelectComponent,
+    InputCustomDatetimeComponent
   ],
   providers:[],
   exports:[
@@ -97,7 +103,8 @@ export const PIPES_LIST = [
     LogoCustomComponent,
     ValidationComponent,
     DialogTableCardComponent,
-    ChipsSelectComponent
+    ChipsSelectComponent,
+    InputCustomDatetimeComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
