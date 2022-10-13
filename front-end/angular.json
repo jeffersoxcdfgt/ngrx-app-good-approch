@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-              "lodash"
+              "lodash","moment"
             ],
             "outputPath": "dist/ngrx-app-good-approch",
             "index": "src/index.html",
