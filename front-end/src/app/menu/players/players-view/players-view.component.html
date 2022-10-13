@@ -267,7 +267,7 @@
 										<div class="col-md-8 col-md-offset-2">
 											<div class="btn-toolbar">
 												<div class="btn-group">
-													<button class="btn btn-primary js-save js-primary-save" data-action="open" data-url="" title="(Ctrl+Return)" type="submit">Save</button> <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+													<button class="btn btn-primary js-save js-primary-save" data-action="open" (click)="save()" data-url="" title="(Ctrl+Return)" type="submit">Save</button> <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 													<ul class="dropdown-menu">
 														<li>
 															<a class="js-save" data-action="open" data-url="" >Save and return back to the list</a>
@@ -323,29 +323,29 @@
 														<label class="control-label" data-column="birthday" for="">Birthday 
 															<span class="required-mark" style="display: none">*</span>
 														</label>													
-														<app-input-custom-datetime></app-input-custom-datetime>
+														<app-input-custom-datetime [data]="player?.birthday" formControlName="birthday"></app-input-custom-datetime>
 													</div>
 												</div>
 												<div class="row">
 													<div class="form-group col-sm-6">
-														<label class="control-label" data-column="height" for="Form6345d76e00a60_height_edit">Height <span class="required-mark" style="display: none">*</span></label>
-														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-															<label class="control-label" data-column="height" for="Form6345d76e00a60_height_edit"></label>
-														</div>
+														<label class="control-label" data-column="height" for="Form6345d76e00a60_height_edit">Height 
+															<span class="required-mark" style="display: none">*</span>
+														</label>														
 														<div class="col-input" data-column="height" style="width:100%;max-width:100%">
 															<div class="input-group">
-																<input class="form-control" data-editor="text" data-field-name="height" data-legacy-field-name="height" data-pgui-legacy-validate="true" id="Form6345d76e00a60_height_edit" name="height_edit" placeholder="Height" type="text" value=""> <span class="input-group-addon">cm</span>
+																<app-input-custom [data]="player?.height" formControlName="height" [placeholder]="'Height'"></app-input-custom>	
+																<span class="input-group-addon">cm</span>
 															</div>
 														</div>
 													</div>
 													<div class="form-group col-sm-6">
-														<label class="control-label" data-column="weight" for="Form6345d76e00a60_weight_edit">Weight <span class="required-mark" style="display: none">*</span></label>
-														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-															<label class="control-label" data-column="weight" for="Form6345d76e00a60_weight_edit"></label>
-														</div>
+														<label class="control-label" data-column="weight" for="Form6345d76e00a60_weight_edit">Weight 
+															<span class="required-mark" style="display: none">*</span>
+														</label>
 														<div class="col-input" data-column="weight" style="width:100%;max-width:100%">
 															<div class="input-group">
-																<input class="form-control" data-editor="text" data-field-name="weight" data-legacy-field-name="weight" data-pgui-legacy-validate="true" id="Form6345d76e00a60_weight_edit" name="weight_edit" placeholder="Weight" type="text" value=""> <span class="input-group-addon">kg</span>
+																<app-input-custom [data]="player?.weight" formControlName="weight" [placeholder]="'Weight'"></app-input-custom>	
+																<span class="input-group-addon">kg</span>
 															</div>
 														</div>
 													</div>

@@ -28,7 +28,10 @@ export class PlayersViewComponent implements OnInit {
     this.typeView = location.path();
     this.formPlayer = this.formBuilder.group({
       firstname:[''],
-      lastname:['']
+      lastname:[''],
+      birthday:[''],
+      height:[''],
+      weight:['']
     })
    }
 
@@ -37,6 +40,9 @@ export class PlayersViewComponent implements OnInit {
     this.store.dispatch(teamsGetAll());
     this.store.dispatch(playerGetById());
     this.player$ = this.store.select(selectedOnePlayerByListTeams).pipe(CLEAN_NULL);
+  }
+
+  save(){
   }
 
 }

@@ -180,7 +180,7 @@ export class AppInMemoryApi  implements InMemoryDbService{
               position:'Center',
               team:2,
               number:'0',
-              iconflag:'flag-icon flag-icon-tr'
+              iconflag:'flag-icon flag-icon-us'
             },
             {
               id:3,
