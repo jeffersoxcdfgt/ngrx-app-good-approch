@@ -355,21 +355,7 @@
 												<legend>Photo</legend>
 												<div class="row">
 													<div class="form-group col-sm-12">
-														<label class="control-label" data-column="photo" for="Form6345d76e00a60_photo_edit">Photo <span class="required-mark" style="display: none">*</span></label>
-														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-															<label class="control-label" data-column="photo" for="Form6345d76e00a60_photo_edit"></label>
-														</div>
-														<div class="col-input" data-column="photo" style="width:100%;max-width:100%">
-															<img src="#" style="display: none;max-width: 100%;">
-															<div style="margin: 1em 0;">
-																<div class="btn-group" data-toggle="buttons-radio" data-toggle-name="photo_edit_action">
-																	<button class="btn btn-default" data-toggle="button" type="button" value="Remove">Remove</button> <button class="btn btn-default js-replace" data-toggle="button" disabled="disabled" type="button" value="Replace">Replace</button>
-																</div>
-															</div><input name="photo_edit_action" type="hidden" value="Keep">
-															<div class="file-upload-control">
-																<input data-editor="imageuploader" data-field-name="photo" data-legacy-field-name="photo" data-pgui-legacy-validate="true" id="Form6345d76e00a60_photo_edit" name="photo_edit" type="file">
-															</div>
-														</div>
+														<app-logo-custom [data]="player?.photo" formControlName="photo" ></app-logo-custom>
 													</div>
 												</div>
 											</fieldset>
@@ -377,43 +363,39 @@
 												<legend>Team info</legend>
 												<div class="row">
 													<div class="form-group col-sm-12">
-														<label class="control-label" data-column="current_team_id" for="Form6345d76e00a60_current_team_id_edit">Team <span class="required-mark" style="display: none">*</span></label>
-														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-															<label class="control-label" data-column="current_team_id" for="Form6345d76e00a60_current_team_id_edit"></label>
-														</div>
+														<label class="control-label" data-column="current_team_id" for="Form6345d76e00a60_current_team_id_edit">Team 
+															<span class="required-mark" style="display: none">*</span>
+														</label>
 														<div class="col-input" data-column="current_team_id" style="width:100%;max-width:100%">
 															<div class="input-group" style="width: 100%">
 																<div class="select2-container form-control" id="s2id_Form6345d76e00a60_current_team_id_edit" style="width: 100%;">
-																	<a class="select2-choice select2-default" tabindex="-1"><span class="select2-chosen" id="select2-chosen-1">Please select...</span><abbr class="select2-search-choice-close"></abbr> <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a> <label class="select2-offscreen" for="s2id_autogen1">Team *</label> <input aria-haspopup="true" aria-labelledby="select2-chosen-1" class="select2-focusser select2-offscreen" id="s2id_autogen1" role="button" type="text">
-																	<div class="select2-drop select2-display-none select2-with-searchbox">
-																		<div class="select2-search">
-																			<label class="select2-offscreen" for="s2id_autogen1_search">Team *</label> <input aria-autocomplete="list" aria-expanded="true" aria-owns="select2-results-1" autocomplete="off" class="select2-input" id="s2id_autogen1_search" placeholder="" role="combobox" spellcheck="false" type="text">
-																		</div>
-																		<ul class="select2-results" id="select2-results-1" role="listbox"></ul>
-																	</div>
-																</div><input class="form-control" data-allowclear="true" data-editor="dynamic_combobox" data-field-name="current_team_id" data-format-result="return getTeamFormat(item);" data-format-selection="return getTeamFormat(item);" data-legacy-field-name="current_team_id" data-minimal-input-length="0" data-pgui-legacy-validate="true" data-placeholder="Please select..." data-url="" id="Form6345d76e00a60_current_team_id_edit" name="current_team_id_edit" style="display: none;" tabindex="-1" title=" Team * " type="hidden" value="">
+																	<app-chips-select 
+																		[dataset]="(teamSet$ | async)" 
+																		[allData]="(teamsList$ | async)" 
+																		[type]="'single'"
+																		formControlName="team">
+																	</app-chips-select>
+																</div>																
 															</div>
 														</div>
 													</div>
 												</div>
 												<div class="row">
-													<div class="form-group col-sm-6 has-warning">
-														<label class="control-label" data-column="current_number" for="Form6345d76e00a60_current_number_edit">Number <span class="required-mark" style="display: none">*</span></label>
-														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-															<label class="control-label" data-column="current_number" for="Form6345d76e00a60_current_number_edit"></label>
-														</div>
+													<div class="form-group col-sm-6">
+														<label class="control-label" data-column="current_number" for="Form6345d76e00a60_current_number_edit">Number 
+															<span class="required-mark" style="display: none">*</span>
+														</label>													
 														<div class="col-input" data-column="current_number" style="width:100%;max-width:100%">
 															<div class="input-group">
-																<span class="input-group-addon">#</span> <input class="form-control" data-editor="text" data-field-name="current_number" data-legacy-field-name="current_number" data-pgui-legacy-validate="true" disabled id="Form6345d76e00a60_current_number_edit" name="current_number_edit" placeholder="Current player's number" type="text" value="">
+																<span class="input-group-addon">#</span> 
+																<app-input-custom [data]="player?.number" formControlName="number" [placeholder]="'Number'"></app-input-custom>	
 															</div>
 														</div>
-														<p class="help-block">A team should be entered before assigning a number to a player.</p>
 													</div>
 													<div class="form-group col-sm-6">
-														<label class="control-label" data-column="position" for="Form6345d76e00a60_position_edit">Position <span class="required-mark" style="display: none">*</span></label>
-														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-															<label class="control-label" data-column="position" for="Form6345d76e00a60_position_edit"></label>
-														</div>
+														<label class="control-label" data-column="position" for="Form6345d76e00a60_position_edit">Position 
+															<span class="required-mark" style="display: none">*</span>
+														</label>													
 														<div class="col-input" data-column="position" style="width:100%;max-width:100%">
 															<div class="select2-container select2-container-multi form-control" id="s2id_Form6345d76e00a60_position_edit" style="width: 100%;">
 																<ul class="select2-choices">
