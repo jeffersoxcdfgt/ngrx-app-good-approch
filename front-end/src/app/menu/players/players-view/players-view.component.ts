@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { concatMap, filter, map } from 'rxjs/operators';
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { Player } from '../../models/player';
 import { Team } from '../../models/team';
@@ -22,6 +22,13 @@ const FILTER_ROW = filter((playerrow:any|Player) => {
     return playerrow !== undefined && playerrow[0].id !== undefined
 });
 
+const SPLIT_POSITION = map((player:any|Player) => player.position.split(','));
+const MAP_POSITION = map((value:[])=> value.map((val:string)=>({id:val, name:val})))
+const GET_POSITION = concatMap((streamValue) =>
+  of(streamValue).pipe(SPLIT_POSITION,MAP_POSITION)
+);
+
+
 interface DataLoad {
   id: string;
   name: string;
@@ -38,6 +45,13 @@ export class PlayersViewComponent implements OnInit {
   teamSet$: Observable<any|DataLoad[]> = of([]);
   teamsList$: Observable<any|DataLoad[]> = of([]);
 
+  positionSet$: Observable<any|DataLoad[]> = of([]);
+  positionList:DataLoad[] = [
+    { id:'Center',name:'Center'},
+    { id:'Guard',name:'Guard'},
+    { id:'Forward',name:'Forward'}
+  ]
+
   typeView :string = '';
   formPlayer: FormGroup;
 
@@ -52,7 +66,8 @@ export class PlayersViewComponent implements OnInit {
       weight:[''],
       photo:[''],
       team:[''],
-      number:['']
+      number:[''],
+      position:['']
     })
    }
 
@@ -61,14 +76,22 @@ export class PlayersViewComponent implements OnInit {
     this.store.dispatch(teamsGetAll());
     this.store.dispatch(playerGetById());
     this.player$ = this.store.select(selectedOnePlayerByListTeams).pipe(CLEAN_NULL);
+    this.positionSet$ = this.player$.pipe(GET_POSITION)
 
     this.teamsList$ = this.store.select(selectAllTeams).pipe(CLEANTEAMSARENAS,MAP_SET_TEAM);
     this.teamSet$ = this.store.select(selectedOnePlayerByListTeams).pipe(CLEAN_NULL,MAP_ONE_ROW,FILTER_ROW);
-
-
   }
 
   save(){
+   const position = this.getPosition();
+   console.log(position)
   }
 
+  getPosition():string{  
+    const res = this.formPlayer.get('position')?.value.reduce((before:DataLoad,after:DataLoad)=>`${before.id},${after.id }`)    
+    if(res.hasOwnProperty('id')){
+      return res.id
+    }
+    return res
+  }
 }

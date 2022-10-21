@@ -397,26 +397,12 @@
 															<span class="required-mark" style="display: none">*</span>
 														</label>													
 														<div class="col-input" data-column="position" style="width:100%;max-width:100%">
-															<div class="select2-container select2-container-multi form-control" id="s2id_Form6345d76e00a60_position_edit" style="width: 100%;">
-																<ul class="select2-choices">
-																	<li class="select2-search-field"><label class="select2-offscreen" for="s2id_autogen2">Position *</label> <input autocomplete="off" class="select2-input" id="s2id_autogen2" placeholder="" spellcheck="false" style="width: 34px;" type="text"></li>
-																</ul>
-																<div class="select2-drop select2-drop-multi select2-display-none">
-																	<ul class="select2-results">
-																		<li class="select2-no-results">No matches found</li>
-																	</ul>
-																</div>
-															</div><select class="form-control" data-editor="multivalue_select" data-field-name="position" data-legacy-field-name="position" data-max-selection-size="2" data-pgui-legacy-validate="true" id="Form6345d76e00a60_position_edit" multiple name="position_edit[]" style="display: none;" tabindex="-1">
-																<option value="Center">
-																	Center
-																</option>
-																<option value="Guard">
-																	Guard
-																</option>
-																<option value="Forward">
-																	Forward
-																</option>
-															</select>
+															<app-chips-select 
+																[dataset]="(positionSet$ | async)" 
+																[allData]="positionList" 
+																[type]="'multi'"
+																formControlName="position">
+															</app-chips-select>
 														</div>
 													</div>
 												</div>
