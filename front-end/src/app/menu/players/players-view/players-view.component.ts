@@ -106,7 +106,6 @@ export class PlayersViewComponent implements OnInit {
   }
 
   savePlayer(typeView?: string){
-    debugger
     if(this.formPlayer.valid){
       const payload =  this.populatedPayload()
       switch (typeView) {
