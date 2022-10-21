@@ -30,6 +30,8 @@ const GET_POSITION = concatMap((streamValue) =>
 
 const MAP_COUNTRY = map((player:any|Player) =>([{ id:player.iconflag, name:player?.country }]));
 
+const MAP_COLLEGE = map((player:any|Player) =>([{ id:player.college, name:player?.college }]));
+
 
 interface DataLoad {
   id: string;
@@ -60,6 +62,15 @@ export class PlayersViewComponent implements OnInit {
     { id:'flag-icon flag-icon-us',name:'Usa'}
   ]
 
+  collegeSet$: Observable<any|DataLoad[]> = of([]);
+  collegeList:DataLoad[] = [
+    { id:'Connecticut',name:'Connecticut'},
+    { id:'USC',name:'USC'},
+    { id:'UCLA',name:'UCLA'},
+    { id:'Texas',name:'Texas'},
+    { id:'(n/a)',name:'(n/a)'}
+  ]
+
   typeView :string = '';
   formPlayer: FormGroup;
 
@@ -76,7 +87,9 @@ export class PlayersViewComponent implements OnInit {
       team:[''],
       number:[''],
       position:[''],
-      country:['']
+      country:[''],
+      college:[''],
+      nbadebut:['']
     })
    }
 
@@ -90,7 +103,8 @@ export class PlayersViewComponent implements OnInit {
     this.teamsList$ = this.store.select(selectAllTeams).pipe(CLEANTEAMSARENAS,MAP_SET_TEAM);
     this.teamSet$ = this.store.select(selectedOnePlayerByListTeams).pipe(CLEAN_NULL,MAP_ONE_ROW,FILTER_ROW);
 
-    this.countrySet$ = this.player$.pipe(MAP_COUNTRY)
+    this.countrySet$ = this.player$.pipe(MAP_COUNTRY);
+    this.collegeSet$ = this.player$.pipe(MAP_COLLEGE);
   }
 
   save(){
