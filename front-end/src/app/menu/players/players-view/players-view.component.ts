@@ -10,6 +10,7 @@ import { Team } from '../../models/team';
 import { teamsGetAll } from '../../teams/store/actions/teams.action';
 import { selectAllTeams } from '../../teams/store/reducers/teams.reducer';
 import { CLEANTEAMSARENAS } from '../../teams/teams.component';
+import { playerAddRow, playerUpdateRow } from './store/actions/players-add-edit.action';
 import { playerGetById } from './store/actions/players-id.action';
 import { selectedOnePlayerByListTeams } from './store/reducers/players-id.reducer';
 
@@ -110,10 +111,10 @@ export class PlayersViewComponent implements OnInit {
       const payload =  this.populatedPayload()
       switch (typeView) {
         case '/menu/players/add': 
-        //this.store.dispatch(teamAddRow({teamrow:payload}));   
+          this.store.dispatch(playerAddRow({playerrow:payload}));   
           break;    
         default:
-        //this.store.dispatch(teamUpdateRow({teamrow:payload}));
+         this.store.dispatch(playerUpdateRow({playerrow:payload}));
           break;
       }
     }
@@ -134,7 +135,7 @@ export class PlayersViewComponent implements OnInit {
       college:this.getCollegeTeam('college'),
       nbadebut:this.formPlayer.get('nbadebut')?.value,
       position:this.getPosition(),
-      team:this.getCollegeTeam('team'),
+      team:+this.getCollegeTeam('team'),
       number:this.formPlayer.get('number')?.value,
       iconflag:this.getCountry('id')
     }

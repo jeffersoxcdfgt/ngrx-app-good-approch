@@ -66,6 +66,12 @@ import { playerbyidFeature } from './players/players-view/store/reducers/players
 import { PlayersByIdEffects } from './players/players-view/store/effects/players-id.effect';
 import { PlayersByIdService } from './players/players-view/store/services/players-id.service';
 
+//Players add and update operations
+
+import { playerAddEditFeature } from './players/players-view/store/reducers/players-add-edit.reducer';
+import { PlayerAddEditEffects } from './players/players-view/store/effects/players-add-edit.effect';
+import { PlayersAddEditService } from './players/players-view/store/services/players-add-edit.service';
+
 
 @NgModule({
   imports: [
@@ -88,6 +94,7 @@ import { PlayersByIdService } from './players/players-view/store/services/player
     StoreModule.forFeature(typeViewTeamFeature),
     StoreModule.forFeature(playersFeature),
     StoreModule.forFeature(playerbyidFeature),
+    StoreModule.forFeature(playerAddEditFeature),
     EffectsModule.forFeature(
       [
         LoginEffects,
@@ -102,7 +109,8 @@ import { PlayersByIdService } from './players/players-view/store/services/player
         TeamsDeleteEffects,
         TypeTeamViewEffects,
         PlayerEffects,
-        PlayersByIdEffects    
+        PlayersByIdEffects,
+        PlayerAddEditEffects,   
       ]),
   ],
   declarations: [
@@ -123,7 +131,8 @@ import { PlayersByIdService } from './players/players-view/store/services/player
     TeamsDeleteService,
     TypeViewTeamService,
     PlayersService,
-    PlayersByIdService
+    PlayersByIdService,
+    PlayersAddEditService
   ]
 })
 export class MenuModule {}
