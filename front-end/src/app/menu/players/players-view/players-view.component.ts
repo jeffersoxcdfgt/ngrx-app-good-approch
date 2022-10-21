@@ -30,9 +30,7 @@ const GET_POSITION = concatMap((streamValue) =>
 );
 
 const MAP_COUNTRY = map((player:any|Player) =>([{ id:player.iconflag, name:player?.country }]));
-
 const MAP_COLLEGE = map((player:any|Player) =>([{ id:player.college, name:player?.college }]));
-
 
 interface DataLoad {
   id: string;
@@ -95,7 +93,6 @@ export class PlayersViewComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
     this.store.dispatch(teamsGetAll());
     this.store.dispatch(playerGetById());
     this.player$ = this.store.select(selectedOnePlayerByListTeams).pipe(CLEAN_NULL);
@@ -108,9 +105,22 @@ export class PlayersViewComponent implements OnInit {
     this.collegeSet$ = this.player$.pipe(MAP_COLLEGE);
   }
 
-  save(){
-   const tmp = this.populatedPayload()
-   console.log(tmp,"***")
+  savePlayer(typeView?: string){
+    debugger
+    if(this.formPlayer.valid){
+      const payload =  this.populatedPayload()
+      switch (typeView) {
+        case '/menu/players/add': 
+        //this.store.dispatch(teamAddRow({teamrow:payload}));   
+          break;    
+        default:
+        //this.store.dispatch(teamUpdateRow({teamrow:payload}));
+          break;
+      }
+    }
+    else{
+      this.formPlayer.markAllAsTouched()
+    }
   }
 
   populatedPayload(): Player{
@@ -135,7 +145,7 @@ export class PlayersViewComponent implements OnInit {
   getPosition():string{ 
     if(Array.isArray(this.formPlayer.get('position')?.value)){
       const res = this.formPlayer.get('position')?.value.map((data:DataLoad)=>`${data.id}`).join(',');
-      if(res[FIRST]==','){
+      if(res[FIRST]===','){
         return res.slice(1)
       }
       return res

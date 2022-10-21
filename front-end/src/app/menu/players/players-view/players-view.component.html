@@ -22,9 +22,9 @@
 										</li>
 									</ul>
 								</li>
-								<li class="dropdown">Kobe Bryant profile</li>
+								<li class="dropdown">{{ player?.firstname }} {{ player?.lastname }} profile</li>
 							</ol>
-							<h1>Kobe Bryant profile</h1>
+							<h1>{{ player?.firstname }} {{ player?.lastname }} profile</h1>
 						</div>
 						<div class="">
 							<div class="form-actions form-actions-top row">
@@ -256,9 +256,9 @@
 										</li>
 									</ul>
 								</li>
-								<li class="dropdown">Add a new player</li>
+								<li class="dropdown">{{ typeView === '/menu/players/add' ? 'Add':'Edit' }}  a new player</li>
 							</ol>
-							<h1>Add a new player</h1>
+							<h1> {{ typeView === '/menu/players/add' ? 'Add':'Edit' }}  a new player</h1>
 						</div>
 						<div class="col-md-12 js-form-container" data-form-url="">
 							<div class="form-actions form-actions-top row">
@@ -267,7 +267,7 @@
 										<div class="col-md-8 col-md-offset-2">
 											<div class="btn-toolbar">
 												<div class="btn-group">
-													<button class="btn btn-primary js-save js-primary-save" data-action="open" (click)="save()" data-url="" title="(Ctrl+Return)" type="submit">Save</button> <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+													<button class="btn btn-primary js-save js-primary-save" data-action="open" (click)="savePlayer(typeView)" data-url="" title="(Ctrl+Return)" type="submit">Save</button> <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 													<ul class="dropdown-menu">
 														<li>
 															<a class="js-save" data-action="open" data-url="" >Save and return back to the list</a>
@@ -305,6 +305,7 @@
 														</label>
 														<div class="col-input" data-column="first_name" style="width:100%;max-width:100%">
 															<app-input-custom [data]="player?.firstname" formControlName="firstname" [placeholder]="'First name'"></app-input-custom>
+															<app-validation formControlName="firstname" [requiredfield]="true" [messagerequired]="'The Firsname is required'"></app-validation>
 														</div>
 													</div>
 												</div>
@@ -314,7 +315,8 @@
 															<span class="required-mark">*</span>
 														</label>														
 														<div class="col-input" data-column="last_name" style="width:100%;max-width:100%">
-															<app-input-custom [data]="player?.lastname" formControlName="lastname" [placeholder]="'Last name'"></app-input-custom>															
+															<app-input-custom [data]="player?.lastname" formControlName="lastname" [placeholder]="'Last name'"></app-input-custom>
+															<app-validation formControlName="lastname" [requiredfield]="true" [messagerequired]="'The Lastname is required'"></app-validation>														
 														</div>
 													</div>
 												</div>
@@ -324,6 +326,7 @@
 															<span class="required-mark">*</span>
 														</label>													
 														<app-input-custom-datetime [data]="player?.birthday" formControlName="birthday"></app-input-custom-datetime>
+														<app-validation formControlName="birthday" [requiredfield]="true" [messagerequired]="'The Birthday is required'"></app-validation>
 													</div>
 												</div>
 												<div class="row">
@@ -336,6 +339,13 @@
 																<app-input-custom [data]="player?.height" formControlName="height" [placeholder]="'Height'"></app-input-custom>	
 																<span class="input-group-addon">cm</span>
 															</div>
+															<app-validation 
+																formControlName="height" 
+																[requiredfield]="true" 
+																[messagerequired]="'The Height is required'"
+																[isnumeric]="true"
+																[messageOnlyNumeric]="'The Height is just numeric'">
+															</app-validation>
 														</div>
 													</div>
 													<div class="form-group col-sm-6">
@@ -347,6 +357,13 @@
 																<app-input-custom [data]="player?.weight" formControlName="weight" [placeholder]="'Weight'"></app-input-custom>	
 																<span class="input-group-addon">kg</span>
 															</div>
+															<app-validation 
+																formControlName="weight" 
+																[requiredfield]="true" 
+																[messagerequired]="'The weight is required'"
+																[isnumeric]="true"
+																[messageOnlyNumeric]="'The Weight is just numeric'">
+															</app-validation>
 														</div>
 													</div>
 												</div>
@@ -356,6 +373,7 @@
 												<div class="row">
 													<div class="form-group col-sm-12">
 														<app-logo-custom [data]="player?.photo" formControlName="photo" ></app-logo-custom>
+														<app-validation formControlName="photo" [requiredfield]="true" [messagerequired]="'The Photo is required'"></app-validation>
 													</div>
 												</div>
 											</fieldset>
@@ -368,13 +386,14 @@
 														</label>
 														<div class="col-input" data-column="current_team_id" style="width:100%;max-width:100%">
 															<div class="input-group" style="width: 100%">
-																<div class="select2-container form-control" id="s2id_Form6345d76e00a60_current_team_id_edit" style="width: 100%;">
+																<div class="select2-container form-control" id="s2id_Form6345d76e00a60_current_team_id_edit" style="width: 100%;margin-bottom: 20px">
 																	<app-chips-select 
 																		[dataset]="(teamSet$ | async)" 
 																		[allData]="(teamsList$ | async)" 
 																		[type]="'single'"
 																		formControlName="team">
 																	</app-chips-select>
+																	<app-validation formControlName="team" [requiredfield]="true" [messagerequired]="'The Team is required'"></app-validation>
 																</div>																
 															</div>
 														</div>
@@ -388,8 +407,15 @@
 														<div class="col-input" data-column="current_number" style="width:100%;max-width:100%">
 															<div class="input-group">
 																<span class="input-group-addon">#</span> 
-																<app-input-custom [data]="player?.number" formControlName="number" [placeholder]="'Number'"></app-input-custom>	
+																<app-input-custom [data]="player?.number" formControlName="number" [placeholder]="'Number'"></app-input-custom>
 															</div>
+															<app-validation 
+															formControlName="number" 
+															[requiredfield]="true" 
+															[messagerequired]="'The Number is required'"
+															[isnumeric]="true"
+															[messageOnlyNumeric]="'The Number is just numeric'">
+															</app-validation>
 														</div>
 													</div>
 													<div class="form-group col-sm-6">
@@ -403,6 +429,7 @@
 																[type]="'multi'"
 																formControlName="position">
 															</app-chips-select>
+															<app-validation formControlName="position" [requiredfield]="true" [messagerequired]="'The Position is required'"></app-validation>
 														</div>
 													</div>
 												</div>
@@ -421,6 +448,7 @@
 																[type]="'single'"
 																formControlName="country">
 															</app-chips-select>
+															<app-validation formControlName="country" [requiredfield]="true" [messagerequired]="'The Country is required'"></app-validation>
 														</div>
 													</div>
 													<div class="form-group col-sm-4">
@@ -435,7 +463,7 @@
 																formControlName="college">
 															</app-chips-select>														
 														</div>
-														<!--<p class="help-block">College can be selected only for players from USA.</p>-->
+														<app-validation formControlName="college" [requiredfield]="true" [messagerequired]="'The College is required'"></app-validation>
 													</div>
 													<div class="form-group col-sm-4">
 														<label class="control-label" data-column="career_start_year" for="Form6345d76e00a60_career_start_year_edit">NBA Debut 
@@ -443,6 +471,13 @@
 														</label>
 														<div class="col-input" data-column="career_start_year" style="width:100%;max-width:100%">
 															<app-input-custom [data]="player?.nbadebut" formControlName="nbadebut" [placeholder]="'NBA Debut'"></app-input-custom>
+															<app-validation 
+															formControlName="nbadebut" 
+															[requiredfield]="true" 
+															[messagerequired]="'The Nba debut is required'"
+															[isnumeric]="true"
+															[messageOnlyNumeric]="'The Nna debut is just numeric'">
+															</app-validation>
 														</div>
 													</div>
 												</div>
