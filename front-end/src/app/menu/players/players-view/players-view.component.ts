@@ -13,8 +13,9 @@ import { CLEANTEAMSARENAS } from '../../teams/teams.component';
 import { playerGetById } from './store/actions/players-id.action';
 import { selectedOnePlayerByListTeams } from './store/reducers/players-id.reducer';
 
-export const CLEAN_NULL = filter((valnull:any) => !!valnull)
+const FIRST = 0;
 
+export const CLEAN_NULL = filter((valnull:any) => !!valnull)
 const MAP_SET_TEAM = map((teams:Team[]) => teams.map((row:Team)=>({id:row.id , name:row.name})));
 
 const MAP_ONE_ROW = map((player:any|Player) =>([{ id:player.teamid, name:player?.team }]));
@@ -108,15 +109,56 @@ export class PlayersViewComponent implements OnInit {
   }
 
   save(){
-   const position = this.getPosition();
-   console.log(position)
+   const tmp = this.populatedPayload()
+   console.log(tmp,"***")
   }
 
-  getPosition():string{  
-    const res = this.formPlayer.get('position')?.value.reduce((before:DataLoad,after:DataLoad)=>`${before.id},${after.id }`)    
-    if(res.hasOwnProperty('id')){
-      return res.id
+  populatedPayload(): Player{
+    const payload:Player  = {      
+      photo:this.formPlayer.get('photo')?.value,
+      firstname:this.formPlayer.get('firstname')?.value,
+      lastname:this.formPlayer.get('lastname')?.value,
+      birthday:this.formPlayer.get('birthday')?.value,
+      country:this.getCountry('name'),
+      height:this.formPlayer.get('height')?.value,
+      weight:this.formPlayer.get('weight')?.value,
+      college:this.getCollegeTeam('college'),
+      nbadebut:this.formPlayer.get('nbadebut')?.value,
+      position:this.getPosition(),
+      team:this.getCollegeTeam('team'),
+      number:this.formPlayer.get('number')?.value,
+      iconflag:this.getCountry('id')
     }
-    return res
+    return payload
   }
+
+  getPosition():string{ 
+    if(Array.isArray(this.formPlayer.get('position')?.value)){
+      const res = this.formPlayer.get('position')?.value.map((data:DataLoad)=>`${data.id}`).join(',');
+      if(res[FIRST]==','){
+        return res.slice(1)
+      }
+      return res
+    }
+    return ''
+  }
+
+  getCountry(namefield:string): string{
+    if(Array.isArray(this.formPlayer.get('country')?.value)){
+      const res = this.formPlayer.get('country')?.value
+      const result = namefield === 'id'? res.map((value:DataLoad)=> value.id).join():res.map((value:DataLoad)=> value.name).join()
+      return result
+    }
+    return '' 
+  }
+
+  getCollegeTeam(type:string):string{
+    if(Array.isArray(this.formPlayer.get(type)?.value)){
+      const res = this.formPlayer.get(type)?.value
+      const result = res.map((value:DataLoad)=> value.id).join()
+      return result
+    }
+    return '' 
+  }
+
 }
