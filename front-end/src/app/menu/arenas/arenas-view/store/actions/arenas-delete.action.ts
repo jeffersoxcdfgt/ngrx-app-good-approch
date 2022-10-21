@@ -1,5 +1,4 @@
 import { createAction, props } from '@ngrx/store';
-import { Arena } from '../../../../models/arena';
 
 export enum ArenaDeleteActionTypes {
   DELETE_ARENA = '[DELETE_ARENA] delete arena row',
