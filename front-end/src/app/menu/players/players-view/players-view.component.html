@@ -411,29 +411,22 @@
 												<legend>Misc</legend>
 												<div class="row">
 													<div class="form-group col-sm-4">
-														<label class="control-label" data-column="country_id" for="Form6345d76e00a60_country_id_edit">Country <span class="required-mark">*</span></label>
-														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-															<label class="control-label" data-column="country_id" for="Form6345d76e00a60_country_id_edit"></label>
-														</div>
+														<label class="control-label" data-column="country_id" for="Form6345d76e00a60_country_id_edit">Country 
+															<span class="required-mark">*</span>
+														</label>														
 														<div class="col-input" data-column="country_id" style="width:100%;max-width:100%">
-															<div class="input-group" style="width: 100%">
-																<div class="select2-container form-control" id="s2id_Form6345d76e00a60_country_id_edit" style="width: 100%;">
-																	<a class="select2-choice select2-default" tabindex="-1"><span class="select2-chosen" id="select2-chosen-3">Please select...</span><abbr class="select2-search-choice-close"></abbr> <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a> <label class="select2-offscreen" for="s2id_autogen3">Country *</label> <input aria-haspopup="true" aria-labelledby="select2-chosen-3" class="select2-focusser select2-offscreen" id="s2id_autogen3" role="button" type="text">
-																	<div class="select2-drop select2-display-none select2-with-searchbox">
-																		<div class="select2-search">
-																			<label class="select2-offscreen" for="s2id_autogen3_search">Country *</label> <input aria-autocomplete="list" aria-expanded="true" aria-owns="select2-results-3" autocomplete="off" class="select2-input" id="s2id_autogen3_search" placeholder="" role="combobox" spellcheck="false" type="text">
-																		</div>
-																		<ul class="select2-results" id="select2-results-3" role="listbox"></ul>
-																	</div>
-																</div><input class="form-control" data-allowclear="true" data-editor="dynamic_combobox" data-field-name="country_id" data-format-result="return getCountryFormat(item);" data-format-selection="return getCountryFormat(item);" data-legacy-field-name="country_id" data-minimal-input-length="2" data-pgui-legacy-validate="true" data-placeholder="Please select..." data-required-error-message="Country is required." data-url="" data-validation="required" id="Form6345d76e00a60_country_id_edit" name="country_id_edit" style="display: none;" tabindex="-1" title=" Country * " type="hidden" value="">
-															</div>
+															<app-chips-select 
+																[dataset]="(countrySet$ | async)" 
+																[allData]="countryList" 
+																[type]="'single'"
+																formControlName="country">
+															</app-chips-select>
 														</div>
 													</div>
 													<div class="form-group col-sm-4 has-warning">
-														<label class="control-label" data-column="college_id" for="Form6345d76e00a60_college_id_edit">College <span class="required-mark" style="display: none">*</span></label>
-														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-															<label class="control-label" data-column="college_id" for="Form6345d76e00a60_college_id_edit"></label>
-														</div>
+														<label class="control-label" data-column="college_id" for="Form6345d76e00a60_college_id_edit">College
+															 <span class="required-mark" style="display: none">*</span>
+														</label>
 														<div class="col-input" data-column="college_id" style="width:100%;max-width:100%">
 															<select class="form-control" data-editor="combobox" data-field-name="college_id" data-legacy-field-name="college_id" data-pgui-legacy-validate="true" disabled id="Form6345d76e00a60_college_id_edit" name="college_id_edit">
 																<option value="">
@@ -852,10 +845,9 @@
 														<p class="help-block">College can be selected only for players from USA.</p>
 													</div>
 													<div class="form-group col-sm-4">
-														<label class="control-label" data-column="career_start_year" for="Form6345d76e00a60_career_start_year_edit">NBA Debut <span class="required-mark">*</span></label>
-														<div class="pgui-field-options btn-group btn-group-xs btn-group-justified" data-toggle="buttons">
-															<label class="control-label" data-column="career_start_year" for="Form6345d76e00a60_career_start_year_edit"></label>
-														</div>
+														<label class="control-label" data-column="career_start_year" for="Form6345d76e00a60_career_start_year_edit">NBA Debut 
+															<span class="required-mark">*</span>
+														</label>
 														<div class="col-input" data-column="career_start_year" style="width:100%;max-width:100%">
 															<input class="form-control" data-editor="text" data-field-name="career_start_year" data-legacy-field-name="career_start_year" data-pgui-legacy-validate="true" data-required-error-message="NBA Debut is required." data-validation="required" id="Form6345d76e00a60_career_start_year_edit" name="career_start_year_edit" placeholder="Career start year" type="text" value="">
 														</div>

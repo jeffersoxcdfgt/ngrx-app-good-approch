@@ -2,9 +2,8 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {ChangeDetectorRef, Component, ElementRef, HostListener, Input, OnChanges, OnInit, Optional, Self, SimpleChanges, ViewChild } from '@angular/core';
 import {ControlValueAccessor, FormControl, NgControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import { takeUntil} from 'rxjs/operators';
 import {Observable } from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {map, startWith,takeUntil} from 'rxjs/operators';
 import { UnsubscribeComponent } from '../../unsubscribe/unsubscribe.component';
 
 const NOEXISTELEMENT = 0;
@@ -118,7 +117,7 @@ export class ChipsSelectComponent extends UnsubscribeComponent implements OnInit
       
       const mapVaues:any | string | DataLoad | null= this.tempoData.find((val:DataLoad|undefined) => val);
       if(this.type!=='multi'){
-        this.dataCtrl = new FormControl<string | DataLoad>(mapVaues);  
+       this.dataCtrl = new FormControl<string | DataLoad>(mapVaues);  
       }      
 
       const idVal:any|string= this.tempoData.map((val:DataLoad) => val.id).reduce((before,after)=> before+after);

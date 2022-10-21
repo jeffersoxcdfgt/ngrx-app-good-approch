@@ -28,6 +28,8 @@ const GET_POSITION = concatMap((streamValue) =>
   of(streamValue).pipe(SPLIT_POSITION,MAP_POSITION)
 );
 
+const MAP_COUNTRY = map((player:any|Player) =>([{ id:player.iconflag, name:player?.country }]));
+
 
 interface DataLoad {
   id: string;
@@ -52,6 +54,12 @@ export class PlayersViewComponent implements OnInit {
     { id:'Forward',name:'Forward'}
   ]
 
+  countrySet$: Observable<any|DataLoad[]> = of([]);
+  countryList:DataLoad[] = [
+    { id:'flag-icon flag-icon-tr',name:'Turkey'},
+    { id:'flag-icon flag-icon-us',name:'Usa'}
+  ]
+
   typeView :string = '';
   formPlayer: FormGroup;
 
@@ -67,7 +75,8 @@ export class PlayersViewComponent implements OnInit {
       photo:[''],
       team:[''],
       number:[''],
-      position:['']
+      position:[''],
+      country:['']
     })
    }
 
@@ -80,6 +89,8 @@ export class PlayersViewComponent implements OnInit {
 
     this.teamsList$ = this.store.select(selectAllTeams).pipe(CLEANTEAMSARENAS,MAP_SET_TEAM);
     this.teamSet$ = this.store.select(selectedOnePlayerByListTeams).pipe(CLEAN_NULL,MAP_ONE_ROW,FILTER_ROW);
+
+    this.countrySet$ = this.player$.pipe(MAP_COUNTRY)
   }
 
   save(){
