@@ -92,7 +92,6 @@ export class TeamsViewComponent extends UnsubscribeComponent implements OnInit {
 
 
   saveTeam(typeView?: string){
-    debugger
     if(this.formTeam.valid){
       const payload = this.populatedPayload();
       switch (typeView) {
