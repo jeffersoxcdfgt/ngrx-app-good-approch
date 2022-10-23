@@ -180,7 +180,7 @@
 						</nav>
 					</div><!-- <Pages> -->
 					<div class="page_navigator"></div><!-- </Pages> -->
-					<div class="grid grid-table js-grid" data-column-count="14" data-grid-hidden-values="[]" data-is-master="" data-selection-id="playerGrid_"  id="playerGrid_6344b872ee07a">
+					<div class="grid grid-table grid-card js-grid" data-column-count="14" data-grid-hidden-values="[]" data-is-master="" data-selection-id="playerGrid_"  id="playerGrid_6344b872ee07a">
 						<div class="addition-block js-actions">
 							<div class="btn-toolbar addition-block-left pull-left">
 								<div class="btn-group">
@@ -291,7 +291,7 @@
 									<button class="btn btn-default" data-target="#multiple-sorting-playerGrid_6344b872ee07a" data-toggle="modal" id="multi-sort-playerGrid_6344b872ee07a" title="Sort"><i class="icon-sort"></i></button>
 								</div>
 								<div class="btn-group">
-									<button class="btn btn-default" data-target="#page-settings" data-toggle="modal" title="Page settings"><i class="icon-settings"></i></button>
+									<button class="btn btn-default" data-target="#page-settings" (click)="switchTableCard()" data-toggle="modal" title="Page settings"><i class="icon-settings"></i></button>
 								</div>
 							</div>
 							<div class="addition-block-right pull-right js-quick-filter">
@@ -381,88 +381,160 @@
 						</div>
 						<div class="filter-status js-filter-status"></div>
 						<div class="js-grid-message-container"></div>
-						<table class="table text-center table-striped fixed-header">
-							<thead class="js-column-filter-container">
-								<tr>
-									<th class="row-selection" rowspan="1" style="width:1%;"><input type="checkbox"></th>
-									<th class=" sortable filterable" colspan="1" data-column-name="photo" data-field-caption="Photo" data-field-name="photo" data-name="photo" data-sort-index="" rowspan="1">
-										<span>Photo</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
-									</th>
-									<th class=" sortable" colspan="1" data-column-name="first_name" data-field-caption="First name" data-field-name="first_name" data-name="first_name" data-sort-index="" rowspan="1"><span>First name</span></th>
-									<th class=" sortable" colspan="1" data-column-name="last_name" data-field-caption="Last name" data-field-name="last_name" data-name="last_name" data-sort-index="" rowspan="1"><span>Last name</span></th>
-									<th class="hidden-xs hidden-sm hidden-md sortable filterable" colspan="1" data-column-name="birthday" data-field-caption="Birthday" data-field-name="birthday" data-name="birthday" data-sort-index="" rowspan="1">
-										<span>Birthday</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
-									</th>
-									<th class="hidden-xs sortable filterable" colspan="1" data-column-name="country_id_name" data-field-caption="Country" data-field-name="country_id_name" data-name="country_id" data-sort-index="" rowspan="1">
-										<i class="icon-keys-fk"></i> <span>Country</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
-									</th>
-									<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="height" data-field-caption="Height" data-field-name="height" data-name="height" data-sort-index="" rowspan="1"><span>Height</span></th>
-									<th class="hidden-xs hidden-sm hidden-md sortable" colspan="1" data-column-name="weight" data-field-caption="Weight" data-field-name="weight" data-name="weight" data-sort-index="" rowspan="1"><span>Weight</span></th>
-									<th class="hidden-xs hidden-sm hidden-md sortable filterable" colspan="1" data-column-name="college_id_name" data-field-caption="College" data-field-name="college_id_name" data-name="college_id" data-sort-index="" rowspan="1">
-										<i class="icon-keys-fk"></i> <span>College</span><a class="column-filter-trigger js-filter-trigger"  title=""><i class="icon-filter"></i></a>
-									</th>
-									<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="career_start_year" data-field-caption="NBA Debut" data-field-name="career_start_year" data-name="career_start_year" data-sort-index="" rowspan="1"><span>NBA Debut</span></th>
-									<th class="hidden-xs hidden-sm hidden-md sortable" colspan="1" data-column-name="position" data-field-caption="Position" data-field-name="position" data-name="position" data-sort-index="" rowspan="1"><span>Position</span></th>
-									<th class=" sortable filterable" colspan="1" data-column-name="current_team_id_caption" data-field-caption="Team" data-field-name="current_team_id_caption" data-name="current_team_id" data-sort-index="" rowspan="1">
-										<i class="icon-keys-fk"></i> <span>Team</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
-									</th>
-									<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="current_number" data-field-caption="Number" data-field-name="current_number" data-name="current_number" data-sort-index="" rowspan="1"><span>Number</span></th>
-									<th rowspan="1" style="width:1%;">Actions</th>
-								</tr>
-							</thead>
-							<tbody class="pg-row-list">
-                                <ng-template ngFor let-player [ngForOf]="playersList$ | async" let-i="index">
-                                    <tr class="pg-row" style="">
-                                        <td style="">
-                                            <div class="row-selection">
-                                                <input data-value="[&quot;66&quot;]" id="record__66" name="rec0" type="checkbox">
-                                            </div>
-                                        </td>
-                                        <td data-column-name="photo" data-edit-url="">
-                                            <a class="image gallery-item" data-name="photo" title="Kobe Bryant">
-                                                <img alt="{{ player?.firstname }} {{ player?.lastname }}" data-image-column="true" src="{{ player?.photo }}" style="width: 100px">
-                                            </a>
-                                        </td>
-                                        <td data-column-name="first_name" data-edit-url="">{{ player?.firstname }} </td>
-                                        <td data-column-name="last_name" data-edit-url="">{{ player?.lastname }} </td>
-                                        <td class="hidden-xs hidden-sm hidden-md" data-column-name="birthday" data-edit-url="">{{ player?.birthday }} </td>
-                                        <td class="hidden-xs" data-column-name="country_id" data-edit-url=""><span class='{{ player?.iconflag }}'></span> {{ player?.country }}</td>
-                                        <td class="hidden-xs hidden-sm medium-height" data-column-name="height" data-edit-url="">{{ player?.height }}</td>
-                                        <td class="hidden-xs hidden-sm hidden-md" data-column-name="weight" data-edit-url="">{{ player?.weight }}</td>
-                                        <td class="hidden-xs hidden-sm hidden-md" data-column-name="college_id" data-edit-url="">{{ player?.college }}</td>
-                                        <td class="hidden-xs hidden-sm" data-column-name="career_start_year" data-edit-url="">{{ player?.nbadebut }}</td>
-                                        <td class="hidden-xs hidden-sm hidden-md" data-column-name="position" data-edit-url="">{{ player?.position }}</td>
-                                        <td data-column-name="current_team_id" data-edit-url="">
-                                            <span class='team-caption'><a target="_blank">{{ player?.team }}</a></span>
-                                        </td>
-                                        <td class="hidden-xs hidden-sm" data-column-name="current_number" data-edit-url="">{{ player?.number }}</td>
-                                        <td class="operation-column">
-											<span class="operation-item" data-column-name="view">
-												<a class="link-icon" routerLink="/menu/players/{{player.id}}" title="View">
-													<i class="icon-view"></i>
+						<ng-container *ngIf="(typeViewshow$ | async) ===''  || (typeViewshow$ | async) ==='Grid' ; else viewCard">
+							<table class="table text-center table-striped fixed-header">
+								<thead class="js-column-filter-container">
+									<tr>
+										<th class="row-selection" rowspan="1" style="width:1%;"><input type="checkbox"></th>
+										<th class=" sortable filterable" colspan="1" data-column-name="photo" data-field-caption="Photo" data-field-name="photo" data-name="photo" data-sort-index="" rowspan="1">
+											<span>Photo</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+										</th>
+										<th class=" sortable" colspan="1" data-column-name="first_name" data-field-caption="First name" data-field-name="first_name" data-name="first_name" data-sort-index="" rowspan="1"><span>First name</span></th>
+										<th class=" sortable" colspan="1" data-column-name="last_name" data-field-caption="Last name" data-field-name="last_name" data-name="last_name" data-sort-index="" rowspan="1"><span>Last name</span></th>
+										<th class="hidden-xs hidden-sm hidden-md sortable filterable" colspan="1" data-column-name="birthday" data-field-caption="Birthday" data-field-name="birthday" data-name="birthday" data-sort-index="" rowspan="1">
+											<span>Birthday</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+										</th>
+										<th class="hidden-xs sortable filterable" colspan="1" data-column-name="country_id_name" data-field-caption="Country" data-field-name="country_id_name" data-name="country_id" data-sort-index="" rowspan="1">
+											<i class="icon-keys-fk"></i> <span>Country</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+										</th>
+										<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="height" data-field-caption="Height" data-field-name="height" data-name="height" data-sort-index="" rowspan="1"><span>Height</span></th>
+										<th class="hidden-xs hidden-sm hidden-md sortable" colspan="1" data-column-name="weight" data-field-caption="Weight" data-field-name="weight" data-name="weight" data-sort-index="" rowspan="1"><span>Weight</span></th>
+										<th class="hidden-xs hidden-sm hidden-md sortable filterable" colspan="1" data-column-name="college_id_name" data-field-caption="College" data-field-name="college_id_name" data-name="college_id" data-sort-index="" rowspan="1">
+											<i class="icon-keys-fk"></i> <span>College</span><a class="column-filter-trigger js-filter-trigger"  title=""><i class="icon-filter"></i></a>
+										</th>
+										<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="career_start_year" data-field-caption="NBA Debut" data-field-name="career_start_year" data-name="career_start_year" data-sort-index="" rowspan="1"><span>NBA Debut</span></th>
+										<th class="hidden-xs hidden-sm hidden-md sortable" colspan="1" data-column-name="position" data-field-caption="Position" data-field-name="position" data-name="position" data-sort-index="" rowspan="1"><span>Position</span></th>
+										<th class=" sortable filterable" colspan="1" data-column-name="current_team_id_caption" data-field-caption="Team" data-field-name="current_team_id_caption" data-name="current_team_id" data-sort-index="" rowspan="1">
+											<i class="icon-keys-fk"></i> <span>Team</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+										</th>
+										<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="current_number" data-field-caption="Number" data-field-name="current_number" data-name="current_number" data-sort-index="" rowspan="1"><span>Number</span></th>
+										<th rowspan="1" style="width:1%;">Actions</th>
+									</tr>
+								</thead>
+								<tbody class="pg-row-list">
+									<ng-template ngFor let-player [ngForOf]="playersList$ | async" let-i="index">
+										<tr class="pg-row" style="">
+											<td style="">
+												<div class="row-selection">
+													<input data-value="[&quot;66&quot;]" id="record__66" name="rec0" type="checkbox">
+												</div>
+											</td>
+											<td data-column-name="photo" data-edit-url="">
+												<a class="image gallery-item" data-name="photo" title="Kobe Bryant">
+													<img alt="{{ player?.firstname }} {{ player?.lastname }}" data-image-column="true" src="{{ player?.photo }}" style="width: 100px">
 												</a>
-											</span>
-											<span data-column-name="edit" class="operation-item">            
-												<a routerLink="/menu/players/edit/{{player.id}}" title="Edit" class="link-icon">
-												<i class="icon-edit"></i></a>
-											</span>
-											<span data-column-name="delete" class="operation-item">            
-												<a title="Delete" (click)="delete(player.id)"  class="link-icon new_hover">
-												<i class="icon-remove"></i>	</a>
-											</span>
+											</td>
+											<td data-column-name="first_name" data-edit-url="">{{ player?.firstname }} </td>
+											<td data-column-name="last_name" data-edit-url="">{{ player?.lastname }} </td>
+											<td class="hidden-xs hidden-sm hidden-md" data-column-name="birthday" data-edit-url="">{{ player?.birthday }} </td>
+											<td class="hidden-xs" data-column-name="country_id" data-edit-url=""><span class='{{ player?.iconflag }}'></span> {{ player?.country }}</td>
+											<td class="hidden-xs hidden-sm medium-height" data-column-name="height" data-edit-url="">{{ player?.height }}</td>
+											<td class="hidden-xs hidden-sm hidden-md" data-column-name="weight" data-edit-url="">{{ player?.weight }}</td>
+											<td class="hidden-xs hidden-sm hidden-md" data-column-name="college_id" data-edit-url="">{{ player?.college }}</td>
+											<td class="hidden-xs hidden-sm" data-column-name="career_start_year" data-edit-url="">{{ player?.nbadebut }}</td>
+											<td class="hidden-xs hidden-sm hidden-md" data-column-name="position" data-edit-url="">{{ player?.position }}</td>
+											<td data-column-name="current_team_id" data-edit-url="">
+												<span class='team-caption'><a target="_blank">{{ player?.team }}</a></span>
+											</td>
+											<td class="hidden-xs hidden-sm" data-column-name="current_number" data-edit-url="">{{ player?.number }}</td>
+											<td class="operation-column">
+												<span class="operation-item" data-column-name="view">
+													<a class="link-icon" routerLink="/menu/players/{{player.id}}" title="View">
+														<i class="icon-view"></i>
+													</a>
+												</span>
+												<span data-column-name="edit" class="operation-item">            
+													<a routerLink="/menu/players/edit/{{player.id}}" title="Edit" class="link-icon">
+													<i class="icon-edit"></i></a>
+												</span>
+												<span data-column-name="delete" class="operation-item">            
+													<a title="Delete" (click)="delete(player.id)"  class="link-icon new_hover">
+													<i class="icon-remove"></i>	</a>
+												</span>
+											</td>
+										</tr>
+									</ng-template>	
+									<tr class="empty-grid hidden">
+										<td colspan="14">
+											<div class="alert alert-warning empty-grid">
+												There are no records to display
+											</div>
 										</td>
-                                    </tr>
-                                </ng-template>	
-								<tr class="empty-grid hidden">
-									<td colspan="14">
-										<div class="alert alert-warning empty-grid">
-											There are no records to display
-										</div>
-									</td>
-								</tr>
-							</tbody>
-							<tfoot></tfoot>
-						</table>
+									</tr>
+								</tbody>
+								<tfoot></tfoot>
+							</table>
+						</ng-container>
+						<ng-template #viewCard>
+							<div class="row">
+								<div class="table-striped fixed-header col-md-12">
+									<div class="alert alert-warning empty-grid hidden">
+										There are no records to display
+									</div>
+									<div class="pg-row-list row">
+										<ng-template ngFor let-player [ngForOf]="playersList$ | async" let-i="index">
+										<div class="grid-card-item col-lg-4 col-md-6 col-sm-12 col-xs-12 pg-row player-card">
+											<table class="player-card-table">
+												<tbody>
+													<tr>
+														<td class="player-card-photo">
+															<a class="image gallery-item" title="{{player?.firstname}} {{player?.lastname}}">
+																<img alt="{{player?.firstname}} {{player?.lastname}}"  src="{{ player?.photo}}">
+															</a>
+														</td>
+														<td class="player-card-number">
+															{{player?.number}}
+															<div class="player-card-select row-selection">
+																<input data-value="[&quot;66&quot;]" id="record__66" name="rec0" type="checkbox">
+															</div>
+														</td>
+														<td class="player-card-basic">
+															<div class="player-card-name">
+																{{player?.firstname}}<br>
+																{{player?.lastname}}
+															</div>
+															<div class="player-card-job">
+																{{player?.position}} 
+																<img alt="" class="team-logo-small" src="">
+																<span class="team-caption">
+																	<a href="" target="_blank">{{ player?.team}}</a></span>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td colspan="2">
+															<div class="player-card-info">
+																{{player?.weight}} kg / {{player?.height}} cm<br>
+																Born: {{ player?.birthday }}<br>
+																Exp: from {{player?.nbadebut}<br>
+																College: {{ player?.college}}<br>
+															</div>
+														</td>
+														<td class="player-card-actions" style="vertical-align: top;padding:1em;">
+															<span class="operation-item" data-column-name="view">
+																<a class="link-icon" routerLink="/menu/players/{{player.id}}" title="View">
+																	<i class="icon-view"></i></a>
+																</span> 
+																<span class="operation-item" data-column-name="edit">
+																	<a class="link-icon" routerLink="/menu/players/edit/{{player.id}}"  title="Edit">
+																		<i class="icon-edit"></i></a>
+																</span> 
+																<span class="operation-item" data-column-name="delete">
+																	<a class="link-icon" (click)="delete(player.id)" title="Delete">
+																		<i class="icon-remove"></i>
+																	</a>
+																</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>									
+										</ng-template>
+									</div>
+									<div></div>
+								</div>
+							</div>
+						</ng-template>				
 					</div><!-- <Pages> -->				
 					<hr>
                     <app-footer></app-footer>

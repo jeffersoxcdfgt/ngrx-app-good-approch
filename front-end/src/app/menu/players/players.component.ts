@@ -12,6 +12,10 @@ import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmat
 import { takeUntil } from 'rxjs/operators'
 import { UnsubscribeComponent } from 'src/app/shared/unsubscribe/unsubscribe.component';
 import { playerDeleteRow } from './players-view/store/actions/players-delete.action';
+import { DialogTableCardComponent } from 'src/app/shared/components/dialog-table-card/dialog-table-card.component';
+import { setTypeViewPlayerResp } from './store/reducers/type-view-player.reducer';
+import { IFSPACE } from '../arenas/arenas.component';
+import { sendTypePlayerView } from './store/actions/type-view-player.action';
 
 export const CLEANARRAY =  filter((val:Player[]) => val.length >0)
 
@@ -23,6 +27,7 @@ export const CLEANARRAY =  filter((val:Player[]) => val.length >0)
 export class PlayersComponent extends UnsubscribeComponent implements OnInit {
 
   playersList$ : Observable<Player[]> = new Observable<Player[]>();
+  typeViewshow$:Observable<string>  = this.store.select(setTypeViewPlayerResp).pipe(IFSPACE);
 
   constructor(private store :Store<State>,private dialog: MatDialog) { 
     super();
@@ -50,6 +55,25 @@ export class PlayersComponent extends UnsubscribeComponent implements OnInit {
         this.store.dispatch(playerDeleteRow({playerid:+id}));  
         this.store.dispatch(playersGetAll());
         this.store.dispatch(teamsGetAll());        
+      }
+    });
+  }
+
+  switchTableCard():void{
+    const dialogRef = this.dialog.open(DialogTableCardComponent,{
+      data:{
+        message: 'Switch Tyepe of View ?',
+        buttonText: {
+          ok: 'Ok',
+          cancel: 'Cancel'
+        },
+        opt:this.typeViewshow$
+      }
+    });
+
+    dialogRef.afterClosed().pipe(takeUntil(this.destroyed$)).subscribe((confirmed: any) => {
+      if (confirmed.opt) {
+          this.store.dispatch(sendTypePlayerView({ sendviewplayer: confirmed.value }));  
       }
     });
   }

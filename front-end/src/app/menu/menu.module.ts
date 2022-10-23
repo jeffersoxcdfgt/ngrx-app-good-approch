@@ -76,6 +76,11 @@ import { playerdeleteFeature } from './players/players-view/store/reducers/playe
 import { PlayersDeleteEffects } from './players/players-view/store/effects/players-delete.effect';
 import { PlayersDeleteService } from './players/players-view/store/services/players-delete.service';
 
+//Type view of view
+import { typeViewPlayerFeature } from './players/store/reducers/type-view-player.reducer';
+import { TypePlayerViewEffects } from './players/store/effects/type-view-player.effect';
+import { TypeViewPlayerService } from './players/store/services/type-view-player.service';
+
 
 @NgModule({
   imports: [
@@ -100,6 +105,7 @@ import { PlayersDeleteService } from './players/players-view/store/services/play
     StoreModule.forFeature(playerbyidFeature),
     StoreModule.forFeature(playerAddEditFeature),
     StoreModule.forFeature(playerdeleteFeature),
+    StoreModule.forFeature(typeViewPlayerFeature),
     EffectsModule.forFeature(
       [
         LoginEffects,
@@ -116,7 +122,8 @@ import { PlayersDeleteService } from './players/players-view/store/services/play
         PlayerEffects,
         PlayersByIdEffects,
         PlayerAddEditEffects,
-        PlayersDeleteEffects   
+        PlayersDeleteEffects,
+        TypePlayerViewEffects   
       ]),
   ],
   declarations: [
@@ -139,7 +146,8 @@ import { PlayersDeleteService } from './players/players-view/store/services/play
     PlayersService,
     PlayersByIdService,
     PlayersAddEditService,
-    PlayersDeleteService
+    PlayersDeleteService,
+    TypeViewPlayerService
   ]
 })
 export class MenuModule {}
