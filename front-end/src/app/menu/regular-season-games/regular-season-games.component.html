@@ -1,0 +1,831 @@
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="container-padding">
+					<div class="page-header">
+						<ol class="breadcrumb pgui-breadcrumb">
+							<li>
+								<a><i class="icon-home"></i></a>
+							</li>
+							<li class="dropdown">
+								<a>Games</a>
+							</li>
+							<li class="dropdown">Regular season games <button class="btn btn-xs btn-default dropdown-toggle pgui-breadcrumb-siblings" data-toggle="dropdown"><span class="caret"></span></button>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li>
+										<a>Playoff bracket</a>
+									</li>
+								</ul>
+							</li>
+						</ol>
+						<h1>Regular season games</h1>
+					</div>
+					<div class="modal modal-top fade js-page-settings-dialog" data-record-count-per-page="2" data-total-record-count="1230" id="page-settings" tabindex="-1">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+									<h3 class="modal-title">Page settings</h3>
+								</div>
+								<div class="modal-body">
+									<h4>Appearance</h4>
+									<table class="table table-bordered table-condensed form-inline">
+										<tr>
+											<td class="page-settings-label-container"><label for="page-settings-viewmode-control">View mode</label></td>
+											<td class="page-settings-control-container" colspan="2"><select class="form-control js-page-settings-viewmode-control" id="page-settings-viewmode-control">
+												<option data-name="TableViewMode" selected="selected" value="0">
+													Grid
+												</option>
+												<option data-name="CardViewMode" value="1">
+													Cards
+												</option>
+											</select></td>
+										</tr>
+										<tr>
+											<td class="page-settings-label-container" rowspan="5">
+												<label>Number of cards in a row</label>
+												<p>Here you can select the number of cards to be placed in a row for each of supported screen resolutions. Your current resolution is highlighted <strong class="text-success">in this way</strong>.</p>
+											</td>
+										</tr>
+										<tr class="page-settings-hightlight-lg">
+											<td style="width: 25%;"><label for="page-settings-card-column-count-lg">Large desktop</label></td>
+											<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="lg" id="page-settings-card-column-count-lg">
+												<option value="1">
+													1
+												</option>
+												<option value="2">
+													2
+												</option>
+												<option selected="selected" value="3">
+													3
+												</option>
+												<option value="4">
+													4
+												</option>
+												<option value="6">
+													6
+												</option>
+											</select></td>
+										</tr>
+										<tr class="page-settings-hightlight-md">
+											<td style="width: 25%;"><label for="page-settings-card-column-count-md">Desktop</label></td>
+											<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="md" id="page-settings-card-column-count-md">
+												<option value="1">
+													1
+												</option>
+												<option value="2">
+													2
+												</option>
+												<option selected="selected" value="3">
+													3
+												</option>
+												<option value="4">
+													4
+												</option>
+												<option value="6">
+													6
+												</option>
+											</select></td>
+										</tr>
+										<tr class="page-settings-hightlight-sm">
+											<td style="width: 25%;"><label for="page-settings-card-column-count-sm">Tablet</label></td>
+											<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="sm" id="page-settings-card-column-count-sm">
+												<option value="1">
+													1
+												</option>
+												<option selected="selected" value="2">
+													2
+												</option>
+												<option value="3">
+													3
+												</option>
+												<option value="4">
+													4
+												</option>
+												<option value="6">
+													6
+												</option>
+											</select></td>
+										</tr>
+										<tr class="page-settings-hightlight-xs">
+											<td style="width: 25%;"><label for="page-settings-card-column-count-xs">Phone</label></td>
+											<td class="page-settings-control-container"><select class="form-control js-page-settings-card-column-count" data-size="xs" id="page-settings-card-column-count-xs">
+												<option selected="selected" value="1">
+													1
+												</option>
+												<option value="2">
+													2
+												</option>
+												<option value="3">
+													3
+												</option>
+												<option value="4">
+													4
+												</option>
+												<option value="6">
+													6
+												</option>
+											</select></td>
+										</tr>
+									</table>
+									<h4>Page size</h4>
+									<p>Total record count: 1230.</p>
+									<table class="table table-bordered table-condensed form-inline">
+										<tr>
+											<th style="width:50%;"><label for="page-settings-page-size-control">Records per page</label></th>
+											<td class="page-settings-control-container"><span class="js-page-settings-page-size-container"><select class="form-control js-page-settings-page-size-control" id="page-settings-page-size-control">
+												<option value="10">
+													10 (123 pages)
+												</option>
+												<option value="20">
+													20 (62 pages)
+												</option>
+												<option value="50">
+													50 (25 pages)
+												</option>
+												<option value="100">
+													100 (13 pages)
+												</option>
+												<option value="0">
+													ALL (1 pages)
+												</option>
+												<option value="custom">
+													Custom
+												</option>
+											</select></span> <span class="js-page-settings-custom-page-size-container" style="display: none"><input class="js-page-settings-custom-page-size-control form-control" id="page-settings-custom-page-size-control" max="1230" min="1" type="number" value="2"> <span style="margin-left: .5em;"><span class="js-page-settings-custom-page-size-pager"></span> page(s).</span></span></td>
+										</tr>
+									</table>
+								</div>
+								<div class="modal-footer">
+									<a class="js-page-settings-cancel btn btn-default" data-dismiss="modal">Cancel</a> <a class="js-page-settings-save btn btn-primary">Save changes</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="well description">
+						<a class="close"><span aria-hidden="true">&times;</span></a>
+						<p>This page displays the list of games played during the 2013-2014 NBA regular season and demonstrates such software features as charts, embedded videos, data partitioning, custom filters, auto hidden columns, user-defined templates, and more. It should (as well as all other pages) look good on any device with a screen with 480+ pixels of width (if you are on a desktop, reduce the size of the browser window to be sure).</p>
+						<nav>
+							<ul class="pager">
+								<li class="next">
+									<a>Playoff Bracket <span aria-hidden="true">&rarr;</span></a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<div class="grid grid-table js-grid" data-column-count="10" data-grid-hidden-values="[]" data-is-master="" data-selection-id="game_listGrid_" data-sortable-columns="{&quot;game_date&quot;:{&quot;name&quot;:&quot;game_date&quot;,&quot;index&quot;:0,&quot;caption&quot;:&quot;Game Date&quot;},&quot;home_team_id&quot;:{&quot;name&quot;:&quot;home_team_id_caption&quot;,&quot;index&quot;:1,&quot;caption&quot;:&quot;Team&quot;},&quot;home_team_score&quot;:{&quot;name&quot;:&quot;home_team_score&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Score&quot;},&quot;away_team_score&quot;:{&quot;name&quot;:&quot;away_team_score&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Score&quot;},&quot;away_team_id&quot;:{&quot;name&quot;:&quot;away_team_id_caption&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Team&quot;},&quot;overtime_count&quot;:{&quot;name&quot;:&quot;overtime_count&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Overtimes&quot;},&quot;recap&quot;:{&quot;name&quot;:&quot;recap&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Recap&quot;}}" id="game_listGrid_6356e2cde776e">
+						<div class="addition-block js-actions">
+							<div class="btn-toolbar addition-block-left pull-left">
+								<div class="btn-group">
+									<a class="btn btn-default pgui-add" title="Add new"><i class="icon-plus"></i> <span class="visible-lg-inline">Add new</span></a>
+								</div>
+								<div class="btn-group">
+									<a class="btn btn-default" title="Refresh"><i class="icon-page-refresh"></i> <span class="visible-lg-inline">Refresh</span></a>
+								</div>
+								<div class="btn-group export-button">
+									<div class="btn-group">
+										<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Export"><i class="icon-export"></i> <span class="visible-lg-inline">Export</span> <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li>
+												<a target="_blank"><i class="icon-export-pdf"></i> Export to Pdf</a>
+											</li>
+											<li>
+												<a><i class="icon-export-excel"></i> Export to Excel</a>
+											</li>
+											<li>
+												<a><i class="icon-export-word"></i> Export to Word</a>
+											</li>
+											<li>
+												<a><i class="icon-export-xml"></i> Export to Xml</a>
+											</li>
+											<li>
+												<a><i class="icon-export-csv"></i> Export to Csv</a>
+											</li>
+										</ul>
+									</div>
+									<div class="btn-group">
+										<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Print"><i class="icon-print-page"></i> <span class="visible-lg-inline">Print</span> <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li>
+												<a target="_blank"><i class="icon-print-page"></i> Print current page</a>
+											</li>
+											<li>
+												<a target="_blank"><i class="icon-print-page"></i> Print all pages</a>
+											</li>
+										</ul>
+									</div><a class="btn btn-default" title="RSS"><i class="icon-rss"></i> <span class="visible-lg-inline">RSS</span></a>
+								</div>
+								<div class="btn-group js-selection-actions-container fade" style="display: none">
+									<div class="btn-group">
+										<button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="hidden-xs"><span class="js-count">0</span> item(s) selected</span> <span class="js-count visible-xs-inline">0</span> <span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li>
+												<a class="js-action" data-type="clear">Clear</a>
+											</li>
+											<li class="divider"></li>
+											<li class="dropdown dropdown-sub-menu">
+												<a>Selection filter</a>
+												<ul class="dropdown-menu sub-menu">
+													<li>
+														<a class="js-action" data-condition="selected" data-type="select">Show selected only</a>
+													</li>
+													<li class="divider"></li>
+													<li>
+														<a class="js-action" data-condition="unselected" data-type="select">Show unselected only</a>
+													</li>
+													<li class="divider"></li>
+													<li>
+														<a class="js-action" data-condition="all" data-type="select">Show all</a>
+													</li>
+												</ul>
+											</li>
+											<li class="divider"></li>
+											<li class="dropdown dropdown-sub-menu">
+												<a>Export</a>
+												<ul class="dropdown-menu sub-menu">
+													<li>
+														<a class="js-action" data-export-type="pdf" data-type="export" target="_blank">Export to Pdf</a>
+													</li>
+													<li>
+														<a class="js-action" data-export-type="excel" data-type="export">Export to Excel</a>
+													</li>
+													<li>
+														<a class="js-action" data-export-type="word" data-type="export">Export to Word</a>
+													</li>
+													<li>
+														<a class="js-action" data-export-type="xml" data-type="export">Export to Xml</a>
+													</li>
+													<li>
+														<a class="js-action" data-export-type="csv" data-type="export">Export to Csv</a>
+													</li>
+												</ul>
+											</li>
+											<li class="divider"></li>
+											<li>
+												<a class="js-action" data-type="print" target="_blank">Print</a>
+											</li>
+											<li class="divider"></li>
+											<li>
+												<a class="js-action" data-type="update">Update</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="addition-block-right pull-right">
+								<div class="btn-group">
+									<button class="btn btn-default js-filter-builder-open" title="Edit filter" type="button"><i class="icon-filter-alt"></i></button>
+								</div>
+								<div class="btn-group">
+									<button class="btn btn-default" data-target="#multiple-sorting-game_listGrid_6356e2cde776e" data-toggle="modal" id="multi-sort-game_listGrid_6356e2cde776e" title="Sort"><i class="icon-sort"></i></button>
+								</div>
+								<div class="btn-group">
+									<button class="btn btn-default" data-target="#page-settings" data-toggle="modal" title="Page settings"><i class="icon-settings"></i></button>
+								</div>
+								<div class="btn-group">
+									<button class="btn btn-default" data-target="#detailedDescriptionModal" data-toggle="modal" title="Page description" type="button"><i class="icon-question"></i></button>
+								</div>
+								<div class="modal fade" id="detailedDescriptionModal" role="dialog" tabindex="-1">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-body">
+												<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button> Hi, I am a detailed description of the page. My big advantage is that I can contain as many lines as you need without taking up space on the page.
+											</div>
+											<div class="modal-footer">
+												<button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="addition-block-right pull-right js-quick-filter">
+								<div class="quick-filter-toolbar btn-group">
+									<div class="input-group js-filter-control">
+										<input class="js-input form-control" name="quick_filter" placeholder="Quick search" size="16" type="text" value="">
+										<div class="input-group-btn dropdown dropdown-lg">
+											<button aria-expanded="false" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="toggle-dropdown" type="button"><span class="caret"></span></button>
+											<div class="dropdown-menu dropdown-menu-right" role="menu">
+												<form class="form-horizontal quick-filter">
+													<div class="form-group form-group-sm">
+														<label class="control-label" for="quick-filter-fields">Columns</label>
+														<div class="col-input input-group-sm" data-column="quick_filter_fields" style="width:100%;max-width:100%">
+															<select class="form-control" data-editor="multivalue_select" data-max-selection-size="0" data-placeholder="All" id="quick-filter-fields" multiple name="quick_filter_fields[]">
+																<option value="game_date">
+																	Game Date
+																</option>
+																<option value="home_team_id">
+																	Home team
+																</option>
+																<option value="away_team_id">
+																	Away team
+																</option>
+																<option value="recap">
+																	Recap
+																</option>
+																<option value="home_team_score">
+																	Home Team Score
+																</option>
+																<option value="away_team_score">
+																	Away Team Score
+																</option>
+																<option value="overtime_count">
+																	Overtime Count
+																</option>
+															</select>
+														</div>
+													</div>
+													<div class="form-group form-group-sm">
+														<label class="control-label" for="quick-filter-operator">Search condition</label>
+														<div class="col-input input-group-sm" data-column="quick_filter_operator" style="width:100%;max-width:100%">
+															<select class="form-control" id="quick-filter-operator" name="quick_filter_operator">
+																<option selected value="Contains">
+																	Contains
+																</option>
+																<option value="BeginsWith">
+																	Begins with
+																</option>
+																<option value="EndsWith">
+																	Ends with
+																</option>
+																<option value="Equals">
+																	Equals
+																</option>
+																<option value="DoesNotContain">
+																	Does not contain
+																</option>
+																<option value="DoesNotEqual">
+																	Does not equal
+																</option>
+															</select>
+														</div>
+													</div>
+													<hr class="quick-filter-separator">
+													<span class="pull-right"><button class="js-cancel btn btn-sm btn-default" type="button"><span class="pull-right"><span class="pull-right">Cancel</span> <button class="js-submit btn btn-sm btn-primary" type="button">Apply</button></span></button></span>
+												</form>
+											</div><button class="btn btn-default js-submit" title="Search" type="button"><i class="icon-search"></i></button> <button class="btn btn-default js-reset" title="Clear" type="button"><i class="icon-filter-reset"></i></button>
+										</div>
+									</div>
+								</div><span class="hidden-xs">&thinsp;</span>
+							</div>
+						</div>
+						<div class="filter-status js-filter-status"></div>
+						<div class="js-grid-message-container"></div>
+						<table class="table text-center table-striped table-hover">
+							<thead class="js-column-filter-container header-bordered" data-has-groups="true">
+								<tr>
+									<th class="row-selection" rowspan="2" style="width:1%;"><input type="checkbox"></th>
+									<th class="details" rowspan="2">
+										<a class="expand-all-details js-expand-all-details collapsed link-icon" title="Show/hide all details"><i class="icon-detail-plus"></i> <i class="icon-detail-minus"></i></a>
+									</th>
+									<th rowspan="2" style="width:1%;">Actions</th>
+									<th class="hidden-xs sortable filterable" colspan="1" data-column-name="game_date" data-field-caption="Game Date" data-field-name="game_date" data-name="game_date" data-sort-index="0" data-sort-order="asc" rowspan="2">
+										<span>Game Date</span><i class="icon-sort-asc"></i><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+									</th>
+									<th class="js-column-group" colspan="2" data-visibility="{&quot;1&quot;:2,&quot;2&quot;:2,&quot;3&quot;:2,&quot;4&quot;:2}" rowspan="1"><span>Home</span></th>
+									<th class="js-column-group" colspan="2" data-visibility="{&quot;1&quot;:2,&quot;2&quot;:2,&quot;3&quot;:2,&quot;4&quot;:2}" rowspan="1"><span>Away</span></th>
+									<th class="hidden-xs hidden-sm hidden-md sortable filterable" colspan="1" data-column-name="overtime_count" data-comment="Number of overtimes in the game" data-field-caption="Overtimes" data-field-name="overtime_count" data-name="overtime_count" data-sort-index="" rowspan="2">
+										<span class="commented">Overtimes</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+									</th>
+									<th class="hidden-xs sortable" colspan="1" data-column-name="recap" data-field-caption="Recap" data-field-name="recap" data-name="recap" data-sort-index="" rowspan="2"><span>Recap</span></th>
+								</tr>
+								<tr>
+									<th class=" sortable filterable" colspan="1" data-column-name="home_team_id_caption" data-field-caption="Team" data-field-name="home_team_id_caption" data-name="home_team_id" data-sort-index="1" data-sort-order="asc" rowspan="1">
+										<span>Team</span><i class="icon-sort-asc"></i><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+									</th>
+									<th class=" sortable filterable" colspan="1" data-column-name="home_team_score" data-field-caption="Score" data-field-name="home_team_score" data-name="home_team_score" data-sort-index="" rowspan="1">
+										<span>Score</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+									</th>
+									<th class=" sortable filterable" colspan="1" data-column-name="away_team_score" data-field-caption="Score" data-field-name="away_team_score" data-name="away_team_score" data-sort-index="" rowspan="1">
+										<span>Score</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+									</th>
+									<th class=" sortable filterable" colspan="1" data-column-name="away_team_id_caption" data-field-caption="Team" data-field-name="away_team_id_caption" data-name="away_team_id" data-sort-index="" rowspan="1">
+										<span>Team</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+									</th>
+								</tr>
+							</thead>
+							<tbody class="pg-row-list">
+								<tr class="pg-row" style="">
+									<td style="">
+										<div class="row-selection">
+											<input data-value="[&quot;1320&quot;]" id="record__1320" name="rec0" type="checkbox">
+										</div>
+									</td>
+									<td class="details" dir="ltr" style="width: 40px;">
+										<div class="btn-group text-nowrap">
+											<a class="expand-details collapsed js-expand-details link-icon" title="Show/hide details"><i class="icon-detail-plus"></i><i class="icon-detail-minus"></i></a><a class="link-icon" data-toggle="dropdown" title="Go to master/detail page"><i class="icon-detail-additional"></i></a>
+											<ul class="dropdown-menu">
+												<li>
+													<a>Quarters</a>
+												</li>
+											</ul>
+										</div>
+									</td>
+									<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span> <span class="operation-item" data-column-name="edit"><a class="link-icon" title="Edit"><i class="icon-edit"></i></a></span> <span class="operation-item" data-column-name="delete"><a class="link-icon" data-delete-handler-name="game_listPage_modal_delete" data-modal-operation="delete" title="Delete"><i class="icon-remove"></i></a></span> <span class="operation-item" data-column-name="epdf_record"><a class="link-icon" target="_blank" title="Export to Pdf"><i class="icon-file-pdf"></i></a></span></td>
+									<td class="hidden-xs pgui-cell-edit" data-column-name="game_date">29 Oct 2013</td>
+									<td class=" pgui-cell-edit" data-column-name="home_team_id">
+										<a data-modal-operation="view"><img alt="Indiana Pacers" class="team-logo-small" src="../../../assets/css/nba_images/teams/IND.svg" title="Indiana Pacers"><span class="team-caption">Indiana Pacers</span></a>
+									</td>
+									<td class="win-score" data-column-name="home_team_score" data-edit-url="">97</td>
+									<td class="loss-score" data-column-name="away_team_score" data-edit-url="">87</td>
+									<td class=" pgui-cell-edit" data-column-name="away_team_id">
+										<a data-modal-operation="view"><img alt="Orlando Magic" class="team-logo-small" src="../../../assets/css/nba_images/teams/ORL.svg" title="Orlando Magic"><span class="team-caption">Orlando Magic</span></a>
+									</td>
+									<td class="hidden-xs hidden-sm hidden-md" data-column-name="overtime_count" data-edit-url="">-</td>
+									<td class="hidden-xs pgui-cell-edit" data-column-name="recap">
+										<div class="pgui-field-embedded-video">
+											<img class="pgui-field-embedded-video-thumb" src="https://i.ytimg.com/vi/DJ1ve2Td_s0/default.jpg"><span class="pgui-field-embedded-video-icon icon-play"></span>
+										</div>
+									</td>
+								</tr>
+								<tr class="grid-details grid-details-table detail" style="display: none;">
+									<td class="js-content" colspan="10">
+										<button class="close js-close" type="button">×</button>
+										<div class="grid-details-loading js-loading" style="display: none;"><img src="components/assets/img/loading.gif"></div>
+										<div>
+											<ul class="nav nav-tabs grid-details-tabs">
+												<li class="active">
+													<a data-toggle="tab">Quarters</a>
+												</li>
+											</ul>
+											<div class="tab-content">
+												<div class="tab-pane active" id="detail-8505910847686956">
+													<p>Showing first 4 of 4 records (full view</p>
+													<div class="grid grid-table js-grid" data-column-count="5" data-is-master="" data-selection-id="game_list_game_quarterGrid_1320" data-sortable-columns="[]" id="game_list_game_quarterGrid_6356e96ec5492">
+														<div class="addition-block js-actions">
+															<div class="btn-toolbar addition-block-left pull-left">
+																<div class="btn-group export-button">
+																	<div class="btn-group">
+																		<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Export"><i class="icon-export"></i> <span class="visible-lg-inline">Export</span> <span class="caret"></span></a>
+																		<ul class="dropdown-menu">
+																			<li>
+																				<a target="_blank"><i class="icon-export-pdf"></i> Export to Pdf</a>
+																			</li>
+																			<li>
+																				<a><i class="icon-export-excel"></i> Export to Excel</a>
+																			</li>
+																			<li>
+																				<a><i class="icon-export-word"></i> Export to Word</a>
+																			</li>
+																			<li>
+																				<a><i class="icon-export-xml"></i> Export to Xml</a>
+																			</li>
+																			<li>
+																				<a><i class="icon-export-csv"></i> Export to Csv</a>
+																			</li>
+																		</ul>
+																	</div>
+																	<div class="btn-group">
+																		<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Print"><i class="icon-print-page"></i> <span class="visible-lg-inline">Print</span> <span class="caret"></span></a>
+																		<ul class="dropdown-menu">
+																			<li>
+																				<a target="_blank"><i class="icon-print-page"></i> Print current page</a>
+																			</li>
+																			<li>
+																				<a target="_blank"><i class="icon-print-page"></i> Print all pages</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+																<div class="btn-group js-selection-actions-container fade" style="display: none">
+																	<div class="btn-group">
+																		<button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="hidden-xs"><span class="js-count">0</span> item(s) selected</span> <span class="js-count visible-xs-inline">0</span> <span class="caret"></span></button>
+																		<ul class="dropdown-menu">
+																			<li>
+																				<a class="js-action" data-type="clear">Clear</a>
+																			</li>
+																			<li class="divider"></li>
+																			<li class="dropdown dropdown-sub-menu">
+																				<a>Selection filter</a>
+																				<ul class="dropdown-menu sub-menu">
+																					<li>
+																						<a class="js-action" data-condition="selected" data-type="select">Show selected only</a>
+																					</li>
+																					<li class="divider"></li>
+																					<li>
+																						<a class="js-action" data-condition="unselected" data-type="select">Show unselected only</a>
+																					</li>
+																					<li class="divider"></li>
+																					<li>
+																						<a class="js-action" data-condition="all" data-type="select">Show all</a>
+																					</li>
+																				</ul>
+																			</li>
+																			<li class="divider"></li>
+																			<li class="dropdown dropdown-sub-menu">
+																				<a>Export</a>
+																				<ul class="dropdown-menu sub-menu">
+																					<li>
+																						<a class="js-action" data-export-type="pdf" data-type="export" target="_blank">Export to Pdf</a>
+																					</li>
+																					<li>
+																						<a class="js-action" data-export-type="excel" data-type="export">Export to Excel</a>
+																					</li>
+																					<li>
+																						<a class="js-action" data-export-type="word" data-type="export">Export to Word</a>
+																					</li>
+																					<li>
+																						<a class="js-action" data-export-type="xml" data-type="export">Export to Xml</a>
+																					</li>
+																					<li>
+																						<a class="js-action" data-export-type="csv" data-type="export">Export to Csv</a>
+																					</li>
+																				</ul>
+																			</li>
+																			<li class="divider"></li>
+																			<li>
+																				<a class="js-action" data-type="print" target="_blank">Print</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="js-grid-message-container"></div>
+														<table class="table text-center table-striped">
+															<thead class="js-column-filter-container">
+																<tr>
+																	<th class="row-selection" rowspan="1" style="width:1%;"><input type="checkbox"></th>
+																	<th rowspan="1" style="width:1%;">Actions</th>
+																	<th class="" colspan="1" data-column-name="quarter_id_caption" data-field-caption="Quarter" data-field-name="quarter_id_caption" data-name="quarter_id" data-sort-index="" rowspan="1"><span>Quarter</span></th>
+																	<th class="" colspan="1" data-column-name="home_team_score" data-field-caption="Home Score" data-field-name="home_team_score" data-name="home_team_score" data-sort-index="" rowspan="1"><span>Home Score</span></th>
+																	<th class="" colspan="1" data-column-name="away_team_score" data-field-caption="Away Score" data-field-name="away_team_score" data-name="away_team_score" data-sort-index="" rowspan="1"><span>Away Score</span></th>
+																</tr>
+															</thead>
+															<tbody class="pg-row-list">
+																<tr class="pg-row" style="">
+																	<td style="">
+																		<div class="row-selection">
+																			<input data-value="[&quot;1320&quot;,&quot;1&quot;]" id="record__1320_1" name="rec0" type="checkbox">
+																		</div>
+																	</td>
+																	<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
+																	<td data-column-name="quarter_id" data-edit-url="">1st quarter</td>
+																	<td data-column-name="home_team_score" data-edit-url="" style="font-weight: bold;">23</td>
+																	<td data-column-name="away_team_score" data-edit-url="">18</td>
+																</tr>
+																<tr class="pg-row" style="">
+																	<td style="">
+																		<div class="row-selection">
+																			<input data-value="[&quot;1320&quot;,&quot;2&quot;]" id="record__1320_2" name="rec1" type="checkbox">
+																		</div>
+																	</td>
+																	<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
+																	<td data-column-name="quarter_id" data-edit-url="">2nd quarter</td>
+																	<td data-column-name="home_team_score" data-edit-url="">17</td>
+																	<td data-column-name="away_team_score" data-edit-url="" style="font-weight: bold;">26</td>
+																</tr>
+																<tr class="pg-row" style="">
+																	<td style="">
+																		<div class="row-selection">
+																			<input data-value="[&quot;1320&quot;,&quot;3&quot;]" id="record__1320_3" name="rec2" type="checkbox">
+																		</div>
+																	</td>
+																	<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
+																	<td data-column-name="quarter_id" data-edit-url="">3rd quarter</td>
+																	<td data-column-name="home_team_score" data-edit-url="" style="font-weight: bold;">29</td>
+																	<td data-column-name="away_team_score" data-edit-url="">20</td>
+																</tr>
+																<tr class="pg-row" style="">
+																	<td style="">
+																		<div class="row-selection">
+																			<input data-value="[&quot;1320&quot;,&quot;4&quot;]" id="record__1320_4" name="rec3" type="checkbox">
+																		</div>
+																	</td>
+																	<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
+																	<td data-column-name="quarter_id" data-edit-url="">4th quarter</td>
+																	<td data-column-name="home_team_score" data-edit-url="" style="font-weight: bold;">28</td>
+																	<td data-column-name="away_team_score" data-edit-url="">23</td>
+																</tr>
+																<tr class="empty-grid hidden">
+																	<td colspan="5">
+																		<div class="alert alert-warning empty-grid">
+																			There are no records to display
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+															<tfoot></tfoot>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr class="pg-row" style="">
+									<td style="">
+										<div class="row-selection">
+											<input data-value="[&quot;1322&quot;]" id="record__1322" name="rec1" type="checkbox">
+										</div>
+									</td>
+									<td class="details" dir="ltr" style="width: 40px;">
+										<div class="btn-group text-nowrap">
+											<a class="expand-details collapsed js-expand-details link-icon" title="Show/hide details"><i class="icon-detail-plus"></i> <i class="icon-detail-minus"></i></a> <a class="link-icon" data-toggle="dropdown" title="Go to master/detail page"><i class="icon-detail-additional"></i></a>
+											<ul class="dropdown-menu">
+												<li>
+													<a>Quarters</a>
+												</li>
+											</ul>
+										</div>
+									</td>
+									<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span> <span class="operation-item" data-column-name="edit"><a class="link-icon" title="Edit"><i class="icon-edit"></i></a></span> <span class="operation-item" data-column-name="delete"><a class="link-icon" data-delete-handler-name="game_listPage_modal_delete" data-modal-operation="delete" title="Delete"><i class="icon-remove"></i></a></span> <span class="operation-item" data-column-name="epdf_record"><a class="link-icon" target="_blank" title="Export to Pdf"><i class="icon-file-pdf"></i></a></span></td>
+									<td class="hidden-xs pgui-cell-edit" data-column-name="game_date">29 Oct 2013</td>
+									<td class=" pgui-cell-edit" data-column-name="home_team_id">
+										<a data-modal-operation="view"><img alt="Los Angeles Lakers" class="team-logo-small" src="../../../assets/css/nba_images/teams/LAL.svg" title="Los Angeles Lakers"><span class="team-caption">Los Angeles Lakers</span></a>
+									</td>
+									<td class="win-score" data-column-name="home_team_score" data-edit-url="">116</td>
+									<td class="loss-score" data-column-name="away_team_score" data-edit-url="">103</td>
+									<td class=" pgui-cell-edit" data-column-name="away_team_id">
+										<a data-modal-operation="view"><img alt="Los Angeles Clippers" class="team-logo-small" src="../../../assets/css/nba_images/teams/LAC.svg" title="Los Angeles Clippers"><span class="team-caption">Los Angeles Clippers</span></a>
+									</td>
+									<td class="hidden-xs hidden-sm hidden-md" data-column-name="overtime_count" data-edit-url="">-</td>
+									<td class="hidden-xs pgui-cell-edit" data-column-name="recap">
+										<div class="pgui-field-embedded-video" data-url="https://youtube.com/watch?v=aeHFxndkox8">
+											<img class="pgui-field-embedded-video-thumb" src="https://i.ytimg.com/vi/aeHFxndkox8/default.jpg"><span class="pgui-field-embedded-video-icon icon-play"></span>
+										</div>
+									</td>
+								</tr>
+								<tr class="grid-details grid-details-table detail" style="display: none;">
+									<td class="js-content" colspan="10">
+										<button class="close js-close" type="button">×</button>
+										<div class="grid-details-loading js-loading" style="display: none;"><img src="components/assets/img/loading.gif"></div>
+										<div>
+											<ul class="nav nav-tabs grid-details-tabs">
+												<li class="active">
+													<a data-toggle="tab">Quarters</a>
+												</li>
+											</ul>
+											<div class="tab-content">
+												<div class="tab-pane active" id="detail-625646682822729">
+													<p>Showing first 4 of 4 records (&gt;full view)</p>
+													<div class="grid grid-table js-grid" data-column-count="5" data-is-master="" data-selection-id="game_list_game_quarterGrid_1322" data-sortable-columns="[]" id="game_list_game_quarterGrid_6356eb3f1a5f6">
+														<div class="addition-block js-actions">
+															<div class="btn-toolbar addition-block-left pull-left">
+																<div class="btn-group export-button">
+																	<div class="btn-group">
+																		<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Export"><i class="icon-export"></i> <span class="visible-lg-inline">Export</span> <span class="caret"></span></a>
+																		<ul class="dropdown-menu">
+																			<li>
+																				<a target="_blank"><i class="icon-export-pdf"></i> Export to Pdf</a>
+																			</li>
+																			<li>
+																				<a><i class="icon-export-excel"></i> Export to Excel</a>
+																			</li>
+																			<li>
+																				<a><i class="icon-export-word"></i> Export to Word</a>
+																			</li>
+																			<li>
+																				<a><i class="icon-export-xml"></i> Export to Xml</a>
+																			</li>
+																			<li>
+																				<a class="icon-export-csv">Export to Csv</a>
+																			</li>
+																		</ul>
+																	</div>
+																	<div class="btn-group">
+																		<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Print"><i class="icon-print-page"></i> <span class="visible-lg-inline">Print</span> <span class="caret"></span></a>
+																		<ul class="dropdown-menu">
+																			<li>
+																				<a target="_blank"><i class="icon-print-page"></i> Print current page</a>
+																			</li>
+																			<li>
+																				<a target="_blank"><i class="icon-print-page"></i> Print all pages</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+																<div class="btn-group js-selection-actions-container fade" style="display: none">
+																	<div class="btn-group">
+																		<button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="hidden-xs"><span class="js-count">0</span> item(s) selected</span> <span class="js-count visible-xs-inline">0</span> <span class="caret"></span></button>
+																		<ul class="dropdown-menu">
+																			<li>
+																				<a class="js-action" data-type="clear">Clear</a>
+																			</li>
+																			<li class="divider"></li>
+																			<li class="dropdown dropdown-sub-menu">
+																				<a>Selection filter</a>
+																				<ul class="dropdown-menu sub-menu">
+																					<li>
+																						<a class="js-action" data-condition="selected" data-type="select">Show selected only</a>
+																					</li>
+																					<li class="divider"></li>
+																					<li>
+																						<a class="js-action" data-condition="unselected" data-type="select">Show unselected only</a>
+																					</li>
+																					<li class="divider"></li>
+																					<li>
+																						<a class="js-action" data-condition="all" data-type="select">Show all</a>
+																					</li>
+																				</ul>
+																			</li>
+																			<li class="divider"></li>
+																			<li class="dropdown dropdown-sub-menu">
+																				<a>Export</a>
+																				<ul class="dropdown-menu sub-menu">
+																					<li>
+																						<a class="js-action" data-export-type="pdf" data-type="export" target="_blank">Export to Pdf</a>
+																					</li>
+																					<li>
+																						<a class="js-action" data-export-type="excel" data-type="export">Export to Excel</a>
+																					</li>
+																					<li>
+																						<a class="js-action" data-export-type="word" data-type="export">Export to Word</a>
+																					</li>
+																					<li>
+																						<a class="js-action" data-export-type="xml" data-type="export">Export to Xml</a>
+																					</li>
+																					<li>
+																						<a class="js-action" data-export-type="csv" data-type="export">Export to Csv</a>
+																					</li>
+																				</ul>
+																			</li>
+																			<li class="divider"></li>
+																			<li>
+																				<a class="js-action" data-type="print" target="_blank">Print</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="js-grid-message-container"></div>
+														<table class="table text-center table-striped">
+															<thead class="js-column-filter-container">
+																<tr>
+																	<th class="row-selection" rowspan="1" style="width:1%;"><input type="checkbox"></th>
+																	<th rowspan="1" style="width:1%;">Actions</th>
+																	<th class="" colspan="1" data-column-name="quarter_id_caption" data-field-caption="Quarter" data-field-name="quarter_id_caption" data-name="quarter_id" data-sort-index="" rowspan="1"><span>Quarter</span></th>
+																	<th class="" colspan="1" data-column-name="home_team_score" data-field-caption="Home Score" data-field-name="home_team_score" data-name="home_team_score" data-sort-index="" rowspan="1"><span>Home Score</span></th>
+																	<th class="" colspan="1" data-column-name="away_team_score" data-field-caption="Away Score" data-field-name="away_team_score" data-name="away_team_score" data-sort-index="" rowspan="1"><span>Away Score</span></th>
+																</tr>
+															</thead>
+															<tbody class="pg-row-list">
+																<tr class="pg-row" style="">
+																	<td style="">
+																		<div class="row-selection">
+																			<input data-value="[&quot;1322&quot;,&quot;1&quot;]" id="record__1322_1" name="rec0" type="checkbox">
+																		</div>
+																	</td>
+																	<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
+																	<td data-column-name="quarter_id" data-edit-url="">1st quarter</td>
+																	<td data-column-name="home_team_score" data-edit-url="">28</td>
+																	<td data-column-name="away_team_score" data-edit-url="" style="font-weight: bold;">30</td>
+																</tr>
+																<tr class="pg-row" style="">
+																	<td style="">
+																		<div class="row-selection">
+																			<input data-value="[&quot;1322&quot;,&quot;2&quot;]" id="record__1322_2" name="rec1" type="checkbox">
+																		</div>
+																	</td>
+																	<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
+																	<td data-column-name="quarter_id" data-edit-url="">2nd quarter</td>
+																	<td data-column-name="home_team_score" data-edit-url="">27</td>
+																	<td data-column-name="away_team_score" data-edit-url="">27</td>
+																</tr>
+																<tr class="pg-row" style="">
+																	<td style="">
+																		<div class="row-selection">
+																			<input data-value="[&quot;1322&quot;,&quot;3&quot;]" id="record__1322_3" name="rec2" type="checkbox">
+																		</div>
+																	</td>
+																	<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
+																	<td data-column-name="quarter_id" data-edit-url="">3rd quarter</td>
+																	<td data-column-name="home_team_score" data-edit-url="">20</td>
+																	<td data-column-name="away_team_score" data-edit-url="" style="font-weight: bold;">22</td>
+																</tr>
+																<tr class="pg-row" style="">
+																	<td style="">
+																		<div class="row-selection">
+																			<input data-value="[&quot;1322&quot;,&quot;4&quot;]" id="record__1322_4" name="rec3" type="checkbox">
+																		</div>
+																	</td>
+																	<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
+																	<td data-column-name="quarter_id" data-edit-url="">4th quarter</td>
+																	<td data-column-name="home_team_score" data-edit-url="" style="font-weight: bold;">41</td>
+																	<td data-column-name="away_team_score" data-edit-url="">24</td>
+																</tr>
+																<tr class="empty-grid hidden">
+																	<td colspan="5">
+																		<div class="alert alert-warning empty-grid">
+																			There are no records to display
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+															<tfoot></tfoot>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot></tfoot>
+						</table>
+					</div><!-- <Pages> -->
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>

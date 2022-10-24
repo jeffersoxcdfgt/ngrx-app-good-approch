@@ -30,7 +30,10 @@
                                 </a> 
                                 <a aria-expanded="false" routerLink="/menu/playoff" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button">
                                     Playoff bracket 
-                                </a>                    
+                                </a>  
+                                <a aria-expanded="false" routerLink="/menu/regular-season-games" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                                    Regular season games
+                                </a>                  
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right" id="nav-menu">
@@ -66,7 +69,7 @@
                     <ul class="dropdown-menu">
                         <mat-menu #menuGames="matMenu">
                             <li mat-menu-item>
-                                <a title="Regular season games">Regular season games</a>
+                                <a routerLink="/menu/regular-season-games" title="Regular season games">Regular season games</a>
                             </li>
                             <li mat-menu-item>
                                 <a routerLink="/menu/playoff" title="Playoff">Playoff bracket</a>

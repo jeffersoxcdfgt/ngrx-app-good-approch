@@ -127,7 +127,7 @@ import { TypeViewPlayerService } from './players/store/services/type-view-player
       ]),
   ],
   declarations: [
-    menuRoutedComponents
+    menuRoutedComponents,
   ],
   providers: [
     TraceService,
