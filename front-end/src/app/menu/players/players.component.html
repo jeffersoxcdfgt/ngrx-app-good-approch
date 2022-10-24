@@ -178,8 +178,8 @@
 								</li>
 							</ul>
 						</nav>
-					</div><!-- <Pages> -->
-					<div class="page_navigator"></div><!-- </Pages> -->
+					</div>
+					<div class="page_navigator"></div>
 					<div class="grid grid-table grid-card js-grid" data-column-count="14" data-grid-hidden-values="[]" data-is-master="" data-selection-id="playerGrid_"  id="playerGrid_6344b872ee07a">
 						<div class="addition-block js-actions">
 							<div class="btn-toolbar addition-block-left pull-left">
@@ -482,9 +482,9 @@
 																<img alt="{{player?.firstname}} {{player?.lastname}}"  src="{{ player?.photo}}">
 															</a>
 														</td>
-														<td class="player-card-number">
+														<td class="player-card-number" style="vertical-align: inherit;">
 															{{player?.number}}
-															<div class="player-card-select row-selection">
+															<div class="player-card-select row-selection" style="padding-top: 10px;">
 																<input data-value="[&quot;66&quot;]" id="record__66" name="rec0" type="checkbox">
 															</div>
 														</td>
@@ -495,9 +495,8 @@
 															</div>
 															<div class="player-card-job">
 																{{player?.position}} 
-																<img alt="" class="team-logo-small" src="">
 																<span class="team-caption">
-																	<a href="" target="_blank">{{ player?.team}}</a></span>
+																	<a  target="_blank">{{ player?.team}}</a></span>
 															</div>
 														</td>
 													</tr>
@@ -535,10 +534,15 @@
 								</div>
 							</div>
 						</ng-template>				
-					</div><!-- <Pages> -->				
+					</div>
 					<hr>
                     <app-footer></app-footer>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
+
+
+	
