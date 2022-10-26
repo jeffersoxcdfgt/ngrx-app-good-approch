@@ -362,7 +362,9 @@
 													<hr class="quick-filter-separator">
 													<span class="pull-right"><button class="js-cancel btn btn-sm btn-default" type="button"><span class="pull-right"><span class="pull-right">Cancel</span> <button class="js-submit btn btn-sm btn-primary" type="button">Apply</button></span></button></span>
 												</form>
-											</div><button class="btn btn-default js-submit" title="Search" type="button"><i class="icon-search"></i></button> <button class="btn btn-default js-reset" title="Clear" type="button"><i class="icon-filter-reset"></i></button>
+											</div>
+											
+											<button class="btn btn-default js-reset" title="Clear" type="button"><i class="icon-filter-reset"></i></button>
 										</div>
 									</div>
 								</div><span class="hidden-xs">&thinsp;</span>
@@ -375,7 +377,10 @@
 								<tr>
 									<th class="row-selection" rowspan="2" style="width:1%;"><input type="checkbox"></th>
 									<th class="details" rowspan="2">
-										<a class="expand-all-details js-expand-all-details collapsed link-icon" title="Show/hide all details"><i class="icon-detail-plus"></i> <i class="icon-detail-minus"></i></a>
+										<a class="expand-all-details js-expand-all-details collapsed link-icon" title="Show/hide all details">
+											<i class="icon-detail-plus"></i> 
+											<i class="icon-detail-minus"></i>
+										</a>
 									</th>
 									<th rowspan="2" style="width:1%;">Actions</th>
 									<th class="hidden-xs sortable filterable" colspan="1" data-column-name="game_date" data-field-caption="Game Date" data-field-name="game_date" data-name="game_date" data-sort-index="0" data-sort-order="asc" rowspan="2">
@@ -412,7 +417,10 @@
 									</td>
 									<td class="details" dir="ltr" style="width: 40px;">
 										<div class="btn-group text-nowrap">
-											<a class="expand-details collapsed js-expand-details link-icon" title="Show/hide details"><i class="icon-detail-plus"></i><i class="icon-detail-minus"></i></a><a class="link-icon" data-toggle="dropdown" title="Go to master/detail page"><i class="icon-detail-additional"></i></a>
+											<a class="expand-details collapsed js-expand-details link-icon" title="Show/hide details">
+												<i class="icon-detail-plus"></i>
+												<i class="icon-detail-minus"></i>
+											</a>
 											<ul class="dropdown-menu">
 												<li>
 													<a>Quarters</a>
@@ -420,7 +428,13 @@
 											</ul>
 										</div>
 									</td>
-									<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span> <span class="operation-item" data-column-name="edit"><a class="link-icon" title="Edit"><i class="icon-edit"></i></a></span> <span class="operation-item" data-column-name="delete"><a class="link-icon" data-delete-handler-name="game_listPage_modal_delete" data-modal-operation="delete" title="Delete"><i class="icon-remove"></i></a></span> <span class="operation-item" data-column-name="epdf_record"><a class="link-icon" target="_blank" title="Export to Pdf"><i class="icon-file-pdf"></i></a></span></td>
+									<td class="operation-column">								
+										<span class="operation-item" data-column-name="epdf_record">
+											<a class="link-icon" target="_blank" title="Export to Pdf">
+												<i class="icon-file-pdf"></i>
+											</a>
+										</span>
+									</td>
 									<td class="hidden-xs pgui-cell-edit" data-column-name="game_date">29 Oct 2013</td>
 									<td class=" pgui-cell-edit" data-column-name="home_team_id">
 										<a data-modal-operation="view"><img alt="Indiana Pacers" class="team-logo-small" src="../../../assets/css/nba_images/teams/IND.svg" title="Indiana Pacers"><span class="team-caption">Indiana Pacers</span></a>
@@ -620,7 +634,10 @@
 									</td>
 									<td class="details" dir="ltr" style="width: 40px;">
 										<div class="btn-group text-nowrap">
-											<a class="expand-details collapsed js-expand-details link-icon" title="Show/hide details"><i class="icon-detail-plus"></i> <i class="icon-detail-minus"></i></a> <a class="link-icon" data-toggle="dropdown" title="Go to master/detail page"><i class="icon-detail-additional"></i></a>
+											<a class="expand-details collapsed js-expand-details link-icon" title="Show/hide details">
+												<i class="icon-detail-plus"></i> 
+												<i class="icon-detail-minus"></i>
+											</a> 
 											<ul class="dropdown-menu">
 												<li>
 													<a>Quarters</a>
@@ -628,7 +645,13 @@
 											</ul>
 										</div>
 									</td>
-									<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span> <span class="operation-item" data-column-name="edit"><a class="link-icon" title="Edit"><i class="icon-edit"></i></a></span> <span class="operation-item" data-column-name="delete"><a class="link-icon" data-delete-handler-name="game_listPage_modal_delete" data-modal-operation="delete" title="Delete"><i class="icon-remove"></i></a></span> <span class="operation-item" data-column-name="epdf_record"><a class="link-icon" target="_blank" title="Export to Pdf"><i class="icon-file-pdf"></i></a></span></td>
+									<td class="operation-column">								
+										<span class="operation-item" data-column-name="epdf_record">
+											<a class="link-icon" target="_blank" title="Export to Pdf">
+												<i class="icon-file-pdf"></i>
+											</a>
+										</span>
+								    </td>
 									<td class="hidden-xs pgui-cell-edit" data-column-name="game_date">29 Oct 2013</td>
 									<td class=" pgui-cell-edit" data-column-name="home_team_id">
 										<a data-modal-operation="view"><img alt="Los Angeles Lakers" class="team-logo-small" src="../../../assets/css/nba_images/teams/LAL.svg" title="Los Angeles Lakers"><span class="team-caption">Los Angeles Lakers</span></a>
