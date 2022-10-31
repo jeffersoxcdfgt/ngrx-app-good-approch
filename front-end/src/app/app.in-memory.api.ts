@@ -266,7 +266,7 @@ export class AppInMemoryApi  implements InMemoryDbService{
           'regular_season_games':[
             {
               id:1,
-              gamedate:'29 Oct 2013',
+              gamedate:'30 Oct 2013',
               teamhome:'Indiana Pacers',
               scorehome:'97',
               scoreaway:'87',
