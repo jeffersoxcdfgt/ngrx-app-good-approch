@@ -4,5 +4,5 @@ export const environment = {
   arenaUrl:'http://localhost:3000',
   teamUrl:'http://localhost:3000',
   playerUrl:'http://localhost:3000',
-  playerUrl:'http://localhost:3000'
+  regularseasonUrl:'http://localhost:3000'
 };
