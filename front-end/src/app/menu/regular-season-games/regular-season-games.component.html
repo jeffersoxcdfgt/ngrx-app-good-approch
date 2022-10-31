@@ -239,7 +239,7 @@
 								<tr>
 									<th class="row-selection" rowspan="2" style="width:1%;"><input type="checkbox"></th>
 									<th class="details" rowspan="2">
-										<a class="expand-all-details js-expand-all-details collapsed link-icon" title="Show/hide all details">
+										<a [className]="allElementsString"  (click)="allElements()" title="Show/hide all details">
 											<i class="icon-detail-plus"></i> 
 											<i class="icon-detail-minus"></i>
 										</a>
@@ -272,15 +272,15 @@
 							</thead>
 							<tbody class="pg-row-list">
 								<ng-template ngFor let-regularseasongamesList [ngForOf]="regularseasongamesList$ | async" let-i="index">
-									<tr class="pg-row" style="">
-										<td style="">
+									<tr class="pg-row">
+										<td>
 											<div class="row-selection">
 												<input data-value="[&quot;1320&quot;]" id="record__1320" name="rec0" type="checkbox">
 											</div>
 										</td>
 										<td class="details" dir="ltr" style="width: 40px;">
 											<div class="btn-group text-nowrap">
-												<a class="expand-details collapsed js-expand-details link-icon" title="Show/hide details">
+												<a [className]="setClass(selectedData,regularseasongamesList.id)" (click)="modelChangeFn(regularseasongamesList?.id)" title="Show/hide details">
 													<i class="icon-detail-plus"></i>
 													<i class="icon-detail-minus"></i>
 												</a>
@@ -319,7 +319,7 @@
 											</div>
 										</td>
 									</tr>
-									<tr class="grid-details grid-details-table detail" style="display: none;">
+									<tr class="grid-details grid-details-table detail" [ngStyle]="{'display': setClassDetail(selectedDataDetail,regularseasongamesList.id)}">
 										<td class="js-content" colspan="10">
 											<button class="close js-close" type="button">×</button>
 											<div class="grid-details-loading js-loading" style="display: none;"><img src="../../../assets/css/img/loading.gif"></div>
@@ -434,8 +434,8 @@
 																	</tr>
 																</thead>
 																<tbody class="pg-row-list">
-																	<tr class="pg-row" style="">
-																		<td style="">
+																	<tr class="pg-row">
+																		<td>
 																			<div class="row-selection">
 																				<input data-value="[&quot;1320&quot;,&quot;1&quot;]" id="record__1320_1" name="rec0" type="checkbox">
 																			</div>
