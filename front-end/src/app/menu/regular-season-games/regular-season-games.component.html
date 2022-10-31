@@ -32,7 +32,7 @@
 							</ul>
 						</nav>
 					</div>
-					<div class="grid grid-table js-grid" data-column-count="10" data-grid-hidden-values="[]" data-is-master="" data-selection-id="game_listGrid_" data-sortable-columns="{&quot;game_date&quot;:{&quot;name&quot;:&quot;game_date&quot;,&quot;index&quot;:0,&quot;caption&quot;:&quot;Game Date&quot;},&quot;home_team_id&quot;:{&quot;name&quot;:&quot;home_team_id_caption&quot;,&quot;index&quot;:1,&quot;caption&quot;:&quot;Team&quot;},&quot;home_team_score&quot;:{&quot;name&quot;:&quot;home_team_score&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Score&quot;},&quot;away_team_score&quot;:{&quot;name&quot;:&quot;away_team_score&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Score&quot;},&quot;away_team_id&quot;:{&quot;name&quot;:&quot;away_team_id_caption&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Team&quot;},&quot;overtime_count&quot;:{&quot;name&quot;:&quot;overtime_count&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Overtimes&quot;},&quot;recap&quot;:{&quot;name&quot;:&quot;recap&quot;,&quot;index&quot;:null,&quot;caption&quot;:&quot;Recap&quot;}}" id="game_listGrid_6356e2cde776e">
+					<div class="grid grid-table js-grid" data-column-count="10" data-grid-hidden-values="[]" data-is-master="" data-selection-id="game_listGrid_" id="game_listGrid_6356e2cde776e">
 						<div class="addition-block js-actions">
 							<div class="btn-toolbar addition-block-left pull-left">
 								<div class="btn-group">
@@ -302,11 +302,9 @@
 												</a>
 											</span>
 										</td>
-										<td class="hidden-xs pgui-cell-edit" data-column-name="game_date">{{regularseasongamesList?.gamedate}}</td>
-										<td class=" pgui-cell-edit" data-column-name="home_team_id">
-											<a data-modal-operation="view">
-												<span class="team-caption">{{regularseasongamesList?.teamhome}}</span>
-											</a>
+										<td class="pgui-cell-edit" data-column-name="game_date">{{regularseasongamesList?.gamedate}}</td>
+										<td class="pgui-cell-edit" data-column-name="home_team_id">
+											{{regularseasongamesList?.teamhome}}
 										</td>
 										<td class="win-score" data-column-name="home_team_score" data-edit-url="">{{regularseasongamesList?.scorehome}}</td>
 										<td class="loss-score" data-column-name="away_team_score" data-edit-url="">{{regularseasongamesList?.scoreaway}}</td>
