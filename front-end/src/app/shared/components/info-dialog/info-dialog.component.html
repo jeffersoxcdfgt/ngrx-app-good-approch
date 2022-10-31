@@ -1,0 +1,18 @@
+<div class="modal fade in" role="dialog" style="display: block;" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <mat-dialog-content>
+                    <div class="bootbox-body">
+                        {{message}}
+                    </div>
+                </mat-dialog-content>
+            </div>
+            <div class="modal-footer">
+                <mat-dialog-actions align="end">
+                    <button (click)="onConfirmClick()" mat-raised-button mat-dialog-close tabindex="-1" class="btn btn-default" data-bb-handler="cancel" type="button">{{confirmButtonText}}</button>
+                </mat-dialog-actions>					
+            </div>
+    </div>
+</div>
+</div>

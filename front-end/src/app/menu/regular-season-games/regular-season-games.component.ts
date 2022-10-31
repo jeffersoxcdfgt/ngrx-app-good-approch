@@ -7,6 +7,9 @@ import { ReagularSeasonGame } from '../models/regular-season-game';
 import { regularseasongamesGetAll } from './store/actions/regular-season-games.action';
 import { selectAllRegularSeasonGames } from './store/reducers/regular-season-games.reducer';
 import { map, takeUntil } from 'rxjs/operators'
+import { MatDialog } from '@angular/material/dialog';
+import { InfoDialogComponent } from 'src/app/shared/components/info-dialog/info-dialog.component';
+import { UnsubscribeComponent } from 'src/app/shared/unsubscribe/unsubscribe.component';
 
 export const CLEANARRAY =  filter((val:ReagularSeasonGame[]) => val.length >0)
 export const FILTER_REGULAR_SEASON_GAMES = (search:string) =>  map((regulargames:ReagularSeasonGame[]) => {
@@ -24,7 +27,7 @@ export const FILTER_REGULAR_SEASON_GAMES = (search:string) =>  map((regulargames
   templateUrl: './regular-season-games.component.html',
   styleUrls: ['./regular-season-games.component.scss']
 })
-export class RegularSeasonGamesComponent implements OnInit {
+export class RegularSeasonGamesComponent extends UnsubscribeComponent implements OnInit {
 
   regularseasongamesList$ : Observable<ReagularSeasonGame[]> = new Observable<ReagularSeasonGame[]>();
   selectedData:string[] = [];
@@ -32,7 +35,9 @@ export class RegularSeasonGamesComponent implements OnInit {
   allElementsString = 'expand-all-details js-expand-all-details collapsed link-icon';
   searchTerm: string = '';
 
-  constructor(private store :Store<State>) { }
+  constructor(private store :Store<State>,private dialog: MatDialog) {
+    super();
+   }
 
   ngOnInit(): void {
     this.store.dispatch(regularseasongamesGetAll());
@@ -81,6 +86,17 @@ export class RegularSeasonGamesComponent implements OnInit {
   resetSearch():void{
     this.searchTerm = '';
     this.regularseasongamesList$ = this.store.select(selectAllRegularSeasonGames).pipe(CLEANARRAY);
+  }
+
+  infoDialog():void{
+    this.dialog.open(InfoDialogComponent,{
+      data:{
+        message: `
+        Hi, I am a detailed description of the page. My big advantage is that I can contain as many
+         lines as you need without taking up space on the page.
+      `,
+      }
+    });
   }
 
 }

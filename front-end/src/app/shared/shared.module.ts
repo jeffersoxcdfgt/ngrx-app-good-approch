@@ -37,6 +37,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { InputCustomDatetimeComponent } from './components/input-custom-datetime/input-custom-datetime.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { InfoDialogComponent } from './components/info-dialog/info-dialog.component';
 
 
 export const MATERIAL_MODULES = [
@@ -82,7 +83,8 @@ export const PIPES_LIST = [
     ValidationComponent,
     DialogTableCardComponent,
     ChipsSelectComponent,
-    InputCustomDatetimeComponent
+    InputCustomDatetimeComponent,
+    InfoDialogComponent
   ],
   providers:[],
   exports:[
@@ -104,7 +106,8 @@ export const PIPES_LIST = [
     ValidationComponent,
     DialogTableCardComponent,
     ChipsSelectComponent,
-    InputCustomDatetimeComponent
+    InputCustomDatetimeComponent,
+    InfoDialogComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

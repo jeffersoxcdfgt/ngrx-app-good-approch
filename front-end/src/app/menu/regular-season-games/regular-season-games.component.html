@@ -139,7 +139,9 @@
 									<button class="btn btn-default" data-target="#multiple-sorting-game_listGrid_6356e2cde776e" data-toggle="modal" id="multi-sort-game_listGrid_6356e2cde776e" title="Sort"><i class="icon-sort"></i></button>
 								</div>
 								<div class="btn-group">
-									<button class="btn btn-default" data-target="#detailedDescriptionModal" data-toggle="modal" title="Page description" type="button"><i class="icon-question"></i></button>
+									<button class="btn btn-default" (click)="infoDialog()" data-target="#detailedDescriptionModal" data-toggle="modal" title="Page description" type="button">
+										<i class="icon-question"></i>
+									</button>
 								</div>
 								<div class="modal fade" id="detailedDescriptionModal" role="dialog" tabindex="-1">
 									<div class="modal-dialog" role="document">
