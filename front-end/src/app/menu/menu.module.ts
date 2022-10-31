@@ -81,6 +81,12 @@ import { typeViewPlayerFeature } from './players/store/reducers/type-view-player
 import { TypePlayerViewEffects } from './players/store/effects/type-view-player.effect';
 import { TypeViewPlayerService } from './players/store/services/type-view-player.service';
 
+//Regular season games
+
+import { regularseasongamesFeature } from './regular-season-games/store/reducers/regular-season-games.reducer';
+import { RegularSeasonGamesEffects } from './regular-season-games/store/effects/regular-season-games.effect';
+import { ReagularSeasonService } from './regular-season-games/store/services/regular-seasion-games.service';
+
 
 @NgModule({
   imports: [
@@ -106,6 +112,7 @@ import { TypeViewPlayerService } from './players/store/services/type-view-player
     StoreModule.forFeature(playerAddEditFeature),
     StoreModule.forFeature(playerdeleteFeature),
     StoreModule.forFeature(typeViewPlayerFeature),
+    StoreModule.forFeature(regularseasongamesFeature),
     EffectsModule.forFeature(
       [
         LoginEffects,
@@ -123,7 +130,8 @@ import { TypeViewPlayerService } from './players/store/services/type-view-player
         PlayersByIdEffects,
         PlayerAddEditEffects,
         PlayersDeleteEffects,
-        TypePlayerViewEffects   
+        TypePlayerViewEffects,
+        RegularSeasonGamesEffects  
       ]),
   ],
   declarations: [
@@ -147,7 +155,8 @@ import { TypeViewPlayerService } from './players/store/services/type-view-player
     PlayersByIdService,
     PlayersAddEditService,
     PlayersDeleteService,
-    TypeViewPlayerService
+    TypeViewPlayerService,
+    ReagularSeasonService
   ]
 })
 export class MenuModule {}
