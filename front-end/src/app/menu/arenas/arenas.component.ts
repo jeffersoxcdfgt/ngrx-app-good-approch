@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store'
 import { filter, map, Observable, takeUntil} from 'rxjs';
-import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';import { DialogTableCardComponent } from 'src/app/shared/components/dialog-table-card/dialog-table-card.component';
-;
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
+import { DialogTableCardComponent } from 'src/app/shared/components/dialog-table-card/dialog-table-card.component';
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { selectId } from 'src/app/shared/routing/id.selectors';
 import { UnsubscribeComponent } from 'src/app/shared/unsubscribe/unsubscribe.component';
