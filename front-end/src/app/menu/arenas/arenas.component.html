@@ -218,7 +218,11 @@
 								<tr>
 									<th class="row-selection" rowspan="1" style="width:1%;"><input type="checkbox"></th>
 									<th rowspan="1" style="width:1%;">Actions</th>
-									<th class=" sortable" colspan="1" data-column-name="caption" data-field-caption="Arena title" data-field-name="caption" data-name="caption" data-sort-index="0" data-sort-order="asc" rowspan="1"><span>Arena title</span><i class="icon-sort-asc"></i></th>
+									<th class=" sortable" colspan="1" data-column-name="caption" data-field-caption="Arena title" data-field-name="caption" data-name="caption" data-sort-index="0" data-sort-order="asc" rowspan="1">
+										<span>Arena title</span>
+										<i [className]="sortbytitle"></i>
+										<a class="column-filter-trigger js-filter-trigger" (click)="sortByTitle()" title="Arena Title"></a>
+									</th>
 									<th class=" sortable" colspan="1" data-column-name="capacity" data-field-caption="Capacity" data-field-name="capacity" data-name="capacity" data-sort-index="" rowspan="1"><span>Capacity</span></th>
 									<th class="hidden-xs hidden-sm hidden-md sortable" colspan="1" data-column-name="about" data-field-caption="About" data-field-name="about" data-name="about" data-sort-index="" rowspan="1" style="width: 450px;"><span>About</span></th>
 									<th class="hidden-xs sortable" colspan="1" data-column-name="logo" data-field-caption="Logo" data-field-name="logo" data-name="logo" data-sort-index="" rowspan="1"><span>Logo</span></th>

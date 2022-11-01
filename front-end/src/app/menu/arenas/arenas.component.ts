@@ -24,6 +24,14 @@ export const FILTER_ARENA = (search:string) =>  map((arena:Arena[]) => {
 })
 
 
+// Name Z to A
+//array?.sort((a, b) => (a.name > b.name ? -1 : 1))
+export const SORT_BY_TITLE_DESC = map((arenas:Arena[])=>arenas.slice().sort((a:Arena,b:Arena) =>(a.arenaTitle > b.arenaTitle ? -1 : 1)))
+
+// Name A to Z
+//array?.sort((a, b) => (a.name > b.name ? 1 : 1))
+export const SORT_BY_TITLE_ASC = map((arenas:Arena[])=>arenas.slice().sort((a:Arena,b:Arena) =>(a.arenaTitle > b.arenaTitle ? 1 : 1)))
+
 @Component({
   selector: 'app-arenas',
   templateUrl: './arenas.component.html',
@@ -36,6 +44,7 @@ export class ArenasComponent extends UnsubscribeComponent implements OnInit {
   searchTerm: string = '';
   showTableCard: boolean = true;
   typeViewshow$:Observable<string>  = this.store.select(setTypeViewResp).pipe(IFSPACE);
+  sortbytitle = 'icon-sort-asc'
 
   constructor(private store :Store<State>,private dialog: MatDialog){
     super();
@@ -93,6 +102,13 @@ export class ArenasComponent extends UnsubscribeComponent implements OnInit {
         this.store.dispatch(arenasGetAll());         
       }
     });
+  }
+
+  sortByTitle():void{
+    this.sortbytitle = this.sortbytitle === 'icon-sort-asc' ? 'icon-sort-desc' : 'icon-sort-asc'
+    this.arenasList$ = this.sortbytitle === 'icon-sort-desc' ? 
+    this.store.select(selectAllArenas).pipe(CLEANARRAY,SORT_BY_TITLE_DESC):
+    this.store.select(selectAllArenas).pipe(CLEANARRAY,SORT_BY_TITLE_ASC);
   }
 
 }
