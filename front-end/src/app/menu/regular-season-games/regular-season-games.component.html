@@ -436,57 +436,25 @@
 																	</tr>
 																</thead>
 																<tbody class="pg-row-list">
-																	<tr class="pg-row">
-																		<td>
-																			<div class="row-selection">
-																				<input data-value="[&quot;1320&quot;,&quot;1&quot;]" id="record__1320_1" name="rec0" type="checkbox">
-																			</div>
-																		</td>
-																		<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
-																		<td data-column-name="quarter_id" data-edit-url="">1st quarter</td>
-																		<td data-column-name="home_team_score" data-edit-url="" style="font-weight: bold;">23</td>
-																		<td data-column-name="away_team_score" data-edit-url="">18</td>
-																	</tr>
-																	<tr class="pg-row" style="">
-																		<td style="">
-																			<div class="row-selection">
-																				<input data-value="[&quot;1320&quot;,&quot;2&quot;]" id="record__1320_2" name="rec1" type="checkbox">
-																			</div>
-																		</td>
-																		<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
-																		<td data-column-name="quarter_id" data-edit-url="">2nd quarter</td>
-																		<td data-column-name="home_team_score" data-edit-url="">17</td>
-																		<td data-column-name="away_team_score" data-edit-url="" style="font-weight: bold;">26</td>
-																	</tr>
-																	<tr class="pg-row" style="">
-																		<td style="">
-																			<div class="row-selection">
-																				<input data-value="[&quot;1320&quot;,&quot;3&quot;]" id="record__1320_3" name="rec2" type="checkbox">
-																			</div>
-																		</td>
-																		<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
-																		<td data-column-name="quarter_id" data-edit-url="">3rd quarter</td>
-																		<td data-column-name="home_team_score" data-edit-url="" style="font-weight: bold;">29</td>
-																		<td data-column-name="away_team_score" data-edit-url="">20</td>
-																	</tr>
-																	<tr class="pg-row" style="">
-																		<td style="">
-																			<div class="row-selection">
-																				<input data-value="[&quot;1320&quot;,&quot;4&quot;]" id="record__1320_4" name="rec3" type="checkbox">
-																			</div>
-																		</td>
-																		<td class="operation-column"><span class="operation-item" data-column-name="view"><a class="link-icon" title="View"><i class="icon-view"></i></a></span></td>
-																		<td data-column-name="quarter_id" data-edit-url="">4th quarter</td>
-																		<td data-column-name="home_team_score" data-edit-url="" style="font-weight: bold;">28</td>
-																		<td data-column-name="away_team_score" data-edit-url="">23</td>
-																	</tr>
-																	<tr class="empty-grid hidden">
-																		<td colspan="5">
-																			<div class="alert alert-warning empty-grid">
-																				There are no records to display
-																			</div>
-																		</td>
-																	</tr>
+																	<ng-template ngFor let-detail [ngForOf]="regularseasongamesList.detail" let-j="index">
+																		<tr class="pg-row">
+																			<td>
+																				<div class="row-selection">
+																					<input data-value="[&quot;1320&quot;,&quot;1&quot;]" id="record__1320_1" name="rec0" type="checkbox">
+																				</div>
+																			</td>
+																			<td class="operation-column">
+																				<span class="operation-item" data-column-name="view">
+																					<a class="link-icon" title="View">
+																						<i class="icon-view"></i>
+																					</a>
+																				</span>
+																			</td>
+																			<td data-column-name="quarter_id" data-edit-url="">{{detail?.Quarter}}</td>
+																			<td data-column-name="home_team_score" data-edit-url="" style="font-weight: bold;">{{detail?.homescore}}</td>
+																			<td data-column-name="away_team_score" data-edit-url="">{{detail?.awayscore}}</td>
+																		</tr>
+																	</ng-template>																	
 																</tbody>
 																<tfoot></tfoot>
 															</table>
