@@ -49,8 +49,12 @@
 									<a class="btn btn-default" title="Refresh"><i class="icon-page-refresh"></i> <span class="visible-lg-inline">Refresh</span></a>
 								</div>
 								<div class="btn-group export-button">
-									<div class="btn-group">
-										<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Export"><i class="icon-export"></i> <span class="visible-lg-inline">Export</span> <span class="caret"></span></a>
+									<div [className]="btngroupExport">
+										<a class="btn btn-default dropdown-toggle" (click)="openExportOptions()" data-toggle="dropdown" title="Export">
+											<i class="icon-export"></i> 
+											<span class="visible-lg-inline">Export</span> 
+											<span class="caret"></span>
+										</a>
 										<ul class="dropdown-menu">
 											<li>
 												<a target="_blank"><i class="icon-export-pdf"></i> Export to Pdf</a>
@@ -69,8 +73,12 @@
 											</li>
 										</ul>
 									</div>
-									<div class="btn-group">
-										<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Print"><i class="icon-print-page"></i> <span class="visible-lg-inline">Print</span> <span class="caret"></span></a>
+									<div [className]="btngroupPrint">
+										<a class="btn btn-default dropdown-toggle" (click)="openPrintOptions()" data-toggle="dropdown" title="Print">
+											<i class="icon-print-page"></i> 
+											<span class="visible-lg-inline">Print</span> 
+											<span class="caret"></span>
+										</a>
 										<ul class="dropdown-menu">
 											<li>
 												<a target="_blank"><i class="icon-print-page"></i> Print current page</a>

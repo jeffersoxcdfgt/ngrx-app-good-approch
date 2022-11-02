@@ -45,6 +45,8 @@ export class ArenasComponent extends UnsubscribeComponent implements OnInit {
   showTableCard: boolean = true;
   typeViewshow$:Observable<string>  = this.store.select(setTypeViewResp).pipe(IFSPACE);
   sortbytitle = 'icon-sort-asc'
+  btngroupExport = 'btn-group'
+  btngroupPrint = 'btn-group'
 
   constructor(private store :Store<State>,private dialog: MatDialog){
     super();
@@ -109,6 +111,14 @@ export class ArenasComponent extends UnsubscribeComponent implements OnInit {
     this.arenasList$ = this.sortbytitle === 'icon-sort-desc' ? 
     this.store.select(selectAllArenas).pipe(CLEANARRAY,SORT_BY_TITLE_DESC):
     this.store.select(selectAllArenas).pipe(CLEANARRAY,SORT_BY_TITLE_ASC);
+  }
+
+  openExportOptions():void{
+    this.btngroupExport =  this.btngroupExport === 'btn-group' ? 'btn-group open':'btn-group'
+  }
+
+  openPrintOptions():void{
+    this.btngroupPrint =  this.btngroupPrint === 'btn-group' ? 'btn-group open':'btn-group'
   }
 
 }
