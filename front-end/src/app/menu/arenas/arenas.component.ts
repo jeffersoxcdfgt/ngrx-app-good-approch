@@ -79,7 +79,7 @@ export class ArenasComponent extends UnsubscribeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().pipe(takeUntil(this.destroyed$)).subscribe((confirmed: any) => {
-      if (confirmed.opt) {
+      if (confirmed.opt || confirmed) {
           this.store.dispatch(sendTypeView({ sendview: confirmed.value }));  
       }
     });
