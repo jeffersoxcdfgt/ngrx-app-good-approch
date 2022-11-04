@@ -3,8 +3,6 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
-import { Arena } from '../../models/arena'
-
 import { ArenasViewComponent } from './arenas-view.component';
 
 describe('ArenasViewComponent', () => {
@@ -35,7 +33,7 @@ describe('ArenasViewComponent', () => {
   });
 
 
-  it('Call populatedPayload validate if return Object',()=>{
+  it('Call populatedPayload arena view validate if return Object',()=>{
      const payload = component.populatedPayload()
      expect(payload).toEqual(jasmine.objectContaining({
       arenaTitle:'',

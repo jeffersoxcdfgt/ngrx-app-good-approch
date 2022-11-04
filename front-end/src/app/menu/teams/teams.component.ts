@@ -92,7 +92,7 @@ export class TeamsComponent extends UnsubscribeComponent  implements OnInit {
     });
 
     dialogRef.afterClosed().pipe(takeUntil(this.destroyed$)).subscribe((confirmed: any) => {
-      if (confirmed.opt) {
+      if (confirmed.opt || confirmed) {
           this.store.dispatch(sendTypeTeamView({ sendviewteam: confirmed.value }));  
       }
     });

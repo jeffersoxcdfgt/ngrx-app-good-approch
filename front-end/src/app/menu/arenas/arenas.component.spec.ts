@@ -10,7 +10,6 @@ import { ArenasService } from './store/services/arenas.service';
 import { TypeViewService } from './store/services/type-view.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
-import { Arena } from '../models/arena';
 
 const MatDialogMock = {
   open() {

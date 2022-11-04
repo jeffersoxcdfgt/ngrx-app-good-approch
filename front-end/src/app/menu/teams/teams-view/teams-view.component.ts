@@ -115,15 +115,18 @@ export class TeamsViewComponent extends UnsubscribeComponent implements OnInit {
       name: this.formTeam.get('teamName')?.value,
       Founded: this.formTeam.get('founded')?.value,
       About: this.formTeam.get('about')?.value,
-      divison: this.convertArrayToId(this.formTeam.get('division')?.value),
-      arena: this.convertArrayToId(this.formTeam.get('arena')?.value)
+      divison: typeof this.formTeam.get('division')?.value === 'string' ? '':this.convertArrayToId(this.formTeam.get('division')?.value),
+      arena: typeof this.formTeam.get('arena')?.value=== 'string' ?'':this.convertArrayToId(this.formTeam.get('arena')?.value)
     }
     return payload
   }
 
-  convertArrayToId(value:DataLoad[]):string{
-    const res = value.map((data:DataLoad) => data.id).reduce((b,a)=> b+a )
-    return res;
+  convertArrayToId(value:DataLoad[]):string{    
+    if(!!value){
+      const res = value.map((data:DataLoad) => data.id).reduce((b,a)=> b+a )
+      return res;
+    }
+    return ''
   }
 
 }
