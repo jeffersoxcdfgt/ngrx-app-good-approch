@@ -3,7 +3,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
-
 import { TeamsViewComponent } from './teams-view.component';
 
 interface DataLoad {
@@ -88,13 +87,13 @@ describe('TeamsViewComponent', () => {
       }))
     })
 
-    it('Call saveArena add Arena',()=>{
+    it('Call saveTeam add Team',()=>{
       const typeview = '/menu/teams/add';
       component.saveTeam(typeview)
       expect(true).toBe(true);
     })
   
-    it('Call saveTeam update Arena',()=>{
+    it('Call saveTeam update Team',()=>{
       const typeview = '';
       component.saveTeam(typeview)
       expect(true).toBe(true);
