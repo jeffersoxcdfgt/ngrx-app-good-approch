@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { of } from 'rxjs';
 import { MATERIAL_MODULES } from '../../shared.module';
 
 import { ChipsSelectComponent } from './chips-select.component';
@@ -16,6 +18,7 @@ describe('ChipsSelectComponent', () => {
       imports:[
         BrowserModule,
         BrowserAnimationsModule,
+        ReactiveFormsModule,
         MATERIAL_MODULES,
       ],
       providers: [   
@@ -28,9 +31,19 @@ describe('ChipsSelectComponent', () => {
     fixture = TestBed.createComponent(ChipsSelectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    component.optionControl.setValue('1')
+
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Call remove() method and just left one element', async () => {
+    component.dataset = [{id:'1',name:'element1'},{id:'2',name:'element2'}]
+    component.remove({id:'1'})
+    expect(component.dataset.length ===1).toBeTrue()   
+  });
+
 });
