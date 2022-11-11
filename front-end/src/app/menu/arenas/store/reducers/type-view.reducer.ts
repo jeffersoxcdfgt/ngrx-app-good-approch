@@ -2,16 +2,17 @@ import { createFeature, createReducer , createSelector, on } from '@ngrx/store';
 import * as TypeViewpiActions from '../actions/type-view.action';
 
 interface State {
+  sendview:string
   typeview: string;
   loading: boolean;
   err: any | null;
 }
 
 const initialState: State = {
+  sendview:'',
   typeview: '',
   loading: false,
   err:null,
-
 };
 
 export const typeViewFeature = createFeature({
