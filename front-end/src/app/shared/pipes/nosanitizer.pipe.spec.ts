@@ -4,7 +4,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { NoSanitizePipe } from "./nosanitizer.pipe"
 
 class DomSanitizerMock {
-    bypassSecurityTrustHtml(): string {
+    bypassSecurityTrustHtml(value:string): string {
       return ''
     }
 }
@@ -18,14 +18,22 @@ describe('noSanitize',()=>{
           declarations: [NoSanitizePipe ],
           imports:[],
           providers: [
-            { provide: DomSanitizer, useValue: DomSanitizerMock },
+            { 
+              provide: DomSanitizer, 
+              useValue: {
+                bypassSecurityTrustHtml: () => ''
+              }
+            }
+              ,
           ]
-        })       
-        pipe = new NoSanitizePipe(domsanitize);
+        })  
+        const domSanitizer = TestBed.inject(DomSanitizer);
+        pipe = new NoSanitizePipe(domSanitizer);    
+      
     });
 
     it('should create',()=>{
-        expect(pipe).toBeTruthy()
+       expect(pipe).toBeTruthy()
     })
 
     it('Html string clean string',()=>{
