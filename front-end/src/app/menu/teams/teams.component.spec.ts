@@ -1,3 +1,4 @@
+import { Pipe } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -15,6 +16,14 @@ const MatDialogMock = {
   }
 };
 
+@Pipe({
+  name: 'noSanitize'
+})
+class NoSanitizeMockPipe {
+  transform(): string {
+    return ''
+  }
+}
 
 describe('TeamsComponent', () => {
   let component: TeamsComponent;
@@ -22,7 +31,10 @@ describe('TeamsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TeamsComponent ],
+      declarations: [ 
+        TeamsComponent ,
+        NoSanitizeMockPipe
+      ],
       imports:[
         StoreModule.forRoot({}),
         RouterTestingModule,

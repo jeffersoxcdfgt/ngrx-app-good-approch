@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { TeamsViewComponent } from './teams-view.component';
+import {  of} from 'rxjs';
+import { Pipe } from '@angular/core';
 
 interface DataLoad {
   id: string;
@@ -15,13 +17,25 @@ const value:DataLoad[] = [
   { id: '2', name: 'Manuela'}
 ]
 
+@Pipe({
+  name: 'noSanitize'
+})
+class NoSanitizeMockPipe {
+  transform(): string {
+    return ''
+  }
+}
+
 describe('TeamsViewComponent', () => {
   let component: TeamsViewComponent;
   let fixture: ComponentFixture<TeamsViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TeamsViewComponent ],
+      declarations: [ 
+        TeamsViewComponent ,
+        NoSanitizeMockPipe
+      ],
       imports:[
         StoreModule.forRoot({}),
         RouterTestingModule,

@@ -8,7 +8,7 @@ import {HttpClientTestingModule } from '@angular/common/http/testing'
 import { ArenasComponent } from './arenas.component';
 import { ArenasService } from './store/services/arenas.service';
 import { TypeViewService } from './store/services/type-view.service';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Pipe } from '@angular/core';
 import { of } from 'rxjs';
 
 const MatDialogMock = {
@@ -19,6 +19,15 @@ const MatDialogMock = {
   }
 };
 
+@Pipe({
+  name: 'noSanitize'
+})
+class NoSanitizeMockPipe {
+  transform(): string {
+    return ''
+  }
+}
+
 
 describe('ArenasComponent', () => {
   let component: ArenasComponent;
@@ -26,7 +35,10 @@ describe('ArenasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArenasComponent ],
+      declarations: [ 
+        ArenasComponent,
+        NoSanitizeMockPipe
+       ],
       imports:[
         HttpClientTestingModule,
         StoreModule.forRoot({}),

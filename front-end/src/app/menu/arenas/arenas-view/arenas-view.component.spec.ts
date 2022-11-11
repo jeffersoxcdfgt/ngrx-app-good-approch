@@ -1,3 +1,4 @@
+import { Pipe } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -5,13 +6,25 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { ArenasViewComponent } from './arenas-view.component';
 
+@Pipe({
+  name: 'noSanitize'
+})
+class NoSanitizeMockPipe {
+  transform(): string {
+    return ''
+  }
+}
+
 describe('ArenasViewComponent', () => {
   let component: ArenasViewComponent;
   let fixture: ComponentFixture<ArenasViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArenasViewComponent ],
+      declarations: [ 
+        ArenasViewComponent,
+        NoSanitizeMockPipe
+       ],
       imports:[
         StoreModule.forRoot({}),
         RouterTestingModule,

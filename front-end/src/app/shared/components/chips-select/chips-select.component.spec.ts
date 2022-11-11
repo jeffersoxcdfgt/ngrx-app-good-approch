@@ -73,4 +73,24 @@ describe('ChipsSelectComponent', () => {
     expect(res).toEqual('')
   })
 
+  it("Call optionSelected and verify array at least one element", ()=>{
+    const event:any|MatAutocompleteSelectedEvent ={
+      option:{
+        value:{
+          id:1
+        }
+      }
+    };
+    component.optionSelected(event)
+    expect(component.dataset.length > 0).toBe(true)
+  })
+
+  it('Call inputSelect verify space blank an call onChangeFn()',()=>{
+    const event:any = {value:''};
+    const spy = spyOn(component,'onChangeFn').and.callThrough()
+    component.inputSelect(event);    
+    expect(spy).toHaveBeenCalled()
+
+  })
+
 });
