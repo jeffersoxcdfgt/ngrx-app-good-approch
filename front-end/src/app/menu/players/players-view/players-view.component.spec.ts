@@ -77,25 +77,12 @@ describe('PlayersViewComponent', () => {
     const res = component.getCountry(namefield);
     expect(res).toBe('country1,country2')
   })
-  /*
-
-   getCollegeTeam(type:string):string{
-    Iif(Array.isArray(this.formPlayer.get(type)?.value)){
-      const res = this.formPlayer.get(type)?.value
-      const result = res.map((value:DataLoad)=> value.id).join()
-      return result
-    }
-    return '' 
-  }
-   */
 
   it('getCollegeTeam when is array valid and merge all information',()=>{
     const type ='team';
     component.formPlayer.get(type)?.setValue([{ id:'1',name:'team1'},{ id:'2',name:'team2'}])
     const res =component.getCollegeTeam(type);
-    expect(res).toBe('1,2')
-   
+    expect(res).toBe('1,2')   
   })
-
 
 });
