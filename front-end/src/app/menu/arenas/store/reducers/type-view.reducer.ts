@@ -44,6 +44,3 @@ export const {
 // select the type view
 export const setTypeViewResp = selectTypeview;
 
-export const errorTypeView = createSelector( selectTypeviewState , ( state: State ) => {
-  return !!state && !!state.err ? state.err : null;
-});

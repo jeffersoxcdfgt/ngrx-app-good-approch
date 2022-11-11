@@ -43,6 +43,3 @@ export const {
 // select the type view of player
 export const setTypeViewPlayerResp = selectTypeviewplayer;
 
-export const errorTypeViewPlayer = createSelector( selectTypeviewplayerState , ( state: State ) => {
-  return !!state && !!state.err ? state.err : null;
-});

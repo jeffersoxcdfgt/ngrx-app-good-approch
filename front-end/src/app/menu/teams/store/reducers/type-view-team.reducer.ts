@@ -43,6 +43,3 @@ export const {
 // select the type view of team
 export const setTypeViewTeamResp = selectTypeviewteam;
 
-export const errorTypeViewTeam = createSelector( selectTypeviewteamState , ( state: State ) => {
-  return !!state && !!state.err ? state.err : null;
-});

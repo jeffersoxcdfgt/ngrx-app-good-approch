@@ -42,4 +42,19 @@ describe('TypeViewReducer', () => {
   });
 
 
+  describe('sendTypeViewSuccess action', () => {
+    it('should change the view successfully and update the state in an immutable way', () => {
+      const action = sendTypeViewSuccess({typeview:'Grid'});
+      const state = fromReducer.reducer(initialState, action);
+      expect(state).toEqual({
+        err: null,
+        loading:false,
+        sendview:"",
+        typeview: "Grid"
+    });
+      expect(state).not.toBe(initialState);
+    });
+  });
+
+
 });
