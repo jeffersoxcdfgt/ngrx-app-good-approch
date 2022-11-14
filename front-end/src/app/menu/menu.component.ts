@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ResponseLogin } from '../login/model/login';
@@ -16,7 +17,8 @@ export class MenuComponent extends UnsubscribeComponent implements OnInit {
 
   userData$ : Observable<ResponseLogin> = new Observable<ResponseLogin>();
   
-  constructor(private store :Store<State>){ 
+  constructor(private store :Store<State>,
+    private router:Router){ 
     super();
   }
 
@@ -26,5 +28,9 @@ export class MenuComponent extends UnsubscribeComponent implements OnInit {
 
   logout():void{
     this.store.dispatch(logOutuser());
+  }
+
+  navTo(path: string):void{
+    this.router.navigate([`/${path}`])
   }
 }

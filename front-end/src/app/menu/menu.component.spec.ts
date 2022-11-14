@@ -1,9 +1,12 @@
 import { Pipe } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { MATERIAL_MODULES } from '../shared/shared.module';
 import { MenuComponent } from './menu.component';
+
+class ComponentTestRouting{}
 
 @Pipe({
   name: 'nullObjectToConvert'
@@ -22,11 +25,13 @@ describe('MenuComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ 
         MenuComponent,
-        NullObjectToConvertMockPipe,        
+        NullObjectToConvertMockPipe,     
       ],
       imports:[
         StoreModule.forRoot({}),
-        RouterTestingModule,
+        RouterTestingModule.withRoutes([
+          { path:'menu/home' , component:ComponentTestRouting}
+        ]),
         MATERIAL_MODULES
       ]
     })
@@ -40,4 +45,12 @@ describe('MenuComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should navigate home', () => {
+    const router = TestBed.inject(Router);
+    const spy = spyOn(router,'navigate');
+    component.navTo('menu/home')
+    expect(spy).toHaveBeenCalledWith(['/menu/home'])
+  });
+
 });

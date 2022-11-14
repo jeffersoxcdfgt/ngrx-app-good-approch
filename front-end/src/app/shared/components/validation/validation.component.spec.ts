@@ -1,24 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { ValidationComponent } from './validation.component';
 
 
 describe('ValidationComponent', () => {
   let component: ValidationComponent;
   let fixture: ComponentFixture<ValidationComponent>;
+  let el:any;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports:[
-         // AsyncMockPipe
-      ],
-      declarations: [ 
-        ValidationComponent ,
-        //AsyncMockPipe
-      ]
+      imports:[],
+      declarations: [ValidationComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ValidationComponent);
+    fixture = TestBed.createComponent(ValidationComponent);   
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -26,4 +23,7 @@ describe('ValidationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
+
+
