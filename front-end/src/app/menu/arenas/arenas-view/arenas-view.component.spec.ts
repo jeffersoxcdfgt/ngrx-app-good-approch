@@ -1,9 +1,10 @@
-import { Pipe } from '@angular/core';
+import { Component, DebugElement, Pipe } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { FormBuilder,FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule, By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
+import { ValidationComponent } from 'src/app/shared/components/validation/validation.component';
 import { ArenasViewComponent } from './arenas-view.component';
 
 @Pipe({
@@ -18,12 +19,19 @@ class NoSanitizeMockPipe {
 describe('ArenasViewComponent', () => {
   let component: ArenasViewComponent;
   let fixture: ComponentFixture<ArenasViewComponent>;
+  let componentArenaTitleValidation: arenaValidationHostComponent;
+  let fixtureArenaTitleValidation: ComponentFixture<arenaValidationHostComponent>; 
+  let requiredText = 'This field is required';
+  let numericText = 'This field is numeric';
+  let isEmail = 'This field is email';
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ 
         ArenasViewComponent,
-        NoSanitizeMockPipe
+        NoSanitizeMockPipe,
+        ValidationComponent,
+        arenaValidationHostComponent
        ],
       imports:[
         StoreModule.forRoot({}),
@@ -39,6 +47,11 @@ describe('ArenasViewComponent', () => {
     fixture = TestBed.createComponent(ArenasViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    fixtureArenaTitleValidation =  TestBed.createComponent(arenaValidationHostComponent);
+    componentArenaTitleValidation = fixtureArenaTitleValidation.componentInstance;
+    fixtureArenaTitleValidation.detectChanges()
+
   });
 
   it('should create', () => {
@@ -76,4 +89,58 @@ describe('ArenasViewComponent', () => {
     expect(true).toBe(true);
   })
 
+  it('should render Field is required', () => {
+    const debugElement:DebugElement = fixtureArenaTitleValidation.debugElement.query(By.css('#element-required'));
+    expect(debugElement.nativeElement.innerText).toEqual(requiredText)
+  });
+
+  it('should render Field is numeric', () => {
+    const debugElement:DebugElement = fixtureArenaTitleValidation.debugElement.query(By.css('#element-numeric'));
+    expect(debugElement.nativeElement.innerText).toEqual(numericText)
+  });
+
+  it('should render Field is email', () => {
+    const debugElement:DebugElement = fixtureArenaTitleValidation.debugElement.query(By.css('#element-email'));
+    expect(debugElement.nativeElement.innerText).toEqual(isEmail)
+  });
+
+
 });
+
+@Component({
+  template: `
+  <form [formGroup]="formValidation">
+    <app-validation formControlName="nameField" [requiredfield]="true" [messagerequired]="requiredText"></app-validation>
+
+    <app-validation 
+    formControlName="numericField" 
+    [requiredfield]="true" 
+    [messagerequired]="'The Capacity is required'"
+    [isnumeric]="true"
+    [messageOnlyNumeric]="numericText">
+    </app-validation>
+
+    <app-validation 
+    formControlName="emailField" 
+    [isemail]="true"
+    [messageJustEmail]="isEmail">
+    </app-validation>
+
+  </form>
+  `
+})
+class arenaValidationHostComponent {
+  formValidation: FormGroup;
+  requiredText = 'This field is required';
+  numericText = 'This field is numeric';
+  isEmail = 'This field is email';
+
+  constructor(private formBuilder: FormBuilder) {
+   this.formValidation = this.formBuilder.group({
+     nameField:[''],
+     numericField:[''],
+     emailField:['']
+   })
+  }
+
+}

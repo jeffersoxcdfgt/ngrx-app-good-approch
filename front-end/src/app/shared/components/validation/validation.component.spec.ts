@@ -1,3 +1,4 @@
+import { NgControl } from '@angular/forms';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ValidationComponent } from './validation.component';
@@ -11,7 +12,10 @@ describe('ValidationComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports:[],
-      declarations: [ValidationComponent]
+      declarations: [ValidationComponent],
+      providers:[
+        { provide:NgControl, useValue:[]}
+      ]
     })
     .compileComponents();
 
@@ -22,6 +26,13 @@ describe('ValidationComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should onChange when call change local function', () => {
+    const valuestr = {value:'jefferson'}
+    const spy = spyOn(component,'onChangeFn').and.callThrough()
+    component.onChange(valuestr);
+    expect(spy).toHaveBeenCalled()
   });
 
 });
