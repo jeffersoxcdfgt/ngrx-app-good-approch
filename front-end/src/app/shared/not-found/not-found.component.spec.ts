@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { PageNotFoundComponent } from './not-found.component';
 
-fdescribe('PageNotFoundComponent', () => {
+describe('PageNotFoundComponent', () => {
 
  let component: PageNotFoundComponent;
  let fixture: ComponentFixture<PageNotFoundComponent>;
