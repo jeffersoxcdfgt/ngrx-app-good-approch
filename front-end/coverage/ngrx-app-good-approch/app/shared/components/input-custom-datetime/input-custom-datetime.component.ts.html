@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.22% </span>
+                <span class="strong">22.22% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/36</span>
+                <span class='fraction'>8/36</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.42% </span>
+                <span class="strong">7.14% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/14</span>
+                <span class='fraction'>1/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">21.21% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/33</span>
+                <span class='fraction'>7/33</span>
             </div>
         
             
@@ -237,29 +237,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -355,18 +355,18 @@ enum DATE {
 })
 export class InputCustomDatetimeComponent  extends UnsubscribeComponent  implements OnInit, OnChanges, ControlValueAccessor {
 &nbsp;
-  @Input() data: string | undefined = '';
-  dataInputCtrl: FormControl =  new FormControl();
+  @Input() <span class="cstat-no" title="statement not covered" >data: string | undefined = '';</span>
+<span class="cstat-no" title="statement not covered" >  dataInputCtrl: FormControl =  new FormControl();</span>
 &nbsp;
-  constructor(@Self() @Optional() public ngcontrol: NgControl, private ref: ChangeDetectorRef) {
-    super()
-    <span class="missing-if-branch" title="if path not taken" >I</span>if(this.ngcontrol){
+<span class="fstat-no" title="function not covered" >  constructor(@S</span>elf() @Optional() public <span class="cstat-no" title="statement not covered" >ngcontrol: NgControl,</span> private <span class="cstat-no" title="statement not covered" >ref: ChangeDetectorRef)</span> {
+<span class="cstat-no" title="statement not covered" >    super()</span>
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if(this.ngcontrol){</span>
 <span class="cstat-no" title="statement not covered" >      this.ngcontrol.valueAccessor = this</span>
     }
   }
 &nbsp;
-  ngOnInit(): void {
-    this.dataInputCtrl.valueChanges.pipe(takeUntil(this.destroyed$)).subscribe(<span class="fstat-no" title="function not covered" >(v</span>alue)=&gt;{
+<span class="fstat-no" title="function not covered" >  ngOnInit(</span>): void {
+<span class="cstat-no" title="statement not covered" >    this.dataInputCtrl.valueChanges.pipe(takeUntil(this.destroyed$)).subscribe(<span class="fstat-no" title="function not covered" >(v</span>alue)=&gt;{</span>
      const myMomentObject = <span class="cstat-no" title="statement not covered" >moment(value).format("DD.MM.YYYY");</span>
 <span class="cstat-no" title="statement not covered" >      this.onChangeFn(myMomentObject);</span>
     })
@@ -376,8 +376,8 @@ export class InputCustomDatetimeComponent  extends UnsubscribeComponent  impleme
    * Implementation of the methods of the ControlValueAccessor interface
   */
 &nbsp;
-  public onChangeFn = <span class="fstat-no" title="function not covered" >(_</span>: any) =&gt; {};
-  public onTouchedFn = <span class="fstat-no" title="function not covered" >() =</span>&gt; {};
+  public <span class="cstat-no" title="statement not covered" >onChangeFn = <span class="fstat-no" title="function not covered" >(_</span>: any) =&gt; {};</span>
+  public <span class="cstat-no" title="statement not covered" >onTouchedFn = <span class="fstat-no" title="function not covered" >() =</span>&gt; {};</span>
 &nbsp;
   public <span class="fstat-no" title="function not covered" >registerOnChange(</span>fn: any): void {
 <span class="cstat-no" title="statement not covered" >    this.onChangeFn = fn;</span>
@@ -424,7 +424,7 @@ export class InputCustomDatetimeComponent  extends UnsubscribeComponent  impleme
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-14T16:21:09.691Z
+                at 2022-11-15T19:35:18.445Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
