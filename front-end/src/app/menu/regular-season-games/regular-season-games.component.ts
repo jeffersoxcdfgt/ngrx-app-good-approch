@@ -8,8 +8,8 @@ import { regularseasongamesGetAll } from './store/actions/regular-season-games.a
 import { selectAllRegularSeasonGames } from './store/reducers/regular-season-games.reducer';
 import { map, takeUntil } from 'rxjs/operators'
 import { MatDialog } from '@angular/material/dialog';
-import { InfoDialogComponent } from 'src/app/shared/components/info-dialog/info-dialog.component';
 import { UnsubscribeComponent } from 'src/app/shared/unsubscribe/unsubscribe.component';
+import { InfoDialogComponent } from 'src/app/shared/components/info-dialog/info-dialog.component';
 
 export const CLEANARRAY =  filter((val:ReagularSeasonGame[]) => val.length >0)
 export const FILTER_REGULAR_SEASON_GAMES = (search:string) =>  map((regulargames:ReagularSeasonGame[]) => {
