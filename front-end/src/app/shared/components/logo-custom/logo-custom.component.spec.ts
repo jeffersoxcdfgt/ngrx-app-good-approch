@@ -2,13 +2,18 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LogoCustomComponent } from './logo-custom.component';
 
+class MockNgControl {
+  valueAccessor:any
+}
+
 describe('LogoCustomComponent', () => {
   let component: LogoCustomComponent;
   let fixture: ComponentFixture<LogoCustomComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LogoCustomComponent ]
+      imports:[],
+      declarations: [ LogoCustomComponent ],
     })
     .compileComponents();
 
@@ -20,4 +25,6 @@ describe('LogoCustomComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });

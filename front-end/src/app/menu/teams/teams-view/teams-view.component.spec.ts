@@ -1,11 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { TeamsViewComponent } from './teams-view.component';
 import {  of} from 'rxjs';
-import { Pipe } from '@angular/core';
+import { Component, Pipe } from '@angular/core';
+import { LogoCustomComponent } from 'src/app/shared/components/logo-custom/logo-custom.component';
 
 interface DataLoad {
   id: string;
@@ -30,11 +31,16 @@ describe('TeamsViewComponent', () => {
   let component: TeamsViewComponent;
   let fixture: ComponentFixture<TeamsViewComponent>;
 
+  let componentLogo: logoHostComponent;
+  let fixtureLogo: ComponentFixture<logoHostComponent>; 
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ 
         TeamsViewComponent ,
-        NoSanitizeMockPipe
+        NoSanitizeMockPipe,
+        LogoCustomComponent,
+        logoHostComponent
       ],
       imports:[
         StoreModule.forRoot({}),
@@ -49,6 +55,10 @@ describe('TeamsViewComponent', () => {
     fixture = TestBed.createComponent(TeamsViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    fixtureLogo =  TestBed.createComponent(logoHostComponent);
+    componentLogo = fixtureLogo.componentInstance;
+    fixtureLogo.detectChanges();
   });
 
   it('should create', () => {
@@ -119,6 +129,38 @@ describe('TeamsViewComponent', () => {
       component.saveTeam(typeview)
       expect(true).toBe(true);
     })
+
+    it('should create logo component', () => {
+      expect(componentLogo).toBeTruthy();
+    });
+
+    it('should call onChnages method', () => {
+      componentLogo.data = 'value'
+      expect(componentLogo.formLogo.get('logo')?.value).toBe('data')     
+      
+    })
+
+
 });
+
+@Component({
+  template: `
+  <form [formGroup]="formLogo">
+      <app-logo-custom [data]="'data'" formControlName="logo" ></app-logo-custom>
+  </form>
+  `
+})
+class logoHostComponent {
+  formLogo: FormGroup;
+  data:string = ''
+
+  constructor(private formBuilder: FormBuilder) {
+   this.formLogo = this.formBuilder.group({
+    logo:[''],
+   })
+  }
+
+}
+
 
 
