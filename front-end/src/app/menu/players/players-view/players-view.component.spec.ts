@@ -1,16 +1,25 @@
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
-
+import { InputCustomDatetimeComponent } from 'src/app/shared/components/input-custom-datetime/input-custom-datetime.component';
 import { PlayersViewComponent } from './players-view.component';
 
 describe('PlayersViewComponent', () => {
   let component: PlayersViewComponent;
   let fixture: ComponentFixture<PlayersViewComponent>;
 
+  let componentInputDate: InputCustomDatetimeHostComponent;
+  let fixtureInputDate: ComponentFixture<InputCustomDatetimeHostComponent>; 
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlayersViewComponent ],
+      declarations: [ 
+        PlayersViewComponent ,
+        InputCustomDatetimeHostComponent,
+        InputCustomDatetimeComponent
+
+      ],
       imports:[
         StoreModule.forRoot({}),
         ReactiveFormsModule,
@@ -22,6 +31,10 @@ describe('PlayersViewComponent', () => {
     fixture = TestBed.createComponent(PlayersViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    fixtureInputDate = TestBed.createComponent(InputCustomDatetimeHostComponent);
+    componentInputDate = fixtureInputDate.componentInstance;
+    fixtureInputDate.detectChanges();
   });
 
   it('should create', () => {
@@ -85,4 +98,24 @@ describe('PlayersViewComponent', () => {
     expect(res).toBe('1,2')   
   })
 
+  it('should create InputDateComponent', () => {
+    expect(componentInputDate).toBeTruthy();
+  });
+
 });
+
+@Component({
+  template: `
+  <form [formGroup]="form">
+    <app-input-custom-datetime [data]="'2012-11-11'" formControlName="nameFieldDate"></app-input-custom-datetime>
+  </form>`
+})
+class InputCustomDatetimeHostComponent {
+  form: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
+   this.form = this.formBuilder.group({
+     nameFieldDate:[''],
+   })
+  }
+}

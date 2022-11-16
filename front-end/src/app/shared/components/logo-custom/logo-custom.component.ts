@@ -61,10 +61,10 @@ export class LogoCustomComponent implements OnInit,  ControlValueAccessor, OnCha
   }
 
   // Dragleave listener
-  @HostListener('dragover', ['$event']) onDragLeave(evt:any): void{
+  /*@HostListener('dragover', ['$event']) onDragLeave(evt:any): void{
       evt.preventDefault();
       evt.stopPropagation();
-  }
+  }*/
 
   // Drop listener
    @HostListener('drop', ['$event']) ondrop(evt:any): void{
@@ -84,12 +84,10 @@ export class LogoCustomComponent implements OnInit,  ControlValueAccessor, OnCha
    }
 
    keep():void{
-    if(this.dataaux!==''){
-      this.data = this.dataaux
-    }
-
+      if(this.dataaux!==''){
+        this.data = this.dataaux
+      }
    }
-
 
   ngOnChanges(changes: SimpleChanges) {
     if(!!changes['data']?.currentValue){

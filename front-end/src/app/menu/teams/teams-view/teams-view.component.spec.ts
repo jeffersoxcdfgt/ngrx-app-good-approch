@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { TeamsViewComponent } from './teams-view.component';
-import {  of} from 'rxjs';
 import { Component, Pipe } from '@angular/core';
 import { LogoCustomComponent } from 'src/app/shared/components/logo-custom/logo-custom.component';
 
@@ -40,7 +39,7 @@ describe('TeamsViewComponent', () => {
         TeamsViewComponent ,
         NoSanitizeMockPipe,
         LogoCustomComponent,
-        logoHostComponent
+        logoHostComponent,
       ],
       imports:[
         StoreModule.forRoot({}),
@@ -136,11 +135,8 @@ describe('TeamsViewComponent', () => {
 
     it('should call onChnages method', () => {
       componentLogo.data = 'value'
-      expect(componentLogo.formLogo.get('logo')?.value).toBe('data')     
-      
+      expect(componentLogo.formLogo.get('logo')?.value).toBe('data')           
     })
-
-
 });
 
 @Component({
@@ -159,8 +155,6 @@ class logoHostComponent {
     logo:[''],
    })
   }
-
 }
-
 
 

@@ -1,10 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { By } from '@angular/platform-browser';
 import { LogoCustomComponent } from './logo-custom.component';
-
-class MockNgControl {
-  valueAccessor:any
-}
 
 describe('LogoCustomComponent', () => {
   let component: LogoCustomComponent;
@@ -26,5 +22,10 @@ describe('LogoCustomComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should dataaux === data',()=>{
+      component.dataaux ='data'
+      component.keep()
+      expect(component.data).toBe( component.dataaux )
+  });
 
 });
