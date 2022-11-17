@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.28% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -106,7 +106,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -115,22 +115,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable } from '@angular/core';
@@ -141,7 +141,7 @@ import { MessageService } from './message.service';
 export class TraceService {
 &nbsp;
   /*Constructor for get info*/
-<span class="fstat-no" title="function not covered" >  constructor(private <span class="cstat-no" title="statement not covered" >m</span>essageService:MessageService)</span>{}
+  constructor(private messageService:MessageService){}
 &nbsp;
   /**
    * Handle Http operation that failed.
@@ -149,23 +149,23 @@ export class TraceService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  public <span class="fstat-no" title="function not covered" >handleError&lt;</span>T&gt; (operation = <span class="branch-0 cbranch-no" title="branch not covered" >'operation',</span> result?: T) {
-<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >(e</span>rror: any): Observable&lt;T&gt; =&gt; {</span>
+  public handleError&lt;T&gt; (operation = <span class="branch-0 cbranch-no" title="branch not covered" >'operation',</span> result?: T) {
+    return (error: any): Observable&lt;T&gt; =&gt; {
 &nbsp;
       // TODO: send the error to remote logging infrastructure
-<span class="cstat-no" title="statement not covered" >      console.error(error); </span>// log to console instead
+      console.error(error); // log to console instead
 &nbsp;
       // TODO: better job of transforming error for user consumption
-<span class="cstat-no" title="statement not covered" >      this.log(`${operation} failed: ${error?.message}`);</span>
+      this.log(`${operation} failed: ${error?.message}`);
 &nbsp;
       // Let the app keep running by returning an empty result.
-<span class="cstat-no" title="statement not covered" >      return of(result as T);</span>
+      return of(result as T);
     };
   }
 &nbsp;
   /** Log a All Service message with the MessageService */
-  public <span class="fstat-no" title="function not covered" >log(</span>message: string) {
-<span class="cstat-no" title="statement not covered" >    this.messageService.add(`Service: ${message}`);</span>
+  public log(message: string) {
+    this.messageService.add(`Service: ${message}`);
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -175,7 +175,7 @@ export class TraceService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-17T22:20:40.526Z
+                at 2022-11-17T22:26:21.970Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
