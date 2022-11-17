@@ -7,8 +7,6 @@ import { ArenasEffects } from "./arenas.effect"
 import { Observable, of } from 'rxjs'
 import { Action } from "@ngrx/store";
 import { ArenasActionTypes } from "../actions/arenas.action";
-import {HttpClientTestingModule } from '@angular/common/http/testing'
-import { TraceService } from "src/app/shared/utils/traceService";
 
 const list =[{
     id:1,
@@ -38,9 +36,7 @@ describe('ArenasEffects',()=>{
     beforeEach(async () => {
         await TestBed.configureTestingModule({
           declarations: [],
-          imports:[
-            HttpClientTestingModule
-          ],
+          imports:[],
           providers: [
             { provide: ArenasService, useValue: ArenasServiceMock },
           ],
