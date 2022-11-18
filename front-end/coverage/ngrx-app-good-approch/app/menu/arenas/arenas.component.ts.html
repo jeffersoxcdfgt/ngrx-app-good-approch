@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.95% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>40/46</span>
+                <span class='fraction'>46/46</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65.21% </span>
+                <span class="strong">91.3% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>15/23</span>
+                <span class='fraction'>21/23</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>14/20</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.22% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>35/36</span>
+                <span class='fraction'>36/36</span>
             </div>
         
             
@@ -203,23 +203,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -228,22 +217,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -328,10 +328,10 @@ import { selectAllArenas } from './store/reducers/arenas.reducer';
 import { setTypeViewResp } from './store/reducers/type-view.reducer';
 &nbsp;
 export const CLEANARRAY =  filter((val:Arena[]) =&gt; val.length &gt;0)
-export const IFSPACE =  map((val:string) =&gt; val === '' ? <span class="branch-0 cbranch-no" title="branch not covered" >'Grid':</span> val)
+export const IFSPACE =  map((val:string) =&gt; val === '' ? 'Grid': val)
 &nbsp;
-export const FILTER_ARENA = (search:string) =&gt;  map(<span class="fstat-no" title="function not covered" >(a</span>rena:Arena[]) =&gt; {
-<span class="cstat-no" title="statement not covered" >  return arena.filter(<span class="fstat-no" title="function not covered" >(a</span>re:Arena)=&gt; <span class="cstat-no" title="statement not covered" >are.arenaTitle.toLocaleLowerCase().includes(search.toLowerCase()) || </span></span>
+export const FILTER_ARENA = (search:string) =&gt;  map((arena:Arena[]) =&gt; {
+  return arena.filter((are:Arena)=&gt; are.arenaTitle.toLocaleLowerCase().includes(search.toLowerCase()) || 
                                     are.Capacity.toLocaleLowerCase().includes(search.toLowerCase()) ||     
                                     are.About.toLocaleLowerCase().includes(search.toLowerCase()))
 })
@@ -339,11 +339,11 @@ export const FILTER_ARENA = (search:string) =&gt;  map(<span class="fstat-no" ti
 &nbsp;
 // Name Z to A
 //array?.sort((a, b) =&gt; (a.name &gt; b.name ? -1 : 1))
-export const SORT_BY_TITLE_DESC = map(<span class="fstat-no" title="function not covered" >(a</span>renas:Arena[])=&gt;<span class="cstat-no" title="statement not covered" >arenas.slice().sort(<span class="fstat-no" title="function not covered" >(a</span>:Arena,b:Arena) =&gt;(<span class="cstat-no" title="statement not covered" >a.arenaTitle &gt; b.arenaTitle ? -1 : 1)</span>))</span>
+export const SORT_BY_TITLE_DESC = map((arenas:Arena[])=&gt;arenas.slice().sort((a:Arena,b:Arena) =&gt;(a.arenaTitle &gt; b.arenaTitle ? <span class="branch-0 cbranch-no" title="branch not covered" >-1 </span>: 1)))
 &nbsp;
 // Name A to Z
 //array?.sort((a, b) =&gt; (a.name &gt; b.name ? 1 : 1))
-export const SORT_BY_TITLE_ASC = map(<span class="fstat-no" title="function not covered" >(a</span>renas:Arena[])=&gt;<span class="cstat-no" title="statement not covered" >arenas.slice().sort(<span class="fstat-no" title="function not covered" >(a</span>:Arena,b:Arena) =&gt;(<span class="cstat-no" title="statement not covered" >a.arenaTitle &gt; b.arenaTitle ? 1 : 1)</span>))</span>
+export const SORT_BY_TITLE_ASC = map((arenas:Arena[])=&gt;arenas.slice().sort((a:Arena,b:Arena) =&gt;(a.arenaTitle &gt; b.arenaTitle ? <span class="branch-0 cbranch-no" title="branch not covered" >1 </span>: 1)))
 &nbsp;
 @Component({
   selector: 'app-arenas',
@@ -442,7 +442,7 @@ export class ArenasComponent extends UnsubscribeComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-18T06:34:16.922Z
+                at 2022-11-18T12:20:08.861Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
