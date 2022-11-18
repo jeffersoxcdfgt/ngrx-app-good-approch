@@ -94,12 +94,17 @@ fdescribe('test observable',()=>{
 
    testScheduler.run((helpers) => {
       const { cold, expectObservable} = helpers;
-      const values = { a: 'hello', b: 'world', x: 'hello world' };
-      const obs1 = cold(    '-a-------a--|', values);
-      const obs2 = cold(    '-b-b-b-|', values);
-      const expected = '--x-x-x---x-x-x-|'
+      const values = { a: 'a', b: '1', x: 'a1' , y:'a2' ,c:'2' , d:'3',s:'a3' ,k:'b',m:'b1',p:'b2',z:'b3', v:'c',g:'c1', j:'c2', n:'c3', w:'d', u:'d1' , l:'d2', t:'d3' };
+      const obs1 = cold(    '-a-------k-------v-------w-----|', values);
+      const obs2 = cold(    '-b-c-d-|', values);
+      const expected =      '--x-y-s---m-p-z---g-j-n---u-l-t-|'
 
-      const result = obs1.pipe(mergeMap(x => obs2.pipe(map(y => x + ' ' + y))));
+      const result = obs1.pipe(mergeMap(x => obs2.pipe(map(i => x + i))));
+
+      result.subscribe((data)=>{
+        console.log(data)
+      })
+
       expectObservable(result).toBe(expected,values) 
     })
   })

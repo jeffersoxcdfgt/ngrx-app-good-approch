@@ -1,7 +1,7 @@
 import { B } from '@angular/cdk/keycodes';
 import { Component } from '@angular/core';
-import { from, interval, of } from 'rxjs';
-import { throttleTime , concatMap , delay, take , concatAll, filter, tap, reduce, toArray, map} from 'rxjs/operators';
+import { interval, of } from 'rxjs';
+import { map, mergeMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -13,18 +13,15 @@ export class AppComponent {
   example:any;
 
   constructor(){
+    const letters = of('a', 'b', 'c');
+    const result = letters.pipe(
+      mergeMap(x => of(1,2,3).pipe(map(i => x + i)))
+    );
 
+    result.subscribe((data)=>{
+      console.log(data,"--")
+    })
 
-
-    const result = of(1,2).pipe(
-      toArray(),
-      map((x) => x.reduce((a:any,b:any) => Number(a)+Number(b),0))
-      
-      )
-
-      result.subscribe((data)=>{
-        console.log(data)
-      })
 
   }
 }
