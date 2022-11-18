@@ -3,7 +3,7 @@ import { throttleTime , of, interval, from } from 'rxjs';
 import * as funcValidation from './validation';
 import { concatMap , delay , concatAll , take, map, filter, tap,reduce, toArray ,scan} from 'rxjs/operators'
 
-fdescribe('Test validation functions',()=>{
+describe('Test validation functions',()=>{
 
     const testScheduler = new TestScheduler((actual, expected) => {
         expect(actual).toEqual(expected)
