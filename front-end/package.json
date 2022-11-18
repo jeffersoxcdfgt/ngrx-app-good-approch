@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test-coverage":"ng test --code-coverage",
-    "tbuild":"ng test --no-watch && ng build --configuration=production"
+    "test-coverage": "ng test --code-coverage",
+    "tbuild": "ng test --no-watch && ng build --configuration=production"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +29,7 @@
     "@ngrx/store-devtools": "^14.3.0",
     "@tinymce/tinymce-angular": "^7.0.0",
     "angular-in-memory-web-api": "^0.14.0",
+    "jasmine-marbles": "^0.9.2",
     "lodash-es": "^4.17.21",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
