@@ -10,11 +10,8 @@ export const cleanBlank = map((str: any|string ) => {
       return str;
     }
 
-    if (str){
-      return str.replace(/[\s-]/g, '');
-    }
-    
-    return str;
+    return str.replace(/[\s-]/g, '');
+
 });
 
 
