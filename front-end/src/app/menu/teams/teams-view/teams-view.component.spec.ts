@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { TeamsViewComponent } from './teams-view.component';
@@ -137,12 +137,33 @@ describe('TeamsViewComponent', () => {
       componentLogo.data = 'value'
       expect(componentLogo.formLogo.get('logo')?.value).toBe('data')           
     })
+
+
+    it('should call Drago over component logo',()=>{
+      fixtureLogo.detectChanges();
+      let file = fixtureLogo.debugElement.query(By.css('.set-drop'));
+  
+      file.triggerEventHandler('dragover', null);
+      fixtureLogo.detectChanges();
+    })
+
+    it('should call Drop component logo',()=>{
+      fixtureLogo.detectChanges();
+      let buttonElement = fixtureLogo.debugElement.query(By.css('.set-drop'));
+  
+      buttonElement.triggerEventHandler('drop', null);
+      fixtureLogo.detectChanges();
+    })
+
+
+
+
 });
 
 @Component({
   template: `
   <form [formGroup]="formLogo">
-      <app-logo-custom [data]="'data'" formControlName="logo" ></app-logo-custom>
+      <app-logo-custom [data]="'data'" formControlName="logo" class="set-drop" ></app-logo-custom>
   </form>
   `
 })

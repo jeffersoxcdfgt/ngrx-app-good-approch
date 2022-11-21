@@ -74,13 +74,18 @@ export class LogoCustomComponent implements OnInit,  ControlValueAccessor, OnCha
   }
 
   getFileContent = (datafile:any) => {
-    const file = datafile;
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.data = reader.result as string;
-      this.onChangeFn(this.data);
-    };
-    reader.readAsDataURL(file);
+    try {
+      const file = datafile;
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.data = reader.result as string;
+        this.onChangeFn(this.data);
+      };
+      reader.readAsDataURL(file);
+      
+    } catch (error) {
+        console.log('managen error to load images')
+    }
    }
 
    keep():void{
