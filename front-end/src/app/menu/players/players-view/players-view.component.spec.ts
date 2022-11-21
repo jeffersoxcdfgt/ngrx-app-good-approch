@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { InputCustomDatetimeComponent } from 'src/app/shared/components/input-custom-datetime/input-custom-datetime.component';
+import { InputCustomComponent } from 'src/app/shared/components/input-custom/input-custom.component';
 import { PlayersViewComponent } from './players-view.component';
 
 describe('PlayersViewComponent', () => {
@@ -12,13 +14,17 @@ describe('PlayersViewComponent', () => {
   let componentInputDate: InputCustomDatetimeHostComponent;
   let fixtureInputDate: ComponentFixture<InputCustomDatetimeHostComponent>; 
 
+  let componentInput: InputCustomHostComponent;
+  let fixtureInput: ComponentFixture<InputCustomHostComponent>; 
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ 
         PlayersViewComponent ,
         InputCustomDatetimeHostComponent,
-        InputCustomDatetimeComponent
-
+        InputCustomDatetimeComponent,
+        InputCustomComponent,
+        InputCustomHostComponent,
       ],
       imports:[
         StoreModule.forRoot({}),
@@ -35,6 +41,11 @@ describe('PlayersViewComponent', () => {
     fixtureInputDate = TestBed.createComponent(InputCustomDatetimeHostComponent);
     componentInputDate = fixtureInputDate.componentInstance;
     fixtureInputDate.detectChanges();
+
+    fixtureInput = TestBed.createComponent(InputCustomHostComponent);
+    componentInput = fixtureInput.componentInstance;
+    fixtureInput.detectChanges();
+
   });
 
   it('should create', () => {
@@ -102,6 +113,10 @@ describe('PlayersViewComponent', () => {
     expect(componentInputDate).toBeTruthy();
   });
 
+  it('should create InputComponent', () => {
+    expect(componentInput).toBeTruthy();
+  });
+
 });
 
 @Component({
@@ -116,6 +131,22 @@ class InputCustomDatetimeHostComponent {
   constructor(private formBuilder: FormBuilder) {
    this.form = this.formBuilder.group({
      nameFieldDate:[''],
+   })
+  }
+}
+
+@Component({
+  template: `
+  <form [formGroup]="form">
+  <app-input-custom class="set-button" [data]="'player1'" formControlName="nameFieldPlayer" [placeholder]="'Player'" ></app-input-custom>
+  </form>`
+})
+class InputCustomHostComponent {
+  form: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
+   this.form = this.formBuilder.group({
+     nameFieldPlayer:[''],
    })
   }
 }
