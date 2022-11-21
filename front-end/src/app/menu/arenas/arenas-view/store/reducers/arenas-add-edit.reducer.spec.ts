@@ -8,7 +8,7 @@ const initialState: fromReducer.State = {
     err:null,
 };  
 
-describe('ArenasReducer', () => {
+describe('ArenasReducerAddEdit', () => {
   describe('unknown action', () => {
     it('should return the default state', () => {      
       const action = {

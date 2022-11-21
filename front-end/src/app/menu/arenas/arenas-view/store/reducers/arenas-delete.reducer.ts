@@ -3,7 +3,7 @@ import { Arena } from '../../../../models/arena';
 import { selectAllArenas } from '../../../store/reducers/arenas.reducer';
 import * as ArenaDeletepiActions from '../actions/arenas-delete.action';
 
-interface State {
+export interface State {
   arenadelete: Arena|null;
   loading: boolean;
 }
