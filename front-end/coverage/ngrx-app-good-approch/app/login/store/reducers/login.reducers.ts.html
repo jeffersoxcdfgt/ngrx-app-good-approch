@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.55% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/18</span>
+                <span class='fraction'>15/18</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.55% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/18</span>
+                <span class='fraction'>15/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -130,33 +130,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -183,7 +183,7 @@ export interface State {
   error?: Error | null;
 }
 &nbsp;
-const getTokenUser = () =&gt;{
+export const getTokenUser = () =&gt;{
   <span class="missing-if-branch" title="if path not taken" >I</span>if(!!localStorage.getItem('tokendata')){
     const value = <span class="cstat-no" title="statement not covered" >JSON.parse(localStorage.getItem('tokendata') ?? '')</span>
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if(value){</span>
@@ -200,17 +200,17 @@ const initialState: State  = {
 };
 &nbsp;
 &nbsp;
-const tokenReducer = createReducer(
+export const tokenReducer = createReducer(
   initialState,
-  on(TokenActions.getTokenData, <span class="fstat-no" title="function not covered" >(s</span>tate, { request }) =&gt; (<span class="cstat-no" title="statement not covered" >{...state,requestdata:request })</span>),
-  on(TokenActions.getTokenDataSuccess, <span class="fstat-no" title="function not covered" >(s</span>tate, { response }) =&gt; (<span class="cstat-no" title="statement not covered" >{...state,responsedata: response})</span>),
-  on(TokenActions.getTokenDataError, <span class="fstat-no" title="function not covered" >(s</span>tate, { err }) =&gt; (<span class="cstat-no" title="statement not covered" >{ ...state,error: err })</span>),
-  on(TokenActions.logOutuser, <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; (<span class="cstat-no" title="statement not covered" >{ ...state})</span>),
+  on(TokenActions.getTokenData, (state, { request }) =&gt; ({...state,requestdata:request })),
+  on(TokenActions.getTokenDataSuccess, (state, { response }) =&gt; ({...state,responsedata: response})),
+  on(TokenActions.getTokenDataError, (state, { err }) =&gt; ({ ...state,error: err })),
+  on(TokenActions.logOutuser, (state) =&gt; ({ ...state})),
 );
 &nbsp;
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >reducer(</span>state: State | undefined, action: Action): any{
-<span class="cstat-no" title="statement not covered" >  return tokenReducer(state, action);</span>
+export function reducer(state: State | undefined, action: Action): any{
+  return tokenReducer(state, action);
 }
 export const getTokenState = createFeatureSelector &lt; State &gt; ('tokendata');
 &nbsp;
@@ -232,7 +232,7 @@ export const errorTokenResponse = createSelector( getTokenState , (state: State)
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-18T12:20:08.861Z
+                at 2022-11-21T15:48:41.925Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

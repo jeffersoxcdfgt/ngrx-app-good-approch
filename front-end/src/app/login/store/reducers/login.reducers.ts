@@ -10,7 +10,7 @@ export interface State {
   error?: Error | null;
 }
 
-const getTokenUser = () =>{
+export const getTokenUser = () =>{
   if(!!localStorage.getItem('tokendata')){
     const value = JSON.parse(localStorage.getItem('tokendata') ?? '')
     if(value){
@@ -27,7 +27,7 @@ const initialState: State  = {
 };
 
 
-const tokenReducer = createReducer(
+export const tokenReducer = createReducer(
   initialState,
   on(TokenActions.getTokenData, (state, { request }) => ({...state,requestdata:request })),
   on(TokenActions.getTokenDataSuccess, (state, { response }) => ({...state,responsedata: response})),
