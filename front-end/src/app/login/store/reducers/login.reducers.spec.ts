@@ -11,20 +11,6 @@ const initialState: fromReducer.State  = {
     error: null,
 };
 
-
-const localStorageMock = {
-    getItem(param:string){
-        return '{"name":"John", "age":30, "city":"New York"}';
-    }
-};
-
-const jsonMock = {
-    parse(){
-        return 'valueq'
-    }
-}
-  
-
 describe('LoginReducer', () => {
   describe('unknown action', () => {
     it('should return the default state', () => {
