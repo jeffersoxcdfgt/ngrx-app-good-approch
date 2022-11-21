@@ -2,7 +2,7 @@ import { createFeature, createReducer , createSelector, on } from '@ngrx/store';
 import { Arena } from '../../../../models/arena';
 import * as ArenaAddEditApiActions from '../actions/arenas-add-edit.action';
 
-interface State {
+export interface State {
   resultarena: number|null;
   loading: boolean;
   err: any | null;

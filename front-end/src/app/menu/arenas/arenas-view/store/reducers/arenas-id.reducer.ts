@@ -2,7 +2,7 @@ import { createFeature, createReducer , on } from '@ngrx/store';
 import { Arena } from '../../../../models/arena';
 import * as ArenaByIdApiActions from '../actions/arenas-id.action';
 
-interface State {
+export interface State {
   arenabyid: Arena|null;
   loading: boolean;
 }
