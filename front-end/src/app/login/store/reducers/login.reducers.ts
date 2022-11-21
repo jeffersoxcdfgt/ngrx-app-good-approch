@@ -13,7 +13,7 @@ export interface State {
 export const getTokenUser = () =>{
   if(!!localStorage.getItem('tokendata')){
     const value = JSON.parse(localStorage.getItem('tokendata') ?? '')
-    if(value){
+    if(value){      
       return value.requestdata
     }
   }

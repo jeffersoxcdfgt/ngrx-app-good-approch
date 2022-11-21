@@ -1,12 +1,28 @@
 import * as fromReducer from './login.reducers';
-import { getTokenData, getTokenDataError, getTokenDataSuccess, logOutuser } from '../actions/login.actions';
+import { getTokenData, getTokenDataError, getTokenDataSuccess, logOutuser  } from '../actions/login.actions';
 import { Login, ResponseLogin } from '../../model/login';
+
+import { TestBed } from '@angular/core/testing';
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
 
 const initialState: fromReducer.State  = {
     requestdata: null,
     responsedata:fromReducer.getTokenUser(),
     error: null,
-  };
+};
+
+
+const localStorageMock = {
+    getItem(param:string){
+        return '{"name":"John", "age":30, "city":"New York"}';
+    }
+};
+
+const jsonMock = {
+    parse(){
+        return 'valueq'
+    }
+}
   
 
 describe('LoginReducer', () => {
@@ -69,5 +85,65 @@ describe('LoginReducer', () => {
     });
   });
 
+
+describe('Selectors', () => {
+    let store: MockStore;
+  
+    afterEach(() => {
+      store?.resetSelectors();
+    });
+  
+    it('should return the mocked value', (done: any) => {
+      TestBed.configureTestingModule({
+        providers: [
+          provideMockStore({
+            selectors: [
+              {
+                selector: fromReducer.getTokenResponse,
+                value: [
+                  {
+                    status: 'success',
+                    token: '741258963',
+                    email:'admin@admin.com',
+                    password:'admin'
+                  },
+                ],
+              },
+            ],
+          }),
+        ],
+      });
+  
+      store = TestBed.inject(MockStore);
+  
+      store.select(fromReducer.getTokenResponse).subscribe((mockResponse) => {
+        expect(mockResponse).toEqual([
+          {
+            status: 'success',
+            token: '741258963',
+            email:'admin@admin.com',
+            password:'admin'
+          },
+        ]);
+        done();
+      });
+    });
+  });
+
+  describe('getTokenUser',()=>{
+    it('should getTokenUser response requestdata and format well',()=>{
+        const jsonstr = `{
+            "requestdata":{
+                "status": "success",
+                "token": "741258963",
+                "email":"admin@admin.com",
+                "password":"admin"
+            }         
+        }`
+         spyOn(localStorage,'getItem').and.returnValue(jsonstr)       
+        const result = fromReducer.getTokenUser()
+        expect(result).toEqual(JSON.parse(jsonstr).requestdata)
+    })
+  })
 
 });
