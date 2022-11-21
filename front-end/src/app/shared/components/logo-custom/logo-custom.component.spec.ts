@@ -47,9 +47,7 @@ describe('LogoCustomComponent', () => {
   });
 
   it('should call getFileContent()',()=>{
-    const data = spyOn(component,'getFileContent')
     component.getFileContent('01110011 01110111 01100101 01110111 01100101 01110111 01100101 ')
-    expect(data).toHaveBeenCalled();
   });
 
 });
