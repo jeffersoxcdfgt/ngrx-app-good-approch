@@ -4,9 +4,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-If you want to run the application, first you should go to backend-api folder and then run the
-following command-line npm install and npm start.
-
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
@@ -28,3 +25,5 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+If you want to run the application, first you should go to backend-api folder and then run the
+following command-line npm install and npm start.
