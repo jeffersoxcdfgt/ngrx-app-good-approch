@@ -1,9 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
-import { MATERIAL_MODULES } from 'src/app/shared/shared.module';
-import { RegularSeasonGamesComponent } from './regular-season-games.component';
+import { of } from 'rxjs';
+import { DetailReagularSeasonGame, ReagularSeasonGame } from '../models/regular-season-game';
+import { FILTER_REGULAR_SEASON_GAMES, RegularSeasonGamesComponent } from './regular-season-games.component';
+
+const MatDialogMock = {
+  open() {
+      return {
+       
+      };
+  }
+};
 
 describe('RegularSeasonGamesComponent', () => {
   let component: RegularSeasonGamesComponent;
@@ -15,11 +24,9 @@ describe('RegularSeasonGamesComponent', () => {
       imports:[
         StoreModule.forRoot({}),
         RouterTestingModule,
-        MATERIAL_MODULES
       ],
       providers: [
-        { provide: MAT_DIALOG_DATA, useValue: {} },
-        { provide: MatDialogRef, useValue: {} }
+        { provide: MatDialog, useValue: MatDialogMock },
       ]
     })
     .compileComponents();
@@ -46,5 +53,109 @@ describe('RegularSeasonGamesComponent', () => {
     const resnone = component.setClassDetail(arrayNone,idNone);
     expect(resnone).toEqual('none');
   })
+
+
+ it('modelChangeFn works fine',()=>{
+    component.selectedData[1]= 'expand-details collapsed js-expand-details link-icon'
+    component.modelChangeFn(1)
+    expect(component.selectedData[1]).toBe('expand-details expanded js-expand-details link-icon')
+ })
+
+ it('modelChangeFn works fine else condition',()=>{
+  component.selectedData[1]= 'expand-details expanded js-expand-details link-icon'
+  component.modelChangeFn(1)
+  expect(component.selectedData[1]).toBe('expand-details collapsed js-expand-details link-icon')
+ })
+
+ it('selectedDataDetail works fine',()=>{
+  component.selectedDataDetail[0]= 'none'
+  component.modelChangeFn(0)
+  expect( component.selectedDataDetail[0]).toBe('table-row')
+ })
+
+ it('allElements',()=>{
+    component.allElementsString = 'expand-all-details js-expand-all-details collapsed link-icon'
+    component.selectedData = ['element1','element2'];
+    component.selectedDataDetail = ['map1','map2'];
+    component.allElements();
+    expect(component.selectedDataDetail.length ===0).toBe(false)
+ })
+
+ it('allElements else condition',()=>{
+  component.allElementsString = 'other value'
+  component.selectedData = ['element1','element2'];
+  component.selectedDataDetail = ['map1','map2'];
+  component.allElements();
+  expect(component.selectedDataDetail.length ===0).toBe(false)
+})
+
+it('resetSearch',()=>{
+  component.resetSearch();
+  expect(component.searchTerm).toBe('')
+})
+
+it('infoDialog',()=>{
+  const spy1 = spyOn(component,"infoDialog").and.callThrough()
+  component.infoDialog()
+  expect(spy1).toHaveBeenCalled()
+})
+
+it('searchRegularSeasonGames',()=>{
+  const spy1 = spyOn(component,"searchRegularSeasonGames").and.callThrough()
+  component.searchRegularSeasonGames('games')
+  expect(spy1).toHaveBeenCalled()
+})
+
+it('FILTER_REGULAR_SEASON_GAMES works fine',()=>{
+
+  const detail:DetailReagularSeasonGame[] = [{
+    id:1,
+    Quarter: '',
+    homescore:  '',
+    awayscore:  '',
+  }]
+
+  const arrayData:ReagularSeasonGame[] = [
+    {
+      id:1,
+      gamedate:'gamedate',
+      teamhome:'teamhome',
+      scorehome:'scorehome',
+      scoreaway:'scoreaway',
+      teamaway:'teamaway',
+      overtimes:'overtimes',
+      recap: '',
+      detail: detail
+    }
+  ]
+
+  const gamedate = of(arrayData).pipe(FILTER_REGULAR_SEASON_GAMES('gamedate'))
+  gamedate.subscribe((data:ReagularSeasonGame[])=>{
+      expect(data.length > 0).toEqual(true)
+  })
+
+  const teamhome = of(arrayData).pipe(FILTER_REGULAR_SEASON_GAMES('teamhome'))
+  teamhome.subscribe((data:ReagularSeasonGame[])=>{
+      expect(data.length > 0).toEqual(true)
+  })
+
+  const scorehome = of(arrayData).pipe(FILTER_REGULAR_SEASON_GAMES('scorehome'))
+  scorehome.subscribe((data:ReagularSeasonGame[])=>{
+      expect(data.length > 0).toEqual(true)
+  })
+
+  const teamaway = of(arrayData).pipe(FILTER_REGULAR_SEASON_GAMES('teamaway'))
+  teamaway.subscribe((data:ReagularSeasonGame[])=>{
+      expect(data.length > 0).toEqual(true)
+  })
+
+  const overtimes = of(arrayData).pipe(FILTER_REGULAR_SEASON_GAMES('overtimes'))
+  overtimes.subscribe((data:ReagularSeasonGame[])=>{
+      expect(data.length > 0).toEqual(true)
+  })
+
+
+
+ })
 
 });
