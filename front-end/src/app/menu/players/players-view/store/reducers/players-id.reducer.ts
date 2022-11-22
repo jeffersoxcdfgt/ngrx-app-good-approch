@@ -5,7 +5,7 @@ import { selectAllTeams } from 'src/app/menu/teams/store/reducers/teams.reducer'
 import { Player } from '../../../../models/player';
 import * as PlayerByIdApiActions from '../actions/players-id.action';
 
-interface State {
+export interface State {
   playerbyid: Player|null;
   loading: boolean;
 }

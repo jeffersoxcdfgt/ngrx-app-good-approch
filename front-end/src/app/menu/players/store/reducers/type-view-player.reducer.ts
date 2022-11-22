@@ -1,17 +1,18 @@
 import { createFeature, createReducer , createSelector, on } from '@ngrx/store';
 import * as TypeViewApiPlayerActions from '../actions/type-view-player.action';
 
-interface State {
+export interface State {
   typeviewplayer: string;
   loading: boolean;
   err: any | null;
+  sendviewplayer:string;
 }
 
 const initialState: State = {
   typeviewplayer: '',
   loading: false,
   err:null,
-
+  sendviewplayer:''
 };
 
 export const typeViewPlayerFeature = createFeature({

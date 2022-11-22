@@ -1,7 +1,7 @@
 import { createFeature, createReducer , createSelector, on } from '@ngrx/store';
 import * as PlayerAddEditApiActions from '../actions/players-add-edit.action';
 
-interface State {
+export interface State {
   resultplayer: number|null;
   loading: boolean;
   err: any | null;

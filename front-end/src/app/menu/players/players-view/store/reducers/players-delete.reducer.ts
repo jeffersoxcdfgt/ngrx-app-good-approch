@@ -2,7 +2,7 @@ import { createFeature, createReducer , createSelector, on } from '@ngrx/store';
 import { Player } from '../../../../models/player';
 import * as PlayerDeletepiActions from '../actions/players-delete.action';
 
-interface State {
+export interface State {
   playerdelete: Player|null;
   loading: boolean;
 }
