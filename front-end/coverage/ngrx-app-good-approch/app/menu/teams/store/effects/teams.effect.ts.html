@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for app/menu/teams/store/services/teams.service.ts</title>
+    <title>Code coverage report for app/menu/teams/store/effects/teams.effect.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">app/menu/teams/store/services</a> teams.service.ts</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">app/menu/teams/store/effects</a> teams.effect.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -88,10 +88,22 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -101,43 +113,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
-&nbsp;
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { map, mergeMap } from 'rxjs/operators';
+import { TeamsService } from '../services/teams.service';
+import { TeamsActionTypes } from '../actions/teams.action';
 import { Team } from '../../../models/team';
-import { TraceService } from 'src/app/shared/utils/traceService';
-&nbsp;
 &nbsp;
 @Injectable()
-export class TeamsService {
-  protected URL =environment.teamUrl
+export class TeamsEffects {
 &nbsp;
-  constructor(private http: HttpClient,private traceService: TraceService ){ }
-  /**
-   * Find all the elements
-   * @returns gets the list of objects found
-   */
-  public findAll(): Observable&lt;Team[]&gt;{
-    return this.http.get&lt;Team[]&gt;(`${this.URL}/api/teams`).pipe(
-        catchError(this.traceService.handleError&lt;Team[]&gt;('findAll'))
-    );
-  }
+  public selectTeams$ = createEffect(() =&gt; this.actions$.pipe(
+    ofType(TeamsActionTypes.GET_TEAMS),
+    mergeMap(<span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >this.teamsService.findAll()</span>
+      .pipe(
+        map(<span class="fstat-no" title="function not covered" >(d</span>ata:Team[]) =&gt; (<span class="cstat-no" title="statement not covered" >{ </span>
+            type: TeamsActionTypes.GET_TEAMS_SUCCESS, 
+            teams: data 
+        }))
+      ))
+    )
+  );
+&nbsp;
+  constructor(
+    private actions$: Actions,
+    private teamsService: TeamsService
+  ) {}
 }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

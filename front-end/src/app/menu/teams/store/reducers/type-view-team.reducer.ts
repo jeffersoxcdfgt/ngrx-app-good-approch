@@ -3,12 +3,14 @@ import * as TypeViewApiTeamActions from '../actions/type-view-team.action';
 
 interface State {
   typeviewteam: string;
+  sendviewteam: string;
   loading: boolean;
   err: any | null;
 }
 
 const initialState: State = {
   typeviewteam: '',
+  sendviewteam: '',
   loading: false,
   err:null,
 
