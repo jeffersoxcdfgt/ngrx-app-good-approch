@@ -2,7 +2,7 @@
    
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { LoginService } from '../services/login-profile.service';
 import { LoginActionTypes } from '../actions/login.actions';
 import { Login, ResponseLogin } from '../../model/login';
@@ -16,7 +16,7 @@ export class LoginEffects {
   public getToken$ = createEffect(() =>  this.actions$.pipe(
     ofType(LoginActionTypes.GET_LOGIN),
     map((dataparse:any) => dataparse.request),
-     mergeMap((userdata:Login) => this.loginService.logIn(userdata)
+     switchMap((userdata:Login) => this.loginService.logIn(userdata)
         .pipe(
             map((dataresponse:ResponseLogin) => ({type: LoginActionTypes.GET_LOGIN_SUCCESS, response: {...dataresponse, ...userdata }})),
              catchError((error) => of({ type: LoginActionTypes.GET_LOGIN_ERROR, err:error}))
