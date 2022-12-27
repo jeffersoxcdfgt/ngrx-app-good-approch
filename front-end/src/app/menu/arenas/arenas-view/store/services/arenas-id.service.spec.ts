@@ -16,7 +16,7 @@ const TraceServiceMock = {
   };
 
 const arenaId:number = 1;
-const arenaRow ={
+const arenaRow:Arena ={
     id:1,
     arenaTitle:'Air Canada Centre',
     Capacity:'19.800',
