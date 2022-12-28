@@ -13,6 +13,7 @@ import { PlayoffComponent } from './playoff/playoff.component';
 import { PlayersComponent } from './players/players.component';
 import { PlayersViewComponent } from './players/players-view/players-view.component';
 import { RegularSeasonGamesComponent } from './regular-season-games/regular-season-games.component';
+import { ArenasPrintComponent } from './arenas/arenas-print/arenas-print.component';
 
 const menuRoutes: Routes  =  [{
   path: '',
@@ -35,11 +36,17 @@ const menuRoutes: Routes  =  [{
     { path: 'players/edit/:id' , component:  PlayersViewComponent, canActivate: [AuthGuardService] },
     { path: 'regular-season-games' , component:  RegularSeasonGamesComponent, canActivate: [AuthGuardService]},
   ]
-}] as Routes;
+},
+{
+  path: 'arenasprint' , 
+  component:  ArenasPrintComponent, 
+  canActivate: [AuthGuardService]
+}
+] as Routes;
 
 @NgModule({
   imports: [
-    RouterModule.forChild(menuRoutes)
+    RouterModule.forChild(menuRoutes),
   ],
   exports: [RouterModule],
   providers: [],

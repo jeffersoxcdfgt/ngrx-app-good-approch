@@ -120,5 +120,4 @@ export class ArenasComponent extends UnsubscribeComponent implements OnInit {
   openPrintOptions():void{
     this.btngroupPrint =  this.btngroupPrint === 'btn-group' ? 'btn-group open':'btn-group'
   }
-
 }
