@@ -1,8 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MATERIAL_MODULES } from '../../shared.module';
-
 import { DialogTableCardComponent } from './dialog-table-card.component';
+
+const MatDialogMock = {
+  close(){}
+};
 
 describe('DialogTableCardComponent', () => {
   let component: DialogTableCardComponent;
@@ -16,7 +19,8 @@ describe('DialogTableCardComponent', () => {
       ],
       providers: [   
         { provide: MAT_DIALOG_DATA, useValue: {} },
-        { provide: MatDialogRef, useValue: {} }
+        { provide: MatDialogRef, useValue: {} },
+        { provide: MatDialog, useValue: MatDialogMock },
     ]
     })
     .compileComponents();
@@ -29,4 +33,18 @@ describe('DialogTableCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+  it('call changesOpt', ()=>{
+    const value ='valueopt'
+    component.changesOpt(value)
+    expect(component.setType).toBe(value)
+  })
+
+  it('onConfirmClick',()=>{
+    const spy1 = spyOn(component,"onConfirmClick").and.callFake(()=> null)
+    component.onConfirmClick()
+    expect(spy1).toHaveBeenCalled()
+  })
+
 });

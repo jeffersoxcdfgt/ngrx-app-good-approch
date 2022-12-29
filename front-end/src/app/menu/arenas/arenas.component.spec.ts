@@ -110,6 +110,11 @@ describe('ArenasComponent', () => {
     expect(true).toBe(true);   
   })
 
+  it('switchTableCard',()=>{
+    const spy1 = spyOn(component,"switchTableCard").and.callThrough()
+    component.switchTableCard()
+    expect(spy1).toHaveBeenCalled()
+  })
 
   it('Call resetSearch and searchTerm=""', ()=>{
     component.resetSearch()
