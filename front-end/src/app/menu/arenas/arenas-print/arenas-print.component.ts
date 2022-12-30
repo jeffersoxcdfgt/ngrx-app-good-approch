@@ -19,7 +19,7 @@ export class ArenasPrintComponent implements OnInit {
   constructor(private store :Store<State>){}
 
   ngOnInit(): void {
-    this.removejscssfile("main_cerulean.css", "css");
+    this.removejscssfile("./assets/css/main_cerulean.css", "css");
     this.store.dispatch(arenasGetAll());
     this.arenasList$ = this.store.select(selectAllArenas).pipe(CLEANARRAY);
   }
