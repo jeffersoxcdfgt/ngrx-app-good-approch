@@ -13,13 +13,14 @@ import { selectAllArenas } from '../store/reducers/arenas.reducer';
   styleUrls: ['./arenas-print.component.scss']
 })
 export class ArenasPrintComponent implements OnInit {
-
   arenasList$ : Observable<Arena[]> = new Observable<Arena[]>();
 
   constructor(private store :Store<State>){}
 
   ngOnInit(): void {
-    this.removejscssfile("./assets/css/main_cerulean.css", "css");
+    this.removejscssfile(`main_cerulean.css`, "css");
+    const res:any = document.querySelectorAll('style,link[rel="stylesheet"]')
+    res[0].remove();
     this.store.dispatch(arenasGetAll());
     this.arenasList$ = this.store.select(selectAllArenas).pipe(CLEANARRAY);
   }
@@ -30,8 +31,9 @@ export class ArenasPrintComponent implements OnInit {
     var targetattr=(filetype=="js")? "src" : (filetype=="css")? "href" : "none" //determine corresponding attribute to test for
     const allsuspects:any=document.getElementsByTagName(targetelement)
     for (var i=allsuspects.length; i>=0; i--){ //search backwards within nodelist for matching elements to remove
-    if (allsuspects[i] && allsuspects[i].getAttribute(targetattr)!=null && allsuspects[i].getAttribute(targetattr).indexOf(filename)!=-1)
+      if (allsuspects[i] && allsuspects[i].getAttribute(targetattr)!=null && allsuspects[i].getAttribute(targetattr).indexOf(filename)!=-1){
         allsuspects[i].parentNode.removeChild(allsuspects[i]) //remove element by calling parentNode.removeChild()
+      }        
     }
  }
   
