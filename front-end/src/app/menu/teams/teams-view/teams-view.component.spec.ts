@@ -4,7 +4,7 @@ import { BrowserModule, By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { TeamsViewComponent } from './teams-view.component';
-import { Component, Pipe } from '@angular/core';
+import { Component, Pipe, PipeTransform } from '@angular/core';
 import { LogoCustomComponent } from 'src/app/shared/components/logo-custom/logo-custom.component';
 
 interface DataLoad {
@@ -20,7 +20,7 @@ const value:DataLoad[] = [
 @Pipe({
   name: 'noSanitize'
 })
-class NoSanitizeMockPipe {
+class NoSanitizeMockPipe implements PipeTransform {
   transform(): string {
     return ''
   }

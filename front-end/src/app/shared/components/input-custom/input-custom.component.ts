@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Optional, Output, Self, SimpleChanges, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnChanges, Optional, Output, Self, SimpleChanges, ViewChild } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
   templateUrl: './input-custom.component.html',
   styleUrls: ['./input-custom.component.scss']
 })
-export class InputCustomComponent implements OnInit, ControlValueAccessor, OnChanges  {
+export class InputCustomComponent implements ControlValueAccessor, OnChanges  {
   @Input() label: string = '';
   @ViewChild('inputElement') inputElement: ElementRef|any;
   dataInputCtrl: FormControl =  new FormControl();
@@ -26,9 +26,6 @@ export class InputCustomComponent implements OnInit, ControlValueAccessor, OnCha
       this.ngcontrol.valueAccessor = this
     }
    // this.ngcontrol && (this.ngcontrol.valueAccessor = this);
-  }
-
-  ngOnInit(): void {
   }
 
   /**

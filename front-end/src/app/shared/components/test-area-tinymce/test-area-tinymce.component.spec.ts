@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ControlValueAccessor, FormBuilder, FormControl, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
+/* eslint-disable @angular-eslint/component-selector */
 @Component({
   selector: 'tinycontrol',
   template: '',
@@ -14,6 +15,7 @@ import { BrowserModule } from '@angular/platform-browser';
     },
   ],
 })
+/* eslint-disable @angular-eslint/component-selector */
 class TestAreaTinymceComponent implements ControlValueAccessor {
   writeValue(obj: any) {}
   registerOnChange(fn: any) {}

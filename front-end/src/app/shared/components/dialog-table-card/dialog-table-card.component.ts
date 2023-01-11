@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 
@@ -7,13 +7,10 @@ import { Observable } from 'rxjs';
   templateUrl: './dialog-table-card.component.html',
   styleUrls: ['./dialog-table-card.component.scss']
 })
-export class DialogTableCardComponent implements OnInit {
+export class DialogTableCardComponent {
 
   selection$:Observable<string> = new Observable<string>()
   setType:string = '';
-
-  ngOnInit(): void {
-  }
 
   confirmButtonText = "Yes"
   cancelButtonText = "Cancel"

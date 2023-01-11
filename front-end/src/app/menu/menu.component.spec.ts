@@ -1,4 +1,4 @@
-import { Pipe } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -11,7 +11,7 @@ class ComponentTestRouting{}
 @Pipe({
   name: 'nullObjectToConvert'
 })
-class NullObjectToConvertMockPipe {
+class NullObjectToConvertMockPipe implements PipeTransform  {
   transform(): string {
     return ''
   }

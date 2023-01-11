@@ -1,4 +1,4 @@
-import { Component, DebugElement, Pipe } from '@angular/core';
+import { Component, DebugElement, Pipe, PipeTransform } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder,FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, By } from '@angular/platform-browser';
@@ -10,7 +10,7 @@ import { ArenasViewComponent } from './arenas-view.component';
 @Pipe({
   name: 'noSanitize'
 })
-class NoSanitizeMockPipe {
+class NoSanitizeMockPipe  implements PipeTransform{
   transform(): string {
     return ''
   }

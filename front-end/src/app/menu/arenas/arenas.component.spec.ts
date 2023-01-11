@@ -8,7 +8,7 @@ import {HttpClientTestingModule } from '@angular/common/http/testing'
 import { ArenasComponent , FILTER_ARENA, SORT_BY_TITLE_ASC, SORT_BY_TITLE_DESC , IFSPACE } from './arenas.component';
 import { ArenasService } from './store/services/arenas.service';
 import { TypeViewService } from './store/services/type-view.service';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Pipe } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { of } from 'rxjs';
 import { Arena } from '../models/arena';
 
@@ -23,7 +23,7 @@ const MatDialogMock = {
 @Pipe({
   name: 'noSanitize'
 })
-class NoSanitizeMockPipe {
+class NoSanitizeMockPipe implements PipeTransform {
   transform(): string {
     return ''
   }
