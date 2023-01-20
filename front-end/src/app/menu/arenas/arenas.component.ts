@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store'
-import { filter, map, Observable, takeUntil} from 'rxjs';
+import { filter, map, mergeMap, Observable, of, takeUntil} from 'rxjs';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 import { DialogTableCardComponent } from 'src/app/shared/components/dialog-table-card/dialog-table-card.component';
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
@@ -14,7 +14,7 @@ import { sendTypeView } from './store/actions/type-view.action';
 import { selectAllArenas } from './store/reducers/arenas.reducer';
 import { setTypeViewResp } from './store/reducers/type-view.reducer';
 
-export const CLEANARRAY =  filter((val:Arena[]) => val.length >0)
+export const CLEANARRAY =  filter((val:any|Arena[]) => val.length >0)
 export const IFSPACE =  map((val:string) => val === '' ? 'Grid': val)
 
 export const FILTER_ARENA = (search:string) =>  map((arena:Arena[]) => {
@@ -31,6 +31,9 @@ export const SORT_BY_TITLE_DESC = map((arenas:Arena[])=>arenas.slice().sort((a:A
 // Name A to Z
 //array?.sort((a, b) => (a.name > b.name ? 1 : 1))
 export const SORT_BY_TITLE_ASC = map((arenas:Arena[])=>arenas.slice().sort((a:Arena,b:Arena) =>(a.arenaTitle > b.arenaTitle ? 1 : 1)))
+
+export const SET_SORT_BY_DESC = mergeMap((streamValue) => of(streamValue).pipe(CLEANARRAY,SORT_BY_TITLE_DESC))
+export const SET_SORT_BY_ASC = mergeMap((streamValue) => of(streamValue).pipe(CLEANARRAY,SORT_BY_TITLE_ASC))
 
 @Component({
   selector: 'app-arenas',
@@ -109,8 +112,8 @@ export class ArenasComponent extends UnsubscribeComponent implements OnInit {
   sortByTitle():void{
     this.sortbytitle = this.sortbytitle === 'icon-sort-asc' ? 'icon-sort-desc' : 'icon-sort-asc'
     this.arenasList$ = this.sortbytitle === 'icon-sort-desc' ? 
-    this.store.select(selectAllArenas).pipe(CLEANARRAY,SORT_BY_TITLE_DESC):
-    this.store.select(selectAllArenas).pipe(CLEANARRAY,SORT_BY_TITLE_ASC);
+    this.store.select(selectAllArenas).pipe(SET_SORT_BY_DESC):
+    this.store.select(selectAllArenas).pipe(SET_SORT_BY_ASC);
   }
 
   openExportOptions():void{

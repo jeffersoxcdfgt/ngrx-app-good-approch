@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { MATERIAL_MODULES } from 'src/app/shared/shared.module';
 import {HttpClientTestingModule } from '@angular/common/http/testing'
 
-import { ArenasComponent , FILTER_ARENA, SORT_BY_TITLE_ASC, SORT_BY_TITLE_DESC , IFSPACE } from './arenas.component';
+import { ArenasComponent , FILTER_ARENA, SORT_BY_TITLE_ASC, SORT_BY_TITLE_DESC , IFSPACE, SET_SORT_BY_DESC, SET_SORT_BY_ASC } from './arenas.component';
 import { ArenasService } from './store/services/arenas.service';
 import { TypeViewService } from './store/services/type-view.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
@@ -234,6 +234,61 @@ describe('ArenasComponent', () => {
     const result = of('').pipe(IFSPACE)
     result.subscribe((data:string)=>{
       expect(data).toEqual('Grid')
+    })   
+
+  })
+
+  it('Call connst function SET_SORT_BY_DESC',()=>{
+
+    const arenas :Arena[]=[
+      {
+        id: 1,
+        arenaTitle: 'bbbb',
+        Capacity: '',
+        About: '',
+        Logo:'',
+        Photo: ''
+      },
+      {
+        id: 2,
+        arenaTitle: 'aaaa',
+        Capacity: '',
+        About: '',
+        Logo:'',
+        Photo: ''
+      },
+
+    ]
+    const result = of(arenas).pipe(SET_SORT_BY_DESC)
+    result.subscribe((data:Arena[])=>{
+      expect(data).toEqual(arenas)
+    })   
+
+  })
+
+  it('Call connst function SET_SORT_BY_ASC',()=>{
+    const arenas :Arena[]=[
+      {
+        id: 1,
+        arenaTitle: 'bbbb',
+        Capacity: '',
+        About: '',
+        Logo:'',
+        Photo: ''
+      },
+      {
+        id: 2,
+        arenaTitle: 'aaaa',
+        Capacity: '',
+        About: '',
+        Logo:'',
+        Photo: ''
+      },
+
+    ]
+    const result = of(arenas).pipe(SET_SORT_BY_ASC)
+    result.subscribe((data:Arena[])=>{
+      expect(data).toEqual(arenas)
     })   
 
   })
