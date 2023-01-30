@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>27/30</span>
+                <span class='fraction'>26/28</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">81.81% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>9/12</span>
+                <span class='fraction'>9/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96% </span>
+                <span class="strong">95.83% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>24/25</span>
+                <span class='fraction'>23/24</span>
             </div>
         
             
@@ -168,9 +168,7 @@
 <a name='L103'></a><a href='#L103'>103</a>
 <a name='L104'></a><a href='#L104'>104</a>
 <a name='L105'></a><a href='#L105'>105</a>
-<a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a>
-<a name='L108'></a><a href='#L108'>108</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L106'></a><a href='#L106'>106</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -204,8 +202,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -283,8 +279,7 @@ import { Observable } from 'rxjs';
 import { Player } from '../models/player';
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { playersGetAll } from './store/actions/players.action';
-import { selectAllPlayers, selectedPlayersWithTeams } from './store/reducers/players.reducer';
-import { filter } from 'rxjs';
+import {  selectedPlayersWithTeams } from './store/reducers/players.reducer';
 import { teamsGetAll } from '../teams/store/actions/teams.action';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
@@ -295,6 +290,7 @@ import { DialogTableCardComponent } from 'src/app/shared/components/dialog-table
 import { setTypeViewPlayerResp } from './store/reducers/type-view-player.reducer';
 import { IFSPACE } from '../arenas/arenas.component';
 import { sendTypePlayerView } from './store/actions/type-view-player.action';
+import { CLEANDATAARRAY } from '../utils/functions';
 &nbsp;
 &nbsp;
 export const FILTER_PLAYER = (search:string) =&gt;  map(<span class="fstat-no" title="function not covered" >(p</span>layer:Player[]) =&gt; {
@@ -311,8 +307,6 @@ export const FILTER_PLAYER = (search:string) =&gt;  map(<span class="fstat-no" t
                                     playerrow.number.toLocaleLowerCase().includes(search.toLowerCase()))
 &nbsp;
 })
-&nbsp;
-export const CLEANARRAY =  filter(<span class="fstat-no" title="function not covered" >(v</span>al:Player[]) =&gt; <span class="cstat-no" title="statement not covered" >val.length &gt;0)</span>
 &nbsp;
 @Component({
   selector: 'app-players',
@@ -332,7 +326,7 @@ export class PlayersComponent extends UnsubscribeComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(playersGetAll());
     this.store.dispatch(teamsGetAll());
-    this.playersList$ = this.store.select(selectedPlayersWithTeams).pipe(CLEANARRAY);
+    this.playersList$ = this.store.select(selectedPlayersWithTeams).pipe(CLEANDATAARRAY);
   }
 &nbsp;
   delete(id:number|string|undefined):void{
@@ -375,12 +369,12 @@ export class PlayersComponent extends UnsubscribeComponent implements OnInit {
   }
 &nbsp;
   searchPlayer(data:string|any):void{    
-    this.playersList$= this.store.select(selectedPlayersWithTeams).pipe(CLEANARRAY,FILTER_PLAYER(data.value));
+    this.playersList$= this.store.select(selectedPlayersWithTeams).pipe(CLEANDATAARRAY,FILTER_PLAYER(data.value));
   }
 &nbsp;
   resetSearch():void{
     this.searchTerm = '';
-    this.playersList$ = this.store.select(selectedPlayersWithTeams).pipe(CLEANARRAY);
+    this.playersList$ = this.store.select(selectedPlayersWithTeams).pipe(CLEANDATAARRAY);
   }
 &nbsp;
 }
@@ -391,7 +385,7 @@ export class PlayersComponent extends UnsubscribeComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-01-26T17:14:14.241Z
+                at 2023-01-30T22:08:35.914Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
