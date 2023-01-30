@@ -9,7 +9,7 @@ import { Player } from '../../models/player';
 import { Team } from '../../models/team';
 import { teamsGetAll } from '../../teams/store/actions/teams.action';
 import { selectAllTeams } from '../../teams/store/reducers/teams.reducer';
-import { CLEANTEAMSARENAS } from '../../teams/teams.component';
+import { CLEANDATAARRAY } from '../../utils/functions';
 import { playerAddRow, playerUpdateRow } from './store/actions/players-add-edit.action';
 import { playerGetById } from './store/actions/players-id.action';
 import { selectedOnePlayerByListTeams } from './store/reducers/players-id.reducer';
@@ -99,7 +99,7 @@ export class PlayersViewComponent implements OnInit {
     this.player$ = this.store.select(selectedOnePlayerByListTeams).pipe(CLEAN_NULL);
     this.positionSet$ = this.player$.pipe(GET_POSITION)
 
-    this.teamsList$ = this.store.select(selectAllTeams).pipe(CLEANTEAMSARENAS,MAP_SET_TEAM);
+    this.teamsList$ = this.store.select(selectAllTeams).pipe(CLEANDATAARRAY,MAP_SET_TEAM);
     this.teamSet$ = this.store.select(selectedOnePlayerByListTeams).pipe(CLEAN_NULL,MAP_ONE_ROW,FILTER_ROW);
 
     this.countrySet$ = this.player$.pipe(MAP_COUNTRY);

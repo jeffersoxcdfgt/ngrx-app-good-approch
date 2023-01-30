@@ -1,3 +1,8 @@
+import { filter } from "rxjs/operators"
+import { Arena } from "../models/arena"
+import { Player } from "../models/player"
+import { ReagularSeasonGame } from "../models/regular-season-game"
+import { Team } from "../models/team"
 
  export const removejscssfile = (filename:any, filetype:any) =>{
     const targetelement=(filetype=="js")? "script" : (filetype=="css")? "link" : "none" //determine element type to create nodelist from
@@ -9,3 +14,6 @@
       }        
     }
  }
+
+
+ export const CLEANDATAARRAY =  filter((val:any|Arena[]|Player[]|Team[]|ReagularSeasonGame[]) => val.length >0)

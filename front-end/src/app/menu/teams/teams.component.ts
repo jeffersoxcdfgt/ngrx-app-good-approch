@@ -11,6 +11,7 @@ import { IFSPACE } from '../arenas/arenas.component';
 import { arenasGetAll } from '../arenas/store/actions/arenas.action';
 import { setTypeViewResp } from '../arenas/store/reducers/type-view.reducer';
 import { Team } from '../models/team';
+import { CLEANDATAARRAY } from '../utils/functions';
 import { teamsGetAll } from './store/actions/teams.action';
 import { sendTypeTeamView } from './store/actions/type-view-team.action';
 import { selectedTeamsWithArenas } from './store/reducers/teams.reducer';
@@ -24,9 +25,6 @@ export const FILTER_TEAM = (search:string) =>  map((team:Team[]) => {
                                     teamrow.divison.toLocaleLowerCase().includes(search.toLowerCase()) ||
                                     String(teamrow.arena).toLocaleLowerCase().includes(search.toLowerCase()))
 })
-
-export const CLEANTEAMSARENAS =  filter((val:Team[]) => val.length >0 )
-export const CLEANTEAMS =  CLEANTEAMSARENAS;
 
 @Component({
   selector: 'app-teams',
@@ -46,16 +44,16 @@ export class TeamsComponent extends UnsubscribeComponent  implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(arenasGetAll());
     this.store.dispatch(teamsGetAll());
-    this.teamsList$ = this.store.select(selectedTeamsWithArenas).pipe(CLEANTEAMSARENAS);
+    this.teamsList$ = this.store.select(selectedTeamsWithArenas).pipe(CLEANDATAARRAY);
    }
 
    searchTeam(data:string|any):void{    
-    this.teamsList$= this.store.select(selectedTeamsWithArenas).pipe(CLEANTEAMS,FILTER_TEAM(data.value));
+    this.teamsList$= this.store.select(selectedTeamsWithArenas).pipe(CLEANDATAARRAY,FILTER_TEAM(data.value));
   }
 
   resetSearch():void{
     this.searchTerm = '';
-    this.teamsList$ = this.store.select(selectedTeamsWithArenas).pipe(CLEANTEAMS);
+    this.teamsList$ = this.store.select(selectedTeamsWithArenas).pipe(CLEANDATAARRAY);
   }
 
 

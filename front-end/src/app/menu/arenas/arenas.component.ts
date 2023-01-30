@@ -8,13 +8,13 @@ import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { selectId } from 'src/app/shared/routing/id.selectors';
 import { UnsubscribeComponent } from 'src/app/shared/unsubscribe/unsubscribe.component';
 import { Arena } from '../models/arena';
+import { CLEANDATAARRAY } from '../utils/functions';
 import { arenaDeleteRow } from './arenas-view/store/actions/arenas-delete.action';
 import { arenasGetAll } from './store/actions/arenas.action';
 import { sendTypeView } from './store/actions/type-view.action';
 import { selectAllArenas } from './store/reducers/arenas.reducer';
 import { setTypeViewResp } from './store/reducers/type-view.reducer';
 
-export const CLEANARRAY =  filter((val:any|Arena[]) => val.length >0)
 export const IFSPACE =  map((val:string) => val === '' ? 'Grid': val)
 
 export const FILTER_ARENA = (search:string) =>  map((arena:Arena[]) => {
@@ -32,8 +32,8 @@ export const SORT_BY_TITLE_DESC = map((arenas:Arena[])=>arenas.slice().sort((a:A
 //array?.sort((a, b) => (a.name > b.name ? 1 : 1))
 export const SORT_BY_TITLE_ASC = map((arenas:Arena[])=>arenas.slice().sort((a:Arena,b:Arena) =>(a.arenaTitle > b.arenaTitle ? 1 : 1)))
 
-export const SET_SORT_BY_DESC = mergeMap((streamValue) => of(streamValue).pipe(CLEANARRAY,SORT_BY_TITLE_DESC))
-export const SET_SORT_BY_ASC = mergeMap((streamValue) => of(streamValue).pipe(CLEANARRAY,SORT_BY_TITLE_ASC))
+export const SET_SORT_BY_DESC = mergeMap((streamValue) => of(streamValue).pipe(CLEANDATAARRAY,SORT_BY_TITLE_DESC))
+export const SET_SORT_BY_ASC = mergeMap((streamValue) => of(streamValue).pipe(CLEANDATAARRAY,SORT_BY_TITLE_ASC))
 
 @Component({
   selector: 'app-arenas',
@@ -57,16 +57,16 @@ export class ArenasComponent extends UnsubscribeComponent implements OnInit {
 
   ngOnInit(): void { 
     this.store.dispatch(arenasGetAll());
-    this.arenasList$ = this.store.select(selectAllArenas).pipe(CLEANARRAY);
+    this.arenasList$ = this.store.select(selectAllArenas).pipe(CLEANDATAARRAY);
   }
 
   searchArena(data:string|any):void{    
-    this.arenasList$= this.store.select(selectAllArenas).pipe(CLEANARRAY,FILTER_ARENA(data.value));
+    this.arenasList$= this.store.select(selectAllArenas).pipe(CLEANDATAARRAY,FILTER_ARENA(data.value));
   }
 
   resetSearch():void{
     this.searchTerm = '';
-    this.arenasList$ = this.store.select(selectAllArenas).pipe(CLEANARRAY);
+    this.arenasList$ = this.store.select(selectAllArenas).pipe(CLEANDATAARRAY);
   }
 
   switchTableCard():void{

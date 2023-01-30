@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
-import { filter } from 'rxjs';
 import { ReagularSeasonGame } from '../models/regular-season-game';
 import { regularseasongamesGetAll } from './store/actions/regular-season-games.action';
 import { selectAllRegularSeasonGames } from './store/reducers/regular-season-games.reducer';
-import { map, takeUntil } from 'rxjs/operators'
+import { map } from 'rxjs/operators'
 import { MatDialog } from '@angular/material/dialog';
 import { UnsubscribeComponent } from 'src/app/shared/unsubscribe/unsubscribe.component';
 import { InfoDialogComponent } from 'src/app/shared/components/info-dialog/info-dialog.component';
+import { CLEANDATAARRAY } from '../utils/functions';
 
-export const CLEANARRAY =  filter((val:ReagularSeasonGame[]) => val.length >0)
 export const FILTER_REGULAR_SEASON_GAMES = (search:string) =>  map((regulargames:ReagularSeasonGame[]) => {
   return regulargames.filter((regularseason:ReagularSeasonGame)=> regularseason.gamedate.toLocaleLowerCase().includes(search.toLowerCase()) || 
                                     regularseason.teamhome.toLocaleLowerCase().includes(search.toLowerCase()) ||     
@@ -41,7 +40,7 @@ export class RegularSeasonGamesComponent extends UnsubscribeComponent implements
 
   ngOnInit(): void {
     this.store.dispatch(regularseasongamesGetAll());
-    this.regularseasongamesList$ = this.store.select(selectAllRegularSeasonGames).pipe(CLEANARRAY);
+    this.regularseasongamesList$ = this.store.select(selectAllRegularSeasonGames).pipe(CLEANDATAARRAY);
   }
 
   modelChangeFn(id:number|any):void{    
@@ -80,12 +79,12 @@ export class RegularSeasonGamesComponent extends UnsubscribeComponent implements
 
 
   searchRegularSeasonGames(data:string|any):void{    
-    this.regularseasongamesList$= this.store.select(selectAllRegularSeasonGames).pipe(CLEANARRAY,FILTER_REGULAR_SEASON_GAMES(data.value));
+    this.regularseasongamesList$= this.store.select(selectAllRegularSeasonGames).pipe(CLEANDATAARRAY,FILTER_REGULAR_SEASON_GAMES(data.value));
   }
 
   resetSearch():void{
     this.searchTerm = '';
-    this.regularseasongamesList$ = this.store.select(selectAllRegularSeasonGames).pipe(CLEANARRAY);
+    this.regularseasongamesList$ = this.store.select(selectAllRegularSeasonGames).pipe(CLEANDATAARRAY);
   }
 
   infoDialog():void{

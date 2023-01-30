@@ -4,8 +4,7 @@ import { Observable } from 'rxjs';
 import { Player } from '../models/player';
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { playersGetAll } from './store/actions/players.action';
-import { selectAllPlayers, selectedPlayersWithTeams } from './store/reducers/players.reducer';
-import { filter } from 'rxjs';
+import {  selectedPlayersWithTeams } from './store/reducers/players.reducer';
 import { teamsGetAll } from '../teams/store/actions/teams.action';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
@@ -16,6 +15,7 @@ import { DialogTableCardComponent } from 'src/app/shared/components/dialog-table
 import { setTypeViewPlayerResp } from './store/reducers/type-view-player.reducer';
 import { IFSPACE } from '../arenas/arenas.component';
 import { sendTypePlayerView } from './store/actions/type-view-player.action';
+import { CLEANDATAARRAY } from '../utils/functions';
 
 
 export const FILTER_PLAYER = (search:string) =>  map((player:Player[]) => {
@@ -32,8 +32,6 @@ export const FILTER_PLAYER = (search:string) =>  map((player:Player[]) => {
                                     playerrow.number.toLocaleLowerCase().includes(search.toLowerCase()))
 
 })
-
-export const CLEANARRAY =  filter((val:Player[]) => val.length >0)
 
 @Component({
   selector: 'app-players',
@@ -53,7 +51,7 @@ export class PlayersComponent extends UnsubscribeComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(playersGetAll());
     this.store.dispatch(teamsGetAll());
-    this.playersList$ = this.store.select(selectedPlayersWithTeams).pipe(CLEANARRAY);
+    this.playersList$ = this.store.select(selectedPlayersWithTeams).pipe(CLEANDATAARRAY);
   }
 
   delete(id:number|string|undefined):void{
@@ -96,12 +94,12 @@ export class PlayersComponent extends UnsubscribeComponent implements OnInit {
   }
 
   searchPlayer(data:string|any):void{    
-    this.playersList$= this.store.select(selectedPlayersWithTeams).pipe(CLEANARRAY,FILTER_PLAYER(data.value));
+    this.playersList$= this.store.select(selectedPlayersWithTeams).pipe(CLEANDATAARRAY,FILTER_PLAYER(data.value));
   }
 
   resetSearch():void{
     this.searchTerm = '';
-    this.playersList$ = this.store.select(selectedPlayersWithTeams).pipe(CLEANARRAY);
+    this.playersList$ = this.store.select(selectedPlayersWithTeams).pipe(CLEANDATAARRAY);
   }
 
 }
