@@ -74,7 +74,7 @@ export class TestAreaTinymceComponent extends UnsubscribeComponent implements On
     if(!!changes['data']?.currentValue){
       this.data = changes['data'].currentValue
        this.formTiny.get('tinycontrol')?.setValue(this.data)
-       this.ngcontrol.valueAccessor?.writeValue(changes['data'].currentValue)
+       this.ngcontrol?.valueAccessor?.writeValue(changes['data'].currentValue)
     }
   }
 
