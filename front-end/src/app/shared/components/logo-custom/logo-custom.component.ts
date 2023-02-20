@@ -53,21 +53,15 @@ export class LogoCustomComponent implements ControlValueAccessor, OnChanges  {
 
   // Dragover listener
   @HostListener('dragover', ['$event']) onDragOver(evt:any): void{
-    evt.preventDefault();
-    evt.stopPropagation();
+    evt?.preventDefault();
+    evt?.stopPropagation();
   }
-
-  // Dragleave listener
-  /*@HostListener('dragover', ['$event']) onDragLeave(evt:any): void{
-      evt.preventDefault();
-      evt.stopPropagation();
-  }*/
 
   // Drop listener
    @HostListener('drop', ['$event']) ondrop(evt:any): void{
-    evt.preventDefault();
-    evt.stopPropagation();
-    this.getFileContent(evt.dataTransfer.files[0]);
+    evt?.preventDefault();
+    evt?.stopPropagation();
+    this.getFileContent(evt?.dataTransfer?.files[0]);
   }
 
   getFileContent = (datafile:any) => {
