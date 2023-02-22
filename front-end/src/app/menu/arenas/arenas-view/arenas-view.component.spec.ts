@@ -4,6 +4,7 @@ import { FormBuilder,FormGroup, FormsModule, ReactiveFormsModule } from '@angula
 import { BrowserModule, By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
+import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 import { ValidationComponent } from 'src/app/shared/components/validation/validation.component';
 import { ArenasViewComponent } from './arenas-view.component';
 
@@ -31,7 +32,8 @@ describe('ArenasViewComponent', () => {
         ArenasViewComponent,
         NoSanitizeMockPipe,
         ValidationComponent,
-        arenaValidationHostComponent
+        arenaValidationHostComponent,
+        FooterComponent
        ],
       imports:[
         StoreModule.forRoot({}),

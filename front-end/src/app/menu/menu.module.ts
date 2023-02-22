@@ -3,7 +3,7 @@ import { menuRoutedComponents , MenuRoutingModule} from './menu-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { TraceService } from '../shared/utils/traceService';
 import { FormsModule } from '@angular/forms';
-import { StoreModule } from '@ngrx/store';
+import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import * as getTokenReducers from'../login/store/reducers/login.reducers';
@@ -88,6 +88,18 @@ import { RegularSeasonGamesEffects } from './regular-season-games/store/effects/
 import { ReagularSeasonService } from './regular-season-games/store/services/regular-seasion-games.service';
 import { ArenasPrintComponent } from './arenas/arenas-print/arenas-print.component';
 
+// console.log all actions
+export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
+  return function(state, action) {
+    console.log('state', state);
+    console.log('action', action);
+ 
+    return reducer(state, action);
+  };
+}
+
+export const metaReducers: MetaReducer<any>[] = [debug];
+
 
 @NgModule({
   imports: [
@@ -97,7 +109,7 @@ import { ArenasPrintComponent } from './arenas/arenas-print/arenas-print.compone
     CommonModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forFeature(AppInMemoryApi),
-    StoreModule.forFeature('tokendata',getTokenReducers.reducer),
+    StoreModule.forFeature('tokendata',getTokenReducers.reducer,{ metaReducers }),
     StoreModule.forFeature(arenasFeature),
     StoreModule.forFeature(arenabyidFeature),
     StoreModule.forFeature(arenaAddEditFeature),

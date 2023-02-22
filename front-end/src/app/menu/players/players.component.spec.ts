@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { of } from 'rxjs';
+import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 import { MATERIAL_MODULES } from 'src/app/shared/shared.module';
 import { PlayersComponent } from './players.component';
 
@@ -21,7 +22,7 @@ describe('PlayersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlayersComponent ],
+      declarations: [ PlayersComponent , FooterComponent],
       imports:[
         StoreModule.forRoot({}),
         RouterTestingModule,

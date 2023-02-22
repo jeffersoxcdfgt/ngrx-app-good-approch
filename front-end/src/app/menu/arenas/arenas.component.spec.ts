@@ -11,6 +11,7 @@ import { TypeViewService } from './store/services/type-view.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { of } from 'rxjs';
 import { Arena } from '../models/arena';
+import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 
 const MatDialogMock = {
   open() {
@@ -38,7 +39,8 @@ describe('ArenasComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ 
         ArenasComponent,
-        NoSanitizeMockPipe
+        NoSanitizeMockPipe,
+        FooterComponent
        ],
       imports:[
         HttpClientTestingModule,

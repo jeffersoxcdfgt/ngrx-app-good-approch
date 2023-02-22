@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { of } from 'rxjs';
+import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 import { TeamsService } from './store/services/teams.service';
 import { TypeViewTeamService } from './store/services/type-view-team.service';
 import { TeamsComponent } from './teams.component';
@@ -33,7 +34,8 @@ describe('TeamsComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ 
         TeamsComponent ,
-        NoSanitizeMockPipe
+        NoSanitizeMockPipe,
+        FooterComponent
       ],
       imports:[
         StoreModule.forRoot({}),

@@ -6,6 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { TeamsViewComponent } from './teams-view.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { LogoCustomComponent } from 'src/app/shared/components/logo-custom/logo-custom.component';
+import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 
 interface DataLoad {
   id: string;
@@ -40,6 +41,7 @@ describe('TeamsViewComponent', () => {
         NoSanitizeMockPipe,
         LogoCustomComponent,
         logoHostComponent,
+        FooterComponent
       ],
       imports:[
         StoreModule.forRoot({}),

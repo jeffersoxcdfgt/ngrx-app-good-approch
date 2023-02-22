@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
+import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 import { InputCustomDatetimeComponent } from 'src/app/shared/components/input-custom-datetime/input-custom-datetime.component';
 import { InputCustomComponent } from 'src/app/shared/components/input-custom/input-custom.component';
 import { MATERIAL_MODULES } from 'src/app/shared/shared.module';
@@ -26,6 +27,7 @@ describe('PlayersViewComponent', () => {
         InputCustomDatetimeComponent,
         InputCustomComponent,
         InputCustomHostComponent,
+        FooterComponent
       ],
       imports:[
         StoreModule.forRoot({}),
