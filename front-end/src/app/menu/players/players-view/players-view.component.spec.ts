@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { InputCustomDatetimeComponent } from 'src/app/shared/components/input-custom-datetime/input-custom-datetime.component';
 import { InputCustomComponent } from 'src/app/shared/components/input-custom/input-custom.component';
+import { MATERIAL_MODULES } from 'src/app/shared/shared.module';
 import { PlayersViewComponent } from './players-view.component';
 
 describe('PlayersViewComponent', () => {
@@ -29,8 +30,10 @@ describe('PlayersViewComponent', () => {
       imports:[
         StoreModule.forRoot({}),
         ReactiveFormsModule,
-        FormsModule
-      ]
+        FormsModule,
+        MATERIAL_MODULES
+      ],
+      schemas:[NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
 
