@@ -4,7 +4,7 @@ import { BrowserModule, By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { TeamsViewComponent } from './teams-view.component';
-import { Component, Pipe, PipeTransform } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { LogoCustomComponent } from 'src/app/shared/components/logo-custom/logo-custom.component';
 
 interface DataLoad {
@@ -47,7 +47,8 @@ describe('TeamsViewComponent', () => {
         BrowserModule,
         ReactiveFormsModule,
         FormsModule
-      ]
+      ],
+      schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 

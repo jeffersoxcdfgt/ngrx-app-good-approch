@@ -1,4 +1,8 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { InputCustomDatetimeComponent } from './input-custom-datetime.component';
 
@@ -8,7 +12,14 @@ describe('InputCustomDatetimeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InputCustomDatetimeComponent ]
+      declarations: [ InputCustomDatetimeComponent ],
+      imports:[
+        MatMomentDateModule,
+        MatDatepickerModule,        // <----- import(must)
+        MatNativeDateModule,        // <----- import for date formating(optional)
+        MatMomentDateModule         // <----- import for date formating adapted to more locales(optional)
+      ],
+      schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
     })
     .compileComponents();
 

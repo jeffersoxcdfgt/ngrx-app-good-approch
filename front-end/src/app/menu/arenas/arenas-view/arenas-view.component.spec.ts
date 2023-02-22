@@ -1,4 +1,4 @@
-import { Component, DebugElement, Pipe, PipeTransform } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement, NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder,FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, By } from '@angular/platform-browser';
@@ -40,6 +40,7 @@ describe('ArenasViewComponent', () => {
         ReactiveFormsModule,
         FormsModule
       ],
+      schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
       providers:[]
     })
     .compileComponents();
