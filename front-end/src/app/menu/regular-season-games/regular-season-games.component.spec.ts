@@ -3,7 +3,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
 import { of } from 'rxjs';
+import { MockData } from 'src/app/mock-testing/mock';
 import { DetailReagularSeasonGame, ReagularSeasonGame } from '../models/regular-season-game';
 import { FILTER_REGULAR_SEASON_GAMES, RegularSeasonGamesComponent } from './regular-season-games.component';
 
@@ -23,11 +25,13 @@ describe('RegularSeasonGamesComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ RegularSeasonGamesComponent ],
       imports:[
-        StoreModule.forRoot({}),
         RouterTestingModule,
       ],
       providers: [
         { provide: MatDialog, useValue: MatDialogMock },
+        provideMockStore({
+          initialState:MockData
+        })
       ],
       schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA]
     })

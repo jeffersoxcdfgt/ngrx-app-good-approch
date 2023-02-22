@@ -1,6 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StoreModule } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
+import { MockData } from 'src/app/mock-testing/mock';
 
 import { ArenasPrintComponent } from './arenas-print.component';
 
@@ -11,10 +13,12 @@ describe('ArenasPrintComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ArenasPrintComponent ],
-      imports:[
-        StoreModule.forRoot({}),
-      ],
-      schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA]
+      schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
+      providers:[
+        provideMockStore({
+          initialState:MockData
+        })
+      ]
     })
     .compileComponents();
 

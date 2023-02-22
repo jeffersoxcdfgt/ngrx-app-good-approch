@@ -3,7 +3,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
 import { of } from 'rxjs';
+import { MockData } from 'src/app/mock-testing/mock';
 import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 import { TeamsService } from './store/services/teams.service';
 import { TypeViewTeamService } from './store/services/type-view-team.service';
@@ -38,13 +40,15 @@ describe('TeamsComponent', () => {
         FooterComponent
       ],
       imports:[
-        StoreModule.forRoot({}),
         RouterTestingModule,
       ],
       providers: [
         { provide: MatDialog, useValue: MatDialogMock },
         TeamsService,
-        TypeViewTeamService
+        TypeViewTeamService,
+        provideMockStore({
+          initialState:MockData
+        })
       ],
       schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA]
     })

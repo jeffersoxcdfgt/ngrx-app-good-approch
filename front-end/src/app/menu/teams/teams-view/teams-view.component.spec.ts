@@ -7,6 +7,8 @@ import { TeamsViewComponent } from './teams-view.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { LogoCustomComponent } from 'src/app/shared/components/logo-custom/logo-custom.component';
 import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
+import { provideMockStore } from '@ngrx/store/testing';
+import { MockData } from 'src/app/mock-testing/mock';
 
 interface DataLoad {
   id: string;
@@ -44,13 +46,18 @@ describe('TeamsViewComponent', () => {
         FooterComponent
       ],
       imports:[
-        StoreModule.forRoot({}),
         RouterTestingModule,
         BrowserModule,
         ReactiveFormsModule,
         FormsModule
       ],
-      schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA]
+      schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
+      providers:[
+        provideMockStore({
+          initialState:MockData
+        })
+      ]
+
     })
     .compileComponents();
 

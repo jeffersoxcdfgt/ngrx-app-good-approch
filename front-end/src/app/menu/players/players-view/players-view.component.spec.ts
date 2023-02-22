@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
+import { MockData } from 'src/app/mock-testing/mock';
 import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 import { InputCustomDatetimeComponent } from 'src/app/shared/components/input-custom-datetime/input-custom-datetime.component';
 import { InputCustomComponent } from 'src/app/shared/components/input-custom/input-custom.component';
@@ -30,12 +32,16 @@ describe('PlayersViewComponent', () => {
         FooterComponent
       ],
       imports:[
-        StoreModule.forRoot({}),
         ReactiveFormsModule,
         FormsModule,
         MATERIAL_MODULES
       ],
-      schemas:[NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA]
+      schemas:[NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA],
+      providers:[
+        provideMockStore({
+          initialState:MockData
+        })
+      ]
     })
     .compileComponents();
 

@@ -7,6 +7,8 @@ import { LoginComponent } from './login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FooterComponent } from '../shared/components/footer/footer.component';
+import { provideMockStore } from '@ngrx/store/testing';
+import { MockData } from '../mock-testing/mock';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -20,12 +22,16 @@ describe('LoginComponent', () => {
          FooterComponent
         ],
         imports:[
-          StoreModule.forRoot({}),
           RouterTestingModule,
           FormsModule,
           ReactiveFormsModule
         ],
-        schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA]
+        schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
+        providers:[
+          provideMockStore({
+            initialState:MockData
+          })
+        ]
     })
     .compileComponents();
 

@@ -4,6 +4,8 @@ import { FormBuilder,FormGroup, FormsModule, ReactiveFormsModule } from '@angula
 import { BrowserModule, By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
+import { MockData } from 'src/app/mock-testing/mock';
 import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 import { ValidationComponent } from 'src/app/shared/components/validation/validation.component';
 import { ArenasViewComponent } from './arenas-view.component';
@@ -36,14 +38,17 @@ describe('ArenasViewComponent', () => {
         FooterComponent
        ],
       imports:[
-        StoreModule.forRoot({}),
         RouterTestingModule,
         BrowserModule,
         ReactiveFormsModule,
         FormsModule
       ],
       schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
-      providers:[]
+      providers:[
+        provideMockStore({
+          initialState:MockData
+        })
+      ]
     })
     .compileComponents();
 

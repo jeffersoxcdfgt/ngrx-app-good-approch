@@ -12,6 +12,8 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@
 import { of } from 'rxjs';
 import { Arena } from '../models/arena';
 import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
+import { provideMockStore } from '@ngrx/store/testing';
+import { MockData } from 'src/app/mock-testing/mock';
 
 const MatDialogMock = {
   open() {
@@ -44,14 +46,16 @@ describe('ArenasComponent', () => {
        ],
       imports:[
         HttpClientTestingModule,
-        StoreModule.forRoot({}),
         RouterTestingModule,
         //MATERIAL_MODULES
       ],
       providers: [
         { provide: MatDialog, useValue: MatDialogMock },
         ArenasService,
-        TypeViewService
+        TypeViewService,
+        provideMockStore({
+          initialState:MockData
+        })
       ],
       schemas:[CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
     })
