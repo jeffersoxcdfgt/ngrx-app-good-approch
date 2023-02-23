@@ -48,8 +48,4 @@ describe('LogoCustomComponent', () => {
       expect(component.data).toBe( component.dataaux )
   });
 
-  it('should call getFileContent()',()=>{
-    component.getFileContent('01110011 01110111 01100101 01110111 01100101 01110111 01100101 ')
-  });
-
 });

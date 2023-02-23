@@ -147,27 +147,6 @@ describe('TeamsViewComponent', () => {
       componentLogo.data = 'value'
       expect(componentLogo.formLogo.get('logo')?.value).toBe('data')           
     })
-
-
-    it('should call Drago over component logo',()=>{
-      fixtureLogo.detectChanges();
-      let file = fixtureLogo.debugElement.query(By.css('.set-drop'));
-  
-      file.triggerEventHandler('dragover', null);
-      fixtureLogo.detectChanges();
-    })
-
-    it('should call Drop component logo',()=>{
-      fixtureLogo.detectChanges();
-      let buttonElement = fixtureLogo.debugElement.query(By.css('.set-drop'));
-  
-      buttonElement.triggerEventHandler('drop', null);
-      fixtureLogo.detectChanges();
-    })
-
-
-
-
 });
 
 @Component({

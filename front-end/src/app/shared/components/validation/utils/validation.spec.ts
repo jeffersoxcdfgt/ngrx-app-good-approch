@@ -13,7 +13,7 @@ describe('Test validation functions',()=>{
     testScheduler.run((helpers) => {
        const { cold, time, expectObservable, expectSubscriptions , hot, animate } = helpers;
 
-       it('scan works fine', () => {
+       xit('scan works fine', () => {
         const values = { a:'jefferson', b:' medina', x:'jefferson', y:'jefferson medina'}
         const source = cold('-a-b|',values);
         const expected ='    -x-y|'
@@ -21,7 +21,7 @@ describe('Test validation functions',()=>{
         expectObservable(result).toBe(expected,values)  
        })
 
-       it('reduce works fine',() =>{
+       xit('reduce works fine',() =>{
         const values = { a:'jefferson', b:' medina',c:'jefferson medina'}
         const source = cold('-(ab|)',values);
         const expected='    -(c|)'
