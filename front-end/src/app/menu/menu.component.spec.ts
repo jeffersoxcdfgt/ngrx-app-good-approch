@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { provideMockStore } from '@ngrx/store/testing';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { MockData } from '../mock-testing/mock';
 import { MATERIAL_MODULES } from '../shared/shared.module';
 import { MenuComponent } from './menu.component';
@@ -21,6 +21,7 @@ class NullObjectToConvertMockPipe implements PipeTransform  {
 describe('MenuComponent', () => {
   let component: MenuComponent;
   let fixture: ComponentFixture<MenuComponent>;
+  let store:MockStore;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -44,6 +45,7 @@ describe('MenuComponent', () => {
     .compileComponents();
 
     fixture = TestBed.createComponent(MenuComponent);
+    store = TestBed.inject(MockStore)
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -57,6 +59,12 @@ describe('MenuComponent', () => {
     const spy = spyOn(router,'navigate');
     component.navTo('menu/home')
     expect(spy).toHaveBeenCalledWith(['/menu/home'])
+  });
+
+  it('should call logout', () => {
+    const spy1 = spyOn(store,'dispatch').and.callThrough();
+    component.logout();
+    expect(spy1).toHaveBeenCalled();        
   });
 
 });

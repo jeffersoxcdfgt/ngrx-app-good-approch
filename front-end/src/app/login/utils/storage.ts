@@ -1,5 +1,3 @@
-import { ResponseLogin } from "../model/login";
-
 export const getThisState = (stateName:any, key?:string) => {
     try{     
         const serializedState = localStorage.getItem(stateName);

@@ -7,12 +7,13 @@ import { LoginComponent } from './login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FooterComponent } from '../shared/components/footer/footer.component';
-import { provideMockStore } from '@ngrx/store/testing';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { MockData } from '../mock-testing/mock';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let store:MockStore;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -36,11 +37,18 @@ describe('LoginComponent', () => {
     .compileComponents();
 
     fixture = TestBed.createComponent(LoginComponent);
+    store = TestBed.inject(MockStore)
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call login and dispatch', () => {
+    const spy1 = spyOn(store,'dispatch').and.callThrough();
+    component.login();
+    expect(spy1).toHaveBeenCalled();    
   });
 });
