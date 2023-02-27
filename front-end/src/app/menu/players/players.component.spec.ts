@@ -1,8 +1,12 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
 import { of } from 'rxjs';
+import { MockData } from 'src/app/mock-testing/mock';
+import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 import { MATERIAL_MODULES } from 'src/app/shared/shared.module';
 import { PlayersComponent } from './players.component';
 
@@ -20,16 +24,19 @@ describe('PlayersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlayersComponent ],
+      declarations: [ PlayersComponent , FooterComponent],
       imports:[
-        StoreModule.forRoot({}),
         RouterTestingModule,
         MATERIAL_MODULES
       ],
       providers: [
         { provide: MatDialog, useValue: MatDialogMock },
-        { provide: MatDialogRef, useValue: {} }
-      ]
+        { provide: MatDialogRef, useValue: {} },
+        provideMockStore({
+          initialState:MockData
+        })
+      ],
+      schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 

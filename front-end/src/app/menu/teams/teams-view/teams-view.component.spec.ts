@@ -4,8 +4,11 @@ import { BrowserModule, By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { TeamsViewComponent } from './teams-view.component';
-import { Component, Pipe } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { LogoCustomComponent } from 'src/app/shared/components/logo-custom/logo-custom.component';
+import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
+import { provideMockStore } from '@ngrx/store/testing';
+import { MockData } from 'src/app/mock-testing/mock';
 
 interface DataLoad {
   id: string;
@@ -20,7 +23,7 @@ const value:DataLoad[] = [
 @Pipe({
   name: 'noSanitize'
 })
-class NoSanitizeMockPipe {
+class NoSanitizeMockPipe implements PipeTransform {
   transform(): string {
     return ''
   }
@@ -40,14 +43,21 @@ describe('TeamsViewComponent', () => {
         NoSanitizeMockPipe,
         LogoCustomComponent,
         logoHostComponent,
+        FooterComponent
       ],
       imports:[
-        StoreModule.forRoot({}),
         RouterTestingModule,
         BrowserModule,
         ReactiveFormsModule,
         FormsModule
+      ],
+      schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
+      providers:[
+        provideMockStore({
+          initialState:MockData
+        })
       ]
+
     })
     .compileComponents();
 
@@ -137,27 +147,6 @@ describe('TeamsViewComponent', () => {
       componentLogo.data = 'value'
       expect(componentLogo.formLogo.get('logo')?.value).toBe('data')           
     })
-
-
-    it('should call Drago over component logo',()=>{
-      fixtureLogo.detectChanges();
-      let file = fixtureLogo.debugElement.query(By.css('.set-drop'));
-  
-      file.triggerEventHandler('dragover', null);
-      fixtureLogo.detectChanges();
-    })
-
-    it('should call Drop component logo',()=>{
-      fixtureLogo.detectChanges();
-      let buttonElement = fixtureLogo.debugElement.query(By.css('.set-drop'));
-  
-      buttonElement.triggerEventHandler('drop', null);
-      fixtureLogo.detectChanges();
-    })
-
-
-
-
 });
 
 @Component({

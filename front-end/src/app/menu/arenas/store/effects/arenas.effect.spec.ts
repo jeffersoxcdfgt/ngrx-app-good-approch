@@ -46,11 +46,10 @@ describe('ArenasEffects',()=>{
 
     it('should correctly call ArenaEffects', () => {
         const scheduler = new TestScheduler((actual, expected) => {
-          expect(actual).toEqual(expected)
+          expect(actual).toEqual(expected);
         })
       
-        scheduler.run((helpers) => {
-        const { cold, hot, expectObservable, expectSubscriptions, flush, time, animate } = helpers;
+        scheduler.run(() => {        
             actions$ = of({ type: ArenasActionTypes.GET_ARENAS_SUCCESS });
             // mock the service to prevent an HTTP request
             const arenaServiceSpy = TestBed.inject(ArenasService);
@@ -62,7 +61,8 @@ describe('ArenasEffects',()=>{
             expect(action).toEqual({
                 type: ArenasActionTypes.GET_ARENAS_SUCCESS,
                 arenas: list,
-            });
+            });  
+       
         });
     })
   })

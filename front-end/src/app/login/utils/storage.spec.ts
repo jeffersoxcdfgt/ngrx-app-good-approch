@@ -1,4 +1,4 @@
-import { getThisState } from "./storage";
+import { getThisState, getItem } from "./storage";
 
 describe('test storage functions',()=>{
      it('getThisState key value',()=>{
@@ -43,5 +43,11 @@ describe('test storage functions',()=>{
          expect(result).toBe(undefined)
      }) 
 
+     it('getItem return one just one element',()=>{
+         const jsonstr = '{"name":"John", "age":30, "car":null}';
+         spyOn(localStorage,'getItem').and.returnValue(jsonstr);
+         const result = getItem(jsonstr,'name');
+         expect(result).toBe('John');
+     }) 
 
 })

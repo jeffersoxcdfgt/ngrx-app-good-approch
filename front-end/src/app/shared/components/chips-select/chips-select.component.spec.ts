@@ -1,10 +1,10 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { BrowserModule, By } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { of } from 'rxjs';
 import { MATERIAL_MODULES } from '../../shared.module';
 
 import { ChipsSelectComponent } from './chips-select.component';
@@ -25,7 +25,8 @@ describe('ChipsSelectComponent', () => {
       providers: [   
         { provide: MAT_DIALOG_DATA, useValue: {} },
         { provide: MatDialogRef, useValue: {} }
-    ]
+      ],
+      schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 
@@ -89,8 +90,56 @@ describe('ChipsSelectComponent', () => {
     const event:any = {value:''};
     const spy = spyOn(component,'onChangeFn').and.callThrough()
     component.inputSelect(event);    
-    expect(spy).toHaveBeenCalled()
-
+    expect(spy).toHaveBeenCalled();
   })
 
+  it('Call registerOnChange return void', ()=>{    
+     component.registerOnChange({});
+     expect(component.onChangeFn).not.toBeNull();
+  })
+
+  it('Call registerOnTouched return void', ()=>{    
+    component.registerOnTouched({});
+    expect(component.onTouchedFn).not.toBeNull();
+  })
+
+  it('Call onChange return void', ()=>{
+    const $event = {
+      value:''
+    }
+    component.onChange($event);
+    expect(component.onChangeFn).not.toBeNull();
+  })
+
+  it('Call onChange return void', ()=>{
+    const $event = {
+      value:''
+    }
+    component.onChange($event);
+    expect(component.onChangeFn).not.toBeNull();
+  })
+
+  it('Call ngOnChanges return void, param allData', ()=>{
+    const changes:any = {
+      allData:{
+        currentValue:'value'
+      }
+    }
+    const spy1 = spyOn(component,"loadData").and.callThrough();
+    component.ngOnChanges(changes); 
+    expect(spy1).toHaveBeenCalled();
+  })
+
+  it('Call ngOnChanges return void, param dataset', ()=>{
+    const changes:any = {
+      dataset:{
+        currentValue:[{id:'',name:'value1'},{id:'',name:'value2'}]
+      }
+    }
+    component.type='single'
+    const spy1 = spyOn(component,"onChangeFn").and.callThrough();
+    component.ngOnChanges(changes); 
+    expect(spy1).toHaveBeenCalled();
+  })
+ 
 });

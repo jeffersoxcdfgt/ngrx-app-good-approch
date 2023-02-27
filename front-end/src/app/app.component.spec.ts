@@ -2,6 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+import { MockData } from './mock-testing/mock';
 
 
 describe('AppComponent', () => {
@@ -11,8 +13,12 @@ describe('AppComponent', () => {
         AppComponent
       ],
       imports:[
-        StoreModule.forRoot({}),
         RouterTestingModule   ,
+      ],
+      providers:[
+        provideMockStore({
+          initialState:MockData
+        })
       ]
     }).compileComponents();
   });

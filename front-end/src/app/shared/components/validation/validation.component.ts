@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit, Optional, Self, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, Optional, Self, SimpleChanges, OnChanges } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { of } from 'rxjs';
 import { startWith, tap } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { cleanBlank, ifEmpty, onlyNumber, validateEmail } from './utils/validati
   templateUrl: './validation.component.html',
   styleUrls: ['./validation.component.scss']
 })
-export class ValidationComponent implements OnInit {
+export class ValidationComponent implements OnChanges {
 
   @Input() requiredfield = false;
   @Input() messagerequired: string = 'Field is required.';
@@ -31,9 +31,6 @@ export class ValidationComponent implements OnInit {
     if(this.ngcontrol){
       this.ngcontrol.valueAccessor = this
     }
-  }
-
-  ngOnInit(): void {
   }
 
   /**

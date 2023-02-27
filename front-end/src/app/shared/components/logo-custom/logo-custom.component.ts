@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, HostListener, Input, OnChanges, OnInit, Optional, Self, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, Input, OnChanges, Optional, Self, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
   templateUrl: './logo-custom.component.html',
   styleUrls: ['./logo-custom.component.scss']
 })
-export class LogoCustomComponent implements OnInit,  ControlValueAccessor, OnChanges  {
+export class LogoCustomComponent implements ControlValueAccessor, OnChanges  {
 
   dataInputCtrl: FormControl =  new FormControl();  
   @Input() data: string | undefined = '';
@@ -18,9 +18,6 @@ export class LogoCustomComponent implements OnInit,  ControlValueAccessor, OnCha
       this.ngcontrol.valueAccessor = this
     }
    // this.ngcontrol && (this.ngcontrol.valueAccessor = this);
-  }
-
-  ngOnInit(): void {
   }
 
   /**
@@ -56,21 +53,15 @@ export class LogoCustomComponent implements OnInit,  ControlValueAccessor, OnCha
 
   // Dragover listener
   @HostListener('dragover', ['$event']) onDragOver(evt:any): void{
-    evt.preventDefault();
-    evt.stopPropagation();
+    evt?.preventDefault();
+    evt?.stopPropagation();
   }
-
-  // Dragleave listener
-  /*@HostListener('dragover', ['$event']) onDragLeave(evt:any): void{
-      evt.preventDefault();
-      evt.stopPropagation();
-  }*/
 
   // Drop listener
    @HostListener('drop', ['$event']) ondrop(evt:any): void{
-    evt.preventDefault();
-    evt.stopPropagation();
-    this.getFileContent(evt.dataTransfer.files[0]);
+    evt?.preventDefault();
+    evt?.stopPropagation();
+    this.getFileContent(evt?.dataTransfer?.files[0]);
   }
 
   getFileContent = (datafile:any) => {

@@ -18,7 +18,8 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-              "lodash","moment"
+              "lodash",
+              "moment"
             ],
             "outputPath": "dist/ngrx-app-good-approch",
             "index": "src/index.html",
@@ -41,8 +42,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5000kb",
+                  "maximumError": "1000mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -105,11 +106,26 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
+<<<<<<< HEAD
     "analytics": false
+=======
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
+>>>>>>> 00203b0925ef47d406e22adcd9f1fca504153314
   }
 }

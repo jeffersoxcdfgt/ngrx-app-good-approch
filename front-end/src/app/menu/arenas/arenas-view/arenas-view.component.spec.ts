@@ -1,16 +1,19 @@
-import { Component, DebugElement, Pipe } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement, NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder,FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
+import { MockData } from 'src/app/mock-testing/mock';
+import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 import { ValidationComponent } from 'src/app/shared/components/validation/validation.component';
 import { ArenasViewComponent } from './arenas-view.component';
 
 @Pipe({
   name: 'noSanitize'
 })
-class NoSanitizeMockPipe {
+class NoSanitizeMockPipe  implements PipeTransform{
   transform(): string {
     return ''
   }
@@ -31,16 +34,21 @@ describe('ArenasViewComponent', () => {
         ArenasViewComponent,
         NoSanitizeMockPipe,
         ValidationComponent,
-        arenaValidationHostComponent
+        arenaValidationHostComponent,
+        FooterComponent
        ],
       imports:[
-        StoreModule.forRoot({}),
         RouterTestingModule,
         BrowserModule,
         ReactiveFormsModule,
         FormsModule
       ],
-      providers:[]
+      schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
+      providers:[
+        provideMockStore({
+          initialState:MockData
+        })
+      ]
     })
     .compileComponents();
 

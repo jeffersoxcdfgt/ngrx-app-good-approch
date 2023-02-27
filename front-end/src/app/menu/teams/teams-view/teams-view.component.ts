@@ -7,11 +7,11 @@ import {  filter, map, takeUntil  } from 'rxjs/operators';
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { UnsubscribeComponent } from 'src/app/shared/unsubscribe/unsubscribe.component';
 import { CLEAN_NULL } from '../../arenas/arenas-view/arenas-view.component';
-import { CLEANARRAY } from '../../arenas/arenas.component';
 import { arenasGetAll } from '../../arenas/store/actions/arenas.action';
 import { selectAllArenas } from '../../arenas/store/reducers/arenas.reducer';
 import { Arena } from '../../models/arena';
 import { Team } from '../../models/team';
+import { CLEANDATAARRAY } from '../../utils/functions';
 import { teamAddRow, teamUpdateRow } from './store/actions/teams-add-edit.action';
 import { teamGetById } from './store/actions/teams-id.action';
 import { addEditResultTeam, errorAddEditTeam } from './store/reducers/teams-add-edit.reducer';
@@ -75,7 +75,7 @@ export class TeamsViewComponent extends UnsubscribeComponent implements OnInit {
 
     //list of arenas
     this.arenaSet$ = this.store.select(selectedOneTeamsByListArenas).pipe(CLEAN_NULL,MAP_ONE_ROW,FILTER_ROW);
-    this.arenasList$ = this.store.select(selectAllArenas).pipe(CLEANARRAY,MAP_SET_ARENA);
+    this.arenasList$ = this.store.select(selectAllArenas).pipe(CLEANDATAARRAY,MAP_SET_ARENA);
     //list of arenas
 
     //Division

@@ -1,0 +1,32 @@
+	<div *ngIf="arenasList$ | async" class="body-print">
+		<h1>Arenas</h1>
+		<table class="wide text-center" >
+			<tr>
+				<td><b>Arena title</b></td>
+				<td><b>Capacity</b></td>
+				<td><b>About</b></td>
+				<td><b>Logo</b></td>
+				<td><b>Photo</b></td>
+			</tr>
+	
+			<ng-template ngFor let-arena [ngForOf]="arenasList$ | async" let-i="index">
+			<tr>
+				<td>
+					<a target="">{{ arena?.arenaTitle }}</a>
+				</td>
+				<td>{{ arena?.Capacity }}</td>
+				<td [innerHTML]="arena?.About | noSanitize"></td>
+				<td>
+					<a class="image gallery-item" data-name="logo"   href="{{ arena?.Logo }}"  title="{{ arena?.arenaTitle }}">
+						<img alt="{{ arena?.arenaTitle }}" data-image-column="true"  src="{{ arena?.Logo }}" style="width: 100px">
+					</a>
+				</td>
+				<td>
+					<a class="image gallery-item" data-name="photo" href="{{ arena?.Photo}}"  title="{{ arena?.arenaTitle }}">
+						<img alt="{{ arena?.arenaTitle }}" data-image-column="true" src="{{ arena?.Photo}}" style="width: 100px">
+					</a>
+				</td>
+			</tr>
+		</ng-template>
+		</table>
+	</div>

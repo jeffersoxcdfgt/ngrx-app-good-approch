@@ -3,7 +3,7 @@ import { menuRoutedComponents , MenuRoutingModule} from './menu-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { TraceService } from '../shared/utils/traceService';
 import { FormsModule } from '@angular/forms';
-import { StoreModule } from '@ngrx/store';
+import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import * as getTokenReducers from'../login/store/reducers/login.reducers';
@@ -86,7 +86,7 @@ import { TypeViewPlayerService } from './players/store/services/type-view-player
 import { regularseasongamesFeature } from './regular-season-games/store/reducers/regular-season-games.reducer';
 import { RegularSeasonGamesEffects } from './regular-season-games/store/effects/regular-season-games.effect';
 import { ReagularSeasonService } from './regular-season-games/store/services/regular-seasion-games.service';
-
+import { ArenasPrintComponent } from './arenas/arenas-print/arenas-print.component';
 
 @NgModule({
   imports: [
@@ -136,6 +136,7 @@ import { ReagularSeasonService } from './regular-season-games/store/services/reg
   ],
   declarations: [
     menuRoutedComponents,
+    ArenasPrintComponent
   ],
   providers: [
     TraceService,

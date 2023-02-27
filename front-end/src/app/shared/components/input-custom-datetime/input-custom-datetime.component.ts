@@ -50,7 +50,7 @@ enum DATE {
     },
 
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-  ],
+  ]
 })
 export class InputCustomDatetimeComponent  extends UnsubscribeComponent  implements OnInit, OnChanges, ControlValueAccessor {
 

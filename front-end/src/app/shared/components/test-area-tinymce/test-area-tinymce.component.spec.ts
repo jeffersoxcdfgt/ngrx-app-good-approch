@@ -1,25 +1,10 @@
-import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ControlValueAccessor, FormBuilder, FormControl, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 
-@Component({
-  selector: 'tinycontrol',
-  template: '',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: TestAreaTinymceComponent,
-      multi: true,
-    },
-  ],
-})
-class TestAreaTinymceComponent implements ControlValueAccessor {
-  writeValue(obj: any) {}
-  registerOnChange(fn: any) {}
-  registerOnTouched(fn: any) {}
-  setDisabledState(isDisabled: boolean) {}
-}
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { TestAreaTinymceComponent } from './test-area-tinymce.component';
 
 describe('TestAreaTinymceComponent', () => {
   let component: TestAreaTinymceComponent;
@@ -27,27 +12,71 @@ describe('TestAreaTinymceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         TestAreaTinymceComponent
-      
       ],
-      imports:[ 
+      imports: [
         BrowserModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        EditorModule
       ],
-  
+      schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TestAreaTinymceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  
+
+  it('should call ngOnChanges()', () => {
+    const changes: any = {
+      data: {
+        currentValue: 'value'
+      }
+    }
+    const spy = spyOn(component.formTiny, 'get').and.callThrough();
+    component.ngOnChanges(changes);
+    expect(spy).toHaveBeenCalled();
+
+  });
+
+  it('should call onBlur', () => {
+    const spy1 = spyOn(component, 'onTouchedFn').and.callThrough();
+    component.onBlur();
+    expect(spy1).toHaveBeenCalled();
+  });
+
+  it('should call onChange', () => {
+    const $event = {
+      value: {
+        trim() { }
+      }
+    }
+    const spy1 = spyOn(component, 'onChangeFn').and.callThrough();
+    component.onChange($event);
+    expect(spy1).toHaveBeenCalled();
+  })
+
+  it('should call writeValue', () => {
+    const spy1 = spyOn(component, 'onChangeFn').and.callThrough();
+    component.writeValue({});
+    expect(spy1).toHaveBeenCalled();
+  });
+
+  it('should call registerOnTouched not to be null', () => {
+    component.registerOnTouched({});
+    expect(component.onTouchedFn).not.toBeNull();
+  });
+
+  it('should call registerOnChange not to be null', () => {
+    component.registerOnChange({});
+    expect(component.onChangeFn).not.toBeNull();
+  });
+
 });

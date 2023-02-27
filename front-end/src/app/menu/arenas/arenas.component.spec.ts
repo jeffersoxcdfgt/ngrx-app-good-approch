@@ -5,12 +5,15 @@ import { StoreModule } from '@ngrx/store';
 import { MATERIAL_MODULES } from 'src/app/shared/shared.module';
 import {HttpClientTestingModule } from '@angular/common/http/testing'
 
-import { ArenasComponent , FILTER_ARENA, SORT_BY_TITLE_ASC, SORT_BY_TITLE_DESC , IFSPACE } from './arenas.component';
+import { ArenasComponent , FILTER_ARENA, SORT_BY_TITLE_ASC, SORT_BY_TITLE_DESC , IFSPACE, SET_SORT_BY_DESC, SET_SORT_BY_ASC } from './arenas.component';
 import { ArenasService } from './store/services/arenas.service';
 import { TypeViewService } from './store/services/type-view.service';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Pipe } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { of } from 'rxjs';
 import { Arena } from '../models/arena';
+import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
+import { provideMockStore } from '@ngrx/store/testing';
+import { MockData } from 'src/app/mock-testing/mock';
 
 const MatDialogMock = {
   open() {
@@ -23,7 +26,7 @@ const MatDialogMock = {
 @Pipe({
   name: 'noSanitize'
 })
-class NoSanitizeMockPipe {
+class NoSanitizeMockPipe implements PipeTransform {
   transform(): string {
     return ''
   }
@@ -38,18 +41,21 @@ describe('ArenasComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ 
         ArenasComponent,
-        NoSanitizeMockPipe
+        NoSanitizeMockPipe,
+        FooterComponent
        ],
       imports:[
         HttpClientTestingModule,
-        StoreModule.forRoot({}),
         RouterTestingModule,
         //MATERIAL_MODULES
       ],
       providers: [
         { provide: MatDialog, useValue: MatDialogMock },
         ArenasService,
-        TypeViewService
+        TypeViewService,
+        provideMockStore({
+          initialState:MockData
+        })
       ],
       schemas:[CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
     })
@@ -110,6 +116,11 @@ describe('ArenasComponent', () => {
     expect(true).toBe(true);   
   })
 
+  it('switchTableCard',()=>{
+    const spy1 = spyOn(component,"switchTableCard").and.callThrough()
+    component.switchTableCard()
+    expect(spy1).toHaveBeenCalled()
+  })
 
   it('Call resetSearch and searchTerm=""', ()=>{
     component.resetSearch()
@@ -229,6 +240,61 @@ describe('ArenasComponent', () => {
     const result = of('').pipe(IFSPACE)
     result.subscribe((data:string)=>{
       expect(data).toEqual('Grid')
+    })   
+
+  })
+
+  it('Call connst function SET_SORT_BY_DESC',()=>{
+
+    const arenas :Arena[]=[
+      {
+        id: 1,
+        arenaTitle: 'bbbb',
+        Capacity: '',
+        About: '',
+        Logo:'',
+        Photo: ''
+      },
+      {
+        id: 2,
+        arenaTitle: 'aaaa',
+        Capacity: '',
+        About: '',
+        Logo:'',
+        Photo: ''
+      },
+
+    ]
+    const result = of(arenas).pipe(SET_SORT_BY_DESC)
+    result.subscribe((data:Arena[])=>{
+      expect(data).toEqual(arenas)
+    })   
+
+  })
+
+  it('Call connst function SET_SORT_BY_ASC',()=>{
+    const arenas :Arena[]=[
+      {
+        id: 1,
+        arenaTitle: 'bbbb',
+        Capacity: '',
+        About: '',
+        Logo:'',
+        Photo: ''
+      },
+      {
+        id: 2,
+        arenaTitle: 'aaaa',
+        Capacity: '',
+        About: '',
+        Logo:'',
+        Photo: ''
+      },
+
+    ]
+    const result = of(arenas).pipe(SET_SORT_BY_ASC)
+    result.subscribe((data:Arena[])=>{
+      expect(data).toEqual(arenas)
     })   
 
   })

@@ -1,0 +1,70 @@
+.body-print{
+  background-color: white;
+  margin: 8px;
+  font-family: Verdana, sans-serif;
+  display: block;
+}
+
+img {
+    border-width: 0;
+}
+body {
+    font-family: Verdana, sans-serif;
+}
+table {
+    border-collapse: collapse;
+    border: 0;
+}
+table.wide {
+    width: 100%;
+}
+td {
+    font-size: 11px;
+    padding: 5px;
+    margin: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+    vertical-align:top;
+}
+.text-center {
+    text-align: center;
+}
+@media print {
+    a.pdf
+ {
+        display:none
+    }
+}
+
+@font-face {
+  font-family: 'phpgenerator';
+  src: url('../../../../assets/css/fonts/phpgenerator.eot');
+  src: url('../../../../assets/css/fonts/phpgenerator.eot#iefix') format('embedded-opentype'), url('../../../../assets/css/fonts/phpgenerator.ttf') format('truetype'), url('../../../../assets/css/fonts/phpgenerator.woff') format('woff'), url('../../../../assets/css/fonts/phpgenerator.svg#phpgenerator') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.pg-row-checkbox {
+  font-family: 'phpgenerator';
+  color: #b94a48;
+}
+.pg-row-checkbox:before {
+  content: "\e61d";
+}
+.pg-row-checkbox.checked {
+  color: #468847;
+}
+.pg-row-checkbox.checked:before {
+  content: "\e61c";
+}
+
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}

@@ -1,5 +1,6 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MATERIAL_MODULES } from '../../shared.module';
 import { InputCustomDatetimeComponent } from './input-custom-datetime.component';
 
 describe('InputCustomDatetimeComponent', () => {
@@ -8,7 +9,11 @@ describe('InputCustomDatetimeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InputCustomDatetimeComponent ]
+      declarations: [ InputCustomDatetimeComponent ],
+      imports:[
+        MATERIAL_MODULES
+      ],
+      schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
     })
     .compileComponents();
 
