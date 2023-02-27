@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
-import { StoreModule } from '@ngrx/store';
-import { MATERIAL_MODULES } from 'src/app/shared/shared.module';
 import {HttpClientTestingModule } from '@angular/common/http/testing'
 
 import { ArenasComponent , FILTER_ARENA, SORT_BY_TITLE_ASC, SORT_BY_TITLE_DESC , IFSPACE, SET_SORT_BY_DESC, SET_SORT_BY_ASC } from './arenas.component';
@@ -47,7 +45,6 @@ describe('ArenasComponent', () => {
       imports:[
         HttpClientTestingModule,
         RouterTestingModule,
-        //MATERIAL_MODULES
       ],
       providers: [
         { provide: MatDialog, useValue: MatDialogMock },
