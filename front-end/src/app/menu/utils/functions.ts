@@ -15,5 +15,12 @@ import { Team } from "../models/team"
     }
  }
 
+ export const RemoveEnd  = (param:string) =>{
+  const res:any = document.querySelectorAll(param)
+  if(!!res && res.length > 0){
+    res[0].remove();
+  }  
+ }
+
 
  export const CLEANDATAARRAY =  filter((val:any|Arena[]|Player[]|Team[]|ReagularSeasonGame[]) => val.length >0)
