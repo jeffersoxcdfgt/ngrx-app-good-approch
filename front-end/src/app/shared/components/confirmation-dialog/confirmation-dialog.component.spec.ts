@@ -14,8 +14,14 @@ describe('ConfirmationDialogComponent', () => {
       imports:[
         MATERIAL_MODULES,
       ],
-      providers: [   
-        { provide: MAT_DIALOG_DATA, useValue: {} },
+      providers: [{ 
+          provide: MAT_DIALOG_DATA, useValue: {
+            buttonText:{ 
+              Ok:'',
+              cancel:''
+            }
+         }
+        },
         { provide: MatDialogRef, useValue: {} }
       ],
       schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA]

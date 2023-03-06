@@ -1,6 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { of } from 'rxjs';
 import { MATERIAL_MODULES } from '../../shared.module';
 import { DialogTableCardComponent } from './dialog-table-card.component';
 
@@ -18,8 +19,14 @@ describe('DialogTableCardComponent', () => {
       imports:[
         MATERIAL_MODULES,
       ],
-      providers: [   
-        { provide: MAT_DIALOG_DATA, useValue: {} },
+      providers: [{ 
+          provide: MAT_DIALOG_DATA, useValue: {
+            buttonText:{ 
+              Ok:'',
+              cancel:''
+            },
+            opt:of('value')
+        }},
         { provide: MatDialogRef, useValue: {} },
         { provide: MatDialog, useValue: MatDialogMock },
     ],
