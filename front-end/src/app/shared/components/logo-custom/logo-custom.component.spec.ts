@@ -4,14 +4,14 @@ import { By } from '@angular/platform-browser';
 import { LogoCustomComponent } from './logo-custom.component';
 
 const onloadMock = {
-  onload(){
+  onload() {
     return 'value'
   }
 }
 
 const MockFileReader = {
-  readAsDataURL(file:string){
-     return onloadMock
+  readAsDataURL(file: string) {
+    return onloadMock
   }
 }
 
@@ -22,16 +22,16 @@ describe('LogoCustomComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports:[],
-      declarations: [ LogoCustomComponent ],
-      providers:[
+      imports: [],
+      declarations: [LogoCustomComponent],
+      providers: [
         {
-          provide:FileReader , useValue:MockFileReader
+          provide: FileReader, useValue: MockFileReader
         }
       ],
-      schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(LogoCustomComponent);
     component = fixture.componentInstance;
@@ -42,10 +42,19 @@ describe('LogoCustomComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should dataaux === data',()=>{
-      component.dataaux ='data'
-      component.keep()
-      expect(component.data).toBe( component.dataaux )
+  it('should dataaux === data', () => {
+    component.dataaux = 'data'
+    component.keep()
+    expect(component.data).toBe(component.dataaux)
+  });
+
+  it('should click in image button', async () => {
+    const spy = spyOn(component,'getFileContent').and.callThrough();
+    const clickImage = fixture.debugElement.queryAll(By.css('.imageClick'))
+    const rendered = clickImage[0].nativeElement;
+    rendered.dispatchEvent(new Event('change'));    
+    fixture.detectChanges();
+    expect(spy).toHaveBeenCalled();   
   });
 
 });
