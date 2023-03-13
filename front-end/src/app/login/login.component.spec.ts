@@ -13,28 +13,28 @@ import { MockData } from '../mock-testing/mock';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let store:MockStore;
+  let store: MockStore;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-         LoginComponent,
-         InputCustomComponent,
-         FooterComponent
-        ],
-        imports:[
-          RouterTestingModule,
-          FormsModule,
-          ReactiveFormsModule
-        ],
-        schemas:[CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
-        providers:[
-          provideMockStore({
-            initialState:MockData
-          })
-        ]
+        LoginComponent,
+        InputCustomComponent,
+        FooterComponent
+      ],
+      imports: [
+        RouterTestingModule,
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+      providers: [
+        provideMockStore({
+          initialState: MockData
+        })
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(LoginComponent);
     store = TestBed.inject(MockStore)
@@ -47,8 +47,28 @@ describe('LoginComponent', () => {
   });
 
   it('should call login and dispatch', () => {
-    const spy1 = spyOn(store,'dispatch').and.callThrough();
+    const spy1 = spyOn(store, 'dispatch').and.callThrough();
     component.login();
-    expect(spy1).toHaveBeenCalled();    
+    expect(spy1).toHaveBeenCalled();
   });
+
+  it('should call changeTpl', () => {
+    component.changeTpl();
+    expect(component.selectclass).not.toBeNull();
+  });
+
+  it('should call changeTpl set selectclass= close', () => {
+    component.selectclass = 'open'
+    component.changeTpl();
+    expect(component.selectclass).not.toBeNull();
+  });
+
+  it('should call tplCurrent', () => {
+    const elem = document.createElement('link');
+    elem.href = 'value'
+    spyOn(document,'getElementById').and.returnValue(elem);
+    component.tplCurrent('main_cerulean');
+    
+  });
+
 });

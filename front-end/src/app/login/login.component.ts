@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
 
   errorShow$ : Observable<boolean> = new Observable<boolean>();
   formLogin: FormGroup;
+  selectclass: string = 'close'
+  ariaexpanded:boolean = false;
 
   constructor(private store :Store<State>,
     private formBuilder: FormBuilder) {
@@ -27,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    storage.clearStorage();
+    //storage.clearStorage();
     this.errorShow$ = this.store.select(errorTokenResponse).pipe(GET_SHOW_ERROR);
   }
 
@@ -39,4 +41,14 @@ export class LoginComponent implements OnInit {
     this.store.dispatch(getTokenData({request:payload}));
   }
 
+  changeTpl():void {
+    this.selectclass = this.selectclass === 'close' ? 'open' : 'close'
+    this.ariaexpanded =  this.selectclass === 'close' ? false : true
+  }
+
+  tplCurrent(namecss:string|any):void{
+    (document.getElementById('idAsset') as any ).href = `./assets/css/${namecss}.css`
+    localStorage.setItem('currenttpl',namecss)
+    this.changeTpl()
+  }
 }

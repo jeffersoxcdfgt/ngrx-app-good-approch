@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -7,6 +7,9 @@ import { MockData } from './mock-testing/mock';
 
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
@@ -21,6 +24,19 @@ describe('AppComponent', () => {
         })
       ]
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+
+    const jsonstr = `{
+      "currenttpl":"value"         
+    }`
+
+    const elem = document.createElement('link');
+    elem.href = 'value'
+    spyOn(localStorage,'getItem').and.returnValue(jsonstr) 
+    spyOn(document,'getElementById').and.returnValue(elem);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create the app', () => {
@@ -34,4 +50,6 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('ngrx-app-good-approch');
   });
+
 });
+

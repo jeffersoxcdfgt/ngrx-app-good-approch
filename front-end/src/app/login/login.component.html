@@ -2,9 +2,46 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <div class="navbar-brand" href="#">
-                <img alt="NBA Database" src="../../assets/css/img/nba_logo.png"> 
+                <img alt="NBA Database" src="../../assets/css/img/nba_logo.png">
                 <strong class="hidden-xs hidden-sm">NBA Database</strong>
-            </div> 
+            </div>
+        </div>
+        <div class="navbar-collapse collapse" id="navnav">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-vertical-divider"></li>
+                <li class="dropdown" [className]="selectclass">
+                    <a (click)="changeTpl()" class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="ariaexpanded">Themes
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" id="themes">
+                        <li><a (click)="tplCurrent('main_default')">Default</a></li>
+                        <li><a (click)="tplCurrent('main_default-compact')">Default compact</a></li>
+                        <li><a (click)="tplCurrent('main_cerulean')"> Cerulean</a></li>
+                        <li><a (click)="tplCurrent('main_cerulean-compact')">Cerulean compact</a></li>
+                        <li><a (click)="tplCurrent('main_cosmo')">Cosmo</a></li>
+                        <li><a (click)="tplCurrent('main_cyborg')">Cyborg</a></li>
+                        <li><a (click)="tplCurrent('main_darkly')">Darkly</a></li>
+                        <li><a (click)="tplCurrent('main_darkly-compact')">Darkly compact</a></li>
+                        <li><a (click)="tplCurrent('main_facebook')">Facebook</a></li>
+                        <li><a (click)="tplCurrent('main_flatly')">Flatly</a></li>
+                        <li><a (click)="tplCurrent('main_journal')">Journal</a></li>
+                        <li><a (click)="tplCurrent('main_lumen')">Lumen</a></li>
+                        <li><a (click)="tplCurrent('main_paper')">Paper</a></li>
+                        <li><a (click)="tplCurrent('main_readable')">Readable</a></li>
+                        <li><a (click)="tplCurrent('main_sandstone')">Sandstone</a></li>
+                        <li><a (click)="tplCurrent('main_simplex')">Simplex</a></li>
+                        <li><a (click)="tplCurrent('main_slate')">Slate</a></li>
+                        <li><a (click)="tplCurrent('main_slate-compact')">Slate compact</a></li>
+                        <li><a (click)="tplCurrent('main_spacelab')">Spacelab</a></li>
+                        <li><a (click)="tplCurrent('main_superhero')">Superhero</a></li>
+                        <li><a (click)="tplCurrent('main_superhero-compact')">Superhero compact</a></li>
+                        <li><a (click)="tplCurrent('main_united')">United</a></li>
+                        <li><a (click)="tplCurrent('main_united-compact')">United compact</a></li>
+                        <li><a (click)="tplCurrent('main_yeti')">Yeti</a></li>
+                        <li><a (click)="tplCurrent('main_yeti-compact')">Yeti compact</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -13,19 +50,23 @@
         <div class="col-md-12">
             <div class="container-padding">
                 <h1 class="text-center">Welcome to the Angular NBA demo!</h1>
-                <p class="lead text-center">It is application that uses redux, ngrx and rxjs, try to make best practices .</p>
+                <p class="lead text-center">It is application that uses redux, ngrx and rxjs, try to make best practices
+                    .</p>
                 <div class="well pgui-login">
-                    <p class="text-center"><img alt="User avatar" class="pgui-login-avatar" src="../../assets/css/img/login_avatar.png"></p>
+                    <p class="text-center"><img alt="User avatar" class="pgui-login-avatar"
+                            src="../../assets/css/img/login_avatar.png"></p>
                     <form [formGroup]="formLogin">
                         <div class="form-group">
-                            <app-input-custom [data]="''" formControlName="username" [placeholder]="'username'"></app-input-custom>
+                            <app-input-custom [data]="''" formControlName="username" [placeholder]="'username'">
+                            </app-input-custom>
                         </div>
                         <div class="form-group">
-                            <app-input-custom [data]="''" formControlName="password" [placeholder]="'password'" [type]="'password'" ></app-input-custom>
+                            <app-input-custom [data]="''" formControlName="password" [placeholder]="'password'"
+                                [type]="'password'"></app-input-custom>
                         </div>
                         <div class="alert alert-danger" *ngIf="(errorShow$ | async)">
                             The username/password combination you entered was invalid.
-                        </div>             
+                        </div>
                         <div class="form-group text-center">
                             <div class="btn-group">
                                 <button class="btn btn-primary" (click)="login()" type="submit">Login</button>
