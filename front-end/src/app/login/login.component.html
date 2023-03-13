@@ -5,12 +5,53 @@
                 <img alt="NBA Database" src="../../assets/css/img/nba_logo.png">
                 <strong class="hidden-xs hidden-sm">NBA Database</strong>
             </div>
+            <!--Menu movil-->
+            <button aria-controls="navbar" [matMenuTriggerFor]="menuMovilTpl" aria-expanded="false"
+                class="navbar-toggle collapsed" data-target="#navnav" data-toggle="collapse" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <mat-menu #menuMovilTpl="matMenu">
+                <div aria-expanded="true" class="navbar-collapse collapse in" id="navnav">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a (click)="tplCurrent('main_default')">Default</a></li>
+                        <li><a (click)="tplCurrent('main_default-compact')">Default compact</a></li>
+                        <li><a (click)="tplCurrent('main_cerulean')"> Cerulean</a></li>
+                        <li><a (click)="tplCurrent('main_cerulean-compact')">Cerulean compact</a></li>
+                        <li><a (click)="tplCurrent('main_cosmo')">Cosmo</a></li>
+                        <li><a (click)="tplCurrent('main_cyborg')">Cyborg</a></li>
+                        <li><a (click)="tplCurrent('main_darkly')">Darkly</a></li>
+                        <li><a (click)="tplCurrent('main_darkly-compact')">Darkly compact</a></li>
+                        <li><a (click)="tplCurrent('main_facebook')">Facebook</a></li>
+                        <li><a (click)="tplCurrent('main_flatly')">Flatly</a></li>
+                        <li><a (click)="tplCurrent('main_journal')">Journal</a></li>
+                        <li><a (click)="tplCurrent('main_lumen')">Lumen</a></li>
+                        <li><a (click)="tplCurrent('main_paper')">Paper</a></li>
+                        <li><a (click)="tplCurrent('main_readable')">Readable</a></li>
+                        <li><a (click)="tplCurrent('main_sandstone')">Sandstone</a></li>
+                        <li><a (click)="tplCurrent('main_simplex')">Simplex</a></li>
+                        <li><a (click)="tplCurrent('main_slate')">Slate</a></li>
+                        <li><a (click)="tplCurrent('main_slate-compact')">Slate compact</a></li>
+                        <li><a (click)="tplCurrent('main_spacelab')">Spacelab</a></li>
+                        <li><a (click)="tplCurrent('main_superhero')">Superhero</a></li>
+                        <li><a (click)="tplCurrent('main_superhero-compact')">Superhero compact</a></li>
+                        <li><a (click)="tplCurrent('main_united')">United</a></li>
+                        <li><a (click)="tplCurrent('main_united-compact')">United compact</a></li>
+                        <li><a (click)="tplCurrent('main_yeti')">Yeti</a></li>
+                        <li><a (click)="tplCurrent('main_yeti-compact')">Yeti compact</a></li>
+                    </ul>
+                </div>
+            </mat-menu>
+            <!--Menu movil-->
         </div>
         <div class="navbar-collapse collapse" id="navnav">
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-vertical-divider"></li>
                 <li class="dropdown" [className]="selectclass">
-                    <a (click)="changeTpl()" class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="ariaexpanded">Themes
+                    <a (click)="changeTpl()" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                        aria-haspopup="true" aria-expanded="ariaexpanded">Themes
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" id="themes">

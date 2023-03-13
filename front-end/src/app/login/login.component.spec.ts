@@ -9,6 +9,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { MockData } from '../mock-testing/mock';
+import { MATERIAL_MODULES } from '../shared/shared.module';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -25,7 +26,8 @@ describe('LoginComponent', () => {
       imports: [
         RouterTestingModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MATERIAL_MODULES
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       providers: [
