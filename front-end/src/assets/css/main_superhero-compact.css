@@ -251,9 +251,38 @@ th {
   }
 }
 @font-face {
+  font-family: 'github';
+  src: url('../css/fonts/font-github/glyphter-font/fonts/github.eot');
+  src: url('../css/fonts/font-github/glyphter-font/fonts/github.eot?#iefix') format('embedded-opentype'),
+       url('../css/fonts/font-github/glyphter-font/fonts/github.woff') format('woff'),
+       url('../css/fonts/font-github/glyphter-font/fonts/github.ttf') format('truetype'),
+       url('../css/fonts/font-github/glyphter-font/fonts/github.svg#github') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class*='icongithub-']:before{
+display: inline-block;
+ font-family: 'github';
+ font-style: normal;
+ font-weight: normal;
+ line-height: 1;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale
+}
+.icongithub-iconmonstr-github:before{
+content:'\0041';
+}
+
+
+@font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('../fonts/glyphicons-halflings-regular.eot');
-  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('./fonts//glyphicons-halflings-regular.eot');
+  src: url('./fonts/glyphicons-halflings-regular.eot?#iefix') 
+  format('embedded-opentype'), 
+  url('./fonts/glyphicons-halflings-regular.woff2') 
+  format('woff2'), url('./fonts/glyphicons-halflings-regular.woff') 
+  format('woff'), url('./fonts/glyphicons-halflings-regular.ttf') 
+  format('truetype'), url('./fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
@@ -11325,8 +11354,8 @@ table.pgui-cascading-editor tr td .select2-container {
 }
 @font-face {
   font-family: 'phpgenerator';
-  src: url('../fonts/phpgenerator.eot?izi13q');
-  src: url('../fonts/phpgenerator.eot?izi13q#iefix') format('embedded-opentype'), url('../fonts/phpgenerator.ttf?izi13q') format('truetype'), url('../fonts/phpgenerator.woff?izi13q') format('woff'), url('../fonts/phpgenerator.svg?izi13q#phpgenerator') format('svg');
+  src: url('./fonts/phpgenerator.eot?izi13q');
+  src: url('./fonts/phpgenerator.eot?izi13q#iefix') format('embedded-opentype'), url('./fonts/phpgenerator.ttf?izi13q') format('truetype'), url('./fonts/phpgenerator.woff?izi13q') format('woff'), url('./fonts/phpgenerator.svg?izi13q#phpgenerator') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -12688,88 +12717,88 @@ td[data-column-name="photo"] .gallery-item img {
   content: "\00a0";
 }
 .flag-icon-ar {
-  background-image: url(../../../nba_images/flags/ar.svg);
+  background-image: url(./nba_images/flags/ar.svg);
 }
 .flag-icon-au {
-  background-image: url(../../../nba_images/flags/au.svg);
+  background-image: url(./nba_images/flags/au.svg);
 }
 .flag-icon-br {
-  background-image: url(../../../nba_images/flags/br.svg);
+  background-image: url(./nba_images/flags/br.svg);
 }
 .flag-icon-ca {
-  background-image: url(../../../nba_images/flags/ca.svg);
+  background-image: url(./nba_images/flags/ca.svg);
 }
 .flag-icon-cg {
-  background-image: url(../../../nba_images/flags/cg.svg);
+  background-image: url(./nba_images/flags/cg.svg);
 }
 .flag-icon-cn {
-  background-image: url(../../../nba_images/flags/cn.svg);
+  background-image: url(./nba_images/flags/cn.svg);
 }
 .flag-icon-de {
-  background-image: url(../../../nba_images/flags/de.svg);
+  background-image: url(./nba_images/flags/de.svg);
 }
 .flag-icon-do {
-  background-image: url(../../../nba_images/flags/do.svg);
+  background-image: url(./nba_images/flags/do.svg);
 }
 .flag-icon-es {
-  background-image: url(../../../nba_images/flags/es.svg);
+  background-image: url(./nba_images/flags/es.svg);
 }
 .flag-icon-fr {
-  background-image: url(../../../nba_images/flags/fr.svg);
+  background-image: url(./nba_images/flags/fr.svg);
 }
 .flag-icon-gb {
-  background-image: url(../../../nba_images/flags/gb.svg);
+  background-image: url(./nba_images/flags/gb.svg);
 }
 .flag-icon-ge {
-  background-image: url(../../../nba_images/flags/ge.svg);
+  background-image: url(./nba_images/flags/ge.svg);
 }
 .flag-icon-gr {
-  background-image: url(../../../nba_images/flags/gr.svg);
+  background-image: url(./nba_images/flags/gr.svg);
 }
 .flag-icon-hr {
-  background-image: url(../../../nba_images/flags/hr.svg);
+  background-image: url(./nba_images/flags/hr.svg);
 }
 .flag-icon-ir {
-  background-image: url(../../../nba_images/flags/ir.svg);
+  background-image: url(./nba_images/flags/ir.svg);
 }
 .flag-icon-it {
-  background-image: url(../../../nba_images/flags/it.svg);
+  background-image: url(./nba_images/flags/it.svg);
 }
 .flag-icon-lt {
-  background-image: url(../../../nba_images/flags/lt.svg);
+  background-image: url(./nba_images/flags/lt.svg);
 }
 .flag-icon-lv {
-  background-image: url(../../../nba_images/flags/lv.svg);
+  background-image: url(./nba_images/flags/lv.svg);
 }
 .flag-icon-me {
-  background-image: url(../../../nba_images/flags/me.svg);
+  background-image: url(./nba_images/flags/me.svg);
 }
 .flag-icon-nz {
-  background-image: url(../../../nba_images/flags/nz.svg);
+  background-image: url(./nba_images/flags/nz.svg);
 }
 .flag-icon-pl {
-  background-image: url(../../../nba_images/flags/pl.svg);
+  background-image: url(./nba_images/flags/pl.svg);
 }
 .flag-icon-pr {
-  background-image: url(../../../nba_images/flags/pr.svg);
+  background-image: url(./nba_images/flags/pr.svg);
 }
 .flag-icon-ru {
-  background-image: url(../../../nba_images/flags/ru.svg);
+  background-image: url(./nba_images/flags/ru.svg);
 }
 .flag-icon-si {
-  background-image: url(../../../nba_images/flags/si.svg);
+  background-image: url(./nba_images/flags/si.svg);
 }
 .flag-icon-sn {
-  background-image: url(../../../nba_images/flags/sn.svg);
+  background-image: url(./nba_images/flags/sn.svg);
 }
 .flag-icon-tr {
-  background-image: url(../../../nba_images/flags/tr.svg);
+  background-image: url(./nba_images/flags/tr.svg);
 }
 .flag-icon-us {
-  background-image: url(../../../nba_images/flags/us.svg);
+  background-image: url(./nba_images/flags/us.svg);
 }
 .flag-icon-ua {
-  background-image: url(../../../nba_images/flags/ua.svg);
+  background-image: url(./nba_images/flags/ua.svg);
 }
 .custom_select2_img {
   margin-right: 0.3em;
@@ -13581,7 +13610,7 @@ td[data-column-name="photo"] .gallery-item img {
   width: 100%;
 }
 .player-card-photo {
-  background: url('../../../nba_images/wood_right.png') no-repeat left top;
+  background: url('./nba_images/wood_right.png') no-repeat left top;
   background-size: auto 100%;
   vertical-align: bottom;
   line-height: 1em;
@@ -13801,7 +13830,7 @@ td[data-column-name="photo"] .gallery-item img {
   margin-right: -60px;
 }
 .playoff-round-final .playoff-round-game-team-logo-winner {
-  background: url(../../../nba_images/larry.svg) no-repeat center;
+  background: url(./nba_images/larry.svg) no-repeat center;
   background-size: contain;
 }
 .playoff-round-game {
