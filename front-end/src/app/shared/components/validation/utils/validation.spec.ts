@@ -226,7 +226,7 @@ describe('MergeMap ', () => {
             const { cold, expectObservable } = helpers;
 
             const values = { a: 'hello', b: 'world', x: 'hello world' };
-            const obs1 = cold('-a-------a--|', values);
+            const obs1 = cold('-a-------a|', values);
             const obs2 = cold('-b-b-b-|',values);
             const expected =  '--x-x-x---x-x-x-|'
             const result = obs1.pipe((mergeMap(x => obs2.pipe(map(y => x+' '+ y )))))
