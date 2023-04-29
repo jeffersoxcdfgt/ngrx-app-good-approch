@@ -98,7 +98,7 @@ export class ChipsSelectComponent extends UnsubscribeComponent implements OnInit
   private _filter(value: DataLoad | string |any ): DataLoad[] {
     let filterValue='';  
     if(typeof value === 'string'){  
-      filterValue = value;   
+      filterValue = value.toLowerCase();   
     }
     else{
       filterValue = value.name.toLowerCase()
