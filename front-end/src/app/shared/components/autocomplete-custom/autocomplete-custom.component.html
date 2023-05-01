@@ -1,0 +1,32 @@
+<div class="result_box">
+    <div class="list_results">
+        <ng-template ngFor let-item [ngForOf]="itemslist" let-i="index">
+            <u>
+                <li class="list_render_results">{{item.name}}  
+                    <a class="link-icon" (click)="removeItem(item)" title="remove">
+                        <i class="icon-remove"></i>
+                    </a>  
+                </li>
+            </u>        
+        </ng-template>
+    </div>
+</div>
+<div class="input-group js-filter-control">
+    <input class="form-control" (input)="searchStream$.next($event.target.value)" [(ngModel)]="info" placeholder="Quick search" size="16" type="text" value="">
+    <div class="input-group-btn">
+        <button class="btn btn-default js-reset" title="Clear" (click)="cleanInput()" type="button">
+            <i class="icon-filter-reset"></i>
+        </button>
+    </div>
+</div>
+
+<div class="results" *ngIf="showRender">
+    <div *ngIf="obs$ | withLoading | async as obs">
+        <ul class="select2-results_custom">
+            <ng-template ngFor let-data [ngForOf]="obs.value" let-i="index">
+                <li class="items_list" (click)="selectItem(data)"> {{ data.name }} </li>
+            </ng-template>
+            <ng-template [ngIf]="obs.loading">Loading...</ng-template>
+        </ul>
+    </div>
+</div>

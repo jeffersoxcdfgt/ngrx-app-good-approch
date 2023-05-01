@@ -38,6 +38,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { InputCustomDatetimeComponent } from './components/input-custom-datetime/input-custom-datetime.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { InfoDialogComponent } from './components/info-dialog/info-dialog.component';
+import { AutocompleteCustomComponent } from './components/autocomplete-custom/autocomplete-custom.component';
+import { WithLoadingPipe } from './pipes/with-loading.pipe';
 
 
 export const MATERIAL_MODULES = [
@@ -57,6 +59,7 @@ export const MATERIAL_MODULES = [
 export const PIPES_LIST = [
   NullObjectToConvertPipe,
   NoSanitizePipe,
+  WithLoadingPipe
 ]
 
 @NgModule({
@@ -84,7 +87,8 @@ export const PIPES_LIST = [
     DialogTableCardComponent,
     ChipsSelectComponent,
     InputCustomDatetimeComponent,
-    InfoDialogComponent
+    InfoDialogComponent,
+    AutocompleteCustomComponent
   ],
   providers:[],
   exports:[
@@ -107,7 +111,8 @@ export const PIPES_LIST = [
     DialogTableCardComponent,
     ChipsSelectComponent,
     InputCustomDatetimeComponent,
-    InfoDialogComponent
+    InfoDialogComponent,
+    AutocompleteCustomComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
