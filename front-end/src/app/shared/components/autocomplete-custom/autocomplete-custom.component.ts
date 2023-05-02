@@ -2,8 +2,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';;
 import { of, BehaviorSubject, concat } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
-import { Products } from './products-mock';
-import { ProductsService } from './products.service';
+import { DataList } from './data-mock';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-autocomplete-custom',
@@ -13,11 +13,11 @@ import { ProductsService } from './products.service';
 export class AutocompleteCustomComponent implements OnInit {
 
   searchStream$ = new BehaviorSubject<string>('');
-  itemslist: Products[] = [];
+  itemslist: DataList[] = [];
   showRender: boolean = false;
   info: string = ''
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private dataService: DataService) { }
 
   obs$ = this.searchStream$.pipe(
     debounceTime(200),
@@ -25,28 +25,28 @@ export class AutocompleteCustomComponent implements OnInit {
     switchMap((query) =>
       concat(
         of({ type: 'start' }),
-        this.productsService.getByFilter(query).pipe(map(value => ({ type: 'finish', value })) ,map((val) => query ? val: []))
+        this.dataService.getByFilter(query).pipe(map(value => ({ type: 'finish', value })) /*,map((val) => query ? val: [])*/ )
       ))
   );
 
   ngOnInit(): void {
   }
 
-  selectItem(value: Products): void {
+  selectItem(value: DataList): void {
     this.itemslist.push(value)
     this.uniqueValue(value)
   }
 
-  uniqueValue(row: Products): void {
-    const listId = this.itemslist.map((rop: Products) => rop.id)
+  uniqueValue(row: DataList): void {
+    const listId = this.itemslist.map((rop: DataList) => rop.id)
     const uniquesId = Array.from(new Set(listId.map((c: number) => c)))
-    const data = uniquesId.map((valueid: number) => this.itemslist.find((prvalue: Products) => prvalue.id === valueid))
-    this.itemslist = data as Products[];
+    const data = uniquesId.map((valueid: number) => this.itemslist.find((prvalue: DataList) => prvalue.id === valueid))
+    this.itemslist = data as DataList[];
   }
 
-  removeItem(row: Products): void {
-    const datafilter = this.itemslist.filter((rpro: Products) => rpro.id !== row.id)
-    this.itemslist = datafilter as Products[];
+  removeItem(row: DataList): void {
+    const datafilter = this.itemslist.filter((rpro: DataList) => rpro.id !== row.id)
+    this.itemslist = datafilter as DataList[];
   }
 
   @HostListener('keydown')
