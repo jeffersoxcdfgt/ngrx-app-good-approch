@@ -1,9 +1,10 @@
 
-import { Component, HostListener, OnInit } from '@angular/core';;
+import { Component, HostListener, Input, OnInit } from '@angular/core';;
 import { of, BehaviorSubject, concat } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 import { DataList } from './data-mock';
 import { DataService } from './data.service';
+
 
 @Component({
   selector: 'app-autocomplete-custom',
@@ -16,6 +17,7 @@ export class AutocompleteCustomComponent implements OnInit {
   itemslist: DataList[] = [];
   showRender: boolean = false;
   info: string = ''
+  @Input() lable: string = 'Title'
 
   constructor(private dataService: DataService) { }
 
