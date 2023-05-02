@@ -4,27 +4,28 @@
     <div class="form-group col-sm-9">
         <div class="result_box">
             <div class="list_results">
-                <ng-template ngFor let-item [ngForOf]="itemslist" let-i="index">
-                    <u>
-                        <li class="list_render_results">{{item.name}}  
+                <u>
+                    <ng-template ngFor let-item [ngForOf]="itemslist" let-i="index">
+                        <li class="list_render_results">{{item.name}}
                             <a class="link-icon" (click)="removeItem(item)" title="remove">
                                 <i class="icon-remove"></i>
-                            </a>  
+                            </a>
                         </li>
-                    </u>        
-                </ng-template>
+                    </ng-template>
+                </u>
             </div>
-        </div>  
+        </div>
     </div>
 </div>
 <div class="row">
     <div class="form-group form-group-label col-sm-3">
-        <label class="control-label" data-column="caption" for="">{{ lable }} 
-        <span class="required-mark">*</span></label>
+        <label class="control-label" data-column="caption" for="">{{ lable }}
+            <span class="required-mark">*</span></label>
     </div>
     <div class="form-group col-sm-9">
         <div class="input-group js-filter-control">
-            <input class="form-control" (input)="searchStream$.next($event.target.value)" [(ngModel)]="info" placeholder="Quick search" size="16" type="text" value="">
+            <input class="form-control" (input)="searchStream$.next($event.target.value)" [(ngModel)]="info"
+                placeholder="Quick search" size="16" type="text" value="">
             <div class="input-group-btn">
                 <button class="btn btn-default js-reset" title="Clear" (click)="cleanInput()" type="button">
                     <i class="icon-filter-reset"></i>
@@ -50,4 +51,3 @@
         </div>
     </div>
 </div>
-
