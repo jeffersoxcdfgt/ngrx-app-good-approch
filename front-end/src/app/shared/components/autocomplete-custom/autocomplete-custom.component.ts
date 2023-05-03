@@ -1,7 +1,7 @@
 
 import { Component, HostListener, Input, OnInit } from '@angular/core';;
 import { of, BehaviorSubject, concat } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap, map, tap } from 'rxjs/operators';
 import { DataList } from './data-mock';
 import { DataService } from './data.service';
 
@@ -11,13 +11,14 @@ import { DataService } from './data.service';
   templateUrl: './autocomplete-custom.component.html',
   styleUrls: ['./autocomplete-custom.component.scss']
 })
-export class AutocompleteCustomComponent implements OnInit {
+export class AutocompleteCustomComponent {
 
   searchStream$ = new BehaviorSubject<string>('');
   itemslist: DataList[] = [];
   showRender: boolean = false;
   info: string = ''
   @Input() lable: string = 'Title'
+  oldScrollTop: number = 0;
 
   constructor(private dataService: DataService) { }
 
@@ -27,12 +28,10 @@ export class AutocompleteCustomComponent implements OnInit {
     switchMap((query) =>
       concat(
         of({ type: 'start' }),
-        this.dataService.getByFilter(query).pipe(map(value => ({ type: 'finish', value })) /*,map((val) => query ? val: [])*/ )
+        this.dataService.getByFilter(query).pipe(map(value => ({ type: 'finish', value })) /*,map((val) => query ? val: [])*/)
       ))
   );
 
-  ngOnInit(): void {
-  }
 
   selectItem(value: DataList): void {
     this.itemslist.push(value)
@@ -56,9 +55,20 @@ export class AutocompleteCustomComponent implements OnInit {
     this.showRender = true;
   }
 
-  cleanInput():void{
+  cleanInput(): void {
     this.info = '';
     this.showRender = false;
+  }
+
+  onScroll(event: any) {
+    if (this.oldScrollTop > event.target.scrollTop) {
+      console.log('scroll down');
+
+    }
+    else {
+      console.log('scroll up');
+    }
+    this.oldScrollTop = event.target.scrollTop;
   }
 
 }

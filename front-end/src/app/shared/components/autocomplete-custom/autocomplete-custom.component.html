@@ -41,7 +41,7 @@
     <div class="form-group col-sm-9">
         <div class="results" *ngIf="showRender">
             <div *ngIf="obs$ | withLoading | async as obs">
-                <ul class="select2-results_custom">
+                <ul class="select2-results_custom" (scroll)="onScroll($event)">
                     <ng-template ngFor let-data [ngForOf]="obs.value" let-i="index">
                         <li class="items_list" (click)="selectItem(data)"> {{ data.name }} </li>
                     </ng-template>
