@@ -40,3 +40,9 @@ taskkill /PID pidNumber /F
 
 ## How to kill process in Mac
 kill -9 $(lsof -ti:4200)
+
+## How to run cypress project e2e
+
+1. Open new console command line, Go to the backend-api and run npm start
+2. Open new console command line, Go to the front-end and run npm start
+2. Open new console command line, Go to the automation and run npx cypress open
