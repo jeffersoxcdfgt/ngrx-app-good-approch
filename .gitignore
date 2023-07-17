@@ -49,3 +49,4 @@ Thumbs.db
 front-end/node_modules/
 backend-api/node_modules/
 front-end/.angular/*
+automation/node_modules/
