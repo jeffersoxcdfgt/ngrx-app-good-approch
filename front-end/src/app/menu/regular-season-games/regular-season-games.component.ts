@@ -6,7 +6,7 @@ import { ReagularSeasonGame } from '../models/regular-season-game';
 import { regularseasongamesGetAll } from './store/actions/regular-season-games.action';
 import { selectAllRegularSeasonGames } from './store/reducers/regular-season-games.reducer';
 import { map } from 'rxjs/operators'
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { UnsubscribeComponent } from 'src/app/shared/unsubscribe/unsubscribe.component';
 import { InfoDialogComponent } from 'src/app/shared/components/info-dialog/info-dialog.component';
 import { CLEANDATAARRAY } from '../utils/functions';
