@@ -6,7 +6,7 @@ import { State } from 'src/app/shared/routing/id-reducer.reducer';
 import { playersGetAll } from './store/actions/players.action';
 import {  selectedPlayersWithTeams } from './store/reducers/players.reducer';
 import { teamsGetAll } from '../teams/store/actions/teams.action';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 import { map, takeUntil } from 'rxjs/operators'
 import { UnsubscribeComponent } from 'src/app/shared/unsubscribe/unsubscribe.component';

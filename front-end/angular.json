@@ -19,7 +19,8 @@
           "options": {
             "allowedCommonJsDependencies": [
               "lodash",
-              "moment"
+              "moment",
+              "apexcharts"
             ],
             "outputPath": "dist/ngrx-app-good-approch",
             "index": "src/index.html",
@@ -35,7 +36,9 @@
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/apexcharts/dist/apexcharts.min.js"
+            ]
           },
           "configurations": {
             "production": {

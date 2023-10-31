@@ -20,6 +20,20 @@
 						</ol>
 						<h1>Regular season games</h1>
 					</div>
+
+					<div id="chart">
+						<apx-chart
+						  [series]="chartOptions.series"
+						  [chart]="chartOptions.chart"
+						  [dataLabels]="chartOptions.dataLabels"
+						  [plotOptions]="chartOptions.plotOptions"
+						  [yaxis]="chartOptions.yaxis"
+						  [fill]="chartOptions.fill"
+						  [stroke]="chartOptions.stroke"
+						  [tooltip]="chartOptions.tooltip"
+						  [xaxis]="chartOptions.xaxis"
+						></apx-chart>
+					  </div>
 				
 					<div class="well description">
 						<a class="close"><span aria-hidden="true">&times;</span></a>

@@ -21,7 +21,7 @@ import { MatLegacyMenuModule as MatMenuModule} from '@angular/material/legacy-me
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './components/footer/footer.component';
 import { NoSanitizePipe } from './pipes/nosanitizer.pipe';
-import {MatLegacyDialogModule as MatDialogModule} from '@angular/material/legacy-dialog';
+import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { TestAreaTinymceComponent } from './components/test-area-tinymce/test-area-tinymce.component';

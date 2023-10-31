@@ -88,12 +88,17 @@ import { RegularSeasonGamesEffects } from './regular-season-games/store/effects/
 import { ReagularSeasonService } from './regular-season-games/store/services/regular-seasion-games.service';
 import { ArenasPrintComponent } from './arenas/arenas-print/arenas-print.component';
 
+// Charts and graphics
+
+import { NgApexchartsModule } from "ng-apexcharts";
+
 @NgModule({
   imports: [
     SharedModule,
     MenuRoutingModule,
     FormsModule,
     CommonModule,
+    NgApexchartsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forFeature(AppInMemoryApi),
     StoreModule.forFeature('tokendata',getTokenReducers.reducer),

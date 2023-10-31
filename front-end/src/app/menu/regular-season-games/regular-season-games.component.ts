@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { State } from 'src/app/shared/routing/id-reducer.reducer';
@@ -6,10 +6,34 @@ import { ReagularSeasonGame } from '../models/regular-season-game';
 import { regularseasongamesGetAll } from './store/actions/regular-season-games.action';
 import { selectAllRegularSeasonGames } from './store/reducers/regular-season-games.reducer';
 import { map } from 'rxjs/operators'
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { UnsubscribeComponent } from 'src/app/shared/unsubscribe/unsubscribe.component';
 import { InfoDialogComponent } from 'src/app/shared/components/info-dialog/info-dialog.component';
 import { CLEANDATAARRAY } from '../utils/functions';
+import {
+  ApexAxisChartSeries,
+  ApexChart,
+  ChartComponent,
+  ApexDataLabels,
+  ApexPlotOptions,
+  ApexYAxis,
+  ApexStroke,
+  ApexXAxis,
+  ApexFill,
+  ApexTooltip
+} from "ng-apexcharts";
+
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  dataLabels: ApexDataLabels;
+  plotOptions: ApexPlotOptions;
+  yaxis: ApexYAxis;
+  xaxis: ApexXAxis;
+  fill: ApexFill;
+  tooltip: ApexTooltip;
+  stroke: ApexStroke;
+};
 
 export const FILTER_REGULAR_SEASON_GAMES = (search:string) =>  map((regulargames:ReagularSeasonGame[]) => {
   return regulargames.filter((regularseason:ReagularSeasonGame)=> regularseason.gamedate.toLocaleLowerCase().includes(search.toLowerCase()) || 
@@ -34,8 +58,73 @@ export class RegularSeasonGamesComponent extends UnsubscribeComponent implements
   allElementsString = 'expand-all-details js-expand-all-details collapsed link-icon';
   searchTerm: string = '';
 
+  @ViewChild("chart") chart!: ChartComponent;
+  public chartOptions: ChartOptions;
+
   constructor(private store :Store<State>,private dialog: MatDialog) {
     super();
+    this.chartOptions = {
+      series: [
+        {
+          name: "Net Profit",
+          data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+        },
+        {
+          name: "Revenue",
+          data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+        },
+        {
+          name: "Free Cash Flow",
+          data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+        }
+      ],
+      chart: {
+        type: "bar",
+        height: 350
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: "55%",
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ["transparent"]
+      },
+      xaxis: {
+        categories: [
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct"
+        ]
+      },
+      yaxis: {
+        title: {
+          text: "$ (thousands)"
+        }
+      },
+      fill: {
+        opacity: 1
+      },
+      tooltip: {
+        y: {
+          formatter: function(val) {
+            return "$ " + val + " thousands";
+          }
+        }
+      }
+    };
    }
 
   ngOnInit(): void {
