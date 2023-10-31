@@ -393,7 +393,7 @@
 											<span>Photo</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
 										</th>
 										<th class=" sortable" colspan="1" data-column-name="first_name" data-field-caption="First name" data-field-name="first_name" data-name="first_name" data-sort-index="" rowspan="1"><span>First name</span></th>
-										<th class=" sortable" colspan="1" data-column-name="last_name" data-field-caption="Last name" data-field-name="last_name" data-name="last_name" data-sort-index="" rowspan="1"><span>Last name</span></th>
+										<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="last_name" data-field-caption="Last name" data-field-name="last_name" data-name="last_name" data-sort-index="" rowspan="1"><span>Last name</span></th>
 										<th class="hidden-xs hidden-sm hidden-md sortable filterable" colspan="1" data-column-name="birthday" data-field-caption="Birthday" data-field-name="birthday" data-name="birthday" data-sort-index="" rowspan="1">
 											<span>Birthday</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
 										</th>
@@ -407,7 +407,7 @@
 										</th>
 										<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="career_start_year" data-field-caption="NBA Debut" data-field-name="career_start_year" data-name="career_start_year" data-sort-index="" rowspan="1"><span>NBA Debut</span></th>
 										<th class="hidden-xs hidden-sm hidden-md sortable" colspan="1" data-column-name="position" data-field-caption="Position" data-field-name="position" data-name="position" data-sort-index="" rowspan="1"><span>Position</span></th>
-										<th class=" sortable filterable" colspan="1" data-column-name="current_team_id_caption" data-field-caption="Team" data-field-name="current_team_id_caption" data-name="current_team_id" data-sort-index="" rowspan="1">
+										<th class="hidden-xs hidden-sm sortable filterable" colspan="1" data-column-name="current_team_id_caption" data-field-caption="Team" data-field-name="current_team_id_caption" data-name="current_team_id" data-sort-index="" rowspan="1">
 											<i class="icon-keys-fk"></i> <span>Team</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
 										</th>
 										<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="current_number" data-field-caption="Number" data-field-name="current_number" data-name="current_number" data-sort-index="" rowspan="1"><span>Number</span></th>
@@ -428,7 +428,7 @@
 												</a>
 											</td>
 											<td data-column-name="first_name" data-edit-url="">{{ player?.firstname }} </td>
-											<td data-column-name="last_name" data-edit-url="">{{ player?.lastname }} </td>
+											<td class="hidden-xs hidden-sm" data-column-name="last_name" data-edit-url="">{{ player?.lastname }} </td>
 											<td class="hidden-xs hidden-sm hidden-md" data-column-name="birthday" data-edit-url="">{{ player?.birthday }} </td>
 											<td class="hidden-xs" data-column-name="country_id" data-edit-url=""><span class='{{ player?.iconflag }}'></span> {{ player?.country }}</td>
 											<td class="hidden-xs hidden-sm medium-height" data-column-name="height" data-edit-url="">{{ player?.height }}</td>
@@ -436,7 +436,7 @@
 											<td class="hidden-xs hidden-sm hidden-md" data-column-name="college_id" data-edit-url="">{{ player?.college }}</td>
 											<td class="hidden-xs hidden-sm" data-column-name="career_start_year" data-edit-url="">{{ player?.nbadebut }}</td>
 											<td class="hidden-xs hidden-sm hidden-md" data-column-name="position" data-edit-url="">{{ player?.position }}</td>
-											<td data-column-name="current_team_id" data-edit-url="">
+											<td class="hidden-xs hidden-sm" data-column-name="current_team_id" data-edit-url="">
 												<span class='team-caption'><a target="_blank">{{ player?.team }}</a></span>
 											</td>
 											<td class="hidden-xs hidden-sm" data-column-name="current_number" data-edit-url="">{{ player?.number }}</td>

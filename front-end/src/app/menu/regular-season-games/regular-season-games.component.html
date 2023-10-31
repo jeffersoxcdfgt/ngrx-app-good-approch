@@ -262,7 +262,7 @@
 											<i class="icon-detail-minus"></i>
 										</a>
 									</th>
-									<th rowspan="2" style="width:1%;">Actions</th>
+									<th rowspan="2" class="hidden-xs hidden-sm hidden-md" style="width:1%;">Actions</th>
 									<th class="hidden-xs sortable filterable" colspan="1" data-column-name="game_date" data-field-caption="Game Date" data-field-name="game_date" data-name="game_date" data-sort-index="0" data-sort-order="asc" rowspan="2">
 										<span>Game Date</span><i class="icon-sort-asc"></i><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
 									</th>
@@ -271,7 +271,7 @@
 									<th class="hidden-xs hidden-sm hidden-md sortable filterable" colspan="1" data-column-name="overtime_count" data-comment="Number of overtimes in the game" data-field-caption="Overtimes" data-field-name="overtime_count" data-name="overtime_count" data-sort-index="" rowspan="2">
 										<span class="commented">Overtimes</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
 									</th>
-									<th class="hidden-xs sortable" colspan="1" data-column-name="recap" data-field-caption="Recap" data-field-name="recap" data-name="recap" data-sort-index="" rowspan="2"><span>Recap</span></th>
+									<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="recap" data-field-caption="Recap" data-field-name="recap" data-name="recap" data-sort-index="" rowspan="2"><span>Recap</span></th>
 								</tr>
 								<tr>
 									<th class=" sortable filterable" colspan="1" data-column-name="home_team_id_caption" data-field-caption="Team" data-field-name="home_team_id_caption" data-name="home_team_id" data-sort-index="1" data-sort-order="asc" rowspan="1">
@@ -309,7 +309,7 @@
 												</ul>
 											</div>
 										</td>
-										<td class="operation-column">								
+										<td class="hidden-xs hidden-sm hidden-md operation-column">								
 											<span class="operation-item" data-column-name="epdf_record">
 												<a class="link-icon" target="_blank" title="Export to Pdf">
 													<i class="icon-file-pdf"></i>
@@ -327,8 +327,8 @@
 												<span class="team-caption">{{regularseasongamesList?.teamaway}}</span>
 											</a>
 										</td>
-										<td class="hidden-xs hidden-sm hidden-md" data-column-name="overtime_count" data-edit-url="">{{regularseasongamesList?.overtimes}}</td>
-										<td class="hidden-xs pgui-cell-edit" data-column-name="recap">
+										<td class="hidden-xs hidden-sm" data-column-name="overtime_count" data-edit-url="">{{regularseasongamesList?.overtimes}}</td>
+										<td class="hidden-xs hidden-sm pgui-cell-edit" data-column-name="recap">
 											<div class="pgui-field-embedded-video">
 												<img class="pgui-field-embedded-video-thumb" src="{{regularseasongamesList?.recap}}">
 												<span class="pgui-field-embedded-video-icon icon-play"></span>
@@ -443,7 +443,7 @@
 																<thead class="js-column-filter-container">
 																	<tr>
 																		<th class="row-selection" rowspan="1" style="width:1%;"><input type="checkbox"></th>
-																		<th rowspan="1" style="width:1%;">Actions</th>
+																		<th class="hidden-xs hidden-sm" rowspan="1" style="width:1%;">Actions</th>
 																		<th class="" colspan="1" data-column-name="quarter_id_caption" data-field-caption="Quarter" data-field-name="quarter_id_caption" data-name="quarter_id" data-sort-index="" rowspan="1"><span>Quarter</span></th>
 																		<th class="" colspan="1" data-column-name="home_team_score" data-field-caption="Home Score" data-field-name="home_team_score" data-name="home_team_score" data-sort-index="" rowspan="1"><span>Home Score</span></th>
 																		<th class="" colspan="1" data-column-name="away_team_score" data-field-caption="Away Score" data-field-name="away_team_score" data-name="away_team_score" data-sort-index="" rowspan="1"><span>Away Score</span></th>
@@ -457,7 +457,7 @@
 																					<input data-value="[&quot;1320&quot;,&quot;1&quot;]" id="record__1320_1" name="rec0" type="checkbox">
 																				</div>
 																			</td>
-																			<td class="operation-column">
+																			<td class="hidden-xs hidden-sm operation-column">
 																				<span class="operation-item" data-column-name="view">
 																					<a class="link-icon" title="View">
 																						<i class="icon-view"></i>
