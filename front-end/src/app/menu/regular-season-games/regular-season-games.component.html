@@ -19,22 +19,7 @@
 							</li>
 						</ol>
 						<h1>Regular season games</h1>
-					</div>
-
-					<div id="chart">
-						<apx-chart
-						  [series]="chartOptions.series"
-						  [chart]="chartOptions.chart"
-						  [dataLabels]="chartOptions.dataLabels"
-						  [plotOptions]="chartOptions.plotOptions"
-						  [yaxis]="chartOptions.yaxis"
-						  [fill]="chartOptions.fill"
-						  [stroke]="chartOptions.stroke"
-						  [tooltip]="chartOptions.tooltip"
-						  [xaxis]="chartOptions.xaxis"
-						></apx-chart>
-					  </div>
-				
+					</div>			
 					<div class="well description">
 						<a class="close"><span aria-hidden="true">&times;</span></a>
 						<p>This page displays the list of games played during the 2013-2014 NBA regular season and demonstrates such software features as charts, embedded videos, data partitioning, custom filters, auto hidden columns, user-defined templates, and more. It should (as well as all other pages) look good on any device with a screen with 480+ pixels of width (if you are on a desktop, reduce the size of the browser window to be sure).</p>
@@ -45,6 +30,19 @@
 								</li>
 							</ul>
 						</nav>
+					</div>
+					<div class="row pgui-charts pgui-charts-game_list" id="chart">
+						<apx-chart
+							[series]="chartOptions.series"
+							[chart]="chartOptions.chart"
+							[dataLabels]="chartOptions.dataLabels"
+							[plotOptions]="chartOptions.plotOptions"
+							[yaxis]="chartOptions.yaxis"
+							[fill]="chartOptions.fill"
+							[stroke]="chartOptions.stroke"
+							[tooltip]="chartOptions.tooltip"
+							[xaxis]="chartOptions.xaxis"
+						></apx-chart>
 					</div>
 					<div class="grid grid-table js-grid" data-column-count="10" data-grid-hidden-values="[]" data-is-master="" data-selection-id="game_listGrid_" id="game_listGrid_6356e2cde776e">
 						<div class="addition-block js-actions">
