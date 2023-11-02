@@ -46,3 +46,16 @@ kill -9 $(lsof -ti:4200)
 1. Open new console command line, Go to the backend-api and run npm start
 2. Open new console command line, Go to the front-end and run npm start
 2. Open new console command line, Go to the automation and run npx cypress open
+
+
+## How to compress folder
+You should  move to a foldes dist
+tar -czvf app.tar.gz ./
+
+## How to decompress folder
+execute this command in folder where you want to deploy
+tar -xzvf app.tar.gz
+
+## Notes commands
+tar --exclude='./folder' --exclude='./upload/folder2' -zcvf /backup/filename.tgz .
+
