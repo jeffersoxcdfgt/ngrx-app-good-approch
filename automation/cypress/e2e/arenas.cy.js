@@ -1,22 +1,5 @@
 import { LoginFunction } from './functions/utils.cy';
-
 const  ARENAS_LINK = '/menu/arenas'
-/*
-Cypress.Commands.add('setTinyMceContent', () => {
-  
-    cy.window().should('have.property', 'tinymce')   // wait for tinyMCE
-
-    cy.wait(1000).then(() => { 
-     const win = cy.state('window')
-     win.tinymce.EditorManager.get().forEach((edit) => {
-         console.log(Object.getOwnPropertyNames(edit));
-
-         edit.setContent('About description');
-         edit.focus()
-     })
-
-    })
-  })*/
 
 describe('Arenas Testing', () => {
     beforeEach(() => {
@@ -40,6 +23,22 @@ describe('Arenas Testing', () => {
         cy.wrap(win.tinymce.activeEditor.getContent({ format: 'text'}))
           .should('eq', 'About description') 
       })*/ 
+
+     cy.get('app-logo-custom').get('input[type=file]').get('[id="logo"]').selectFile({
+        contents: Cypress.Buffer.from('file contents'),
+        fileName: 'logo.png',
+        lastModified: Date.now(),
+      }) 
+
+      cy.get('app-logo-custom').get('input[type=file]').get('[id="photo"]').selectFile({
+        contents: Cypress.Buffer.from('file contents'),
+        fileName: 'photo.png',
+        lastModified: Date.now(),
+      }) 
+
+       cy.get('[data-save="save"]').click().then(()=>{
+        cy.get('table tbody tr').should('have.length', 8)
+       })  
 
     })
 })
