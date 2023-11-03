@@ -1,5 +1,6 @@
 <form [formGroup]="formTiny">
   <editor
+  (onSetContent)="handleEventContent($event.event)"
   [init]="CONFIG_TEXTEDITOR"
   formControlName="tinycontrol">
 </editor>

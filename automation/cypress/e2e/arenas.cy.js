@@ -29,22 +29,17 @@ describe('Arenas Testing', () => {
        cy.get('app-input-custom').get('input').get('[placeholder="Arena title"]').type('arena1') 
        cy.get('app-input-custom').get('input').get('[placeholder="Capacity"]').type('123')       
 
-       // Set text to tinyMce
-        
+       // Set text to tinyMce        
        cy.window().should('have.property', 'tinymce')   
-
        cy.wait(1000).then(() => { 
             const win = cy.state('window')
-            win.tinymce.activeEditor.setContent('About description').state()
-
-       }) 
+            win.tinymce.activeEditor.setContent('About description cypress')
+      }) 
 
       /* cy.window().then(win => {
         cy.wrap(win.tinymce.activeEditor.getContent({ format: 'text'}))
           .should('eq', 'About description') 
-      })*/
-
- 
+      })*/ 
 
     })
 })
