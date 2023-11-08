@@ -29,6 +29,16 @@ describe('Players Testing', () => {
         cy.get('app-input-custom').get('input').get('[placeholder="Height"]').type('111')
         cy.get('app-input-custom').get('input').get('[placeholder="Weight"]').type('222')
 
+        cy.get('app-chips-select')
+         .get('input')
+         .get('[formcontrolname="team"]')
+         .first().within(() => {
+            cy.get('input')
+            .type('Boston')
+            .type('{downarrow}')
+            .type('{enter}');
+          });
+
 
         cy.get('app-input-custom').get('input').get('[placeholder="Number"]').type('333')
 
@@ -69,5 +79,10 @@ describe('Players Testing', () => {
         });
 
         cy.get('app-input-custom').get('input').get('[placeholder="NBA Debut"]').type('1998') 
+
+        cy.get('[data-save="save"]').click().then(()=>{
+            cy.get('table tbody tr').should('have.length', 9)
+        })
+
     })
 })

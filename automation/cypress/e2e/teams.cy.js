@@ -43,7 +43,7 @@ describe('Teams Testing', () => {
 
         cy.get('[data-save="save"]').click().then(()=>{
           cy.get('table tbody tr').should('have.length', 6)
-         })
+        })
   
     })
 })
