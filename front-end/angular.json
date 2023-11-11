@@ -77,10 +77,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngrx-app-good-approch:build:production"
+              "buildTarget": "ngrx-app-good-approch:build:production"
             },
             "development": {
-              "browserTarget": "ngrx-app-good-approch:build:development"
+              "buildTarget": "ngrx-app-good-approch:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngrx-app-good-approch:build"
+            "buildTarget": "ngrx-app-good-approch:build"
           }
         },
         "test": {
