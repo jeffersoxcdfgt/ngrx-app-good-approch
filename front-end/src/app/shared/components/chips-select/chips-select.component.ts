@@ -1,7 +1,7 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {ChangeDetectorRef, Component, ElementRef, HostListener, Input, OnChanges, OnInit, Optional, Self, SimpleChanges, ViewChild } from '@angular/core';
 import {ControlValueAccessor, FormControl, NgControl} from '@angular/forms';
-import {MatLegacyAutocompleteSelectedEvent as MatAutocompleteSelectedEvent} from '@angular/material/legacy-autocomplete';
+import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Observable } from 'rxjs';
 import {map, startWith,takeUntil} from 'rxjs/operators';
 import { UnsubscribeComponent } from '../../unsubscribe/unsubscribe.component';
