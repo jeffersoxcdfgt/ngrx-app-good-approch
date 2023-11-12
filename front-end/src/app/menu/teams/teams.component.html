@@ -348,7 +348,7 @@
 						<div class="filter-status js-filter-status"></div>
 						<div class="js-grid-message-container"></div>
 						<ng-container *ngIf="(typeViewshow$ | async) ===''  || (typeViewshow$ | async) ==='Grid' ; else viewCard">
-						<table class="table text-center table-striped fixed-header">
+						<table class="table text-center table-striped fixed-header" id="table-teams">
 							<thead class="js-column-filter-container">
 								<tr>
 									<th class=" sortable" colspan="1" data-column-name="logo" data-field-caption="Logo" data-field-name="logo" data-name="logo" data-sort-index="" rowspan="1" style="width: 100px;"><span>Logo</span></th>
