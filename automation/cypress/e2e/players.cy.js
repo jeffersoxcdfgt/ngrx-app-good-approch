@@ -85,4 +85,89 @@ describe('Players Testing', () => {
         })
 
     })
+
+    it('Updating player row', () => {  
+
+      cy.get('a').get(`[routerlink="${PLAYERS_LINK}"]`).click()
+      cy.get('a').get(`[ng-reflect-router-link="${PLAYERS_LINK}/edit/1"]`).click() 
+
+      cy.get('app-input-custom').get('input').get('[placeholder="First name"]').clear().type('jeff') 
+      cy.get('app-input-custom').get('input').get('[placeholder="Last name"]').clear().type('medina') 
+
+      cy.get('app-logo-custom').get('input[type=file]').get('[id="photo"]').selectFile({
+        contents: Cypress.Buffer.from('file contents'),
+        fileName: 'update.png',
+        lastModified: Date.now(),
+      })
+
+      cy.get('app-input-custom').get('input').get('[placeholder="Height"]').type('333')
+      cy.get('app-input-custom').get('input').get('[placeholder="Weight"]').type('444')
+
+
+      cy.get('app-chips-select')
+      .get('input')
+      .get('[formcontrolname="team"]')
+      .first().within(() => {
+         cy.get('input')
+         .type('{selectAll}')
+         .type('{backspace}')
+         .type('Chicago')
+         .type('{downarrow}')
+         .type('{enter}');
+       });
+
+       cy.get('app-input-custom').get('input').get('[placeholder="Number"]').type('555')
+
+       cy.get('app-chips-select',)
+       .get('input')
+       .get('[formcontrolname="position"]')
+       .eq(0)
+       .click({multiple: true })
+       .should('be.visible')
+       .as('relatedPositionAutocomplete').first().within(() => {
+         cy.get('input')
+         .type('guard')
+         .type('{downarrow}')
+         .type('{enter}');
+       });
+
+       cy.get('app-chips-select',)
+       .get('input')
+       .get('[formcontrolname="country"]')
+       .eq(0)
+       .click({multiple: true })
+       .should('be.visible')
+       .as('relatedCountryAutocomplete').first().within(() => {
+         cy.get('input')
+         .type('{selectAll}')
+         .type('{backspace}')
+         .type('Turkey')
+         .type('{downarrow}')
+         .type('{enter}');
+       });
+
+      cy.get('app-chips-select',)
+       .get('input')
+       .get('[formcontrolname="college"]')
+       .eq(0)
+       .click({multiple: true })
+       .should('be.visible')
+       .as('relatedCollegrAutocomplete').first().within(() => {
+         cy.get('input')
+         .type('{selectAll}')
+         .type('{backspace}')
+         .type('UCLA')
+         .type('{downarrow}')
+         .type('{enter}');
+       });
+
+       cy.get('app-input-custom').get('input').get('[placeholder="NBA Debut"]').clear().type('2023')
+       cy.get('[data-save="save"]').click().then(()=>{
+        cy.get('table')
+        .contains('jeff')
+
+        cy.get('table')
+        .contains('2023')
+       })
+    })
 })
