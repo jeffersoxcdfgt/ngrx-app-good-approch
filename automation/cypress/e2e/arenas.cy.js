@@ -6,7 +6,7 @@ describe('Arenas Testing', () => {
       LoginFunction('admin@admin.com','admin')
     })
 
-    it('Adding arenas row', () => {        
+    it('Adding arena row', () => {        
        cy.get('a').get(`[routerlink="${ARENAS_LINK}"]`).click()
        cy.get('a').get(`[routerlink="${ARENAS_LINK}/add"]`).click()
        cy.get('app-input-custom').get('input').get('[placeholder="Arena title"]').type('arena1') 
@@ -41,7 +41,7 @@ describe('Arenas Testing', () => {
        }) 
     })
 
-    it('Updating arenas row', () => {   
+    it('Updating arena row', () => {   
       cy.get('a').get(`[routerlink="${ARENAS_LINK}"]`).click()
       cy.get('a').get(`[ng-reflect-router-link="${ARENAS_LINK}/edit/1"]`).click()
 
@@ -77,7 +77,15 @@ describe('Arenas Testing', () => {
           .should('have.id', 'table-arenas')
           .find('tbody tr:nth-child(1) > td')
           .contains('11111')        
-       })  
+       }) 
 
+    })
+
+    it('Removing arena row', () => {  
+      cy.get('a').get(`[routerlink="${ARENAS_LINK}"]`).click()
+      cy.get('a').get(`[title="Delete"]`).first().click().then(()=>{
+        cy.get('button').get(`[data-bb-handler="confirm" ]`).click()
+        cy.get('table tbody tr').should('have.length', 7)
+      })
     })
 })

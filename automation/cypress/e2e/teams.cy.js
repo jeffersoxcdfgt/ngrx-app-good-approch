@@ -6,7 +6,7 @@ describe('Teams Testing', () => {
       LoginFunction('admin@admin.com','admin')
     })
 
-    it('Adding teams row', () => {        
+    it('Adding team row', () => {        
        cy.get('a').get(`[routerlink="${TEAMS_LINK}"]`).click();
        cy.get('a').get(`[routerlink="${TEAMS_LINK}/add"]`).click(); 
        cy.get('app-input-custom').get('input').get('[placeholder="Team Name"]').type('Team new');
@@ -47,7 +47,7 @@ describe('Teams Testing', () => {
   
     })
 
-    it('Updating teams row', () => { 
+    it('Updating team row', () => { 
       cy.get('a').get(`[routerlink="${TEAMS_LINK}"]`).click()
       cy.get('a').get(`[ng-reflect-router-link="${TEAMS_LINK}/edit/1"]`).click() 
 
@@ -94,5 +94,13 @@ describe('Teams Testing', () => {
           .contains('2023')  
        }) 
 
+    })
+
+    it('Removing team row', () => {  
+      cy.get('a').get(`[routerlink="${TEAMS_LINK}"]`).click()
+      cy.get('a').get(`[title="Delete"]`).first().click().then(()=>{
+        cy.get('button').get(`[data-bb-handler="confirm" ]`).click()
+        cy.get('table tbody tr').should('have.length', 4)
+      })
     })
 })

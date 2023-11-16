@@ -170,4 +170,12 @@ describe('Players Testing', () => {
         .contains('2023')
        })
     })
+
+    it('Removing player row', () => {  
+      cy.get('a').get(`[routerlink="${PLAYERS_LINK}"]`).click()
+      cy.get('a').get(`[title="Delete"]`).first().click().then(()=>{
+        cy.get('button').get(`[data-bb-handler="confirm" ]`).click()
+        cy.get('table tbody tr').should('have.length', 8)
+      })
+    })
 })
