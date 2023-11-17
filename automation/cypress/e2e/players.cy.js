@@ -178,4 +178,11 @@ describe('Players Testing', () => {
         cy.get('table tbody tr').should('have.length', 8)
       })
     })
+
+    it('Searching player row', () => {  
+      cy.get('a').get(`[routerlink="${PLAYERS_LINK}"]`).click()
+      cy.get('input').get('[placeholder="Quick search"]').type('Andre').then(()=>{
+        cy.get('table tbody tr').should('have.length', 1)
+      })
+    })
 })

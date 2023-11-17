@@ -88,4 +88,11 @@ describe('Arenas Testing', () => {
         cy.get('table tbody tr').should('have.length', 7)
       })
     })
+
+    it('Searching arena row', () => {  
+      cy.get('a').get(`[routerlink="${ARENAS_LINK}"]`).click()
+      cy.get('input').get('[placeholder="Quick search"]').type('Air Canada Centre').then(()=>{
+        cy.get('table tbody tr').should('have.length', 1)
+      })
+    })
 })

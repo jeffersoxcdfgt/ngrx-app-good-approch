@@ -103,4 +103,11 @@ describe('Teams Testing', () => {
         cy.get('table tbody tr').should('have.length', 4)
       })
     })
+
+    it('Searching team row', () => {  
+      cy.get('a').get(`[routerlink="${TEAMS_LINK}"]`).click()
+      cy.get('input').get('[placeholder="Quick search"]').type('Boston Celtics').then(()=>{
+        cy.get('table tbody tr').should('have.length', 1)
+      })
+    })
 })
