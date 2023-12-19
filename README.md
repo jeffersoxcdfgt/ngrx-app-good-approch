@@ -1,7 +1,7 @@
 
 ## Demo app Link
 
-# Ngrx App using observable RXJS and NRGX using best practices
+# Ngrx App using observable RXJS and NGRX using best practices
 
 This [Url application demo](https://jefferson.informati-k.com)
 
