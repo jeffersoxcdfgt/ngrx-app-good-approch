@@ -59,7 +59,7 @@ tar -xzvf app.tar.gz
 ## Notes commands
 tar --exclude='./folder' --exclude='./upload/folder2' -zcvf /backup/filename.tgz .
 
-## Update commands
+## Utils commands
 - Remove-Item -Force .\dist\
 - ng update @tinymce/tinymce-angular
 - ng update karma-jasmine
