@@ -72,3 +72,24 @@ tar --exclude='./folder' --exclude='./upload/folder2' -zcvf /backup/filename.tgz
 - ng update @ngrx/store-devtools
 - ng update @ngrx/router-store
 
+## How to fix a bug
+## This is error message 'an unhandled exception occurred: class extends value undefined is not a constructor or null'
+
+Impossible to say for certain when there is clearly much more to the source. If anyone else sees this error, the first thing to look for is circular dependencies: a file depends on some other file that (likely indirectly) depends on the first. JS must start somewhere, will not be able to ensure that a file is defined at the time that another file needs it, and will not try to go back and fill in the blanks later.
+
+If you have more than a couple import / require statements, I recommend periodically running a checker like Madge to find and optionally visualize any loops before they become hard to undo.
+
+## Command solution
+npm i --saveDev madge
+node node_modules/madge/bin/cli.js --warning --circular --extensions js ./
+
+# Windows When I want to switch to node version
+Use nvm-windows, it's like nvm but for Windows. Download and run the installer, then:
+
+nvm install v0.10.33         # Install v0.10.33
+nvm use v0.10.33             # Use v0.10.33
+Usage:
+nvm install [version]        # Download and install [version]
+nvm uninstall [version]      # Uninstall [version]
+nvm use [version]            # Switch to use [version]
+nvm list                     # List installed versions
