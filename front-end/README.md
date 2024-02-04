@@ -5,7 +5,12 @@
 
 This [Url application demo](https://jefferson.informati-k.com)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.8
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2
+
+Angular CLI: 17.1.2
+Node: 20.11.0
+Package Manager: npm 10.2.4
+OS: win32 x64
 
 ## Development server
 
