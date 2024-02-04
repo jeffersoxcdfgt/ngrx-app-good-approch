@@ -91,10 +91,10 @@ node node_modules/madge/bin/cli.js --warning --circular --extensions js ./
 # Windows When I want to switch to node version
 Use nvm-windows, it's like nvm but for Windows. Download and run the installer, then:
 
-nvm install v0.10.33         # Install v0.10.33
-nvm use v0.10.33             # Use v0.10.33
+- nvm install v0.10.33         # Install v0.10.33
+- nvm use v0.10.33             # Use v0.10.33
 Usage:
-nvm install [version]        # Download and install [version]
-nvm uninstall [version]      # Uninstall [version]
-nvm use [version]            # Switch to use [version]
-nvm list                     # List installed versions
+- nvm install [version]        # Download and install [version]
+- nvm uninstall [version]      # Uninstall [version]
+- nvm use [version]            # Switch to use [version]
+- nvm list                     # List installed versions
