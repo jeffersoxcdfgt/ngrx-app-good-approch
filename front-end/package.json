@@ -30,7 +30,7 @@
     "@ngrx/store-devtools": "^17.1.0",
     "@tinymce/tinymce-angular": "^7.0.0",
     "angular-in-memory-web-api": "^0.17.0",
-    "apexcharts": "^3.45.1",
+    "apexcharts": "^3.45.2",
     "latest-version": "^7.0.0",
     "lodash-es": "^4.17.21",
     "madge": "^6.1.0",
