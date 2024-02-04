@@ -85,8 +85,8 @@ Impossible to say for certain when there is clearly much more to the source. If 
 If you have more than a couple import / require statements, I recommend periodically running a checker like Madge to find and optionally visualize any loops before they become hard to undo.
 
 ## Command solution
-npm i --saveDev madge
-node node_modules/madge/bin/cli.js --warning --circular --extensions js ./
+- npm i --saveDev madge
+- node node_modules/madge/bin/cli.js --warning --circular --extensions js ./
 
 # Windows When I want to switch to node version
 Use nvm-windows, it's like nvm but for Windows. Download and run the installer, then:
