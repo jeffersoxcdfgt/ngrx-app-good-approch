@@ -1,13 +1,13 @@
 
-## Demo app Link, last updated date 04/02/2024
+## Demo app Link, last updated date 17/02/2024
 
 # Ngrx App using observable RXJS and NGRX using best practices
 
 This [Url application demo](https://jefferson.informati-k.com)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0
 
-Angular CLI: 17.1.2
+Angular CLI: 17.2.0
 Node: 20.11.0
 Package Manager: npm 10.2.4
 OS: win32 x64
