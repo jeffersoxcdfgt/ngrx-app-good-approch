@@ -19,3 +19,11 @@
   outline: 0;
 }
 
+:host ::ng-deep{
+  mat-icon{
+    position: relative;
+    top: 4px; 
+    bottom: 4px;
+  }
+}
+
