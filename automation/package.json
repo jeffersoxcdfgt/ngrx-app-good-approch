@@ -9,10 +9,6 @@
   "author": "Jefferson Medina",
   "license": "ISC",
   "devDependencies": {
-<<<<<<< HEAD
-    "cypress": "^13.7.2"
-=======
     "cypress": "^13.6.6"
->>>>>>> 7587d5460cf8019b9a7a48caf01f5b47b618436b
   }
 }
