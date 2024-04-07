@@ -16,7 +16,7 @@ export const {
   selectRouteParam,     // factory function to select a route param
   selectRouteData,      // select the current route data
   selectUrl,            // select the current url
-} = fromRouter.getSelectors(getRouterState);
+} = fromRouter.getRouterSelectors(getRouterState);
 
 @Injectable()
 export class RouterEffectsService {

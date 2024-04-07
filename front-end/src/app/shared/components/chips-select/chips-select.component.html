@@ -1,10 +1,9 @@
     <mat-chip-list class="form-control"  style="padding: 2px !important;" *ngIf="type === 'multi'; else Nomulti" #chipList aria-label="Data selection" >
       <ng-container  *ngFor="let inf of dataset">
         <mat-chip
-        *ngIf="inf.id!==''"       
-        (removed)="remove(inf)">
+        *ngIf="inf.id!==''">
         {{inf.name}}
-        <button matChipRemove>
+        <button matChipRemove (click)="remove(inf)">
           <mat-icon>cancel</mat-icon>
         </button>
       </mat-chip>

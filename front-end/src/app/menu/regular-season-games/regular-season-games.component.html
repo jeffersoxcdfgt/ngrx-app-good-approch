@@ -19,8 +19,7 @@
 							</li>
 						</ol>
 						<h1>Regular season games</h1>
-					</div>
-				
+					</div>			
 					<div class="well description">
 						<a class="close"><span aria-hidden="true">&times;</span></a>
 						<p>This page displays the list of games played during the 2013-2014 NBA regular season and demonstrates such software features as charts, embedded videos, data partitioning, custom filters, auto hidden columns, user-defined templates, and more. It should (as well as all other pages) look good on any device with a screen with 480+ pixels of width (if you are on a desktop, reduce the size of the browser window to be sure).</p>
@@ -31,6 +30,19 @@
 								</li>
 							</ul>
 						</nav>
+					</div>
+					<div class="row pgui-charts pgui-charts-game_list" id="chart">
+						<apx-chart
+							[series]="chartOptions.series"
+							[chart]="chartOptions.chart"
+							[dataLabels]="chartOptions.dataLabels"
+							[plotOptions]="chartOptions.plotOptions"
+							[yaxis]="chartOptions.yaxis"
+							[fill]="chartOptions.fill"
+							[stroke]="chartOptions.stroke"
+							[tooltip]="chartOptions.tooltip"
+							[xaxis]="chartOptions.xaxis"
+						></apx-chart>
 					</div>
 					<div class="grid grid-table js-grid" data-column-count="10" data-grid-hidden-values="[]" data-is-master="" data-selection-id="game_listGrid_" id="game_listGrid_6356e2cde776e">
 						<div class="addition-block js-actions">
@@ -241,15 +253,15 @@
 						<table class="table text-center table-striped table-hover">
 							<thead class="js-column-filter-container header-bordered" data-has-groups="true">
 								<tr>
-									<th class="row-selection" rowspan="2" style="width:1%;"><input type="checkbox"></th>
-									<th class="details" rowspan="2">
+									<th class="row-selection hidden-xs hidden-sm hidden-md " rowspan="2" style="width:1%;"><input type="checkbox"></th>
+									<th class="details hidden-xs hidden-sm hidden-md" rowspan="2">
 										<a [className]="allElementsString"  (click)="allElements()" title="Show/hide all details">
 											<i class="icon-detail-plus"></i> 
 											<i class="icon-detail-minus"></i>
 										</a>
 									</th>
-									<th rowspan="2" style="width:1%;">Actions</th>
-									<th class="hidden-xs sortable filterable" colspan="1" data-column-name="game_date" data-field-caption="Game Date" data-field-name="game_date" data-name="game_date" data-sort-index="0" data-sort-order="asc" rowspan="2">
+									<th rowspan="2" class="hidden-xs hidden-sm hidden-md" style="width:1%;">Actions</th>
+									<th class="hidden-xs hidden-sm hidden-md sortable filterable" colspan="1" data-column-name="game_date" data-field-caption="Game Date" data-field-name="game_date" data-name="game_date" data-sort-index="0" data-sort-order="asc" rowspan="2">
 										<span>Game Date</span><i class="icon-sort-asc"></i><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
 									</th>
 									<th class="js-column-group" colspan="2" data-visibility="{&quot;1&quot;:2,&quot;2&quot;:2,&quot;3&quot;:2,&quot;4&quot;:2}" rowspan="1"><span>Home</span></th>
@@ -257,7 +269,7 @@
 									<th class="hidden-xs hidden-sm hidden-md sortable filterable" colspan="1" data-column-name="overtime_count" data-comment="Number of overtimes in the game" data-field-caption="Overtimes" data-field-name="overtime_count" data-name="overtime_count" data-sort-index="" rowspan="2">
 										<span class="commented">Overtimes</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
 									</th>
-									<th class="hidden-xs sortable" colspan="1" data-column-name="recap" data-field-caption="Recap" data-field-name="recap" data-name="recap" data-sort-index="" rowspan="2"><span>Recap</span></th>
+									<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="recap" data-field-caption="Recap" data-field-name="recap" data-name="recap" data-sort-index="" rowspan="2"><span>Recap</span></th>
 								</tr>
 								<tr>
 									<th class=" sortable filterable" colspan="1" data-column-name="home_team_id_caption" data-field-caption="Team" data-field-name="home_team_id_caption" data-name="home_team_id" data-sort-index="1" data-sort-order="asc" rowspan="1">
@@ -270,19 +282,19 @@
 										<span>Score</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
 									</th>
 									<th class=" sortable filterable" colspan="1" data-column-name="away_team_id_caption" data-field-caption="Team" data-field-name="away_team_id_caption" data-name="away_team_id" data-sort-index="" rowspan="1">
-										<span>Team</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
+										<span>Team </span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
 									</th>
 								</tr>
 							</thead>
 							<tbody class="pg-row-list">
 								<ng-template ngFor let-regularseasongamesList [ngForOf]="regularseasongamesList$ | async" let-i="index">
 									<tr class="pg-row">
-										<td>
-											<div class="row-selection">
+										<td  class="hidden-xs hidden-sm hidden-md row-selection">
+											<div>
 												<input data-value="[&quot;1320&quot;]" id="record__1320" name="rec0" type="checkbox">
 											</div>
 										</td>
-										<td class="details" dir="ltr" style="width: 40px;">
+										<td class="hidden-xs hidden-sm hidden-md row-selection details" dir="ltr" style="width: 40px;">
 											<div class="btn-group text-nowrap">
 												<a [className]="setClass(selectedData,regularseasongamesList.id)" (click)="modelChangeFn(regularseasongamesList?.id)" title="Show/hide details">
 													<i class="icon-detail-plus"></i>
@@ -295,26 +307,24 @@
 												</ul>
 											</div>
 										</td>
-										<td class="operation-column">								
+										<td class="hidden-xs hidden-sm hidden-md operation-column">								
 											<span class="operation-item" data-column-name="epdf_record">
 												<a class="link-icon" target="_blank" title="Export to Pdf">
 													<i class="icon-file-pdf"></i>
 												</a>
 											</span>
 										</td>
-										<td class="pgui-cell-edit" data-column-name="game_date">{{regularseasongamesList?.gamedate}}</td>
+										<td class="hidden-xs hidden-sm hidden-md pgui-cell-edit" data-column-name="game_date">{{regularseasongamesList?.gamedate}}</td>
 										<td class="pgui-cell-edit" data-column-name="home_team_id">
 											{{regularseasongamesList?.teamhome}}
 										</td>
 										<td class="win-score" data-column-name="home_team_score" data-edit-url="">{{regularseasongamesList?.scorehome}}</td>
 										<td class="loss-score" data-column-name="away_team_score" data-edit-url="">{{regularseasongamesList?.scoreaway}}</td>
-										<td class=" pgui-cell-edit" data-column-name="away_team_id">
-											<a data-modal-operation="view">
-												<span class="team-caption">{{regularseasongamesList?.teamaway}}</span>
-											</a>
+										<td class="pgui-cell-edit" data-column-name="away_team_id">
+											{{regularseasongamesList?.teamaway}}
 										</td>
-										<td class="hidden-xs hidden-sm hidden-md" data-column-name="overtime_count" data-edit-url="">{{regularseasongamesList?.overtimes}}</td>
-										<td class="hidden-xs pgui-cell-edit" data-column-name="recap">
+										<td class="hidden-xs hidden-sm" data-column-name="overtime_count" data-edit-url="">{{regularseasongamesList?.overtimes}}</td>
+										<td class="hidden-xs hidden-sm pgui-cell-edit" data-column-name="recap">
 											<div class="pgui-field-embedded-video">
 												<img class="pgui-field-embedded-video-thumb" src="{{regularseasongamesList?.recap}}">
 												<span class="pgui-field-embedded-video-icon icon-play"></span>
@@ -429,7 +439,7 @@
 																<thead class="js-column-filter-container">
 																	<tr>
 																		<th class="row-selection" rowspan="1" style="width:1%;"><input type="checkbox"></th>
-																		<th rowspan="1" style="width:1%;">Actions</th>
+																		<th class="hidden-xs hidden-sm" rowspan="1" style="width:1%;">Actions</th>
 																		<th class="" colspan="1" data-column-name="quarter_id_caption" data-field-caption="Quarter" data-field-name="quarter_id_caption" data-name="quarter_id" data-sort-index="" rowspan="1"><span>Quarter</span></th>
 																		<th class="" colspan="1" data-column-name="home_team_score" data-field-caption="Home Score" data-field-name="home_team_score" data-name="home_team_score" data-sort-index="" rowspan="1"><span>Home Score</span></th>
 																		<th class="" colspan="1" data-column-name="away_team_score" data-field-caption="Away Score" data-field-name="away_team_score" data-name="away_team_score" data-sort-index="" rowspan="1"><span>Away Score</span></th>
@@ -443,7 +453,7 @@
 																					<input data-value="[&quot;1320&quot;,&quot;1&quot;]" id="record__1320_1" name="rec0" type="checkbox">
 																				</div>
 																			</td>
-																			<td class="operation-column">
+																			<td class="hidden-xs hidden-sm operation-column">
 																				<span class="operation-item" data-column-name="view">
 																					<a class="link-icon" title="View">
 																						<i class="icon-view"></i>

@@ -18,7 +18,7 @@ export class ValidationComponent implements OnChanges {
   @Input() messageOnlyNumeric: string = 'Field is just numeric.';
 
   @Input() isemail = false;
-  @Input() messageJustEmail: string = 'Field is just numeric.';
+  @Input() messageJustEmail: string = 'Field is just email.';
 
   required$:any = of(true);
   justnumeric$:any = of(true);

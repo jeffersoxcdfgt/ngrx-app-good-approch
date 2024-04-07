@@ -29,7 +29,6 @@ import { LogoCustomComponent } from './components/logo-custom/logo-custom.compon
 import { ValidationComponent } from './components/validation/validation.component';
 import { DialogTableCardComponent } from './components/dialog-table-card/dialog-table-card.component';
 import { ChipsSelectComponent } from './components/chips-select/chips-select.component';
-import {MatChipsModule} from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
@@ -47,7 +46,6 @@ export const MATERIAL_MODULES = [
   MatMenuModule,
   MatIconModule,
   MatDialogModule,
-  MatChipsModule,
   MatAutocompleteModule,
   MatSelectModule,
   MatFormFieldModule,

@@ -348,19 +348,19 @@
 						<div class="filter-status js-filter-status"></div>
 						<div class="js-grid-message-container"></div>
 						<ng-container *ngIf="(typeViewshow$ | async) ===''  || (typeViewshow$ | async) ==='Grid' ; else viewCard">
-						<table class="table text-center table-striped fixed-header">
+						<table class="table text-center table-striped fixed-header" id="table-teams">
 							<thead class="js-column-filter-container">
 								<tr>
 									<th class=" sortable" colspan="1" data-column-name="logo" data-field-caption="Logo" data-field-name="logo" data-name="logo" data-sort-index="" rowspan="1" style="width: 100px;"><span>Logo</span></th>
 									<th class=" sortable" colspan="1" data-column-name="caption" data-field-caption="Name" data-field-name="caption" data-name="caption" data-sort-index="" rowspan="1"><span>Name</span></th>
 									<th class="hidden-xs sortable" colspan="1" data-column-name="year_founded" data-field-caption="Founded" data-field-name="year_founded" data-name="year_founded" data-sort-index="" rowspan="1"><span>Founded</span></th>
 									<th class="hidden-xs hidden-sm sortable" colspan="1" data-column-name="about" data-field-caption="About" data-field-name="about" data-name="about" data-sort-index="" rowspan="1" style="width: 300px;"><span>About</span></th>
-									<th class=" sortable filterable" colspan="1" data-column-name="current_division_id_caption" data-field-caption="Division" data-field-name="current_division_id_caption" data-name="current_division_id" data-sort-index="" rowspan="1">
+									<th class="hidden-xs hidden-sm sortable filterable" colspan="1" data-column-name="current_division_id_caption" data-field-caption="Division" data-field-name="current_division_id_caption" data-name="current_division_id" data-sort-index="" rowspan="1">
 										<i class="icon-keys-fk"></i> <span>Division</span><a class="column-filter-trigger js-filter-trigger" title="">
                                             <i class="icon-filter"></i>
                                         </a>
 									</th>
-									<th class=" sortable filterable" colspan="1" data-column-name="arena_id_caption" data-field-caption="Arena" data-field-name="arena_id_caption" data-name="arena_id" data-sort-index="" rowspan="1">
+									<th class="hidden-xs hidden-sm sortable filterable" colspan="1" data-column-name="arena_id_caption" data-field-caption="Arena" data-field-name="arena_id_caption" data-name="arena_id" data-sort-index="" rowspan="1">
 										<i class="icon-keys-fk"></i> <span>Arena</span><a class="column-filter-trigger js-filter-trigger" title=""><i class="icon-filter"></i></a>
 									</th>
 									<th rowspan="1" style="width:1%;">Actions</th>
@@ -379,8 +379,8 @@
 										</td>
 										<td class="hidden-xs" data-column-name="year_founded" data-edit-url="">{{ team?.Founded }}</td>
 										<td class="hidden-xs hidden-sm" data-column-name="about"  [innerHTML]="team?.About | noSanitize" ></td>
-										<td data-column-name="current_division_id" data-edit-url="">{{ team?.divison }}</td>
-										<td data-column-name="arena_id" data-edit-url="">
+										<td class="hidden-xs hidden-sm" data-column-name="current_division_id" data-edit-url="">{{ team?.divison }}</td>
+										<td class="hidden-xs hidden-sm" data-column-name="arena_id" data-edit-url="">
 											<a target="_blank">{{ team?.arena }}</a>
 										</td>
 										<td class="operation-column">

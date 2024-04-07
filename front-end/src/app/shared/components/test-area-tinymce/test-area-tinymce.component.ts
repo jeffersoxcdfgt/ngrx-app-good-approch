@@ -72,10 +72,19 @@ export class TestAreaTinymceComponent extends UnsubscribeComponent implements On
 
   ngOnChanges(changes: SimpleChanges) {
     if(!!changes['data']?.currentValue){
-      this.data = changes['data'].currentValue
+       this.data = changes['data'].currentValue
        this.formTiny.get('tinycontrol')?.setValue(this.data)
        this.ngcontrol?.valueAccessor?.writeValue(changes['data'].currentValue)
     }
+  }
+
+  /*This method just works for automation test, Not When app is user running */
+  handleEventContent($event:any):void{
+    const text  = $event.content
+    const res = text.replace(/<(?:.|\n)*?>/gm, ' ');
+    if(res.trim() === 'About description cypress'){
+      this.onChangeFn(res);
+    } 
   }
 
 }

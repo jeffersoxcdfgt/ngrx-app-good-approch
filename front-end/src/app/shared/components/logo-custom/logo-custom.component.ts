@@ -11,6 +11,7 @@ export class LogoCustomComponent implements ControlValueAccessor, OnChanges  {
   dataInputCtrl: FormControl =  new FormControl();  
   @Input() data: string | undefined = '';
   dataaux: string | undefined = '';
+  @Input() ftQI = ""
 
 
   constructor(@Self() @Optional() public ngcontrol: NgControl, private ref: ChangeDetectorRef) {
