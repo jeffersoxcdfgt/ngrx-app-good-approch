@@ -3,7 +3,7 @@
 
 # Ngrx App using observable RXJS and NGRX using best practices
 
-This [Url application demo](https://jefferson.informati-k.com)
+This [Url application demo](https://jefferfront.nubeactiva.com)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3
 
