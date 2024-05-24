@@ -1,5 +1,5 @@
 
-## Demo  app Link, last updated date 07/04/2024
+## Demo  app Link, last updated date 24/05/2024
 
 # Ngrx App using observable RXJS and NGRX using best practices
 
