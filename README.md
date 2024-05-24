@@ -5,9 +5,9 @@
 
 This [Url application demo](https://jefferfront.nubeactiva.com)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8
 
-Angular CLI: 17.3.3
+Angular CLI: 17.3.8
 Node: 20.11.0
 Package Manager: npm 10.2.4
 OS: win32 x64
